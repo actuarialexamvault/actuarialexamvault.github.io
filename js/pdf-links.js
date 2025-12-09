@@ -4,8 +4,8 @@ const pdfLinksMap = {
     'A311': {
         'JUNE': {
             '2025': {
-                '1': null, // Not available
-                '2': null  // Not available
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/08/A311a-Examiners-report-for-publishing_May-2025.pdf', 
+                '2': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/08/A311b_S1_2025_Exam.pdf' 
             },
             '2024': {
                 '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/A311-JUNE-2024-PAPER-1-EXAM-1.pdf',

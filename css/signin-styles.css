@@ -1,0 +1,275 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
+    min-height: 100vh;
+}
+
+/* Navigation */
+.navbar {
+    background: white;
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+}
+
+.logo-icon {
+    width: 32px;
+    height: 32px;
+    color: #00d4aa;
+}
+
+.logo-text {
+    font-size: 1.25rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #00d4aa 0%, #00a3ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Sign In Container */
+.signin-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 80px);
+    padding: 2rem;
+}
+
+.signin-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 440px;
+    overflow: hidden;
+}
+
+.card-header {
+    height: 8px;
+    background: linear-gradient(90deg, #00d4aa 0%, #00a3ff 100%);
+}
+
+.card-content {
+    padding: 3rem 2.5rem;
+}
+
+.signin-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #00d4aa;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.signin-subtitle {
+    text-align: center;
+    color: #666;
+    font-size: 0.95rem;
+    margin-bottom: 2.5rem;
+}
+
+/* Form Styles */
+.signin-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-label {
+    font-size: 0.875rem;
+    color: #333;
+    font-weight: 500;
+    display: none; /* Hidden but accessible */
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.form-input {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    padding-right: 3rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.form-input:focus {
+    border-color: #00a3ff;
+    box-shadow: 0 0 0 3px rgba(0, 163, 255, 0.1);
+}
+
+.form-input::placeholder {
+    color: #999;
+}
+
+.input-icon {
+    position: absolute;
+    right: 1rem;
+    width: 20px;
+    height: 20px;
+    color: #999;
+    pointer-events: none;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 0;
+    background: none;
+    border: none;
+    padding: 0.875rem 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.toggle-password:hover .input-icon {
+    color: #00a3ff;
+}
+
+/* Buttons */
+.btn-signin {
+    width: 100%;
+    padding: 0.875rem 1.5rem;
+    background: linear-gradient(135deg, #e0e0e0 0%, #d0d0d0 100%);
+    color: #999;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: not-allowed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    margin-top: 0.5rem;
+}
+
+.btn-signin:not(:disabled) {
+    background: linear-gradient(135deg, #00d4aa 0%, #00a3ff 100%);
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 163, 255, 0.3);
+}
+
+.btn-signin:not(:disabled):hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 163, 255, 0.4);
+}
+
+.btn-icon {
+    width: 20px;
+    height: 20px;
+    stroke: currentColor;
+}
+
+.forgot-password {
+    text-align: center;
+    color: #00a3ff;
+    font-size: 0.875rem;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.forgot-password:hover {
+    color: #0080cc;
+    text-decoration: underline;
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 1.5rem 0;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #ddd;
+}
+
+.divider span {
+    padding: 0 1rem;
+    color: #999;
+    font-size: 0.875rem;
+}
+
+.btn-create-account {
+    width: 100%;
+    padding: 0.875rem 1.5rem;
+    background: white;
+    color: #00a3ff;
+    border: 2px solid #00a3ff;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.btn-create-account:hover {
+    background: #f0f8ff;
+    transform: translateY(-2px);
+}
+
+.error-message {
+    color: #c33;
+    font-size: 0.75rem;
+    margin-top: 0.25rem;
+    display: block;
+    min-height: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .card-content {
+        padding: 2rem 1.5rem;
+    }
+
+    .signin-title {
+        font-size: 1.75rem;
+    }
+
+    .signin-subtitle {
+        font-size: 0.875rem;
+    }
+}

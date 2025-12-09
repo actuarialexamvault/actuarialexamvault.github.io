@@ -1,0 +1,52 @@
+# Actuarial Exam Vault .gitignore
+
+# Resources folder (contains large PDFs and generated content)
+resources/
+
+# Export files (generated content)
+exports/
+# Note: We want to track HTML files for our web app, so removed *.html
+*.docx
+*.epub
+
+# Temporary files
+*.tmp
+*.temp
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Editor files
+.vscode/settings.json
+.idea/
+*.swp
+*.swo
+
+# Log files
+*.log
+
+# Backup files
+*.bak
+*.backup
+*.old
+
+# Personal notes (optional - remove if you want to track personal notes)
+personal_notes/
+scratch/
+
+# Large media files (add specific extensions if needed)
+*.mp4
+*.avi
+*.mov
+*.wmv
+
+# Compiled/minified files
+dist/
+build/

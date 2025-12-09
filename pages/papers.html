@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Past Papers - Actuarial Exam Vault</title>
+    <link rel="stylesheet" href="../css/papers-styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">
+                <svg class="logo-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 11L12 14L22 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M21 12V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span class="logo-text">Actuarial Exam Vault</span>
+            </a>
+            <div class="nav-links">
+                <a href="subjects.html" class="nav-link">SUBJECTS</a>
+                <a href="dashboard.html" class="nav-link">ACCOUNT</a>
+                <button class="btn-signout-nav" id="signOutBtn">SIGN OUT</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="papers-container">
+        <div class="papers-header">
+            <button class="btn-back" onclick="history.back()">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19 12H5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12 19L5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Back to Subjects
+            </button>
+            <h1 class="papers-title" id="subjectTitle">Past Papers</h1>
+            <p class="papers-subtitle">Select a year to view available papers</p>
+        </div>
+
+        <div class="papers-grid" id="papersGrid">
+            <!-- Papers will be loaded dynamically -->
+            <div class="loading-state">
+                <div class="loading-spinner"></div>
+                <p>Loading past papers...</p>
+            </div>
+        </div>
+
+        <div class="no-papers" id="noPapers" style="display: none;">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                <path d="M12 16V12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="12" cy="8" r="0.5" fill="currentColor" stroke="currentColor" stroke-width="1"/>
+            </svg>
+            <h2>No Papers Available</h2>
+            <p>There are currently no past papers available for this subject.</p>
+            <button class="btn-primary" onclick="history.back()">Choose Another Subject</button>
+        </div>
+    </main>
+
+    <script src="../js/auth.js"></script>
+    <script src="../js/papers-script.js"></script>
+</body>
+</html>

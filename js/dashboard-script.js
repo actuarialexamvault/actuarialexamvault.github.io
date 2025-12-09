@@ -1,82 +1,63 @@
-// Dashboard functionality
-const authManager = new AuthManager();
+// Dashboard functionality with Firebase
+import { firebaseAuth } from './firebase-auth.js';
+import { firestoreData } from './firebase-data.js';
+import { initActivityMonitor } from './activity-monitor.js';
 
 const userName = document.getElementById('userName');
 const userNameTitle = document.getElementById('userNameTitle');
 const signOutBtn = document.getElementById('signOutBtn');
-const sessionTimer = document.getElementById('sessionTimer');
 
-// Check if user is logged in
-const session = authManager.getSession();
-if (!session) {
-    // Redirect to sign in if not logged in
-    alert('Please sign in to access the dashboard.');
-    window.location.href = 'signin.html';
-} else {
-    // Display user info
-    userName.textContent = session.fullname;
-    userNameTitle.textContent = session.fullname;
+// Check if user is logged in and load profile
+async function checkAuthAndLoadProfile() {
+    const user = firebaseAuth.getCurrentUser();
     
-    // Update session timer
-    updateSessionTimer();
-}
-
-// Update session timer display
-function updateSessionTimer() {
-    const timeRemaining = authManager.getSessionTimeRemaining();
-    
-    if (timeRemaining > 0) {
-        sessionTimer.textContent = `${timeRemaining} minutes`;
-        
-        // Update every minute
-        setTimeout(() => {
-            updateSessionTimer();
-        }, 60000);
+    if (!user) {
+        // Wait a moment for Firebase to initialize
+        setTimeout(async () => {
+            const retryUser = firebaseAuth.getCurrentUser();
+            if (!retryUser) {
+                alert('Please sign in to access the dashboard.');
+                window.location.href = 'signin.html';
+            } else {
+                await loadUserProfile(retryUser);
+            }
+        }, 1000);
     } else {
-        // Session expired
-        alert('Your session has expired. Please sign in again.');
-        authManager.signOut();
-        window.location.href = 'signin.html';
+        await loadUserProfile(user);
     }
 }
 
+async function loadUserProfile(user) {
+    // Get user profile from Firestore
+    const result = await firestoreData.getUserProfile(user.uid);
+    
+    if (result.success && result.data.fullname) {
+        // Display user info
+        userName.textContent = result.data.fullname;
+        userNameTitle.textContent = result.data.fullname;
+    } else {
+        // Fallback to email if no full name
+        userName.textContent = user.email;
+        userNameTitle.textContent = user.email;
+    }
+}
+
+// Initialize
+checkAuthAndLoadProfile();
+
 // Handle sign out
-signOutBtn.addEventListener('click', (e) => {
+signOutBtn.addEventListener('click', async (e) => {
     e.preventDefault();
     
     if (confirm('Are you sure you want to sign out?')) {
-        authManager.signOut();
+        await firebaseAuth.signout();
         alert('You have been signed out successfully.');
         window.location.href = '../index.html';
     }
 });
 
-// Extend session on user activity
-let activityTimeout;
-function resetActivityTimer() {
-    clearTimeout(activityTimeout);
-    
-    if (authManager.isLoggedIn()) {
-        authManager.extendSession();
-        console.log('Session extended due to activity');
-        
-        // Update timer display
-        updateSessionTimer();
-        
-        // Set timeout to check for inactivity (5 minutes)
-        activityTimeout = setTimeout(() => {
-            console.log('User inactive - session will expire as scheduled');
-        }, 5 * 60 * 1000);
-    }
-}
-
-// Listen for user activity
-['mousedown', 'keydown', 'scroll', 'touchstart'].forEach(event => {
-    document.addEventListener(event, resetActivityTimer, true);
-});
-
-// Initial activity timer
-resetActivityTimer();
+// Initialize activity monitor for auto-logout
+initActivityMonitor();
 
 // Add click handlers for action buttons
 document.querySelectorAll('.action-btn').forEach(btn => {

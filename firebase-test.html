@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firebase Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        .status {
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Firebase Connection Test</h1>
+    <div id="status"></div>
+    
+    <h2>Test Authentication:</h2>
+    <button onclick="testSignup()">Test Signup</button>
+    <button onclick="testSignin()">Test Signin</button>
+    <button onclick="testSignout()">Test Signout</button>
+    
+    <h2>Test Firestore:</h2>
+    <button onclick="testFirestore()">Test Save Data</button>
+    <button onclick="testReadData()">Test Read Data</button>
+    
+    <div id="results"></div>
+
+    <script type="module">
+        import { firebaseAuth } from './js/firebase-auth.js';
+        import { firestoreData } from './js/firebase-data.js';
+        
+        // Make functions available globally for onclick
+        window.testSignup = async function() {
+            const email = `test${Date.now()}@test.com`;
+            const password = 'test123';
+            
+            showStatus(`Testing signup with ${email}...`);
+            const result = await firebaseAuth.signup(email, password);
+            
+            if (result.success) {
+                showStatus(`✅ Signup successful! User ID: ${result.user.uid}`, 'success');
+            } else {
+                showStatus(`❌ Signup failed: ${result.error}`, 'error');
+            }
+        };
+        
+        window.testSignin = async function() {
+            const email = prompt('Enter email:');
+            const password = prompt('Enter password:');
+            
+            showStatus('Testing signin...');
+            const result = await firebaseAuth.signin(email, password);
+            
+            if (result.success) {
+                showStatus(`✅ Signin successful! User: ${result.user.email}`, 'success');
+            } else {
+                showStatus(`❌ Signin failed: ${result.error}`, 'error');
+            }
+        };
+        
+        window.testSignout = async function() {
+            showStatus('Testing signout...');
+            const result = await firebaseAuth.signout();
+            
+            if (result.success) {
+                showStatus('✅ Signout successful!', 'success');
+            } else {
+                showStatus(`❌ Signout failed: ${result.error}`, 'error');
+            }
+        };
+        
+        window.testFirestore = async function() {
+            const user = firebaseAuth.getCurrentUser();
+            if (!user) {
+                showStatus('❌ Please sign in first!', 'error');
+                return;
+            }
+            
+            showStatus('Testing Firestore save...');
+            const result = await firestoreData.saveUserProfile(user.uid, {
+                testData: 'Hello from Firestore!',
+                timestamp: new Date().toISOString()
+            });
+            
+            if (result.success) {
+                showStatus('✅ Data saved to Firestore!', 'success');
+            } else {
+                showStatus(`❌ Failed to save data: ${result.error}`, 'error');
+            }
+        };
+        
+        window.testReadData = async function() {
+            const user = firebaseAuth.getCurrentUser();
+            if (!user) {
+                showStatus('❌ Please sign in first!', 'error');
+                return;
+            }
+            
+            showStatus('Testing Firestore read...');
+            const result = await firestoreData.getUserProfile(user.uid);
+            
+            if (result.success) {
+                showStatus(`✅ Data retrieved: ${JSON.stringify(result.data, null, 2)}`, 'success');
+            } else {
+                showStatus(`❌ Failed to read data: ${result.error}`, 'error');
+            }
+        };
+        
+        function showStatus(message, type = 'info') {
+            const statusDiv = document.getElementById('status');
+            statusDiv.className = `status ${type}`;
+            statusDiv.innerHTML = message;
+            
+            // Also log to results
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML += `<p><strong>${new Date().toLocaleTimeString()}:</strong> ${message}</p>`;
+        }
+        
+        // Check initial auth state
+        setTimeout(() => {
+            const user = firebaseAuth.getCurrentUser();
+            if (user) {
+                showStatus(`Current user: ${user.email}`, 'success');
+            } else {
+                showStatus('No user signed in', 'info');
+            }
+        }, 1000);
+    </script>
+</body>
+</html>

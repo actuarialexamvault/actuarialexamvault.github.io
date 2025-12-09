@@ -1,16 +1,39 @@
-// Subject Papers page functionality
-const authManager = new AuthManager();
+// Subject Papers page functionality with Firebase
+import { firebaseAuth } from './firebase-auth.js';
+import { firestoreData } from './firebase-data.js';
+import { initActivityMonitor } from './activity-monitor.js';
+import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
+import { auth } from './firebase-config.js';
+
+// Initialize activity monitor
+initActivityMonitor();
 
 const signOutBtn = document.getElementById('signOutBtn');
 const availableHeader = document.getElementById('availableHeader');
 const availableList = document.getElementById('availableList');
 
+let isAuthChecked = false;
+
 // Check if user is logged in
-const session = authManager.getSession();
-if (!session) {
-    alert('Please sign in to access papers.');
-    window.location.href = 'signin.html';
-}
+onAuthStateChanged(auth, async (user) => {
+    if (user) {
+        // User is signed in
+        isAuthChecked = true;
+        // Load available papers once authenticated
+        loadAvailablePapers();
+    } else {
+        // User is not signed in
+        if (isAuthChecked || !user) {
+            // Only show alert if auth has been checked or definitely no user
+            setTimeout(() => {
+                if (!auth.currentUser) {
+                    alert('Please sign in to access papers.');
+                    window.location.href = 'signin.html';
+                }
+            }, 500);
+        }
+    }
+});
 
 // Get subject from URL or sessionStorage
 const urlParams = new URLSearchParams(window.location.search);
@@ -133,39 +156,12 @@ availableHeader.addEventListener('click', () => {
 });
 
 // Handle sign out
-signOutBtn.addEventListener('click', (e) => {
+signOutBtn.addEventListener('click', async (e) => {
     e.preventDefault();
     
     if (confirm('Are you sure you want to sign out?')) {
-        authManager.signOut();
+        await firebaseAuth.signout();
         alert('You have been signed out successfully.');
         window.location.href = '../index.html';
     }
 });
-
-// Add click handlers for sidebar sections
-document.querySelectorAll('.sidebar-section').forEach((section, index) => {
-    section.addEventListener('click', () => {
-        const features = ['Do Questions', 'Question Bank', 'Intelligence'];
-        alert(`${features[index]} feature coming soon!\n\nThis will provide additional ways to practice and study.`);
-    });
-});
-
-// Load data on page load
-loadAvailablePapers();
-
-// Activity timer
-let activityTimeout;
-function resetActivityTimer() {
-    clearTimeout(activityTimeout);
-    if (authManager.isLoggedIn()) {
-        authManager.extendSession();
-        activityTimeout = setTimeout(() => {}, 5 * 60 * 1000);
-    }
-}
-
-['mousedown', 'keydown', 'scroll', 'touchstart'].forEach(event => {
-    document.addEventListener(event, resetActivityTimer, true);
-});
-
-resetActivityTimer();

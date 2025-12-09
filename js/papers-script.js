@@ -1,17 +1,29 @@
-// Papers page functionality
-const authManager = new AuthManager();
+// Papers page functionality with Firebase
+import { firebaseAuth } from './firebase-auth.js';
+import { initActivityMonitor } from './activity-monitor.js';
+import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
+import { auth } from './firebase-config.js';
+
+// Initialize activity monitor
+initActivityMonitor();
 
 const signOutBtn = document.getElementById('signOutBtn');
 const subjectTitle = document.getElementById('subjectTitle');
 const papersGrid = document.getElementById('papersGrid');
 const noPapers = document.getElementById('noPapers');
 
+let isAuthChecked = false;
+
 // Check if user is logged in
-const session = authManager.getSession();
-if (!session) {
-    alert('Please sign in to access past papers.');
-    window.location.href = 'signin.html';
-}
+onAuthStateChanged(auth, (user) => {
+    if (!user && !isAuthChecked) {
+        isAuthChecked = true;
+        alert('Please sign in to access past papers.');
+        window.location.href = 'signin.html';
+    } else if (user) {
+        isAuthChecked = true;
+    }
+});
 
 // Get subject from URL or sessionStorage
 const urlParams = new URLSearchParams(window.location.search);
@@ -175,11 +187,11 @@ window.viewYearPapers = function(year) {
 };
 
 // Handle sign out
-signOutBtn.addEventListener('click', (e) => {
+signOutBtn.addEventListener('click', async (e) => {
     e.preventDefault();
     
     if (confirm('Are you sure you want to sign out?')) {
-        authManager.signOut();
+        await firebaseAuth.signout();
         alert('You have been signed out successfully.');
         window.location.href = '../index.html';
     }

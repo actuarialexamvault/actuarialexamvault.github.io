@@ -1,5 +1,10 @@
-// Progress Tracker functionality
-const authManager = new AuthManager();
+// Progress Tracker functionality with Firebase
+import { firebaseAuth } from './firebase-auth.js';
+import { firestoreData } from './firebase-data.js';
+import { initActivityMonitor } from './activity-monitor.js';
+
+// Initialize activity monitor
+initActivityMonitor();
 
 const userName = document.getElementById('userName');
 const signOutBtn = document.getElementById('signOutBtn');
@@ -17,13 +22,40 @@ const totalCount = document.getElementById('totalCount');
 const progressBarFill = document.getElementById('progressBarFill');
 const progressPercentage = document.getElementById('progressPercentage');
 
-// Check if user is logged in
-const session = authManager.getSession();
-if (!session) {
-    alert('Please sign in to view your progress.');
-    window.location.href = 'signin.html';
-} else {
-    userName.textContent = session.fullname;
+// Check if user is logged in and load profile
+import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
+import { auth } from './firebase-config.js';
+
+let isAuthChecked = false;
+
+onAuthStateChanged(auth, async (user) => {
+    if (user) {
+        // User is signed in
+        await loadUserProfile(user);
+        isAuthChecked = true;
+    } else {
+        // User is not signed in
+        if (isAuthChecked || !user) {
+            // Only show alert if auth has been checked or definitely no user
+            setTimeout(() => {
+                if (!auth.currentUser) {
+                    alert('Please sign in to view your progress.');
+                    window.location.href = 'signin.html';
+                }
+            }, 500);
+        }
+    }
+});
+
+async function loadUserProfile(user) {
+    // Get user profile from Firestore
+    const result = await firestoreData.getUserProfile(user.uid);
+    
+    if (result.success && result.data.fullname) {
+        userName.textContent = result.data.fullname;
+    } else {
+        userName.textContent = user.email;
+    }
 }
 
 // Check if we should auto-show a subject (after exam upload)
@@ -43,11 +75,11 @@ if (autoShowSubject && autoShowSubjectTitle) {
 }
 
 // Handle sign out
-signOutBtn.addEventListener('click', (e) => {
+signOutBtn.addEventListener('click', async (e) => {
     e.preventDefault();
     
     if (confirm('Are you sure you want to sign out?')) {
-        authManager.signOut();
+        await firebaseAuth.signout();
         alert('You have been signed out successfully.');
         window.location.href = '../index.html';
     }
@@ -88,7 +120,7 @@ function showSubjectsView() {
 }
 
 // Show progress view
-function showProgressView(subject, subjectTitle) {
+async function showProgressView(subject, subjectTitle) {
     subjectsView.style.display = 'none';
     progressView.style.display = 'grid';
     
@@ -96,7 +128,7 @@ function showProgressView(subject, subjectTitle) {
     subjectProgressTitle.textContent = `${subjectTitle} Progress`;
     
     // Load progress data
-    loadProgressData(subject, subjectTitle);
+    await loadProgressData(subject, subjectTitle);
 }
 
 // Generate all available papers for a subject (2018-2025)
@@ -140,10 +172,14 @@ function generateAllPapers(subject) {
 }
 
 // Get user's exam submissions from localStorage
-function getUserSubmissions() {
-    const submissionsKey = `examSubmissions_${session.email}`;
-    const submissions = localStorage.getItem(submissionsKey);
-    return submissions ? JSON.parse(submissions) : [];
+async function getUserSubmissions() {
+    const user = firebaseAuth.getCurrentUser();
+    if (!user) return [];
+    
+    const result = await firestoreData.getExamSubmissions(user.uid);
+    if (!result.success) return [];
+    
+    return Object.values(result.data);
 }
 
 // Check if a paper has been attempted
@@ -185,9 +221,9 @@ function getSubmissionDetails(submissions, subject, year, session, paper) {
 }
 
 // Load progress data
-function loadProgressData(subject, subjectTitle) {
+async function loadProgressData(subject, subjectTitle) {
     const allPapers = generateAllPapers(subject);
-    const submissions = getUserSubmissions();
+    const submissions = await getUserSubmissions();
     
     // Calculate progress
     const totalPapers = allPapers.length;
@@ -204,19 +240,22 @@ function loadProgressData(subject, subjectTitle) {
     progressPercentage.textContent = `${percentage}% Complete`;
     
     // Load performance statistics
-    loadPerformanceStats(subject);
+    await loadPerformanceStats(subject);
     
     // Load paper list
     loadPaperList(subject, subjectTitle, allPapers, submissions);
 }
 
 // Load performance statistics
-function loadPerformanceStats(subject) {
-    const session = authManager.getSession();
-    if (!session) return;
+async function loadPerformanceStats(subject) {
+    const user = firebaseAuth.getCurrentUser();
+    if (!user) return;
     
-    const gradingKey = `questionGradings_${session.email}`;
-    const gradings = JSON.parse(localStorage.getItem(gradingKey) || '[]');
+    // Get gradings from Firestore
+    const result = await firestoreData.getAllUserGradings(user.uid);
+    if (!result.success) return;
+    
+    const gradings = Object.values(result.data);
     
     // Filter gradings for current subject
     const subjectGradings = gradings.filter(g => g.subject === subject);
@@ -387,22 +426,4 @@ document.querySelectorAll('.sidebar-section').forEach((section, index) => {
     });
 });
 
-// Extend session on activity
-let activityTimeout;
-function resetActivityTimer() {
-    clearTimeout(activityTimeout);
-    
-    if (authManager.isLoggedIn()) {
-        authManager.extendSession();
-        
-        activityTimeout = setTimeout(() => {
-            console.log('User inactive');
-        }, 5 * 60 * 1000);
-    }
-}
-
-['mousedown', 'keydown', 'scroll', 'touchstart'].forEach(event => {
-    document.addEventListener(event, resetActivityTimer, true);
-});
-
-resetActivityTimer();
+// Firebase handles session management automatically - no need for manual extension

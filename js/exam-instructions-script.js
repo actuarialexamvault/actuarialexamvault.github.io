@@ -1,10 +1,23 @@
-// Check authentication
-const authManager = new AuthManager();
-const session = authManager.getSession();
+// Check authentication with Firebase
+import { firebaseAuth } from './firebase-auth.js';
+import { firestoreData } from './firebase-data.js';
+import { indexedDBStorage } from './indexeddb-storage.js';
+import { initActivityMonitor } from './activity-monitor.js';
+import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
+import { auth } from './firebase-config.js';
 
-if (!session) {
-    window.location.href = 'signin.html';
-}
+// Initialize activity monitor
+initActivityMonitor();
+
+let currentUser = null;
+
+onAuthStateChanged(auth, (user) => {
+    if (user) {
+        currentUser = user;
+    } else {
+        window.location.href = 'signin.html';
+    }
+});
 
 // Custom Modal Functions
 function showModal(title, message, type = 'info', buttons = [{ text: 'OK', primary: true, callback: null }]) {
@@ -177,9 +190,12 @@ function startExam() {
             'The PDF for this exam could not be found.<br><br>' +
             'Please check the official past papers at:<br>' +
             '<a href="https://www.actuarialsociety.org.za/document-category/past-paper/" target="_blank">actuarialsociety.org.za/past-papers</a><br><br>' +
-            'You may try selecting a different exam paper.',
-            'error',
-            [{ text: 'OK', primary: true }]
+            'You may still proceed to start the timer once you have located and downloaded the exam paper from the official site. Use this option for Marking and tracking your progress.',
+            'warning',
+            [
+                { text: 'Cancel', primary: false, callback: null },
+                { text: 'Start Timer Anyway', primary: true, callback: () => startExamWithoutPDF() }
+            ]
         );
         return;
     }
@@ -244,6 +260,82 @@ function startExam() {
             };
             
             localStorage.setItem('currentExam', JSON.stringify(examState));
+        }
+    );
+}
+
+// Start exam without PDF (user will use their own downloaded copy)
+function startExamWithoutPDF() {
+    if (examStarted) {
+        showModal(
+            'Exam Already Started',
+            'The exam has already been started. Please finish or leave the current exam first.',
+            'info'
+        );
+        return;
+    }
+    
+    // Confirm start
+    showConfirm(
+        'Start Exam Timer',
+        `You are about to start the timer for:<br><br>` +
+        `<strong>${subjectTitle}</strong><br>` +
+        `${session_type} ${year} - Paper ${paper}<br><br>` +
+        `<strong>Duration:</strong> ${Math.floor(totalMinutes / 60)}h ${totalMinutes % 60}m<br>` +
+        `<strong>Total Marks:</strong> ${totalMarks}<br><br>` +
+        `Make sure you have the correct exam paper before starting the timer.<br><br>` +
+        `Are you ready to begin?`,
+        'info',
+        function() {
+            // User confirmed - start the exam timer
+            examStarted = true;
+            document.getElementById('statusBadge').textContent = 'IN_PROGRESS';
+            document.getElementById('statusBadge').classList.add('in-progress');
+            
+            // Change start button to finish button
+            const startBtn = document.getElementById('startExamBtn');
+            startBtn.textContent = 'Finish Exam';
+            startBtn.innerHTML = `
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 11L12 14L22 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M21 12V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Finish Exam
+            `;
+            startBtn.onclick = finishExam;
+            
+            // Start countdown timer
+            timerInterval = setInterval(() => {
+                remainingSeconds--;
+                
+                if (remainingSeconds <= 0) {
+                    clearInterval(timerInterval);
+                    remainingSeconds = 0;
+                    timeUp();
+                }
+                
+                updateTimerDisplay();
+            }, 1000);
+            
+            // Store exam state in localStorage
+            const examState = {
+                subject,
+                subjectTitle,
+                session: session_type,
+                year,
+                paper,
+                startTime: new Date().toISOString(),
+                remainingSeconds,
+                totalMarks
+            };
+            
+            localStorage.setItem('currentExam', JSON.stringify(examState));
+            
+            showModal(
+                'Timer Started',
+                'The exam timer has started. Make sure you have your exam paper ready!',
+                'success'
+            );
         }
     );
 }
@@ -313,7 +405,7 @@ function finishExam() {
             // Show completion message
             showModal(
                 '✓ Exam Completed!',
-                'Upload the completed template using the <strong>"Upload Completed Exam"</strong> button.',
+                'Upload the completed template using the <strong>"Upload My Attempt"</strong> button.',
                 'success'
             );
         }
@@ -419,7 +511,7 @@ function triggerFileUpload() {
     document.getElementById('templateFileInput').click();
 }
 
-function handleTemplateUpload(event) {
+async function handleTemplateUpload(event) {
     const file = event.target.files[0];
     if (!file) return;
     
@@ -444,7 +536,7 @@ function handleTemplateUpload(event) {
         session: session_type,
         year: parseInt(year), // Ensure year is a number
         paper: paper,
-        studentEmail: session.email,
+        studentEmail: currentUser.email,
         fileName: file.name,
         fileSize: file.size,
         uploadTimestamp: new Date().toISOString(),
@@ -455,46 +547,54 @@ function handleTemplateUpload(event) {
     
     console.log('Saving submission:', submission);
     
-    // Save to localStorage with user-specific key (in a real app, this would be sent to a server)
-    const submissionsKey = `examSubmissions_${session.email}`;
-    let submissions = JSON.parse(localStorage.getItem(submissionsKey) || '[]');
-    submissions.push(submission);
-    localStorage.setItem(submissionsKey, JSON.stringify(submissions));
+    // Store file in IndexedDB
+    const uploadResult = await indexedDBStorage.storeFile(currentUser.uid, submission.uploadTimestamp, file);
     
-    // Store file data (for demo purposes - in production, upload to server)
-    const reader = new FileReader();
-    reader.onload = function(e) {
-        const fileData = {
-            submissionId: submission.uploadTimestamp,
-            data: e.target.result,
-            fileName: file.name
-        };
-        localStorage.setItem(`submission_${submission.uploadTimestamp}`, JSON.stringify(fileData));
-        
-        showModal(
-            '✓ Upload Successful!',
-            '<strong>File:</strong> ' + file.name + '<br>' +
-            '<strong>Upload Date:</strong> ' + submission.uploadDate + '<br>' +
-            '<strong>Status:</strong> Submitted<br><br>' +
-            'Your completed exam has been saved and timestamped.<br>' +
-            'Redirecting to your progress tracker...',
-            'success',
-            [{
-                text: 'View Progress',
-                primary: true,
-                callback: function() {
-                    // Reset file input
-                    event.target.value = '';
-                    
-                    // Navigate to progress tracker and auto-show the subject
-                    sessionStorage.setItem('autoShowSubject', subject);
-                    sessionStorage.setItem('autoShowSubjectTitle', subjectTitle);
-                    window.location.href = 'progress-tracker.html';
-                }
-            }]
-        );
-    };
-    reader.readAsDataURL(file);
+    if (!uploadResult.success) {
+        showModal('Upload Failed', 'Failed to store file locally. Please try again.', 'error');
+        return;
+    }
+    
+    // Add file info to submission (no URL needed for local storage)
+    submission.fileStored = true;
+    submission.fileId = uploadResult.fileId;
+    submission.storedFileName = uploadResult.fileName;
+    
+    // Save submission metadata to Firestore
+    const saveResult = await firestoreData.saveExamSubmission(
+        currentUser.uid,
+        submission.uploadTimestamp,
+        submission
+    );
+    
+    if (!saveResult.success) {
+        showModal('Save Failed', 'Failed to save submission metadata. Please try again.', 'error');
+        return;
+    }
+    
+    // Show success modal
+    showModal(
+        '✓ Upload Successful!',
+        '<strong>File:</strong> ' + file.name + '<br>' +
+        '<strong>Upload Date:</strong> ' + submission.uploadDate + '<br>' +
+        '<strong>Status:</strong> Submitted<br><br>' +
+        'Your exam attempt has been saved and timestamped.<br>' +
+        'Redirecting to your progress tracker...',
+        'success',
+        [{
+            text: 'View Progress',
+            primary: true,
+            callback: function() {
+                // Reset file input
+                event.target.value = '';
+                
+                // Navigate to progress tracker and auto-show the subject
+                sessionStorage.setItem('autoShowSubject', subject);
+                sessionStorage.setItem('autoShowSubjectTitle', subjectTitle);
+                window.location.href = 'progress-tracker.html';
+            }
+        }]
+    );
 }
 
 function preventNavigation(event) {
@@ -520,13 +620,13 @@ function signOut() {
         'Sign Out',
         'Are you sure you want to sign out?',
         'info',
-        function() {
+        async function() {
             // User confirmed - sign out
             if (timerInterval) {
                 clearInterval(timerInterval);
             }
             localStorage.removeItem('currentExam');
-            authManager.signOut();
+            await firebaseAuth.signout();
             window.location.href = '../index.html';
         }
     );

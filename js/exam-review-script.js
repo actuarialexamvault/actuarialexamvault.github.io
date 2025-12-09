@@ -1,12 +1,35 @@
-// Exam Review functionality
-const authManager = new AuthManager();
+// Exam Review functionality with Firebase
+import { firebaseAuth } from './firebase-auth.js';
+import { firestoreData } from './firebase-data.js';
+import { indexedDBStorage } from './indexeddb-storage.js';
+import { initActivityMonitor } from './activity-monitor.js';
+import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
+import { auth } from './firebase-config.js';
+
+// Initialize activity monitor
+initActivityMonitor();
+
+let currentUser = null;
+let isAuthChecked = false;
 
 // Check authentication
-const session = authManager.getSession();
-if (!session) {
-    alert('Please sign in to access exam reviews.');
-    window.location.href = 'signin.html';
-}
+onAuthStateChanged(auth, async (user) => {
+    if (user) {
+        currentUser = user;
+        isAuthChecked = true;
+        // Initialize page after authentication
+        await initializePage();
+    } else {
+        if (isAuthChecked || !user) {
+            setTimeout(() => {
+                if (!auth.currentUser) {
+                    alert('Please sign in to access exam reviews.');
+                    window.location.href = 'signin.html';
+                }
+            }, 500);
+        }
+    }
+});
 
 // Modal management
 let currentQuestionNumber = null;
@@ -66,20 +89,21 @@ const aiPromptText = document.getElementById('aiPromptText');
 let questionCount = 8; // Default 8 questions
 let submissionData = null;
 
-document.addEventListener('DOMContentLoaded', function() {
-    loadExamDetails();
-    initializeTable();
+// Initialize page after auth check
+async function initializePage() {
     setupEventListeners();
-});
+    await loadExamDetails();
+    await initializeTable();
+}
 
 // Load exam details
-function loadExamDetails() {
+async function loadExamDetails() {
     // Update title
     reviewTitle.textContent = `${subjectTitle} - ${sessionType} ${year} Paper ${paper}`;
     reviewSubtitle.textContent = 'Review your exam attempt and grade your answers';
     
-    // Get submission data
-    submissionData = getSubmissionData();
+    // Get submission data from Firestore
+    submissionData = await getSubmissionData();
     
     if (submissionData) {
         const date = new Date(submissionData.timestamp);
@@ -95,42 +119,54 @@ function loadExamDetails() {
     }
 }
 
-// Get submission data from localStorage
-function getSubmissionData() {
-    const submissionsKey = `examSubmissions_${session.email}`;
-    const submissions = JSON.parse(localStorage.getItem(submissionsKey) || '[]');
+// Get submission data from Firestore
+async function getSubmissionData() {
+    if (!currentUser) return null;
     
-    return submissions.find(sub => 
-        sub.subject === subject &&
-        sub.year == year &&
-        sub.session.toUpperCase() === sessionType.toUpperCase() &&
-        sub.paper == paper
-    );
+    try {
+        const submissions = await firestoreData.getUserSubmissions(currentUser.uid);
+        
+        return submissions.find(sub => 
+            sub.subject === subject &&
+            sub.year == year &&
+            sub.session.toUpperCase() === sessionType.toUpperCase() &&
+            sub.paper == paper
+        );
+    } catch (error) {
+        console.error('Error loading submission:', error);
+        return null;
+    }
 }
 
 // Initialize table with default 8 questions
-function initializeTable() {
+async function initializeTable() {
     gradingTableBody.innerHTML = '';
     
-    // Load existing gradings
-    const existingGradings = loadExistingGradings();
+    // Load existing gradings from Firestore
+    const existingGradings = await loadExistingGradings();
     
     for (let i = 1; i <= questionCount; i++) {
         addQuestionRow(i, existingGradings);
     }
 }
 
-// Load existing gradings from localStorage
-function loadExistingGradings() {
-    const gradingKey = `questionGradings_${session.email}`;
-    const gradings = JSON.parse(localStorage.getItem(gradingKey) || '[]');
+// Load existing gradings from Firestore
+async function loadExistingGradings() {
+    if (!currentUser) return [];
     
-    return gradings.filter(g => 
-        g.subject === subject &&
-        g.year == year &&
-        g.session.toUpperCase() === sessionType.toUpperCase() &&
-        g.paper == paper
-    );
+    try {
+        const gradings = await firestoreData.getUserGradings(currentUser.uid);
+        
+        return gradings.filter(g => 
+            g.subject === subject &&
+            g.year == year &&
+            g.session.toUpperCase() === sessionType.toUpperCase() &&
+            g.paper == paper
+        );
+    } catch (error) {
+        console.error('Error loading gradings:', error);
+        return [];
+    }
 }
 
 // Add a question row
@@ -210,19 +246,19 @@ function navigateToGrading(questionNumber, isAIReview = false) {
 // Setup event listeners
 function setupEventListeners() {
     // Sign out
-    signOutBtn.addEventListener('click', (e) => {
+    signOutBtn.addEventListener('click', async (e) => {
         e.preventDefault();
         if (confirm('Are you sure you want to sign out?')) {
-            authManager.signOut();
+            await firebaseAuth.signout();
             alert('You have been signed out successfully.');
             window.location.href = '../index.html';
         }
     });
     
     // Add question row
-    addRowBtn.addEventListener('click', () => {
+    addRowBtn.addEventListener('click', async () => {
         questionCount++;
-        const existingGradings = loadExistingGradings();
+        const existingGradings = await loadExistingGradings();
         addQuestionRow(questionCount, existingGradings);
     });
     
@@ -317,47 +353,28 @@ function setupEventListeners() {
 }
 
 // Download submission file
-function downloadSubmission() {
-    // Get the stored file data
-    const fileDataKey = `submission_${submissionData.uploadTimestamp}`;
-    const fileDataStr = localStorage.getItem(fileDataKey);
+async function downloadSubmission() {
+    if (!currentUser || !submissionData) {
+        alert('Unable to download: No submission data found.');
+        return;
+    }
+
+    // Try to get file from IndexedDB
+    const result = await indexedDBStorage.downloadFile(currentUser.uid, submissionData.uploadTimestamp);
     
-    if (fileDataStr) {
-        try {
-            const fileData = JSON.parse(fileDataStr);
-            
-            // Create download link
-            const link = document.createElement('a');
-            link.href = fileData.data;
-            link.download = fileData.fileName;
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        } catch (error) {
-            console.error('Error downloading file:', error);
-            alert('Error downloading file. The file data may be corrupted.');
-        }
-    } else {
-        alert('File data not found. The submission may have been cleared from local storage.');
+    if (!result.success) {
+        // Show helpful message about local storage limitation
+        alert(
+            '📁 File Not Available on This Device\n\n' +
+            'Your exam submission file is stored locally on the device where you uploaded it.\n\n' +
+            '✓ Your submission metadata is synced across all devices\n' +
+            '✗ The actual file can only be downloaded on the device where you uploaded it\n\n' +
+            'To access this file:\n' +
+            '• Go to the device where you originally uploaded it\n' +
+            '• Or upload the file again on this device\n\n' +
+            'This is because files are stored locally in your browser for privacy and storage efficiency.'
+        );
     }
 }
 
-// Extend session on activity
-let activityTimeout;
-function resetActivityTimer() {
-    clearTimeout(activityTimeout);
-    
-    if (authManager.isLoggedIn()) {
-        authManager.extendSession();
-        
-        activityTimeout = setTimeout(() => {
-            console.log('User inactive');
-        }, 5 * 60 * 1000);
-    }
-}
-
-['mousedown', 'keydown', 'scroll', 'touchstart'].forEach(event => {
-    document.addEventListener(event, resetActivityTimer, true);
-});
-
-resetActivityTimer();
+// Activity monitor is initialized at the top of the file

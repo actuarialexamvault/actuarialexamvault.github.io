@@ -1,25 +1,56 @@
-// Subjects page functionality
-const authManager = new AuthManager();
+// Subjects page functionality with Firebase
+import { firebaseAuth } from './firebase-auth.js';
+import { firestoreData } from './firebase-data.js';
+import { initActivityMonitor } from './activity-monitor.js';
+import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
+import { auth } from './firebase-config.js';
+
+// Initialize activity monitor
+initActivityMonitor();
 
 const userName = document.getElementById('userName');
 const signOutBtn = document.getElementById('signOutBtn');
 const subjectCards = document.querySelectorAll('.subject-card');
 
-// Check if user is logged in
-const session = authManager.getSession();
-if (!session) {
-    alert('Please sign in to access subjects.');
-    window.location.href = 'signin.html';
-} else {
-    userName.textContent = session.fullname;
+let isAuthChecked = false;
+
+// Check if user is logged in and load profile
+onAuthStateChanged(auth, async (user) => {
+    if (user) {
+        // User is signed in
+        await loadUserProfile(user);
+        isAuthChecked = true;
+    } else {
+        // User is not signed in
+        if (isAuthChecked || !user) {
+            // Only show alert if auth has been checked or definitely no user
+            setTimeout(() => {
+                if (!auth.currentUser) {
+                    alert('Please sign in to access subjects.');
+                    window.location.href = 'signin.html';
+                }
+            }, 500);
+        }
+    }
+});
+
+async function loadUserProfile(user) {
+    // Get user profile from Firestore
+    const result = await firestoreData.getUserProfile(user.uid);
+    
+    if (result.success && result.data.fullname) {
+        userName.textContent = result.data.fullname;
+    } else {
+        userName.textContent = user.email;
+    }
 }
 
 // Handle sign out
-signOutBtn.addEventListener('click', (e) => {
+signOutBtn.addEventListener('click', async (e) => {
     e.preventDefault();
     
     if (confirm('Are you sure you want to sign out?')) {
-        authManager.signOut();
+        await firebaseAuth.signout();
         alert('You have been signed out successfully.');
         window.location.href = '../index.html';
     }

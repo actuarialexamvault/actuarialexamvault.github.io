@@ -9,7 +9,27 @@ class AuthManager {
     // Get all users from localStorage
     getUsers() {
         const users = localStorage.getItem(this.USERS_KEY);
-        return users ? JSON.parse(users) : [];
+        if (!users) {
+            // Initialize with a demo account if no users exist
+            this.initializeDemoAccount();
+            return this.getUsers(); // Recursive call to get the newly created demo account
+        }
+        return JSON.parse(users);
+    }
+
+    // Initialize a demo account for testing
+    initializeDemoAccount() {
+        const demoUser = {
+            id: 'demo-user-001',
+            fullname: 'Demo User',
+            email: 'demo@actuarial.com',
+            password: this.hashPassword('demo123'), // Password: demo123
+            createdAt: new Date().toISOString(),
+            isDemo: true
+        };
+        
+        localStorage.setItem(this.USERS_KEY, JSON.stringify([demoUser]));
+        console.log('Demo account initialized - Email: demo@actuarial.com, Password: demo123');
     }
 
     // Save users to localStorage

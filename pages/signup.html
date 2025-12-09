@@ -135,7 +135,25 @@
         </div>
     </main>
 
-    <script src="../js/auth.js"></script>
-    <script src="../js/signup-script.js"></script>
+    <!-- Success Modal -->
+    <div id="successModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header success-header">
+                <svg class="modal-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                    <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <h2>Account Created Successfully!</h2>
+            </div>
+            <div class="modal-body">
+                <p>Your account has been created. You can now sign in to start using the Actuarial Exam Vault.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-primary" id="goToSignin">Go to Sign In</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="../js/signup-script.js"></script>
 </body>
 </html>

@@ -9,7 +9,7 @@
 <body>
     <nav class="navbar">
         <div class="nav-container">
-            <a href="../index.html" class="logo">
+            <a href="dashboard.html" class="logo">
                 <svg class="logo-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M9 11L12 14L22 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     <path d="M21 12V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -66,7 +66,7 @@
                     <path d="M17 8L12 3L7 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     <path d="M12 3V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
-                Upload Completed Exam
+                Upload My Attempt
             </button>
             <input type="file" id="templateFileInput" accept=".txt,.docx,.doc,.pdf" style="display: none;">
         </aside>
@@ -95,7 +95,7 @@
                             To start the exam, click <strong>Start Exam</strong>. The exam PDF will open and the timer will begin.
                         </li>
                         <li>
-                            The <strong>exam timer</strong> is located in the left panel. When it reaches zero, you must finish the exam.
+                            The <strong>exam timer</strong> is located in the left panel. When it reaches zero, you must submit your attempt.
                         </li>
                         <li>
                             Write your answers in the downloaded template file, attempt every question. If you have not yet downloaded the answer template please do so before you click start.
@@ -104,10 +104,10 @@
                             <strong class="warning">Once the exam starts, you cannot navigate to other pages</strong> until you finish or leave the exam.
                         </li>
                         <li>
-                            When you complete the exam, click <strong>Finish Exam</strong>.
+                            When you complete answering the exam, click <strong>Finish Exam</strong>.
                         </li>
                         <li>
-                            After finishing, click <strong>Upload Completed Template</strong> to submit your answers. Your submission will be <strong>timestamped</strong> with the upload date and time.
+                            After finishing, click <strong>Upload My Attempt</strong> to submit your answers. Your submission will be <strong>timestamped</strong> with the upload date and time.
                         </li>
                         <li>
                             You can leave the exam by clicking <strong>Leave Exam</strong>. This attempt will then <strong class="warning">not be accessible</strong> again.
@@ -137,8 +137,7 @@
         </div>
     </div>
 
-    <script src="../js/auth.js"></script>
     <script src="../js/pdf-links.js"></script>
-    <script src="../js/exam-instructions-script.js"></script>
+    <script type="module" src="../js/exam-instructions-script.js"></script>
 </body>
 </html>

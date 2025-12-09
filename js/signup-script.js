@@ -1,5 +1,6 @@
-// Sign up form functionality
-const authManager = new AuthManager();
+// Sign up form functionality with Firebase
+import { firebaseAuth } from './firebase-auth.js';
+import { firestoreData } from './firebase-data.js';
 
 const signupForm = document.getElementById('signupForm');
 const fullnameInput = document.getElementById('fullname');
@@ -16,7 +17,7 @@ const passwordError = document.getElementById('passwordError');
 const confirmPasswordError = document.getElementById('confirmPasswordError');
 
 // Check if user is already logged in
-if (authManager.isLoggedIn()) {
+if (firebaseAuth.isAuthenticated()) {
     window.location.href = 'dashboard.html';
 }
 
@@ -82,7 +83,7 @@ togglePasswordVisibility(passwordInput, togglePasswordButton);
 togglePasswordVisibility(confirmPasswordInput, toggleConfirmPasswordButton);
 
 // Handle form submission
-signupForm.addEventListener('submit', (e) => {
+signupForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     if (!validateForm()) {
@@ -98,20 +99,34 @@ signupForm.addEventListener('submit', (e) => {
     signupButton.innerHTML = '<span>Creating account...</span>';
     signupButton.disabled = true;
 
-    // Simulate API delay
-    setTimeout(() => {
-        const result = authManager.register(fullname, email, password);
+    // Create Firebase account
+    const result = await firebaseAuth.signup(email, password);
 
-        if (result.success) {
-            // Show success message
-            alert('Account created successfully! Please sign in.');
-            // Redirect to sign in page
-            window.location.href = 'signin.html';
-        } else {
-            // Show error message
-            emailError.textContent = result.message;
-            signupButton.innerHTML = originalButtonContent;
-            signupButton.disabled = false;
-        }
-    }, 500);
+    if (result.success) {
+        // Save user profile to Firestore
+        await firestoreData.saveUserProfile(result.user.uid, {
+            fullname: fullname,
+            email: email,
+            createdAt: new Date().toISOString()
+        });
+
+        // Show success modal
+        showSuccessModal();
+    } else {
+        // Show error message
+        emailError.textContent = result.error;
+        signupButton.innerHTML = originalButtonContent;
+        signupButton.disabled = false;
+    }
 });
+
+// Success Modal Functions
+function showSuccessModal() {
+    const modal = document.getElementById('successModal');
+    modal.style.display = 'flex';
+    
+    // Handle Go to Sign In button
+    document.getElementById('goToSignin').addEventListener('click', () => {
+        window.location.href = 'signin.html';
+    });
+}

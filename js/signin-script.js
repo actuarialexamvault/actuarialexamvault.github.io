@@ -1,5 +1,5 @@
-// Sign in form functionality
-const authManager = new AuthManager();
+// Sign in form functionality with Firebase
+import { firebaseAuth } from './firebase-auth.js';
 
 const signinForm = document.getElementById('signinForm');
 const emailInput = document.getElementById('email');
@@ -8,7 +8,7 @@ const signinButton = document.querySelector('.btn-signin');
 const togglePasswordButton = document.getElementById('togglePassword');
 
 // Check if user is already logged in
-if (authManager.isLoggedIn()) {
+if (firebaseAuth.isAuthenticated()) {
     window.location.href = 'dashboard.html'; // Already in pages folder
 }
 
@@ -42,7 +42,7 @@ togglePasswordButton.addEventListener('click', () => {
 });
 
 // Handle form submission
-signinForm.addEventListener('submit', (e) => {
+signinForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     
     const email = emailInput.value.trim();
@@ -53,42 +53,42 @@ signinForm.addEventListener('submit', (e) => {
     signinButton.innerHTML = '<span>Signing in...</span>';
     signinButton.disabled = true;
     
-    // Simulate API delay
-    setTimeout(() => {
-        const result = authManager.signIn(email, password);
-        
-        if (result.success) {
-            // Redirect to dashboard
-            window.location.href = 'dashboard.html';
-        } else {
-            // Show error with more helpful information
-            let errorMessage = result.message;
-            
-            // If email not found, check if any users exist
-            if (result.message === 'Email not found') {
-                if (!authManager.hasUsers()) {
-                    errorMessage = 'Email not found.\n\n' +
-                                 'No accounts exist yet on this server.\n' +
-                                 'Please create a new account first.\n\n' +
-                                 'Note: Accounts created when opening HTML files directly\n' +
-                                 '(file:// protocol) are stored separately from accounts\n' +
-                                 'created on localhost (http:// protocol).';
-                } else {
-                    errorMessage = 'Email not found.\n\n' +
-                                 'This email is not registered.\n' +
-                                 'Please check your email or create a new account.';
-                }
-            }
-            
-            alert(errorMessage);
-            signinButton.innerHTML = originalButtonContent;
-            validateForm();
-        }
-    }, 500);
+    // Sign in with Firebase
+    const result = await firebaseAuth.signin(email, password);
+    
+    if (result.success) {
+        // Redirect to dashboard
+        window.location.href = 'dashboard.html';
+    } else {
+        // Show error modal
+        showErrorModal(result.error);
+        signinButton.innerHTML = originalButtonContent;
+        validateForm();
+    }
 });
 
 // Handle forgot password link
 document.querySelector('.forgot-password').addEventListener('click', (e) => {
     e.preventDefault();
-    alert('Password reset functionality: In a production app, this would send a password reset email.');
+    showErrorModal('Password reset functionality: In a production app, this would send a password reset email.');
 });
+
+// Error Modal Functions
+function showErrorModal(message) {
+    const modal = document.getElementById('errorModal');
+    const errorMessage = document.getElementById('errorMessage');
+    errorMessage.textContent = message;
+    modal.style.display = 'flex';
+    
+    // Handle close button
+    document.getElementById('closeError').onclick = () => {
+        modal.style.display = 'none';
+    };
+    
+    // Close on background click
+    modal.onclick = (e) => {
+        if (e.target === modal) {
+            modal.style.display = 'none';
+        }
+    };
+}

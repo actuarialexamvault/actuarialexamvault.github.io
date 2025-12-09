@@ -122,6 +122,23 @@ class AuthManager {
         const remaining = session.expiresAt - Date.now();
         return Math.max(0, Math.floor(remaining / 60000)); // Convert to minutes
     }
+
+    // Debug function to view all registered users (for development only)
+    debugListUsers() {
+        const users = this.getUsers();
+        console.log('=== REGISTERED USERS ===');
+        console.log(`Total users: ${users.length}`);
+        users.forEach((user, index) => {
+            console.log(`${index + 1}. ${user.fullname} (${user.email}) - Created: ${user.createdAt}`);
+        });
+        console.log('=======================');
+        return users;
+    }
+
+    // Helper function to check if any users exist
+    hasUsers() {
+        return this.getUsers().length > 0;
+    }
 }
 
 // Export for use in other scripts

@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug Console - Actuarial Exam Vault</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: #00d4aa;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+
+        .section {
+            background: #252526;
+            border: 1px solid #3e3e42;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .section h2 {
+            color: #00a3ff;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #00a3ff;
+            padding-bottom: 0.5rem;
+        }
+
+        .btn {
+            padding: 0.8rem 1.5rem;
+            margin: 0.5rem 0.5rem 0.5rem 0;
+            background: #00d4aa;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background: #00a3ff;
+            transform: translateY(-2px);
+        }
+
+        .btn-danger {
+            background: #ff4444;
+        }
+
+        .btn-danger:hover {
+            background: #cc0000;
+        }
+
+        .output {
+            background: #1e1e1e;
+            border: 1px solid #3e3e42;
+            border-radius: 6px;
+            padding: 1rem;
+            margin-top: 1rem;
+            white-space: pre-wrap;
+            font-size: 0.9rem;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .user-card {
+            background: #2d2d30;
+            border-left: 4px solid #00d4aa;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            border-radius: 4px;
+        }
+
+        .user-card strong {
+            color: #00d4aa;
+        }
+
+        .info {
+            background: #264f78;
+            border-left: 4px solid #00a3ff;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+
+        .warning {
+            background: #5a3e1b;
+            border-left: 4px solid #ff9800;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+
+        .success {
+            background: #1e4620;
+            border-left: 4px solid #00d4aa;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+
+        a {
+            color: #00a3ff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔧 Debug Console - Actuarial Exam Vault</h1>
+
+        <div class="info">
+            <strong>ℹ️ Information:</strong><br>
+            This page helps you manage localStorage data and debug authentication issues.<br>
+            Current URL: <span id="currentUrl"></span>
+        </div>
+
+        <!-- Users Section -->
+        <div class="section">
+            <h2>👥 User Accounts</h2>
+            <button class="btn" onclick="listUsers()">List All Users</button>
+            <button class="btn btn-danger" onclick="clearUsers()">Clear All Users</button>
+            <div class="output" id="usersOutput">Click "List All Users" to see registered accounts...</div>
+        </div>
+
+        <!-- Session Section -->
+        <div class="section">
+            <h2>🔐 Current Session</h2>
+            <button class="btn" onclick="showSession()">Show Session</button>
+            <button class="btn btn-danger" onclick="clearSession()">Clear Session</button>
+            <div class="output" id="sessionOutput">Click "Show Session" to see active session...</div>
+        </div>
+
+        <!-- Submissions Section -->
+        <div class="section">
+            <h2>📤 Exam Submissions</h2>
+            <button class="btn" onclick="listSubmissions()">List All Submissions</button>
+            <button class="btn btn-danger" onclick="clearSubmissions()">Clear All Submissions</button>
+            <div class="output" id="submissionsOutput">Click "List All Submissions" to see exam uploads...</div>
+        </div>
+
+        <!-- Storage Info Section -->
+        <div class="section">
+            <h2>💾 LocalStorage Overview</h2>
+            <button class="btn" onclick="showAllStorage()">Show All Storage</button>
+            <button class="btn btn-danger" onclick="clearAllStorage()">Clear All Storage</button>
+            <div class="output" id="storageOutput">Click "Show All Storage" to see everything...</div>
+        </div>
+
+        <div class="warning">
+            <strong>⚠️ Warning:</strong><br>
+            Clearing storage will delete all user accounts, sessions, and submissions. This action cannot be undone!
+        </div>
+
+        <p style="margin-top: 2rem; text-align: center;">
+            <a href="../index.html">← Back to Home</a> | 
+            <a href="signin.html">Sign In</a> | 
+            <a href="signup.html">Sign Up</a>
+        </p>
+    </div>
+
+    <script src="../js/auth.js"></script>
+    <script>
+        const authManager = new AuthManager();
+        
+        // Display current URL
+        document.getElementById('currentUrl').textContent = window.location.href;
+
+        function listUsers() {
+            const users = authManager.getUsers();
+            const output = document.getElementById('usersOutput');
+            
+            if (users.length === 0) {
+                output.innerHTML = '<div class="warning">No users registered yet.</div>';
+                return;
+            }
+            
+            let html = `<strong>Total Users: ${users.length}</strong>\n\n`;
+            users.forEach((user, index) => {
+                html += `<div class="user-card">`;
+                html += `<strong>User ${index + 1}</strong>\n`;
+                html += `Name: ${user.fullname}\n`;
+                html += `Email: ${user.email}\n`;
+                html += `ID: ${user.id}\n`;
+                html += `Created: ${new Date(user.createdAt).toLocaleString()}\n`;
+                html += `</div>`;
+            });
+            
+            output.innerHTML = html;
+        }
+
+        function clearUsers() {
+            if (confirm('Are you sure you want to delete ALL user accounts?\n\nThis cannot be undone!')) {
+                localStorage.removeItem('actuarial_vault_users');
+                document.getElementById('usersOutput').innerHTML = '<div class="success">✓ All users cleared!</div>';
+            }
+        }
+
+        function showSession() {
+            const session = authManager.getSession();
+            const output = document.getElementById('sessionOutput');
+            
+            if (!session) {
+                output.innerHTML = '<div class="warning">No active session.</div>';
+                return;
+            }
+            
+            const timeRemaining = authManager.getSessionTimeRemaining();
+            
+            let html = '<div class="user-card">';
+            html += `<strong>Active Session</strong>\n`;
+            html += `User: ${session.fullname}\n`;
+            html += `Email: ${session.email}\n`;
+            html += `User ID: ${session.userId}\n`;
+            html += `Login Time: ${new Date(session.loginTime).toLocaleString()}\n`;
+            html += `Expires At: ${new Date(session.expiresAt).toLocaleString()}\n`;
+            html += `Time Remaining: ${timeRemaining} minutes\n`;
+            html += '</div>';
+            
+            output.innerHTML = html;
+        }
+
+        function clearSession() {
+            authManager.signOut();
+            document.getElementById('sessionOutput').innerHTML = '<div class="success">✓ Session cleared!</div>';
+        }
+
+        function listSubmissions() {
+            const submissions = JSON.parse(localStorage.getItem('examSubmissions') || '[]');
+            const output = document.getElementById('submissionsOutput');
+            
+            if (submissions.length === 0) {
+                output.innerHTML = '<div class="warning">No exam submissions yet.</div>';
+                return;
+            }
+            
+            let html = `<strong>Total Submissions: ${submissions.length}</strong>\n\n`;
+            submissions.forEach((sub, index) => {
+                html += `<div class="user-card">`;
+                html += `<strong>Submission ${index + 1}</strong>\n`;
+                html += `Student: ${sub.studentEmail}\n`;
+                html += `Subject: ${sub.subjectTitle}\n`;
+                html += `Exam: ${sub.session} ${sub.year} - Paper ${sub.paper}\n`;
+                html += `File: ${sub.fileName} (${(sub.fileSize / 1024).toFixed(2)} KB)\n`;
+                html += `Uploaded: ${sub.uploadDate}\n`;
+                html += `Status: ${sub.status}\n`;
+                html += `</div>`;
+            });
+            
+            output.innerHTML = html;
+        }
+
+        function clearSubmissions() {
+            if (confirm('Are you sure you want to delete ALL exam submissions?\n\nThis cannot be undone!')) {
+                localStorage.removeItem('examSubmissions');
+                // Also clear individual submission files
+                for (let key in localStorage) {
+                    if (key.startsWith('submission_')) {
+                        localStorage.removeItem(key);
+                    }
+                }
+                document.getElementById('submissionsOutput').innerHTML = '<div class="success">✓ All submissions cleared!</div>';
+            }
+        }
+
+        function showAllStorage() {
+            const output = document.getElementById('storageOutput');
+            let html = '<strong>All LocalStorage Keys:</strong>\n\n';
+            
+            if (localStorage.length === 0) {
+                html += '<div class="warning">LocalStorage is empty.</div>';
+            } else {
+                for (let i = 0; i < localStorage.length; i++) {
+                    const key = localStorage.key(i);
+                    const value = localStorage.getItem(key);
+                    const size = new Blob([value]).size;
+                    
+                    html += `<div class="user-card">`;
+                    html += `<strong>${key}</strong>\n`;
+                    html += `Size: ${(size / 1024).toFixed(2)} KB\n`;
+                    if (size < 500) {
+                        html += `Value: ${value.substring(0, 100)}${value.length > 100 ? '...' : ''}\n`;
+                    }
+                    html += `</div>`;
+                }
+            }
+            
+            output.innerHTML = html;
+        }
+
+        function clearAllStorage() {
+            if (confirm('⚠️ WARNING ⚠️\n\nThis will delete EVERYTHING:\n- All user accounts\n- All sessions\n- All exam submissions\n- All other data\n\nAre you absolutely sure?')) {
+                localStorage.clear();
+                document.getElementById('storageOutput').innerHTML = '<div class="success">✓ All storage cleared!</div>';
+                document.getElementById('usersOutput').innerHTML = '<div class="warning">No users registered yet.</div>';
+                document.getElementById('sessionOutput').innerHTML = '<div class="warning">No active session.</div>';
+                document.getElementById('submissionsOutput').innerHTML = '<div class="warning">No exam submissions yet.</div>';
+            }
+        }
+
+        // Auto-load data on page load
+        window.addEventListener('load', () => {
+            listUsers();
+            showSession();
+        });
+    </script>
+</body>
+</html>

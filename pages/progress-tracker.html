@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progress Tracker - Actuarial Exam Vault</title>
+    <link rel="stylesheet" href="../css/progress-tracker-styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">
+                <svg class="logo-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 11L12 14L22 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M21 12V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span class="logo-text">Actuarial Exam Vault</span>
+            </a>
+            <div class="nav-links">
+                <a href="subjects.html" class="nav-link">SUBJECTS</a>
+                <a href="dashboard.html" class="nav-link">ACCOUNT</a>
+                <button class="btn-signout-nav" id="signOutBtn">SIGN OUT</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Subject Selection View -->
+    <main class="subjects-container" id="subjectsView">
+        <div class="subjects-header">
+            <h1 class="subjects-title">
+                <span id="userName">User</span>, select a subject to view your progress 📊
+            </h1>
+        </div>
+
+        <div class="subjects-list">
+            <!-- A311: Actuarial Risk Management -->
+            <div class="subject-card" data-subject="A311">
+                <div class="subject-icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <h2 class="subject-title">A311: Actuarial Risk Management</h2>
+            </div>
+
+            <!-- F102: Life Insurance Fellowship Principles -->
+            <div class="subject-card" data-subject="F102">
+                <div class="subject-icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <h2 class="subject-title">F102: Life Insurance Fellowship Principles</h2>
+            </div>
+
+            <!-- F103: General Insurance Fellowship Principles -->
+            <div class="subject-card" data-subject="F103">
+                <div class="subject-icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <h2 class="subject-title">F103: General Insurance Fellowship Principles</h2>
+            </div>
+
+            <!-- F105: Finance and Investment Fellowship Principles -->
+            <div class="subject-card" data-subject="F105">
+                <div class="subject-icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <h2 class="subject-title">F105: Finance and Investment Fellowship Principles</h2>
+            </div>
+
+            <!-- F106: Enterprise Risk Management Fellowship Principles -->
+            <div class="subject-card" data-subject="F106">
+                <div class="subject-icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <h2 class="subject-title">F106: Enterprise Risk Management Fellowship Principles</h2>
+            </div>
+
+            <!-- F108: Health, Social and Employee Benefits Fellowship Principles -->
+            <div class="subject-card" data-subject="F108">
+                <div class="subject-icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <h2 class="subject-title">F108: Health, Social and Employee Benefits Fellowship Principles</h2>
+            </div>
+
+            <!-- F201: Health and Care Specialist Applications -->
+            <div class="subject-card" data-subject="F201">
+                <div class="subject-icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <h2 class="subject-title">F201: Health and Care Specialist Applications</h2>
+            </div>
+
+            <!-- F202: Life Insurance Specialist Applications -->
+            <div class="subject-card" data-subject="F202">
+                <div class="subject-icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <h2 class="subject-title">F202: Life Insurance Specialist Applications</h2>
+            </div>
+
+            <!-- F203: General Insurance Specialist Applications -->
+            <div class="subject-card" data-subject="F203">
+                <div class="subject-icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <h2 class="subject-title">F203: General Insurance Specialist Applications</h2>
+            </div>
+        </div>
+    </main>
+
+    <!-- Progress Detail View (Hidden by default) -->
+    <div class="page-container" id="progressView" style="display: none;">
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Progress Bar Section -->
+            <div class="progress-section">
+                <h2 class="progress-title" id="subjectProgressTitle">Subject Progress</h2>
+                <div class="progress-stats">
+                    <div class="stat-item">
+                        <span class="stat-value" id="attemptedCount">0</span>
+                        <span class="stat-label">Attempted</span>
+                    </div>
+                    <div class="stat-divider">/</div>
+                    <div class="stat-item">
+                        <span class="stat-value" id="totalCount">0</span>
+                        <span class="stat-label">Total Available</span>
+                    </div>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar-fill" id="progressBarFill"></div>
+                </div>
+                <p class="progress-percentage" id="progressPercentage">0% Complete</p>
+            </div>
+
+            <!-- Performance Statistics Table -->
+            <div class="performance-stats-section">
+                <h2 class="stats-title">Your Progress & Attempt History</h2>
+                <div class="stats-table-container">
+                    <table class="stats-table">
+                        <thead>
+                            <tr>
+                                <th>REVIEW TYPE</th>
+                                <th>QUESTIONS</th>
+                                <th>POSSIBLE MARKS</th>
+                                <th>SCORED MARKS</th>
+                                <th>PERFORMANCE</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <span class="review-type-indicator self"></span>
+                                    <span>Self-reviewed</span>
+                                </td>
+                                <td id="selfQuestionsCount">0</td>
+                                <td id="selfPossibleMarks">0</td>
+                                <td id="selfScoredMarks">0</td>
+                                <td>
+                                    <span class="performance-badge" id="selfPerformance">0%</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="review-type-indicator ai"></span>
+                                    <span>AI-reviewed</span>
+                                </td>
+                                <td id="aiQuestionsCount">0</td>
+                                <td id="aiPossibleMarks">0</td>
+                                <td id="aiScoredMarks">0</td>
+                                <td>
+                                    <span class="performance-badge" id="aiPerformance">0%</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="content-header">
+                <h1>Review Your Exam Attempts</h1>
+                <p class="content-subtitle">
+                    View all your previous exam attempts below. Papers you have attempted are marked with a completion badge and timestamp. Papers not yet attempted are available for you to start.
+                </p>
+            </div>
+
+            <!-- Review Attempts Section -->
+            <div class="papers-section">
+                <div class="section-header" id="reviewHeader">
+                    <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <h2>All Papers (2018-2025)</h2>
+                </div>
+                <div class="papers-list" id="reviewList">
+                    <!-- Papers will be loaded here -->
+                </div>
+            </div>
+
+            <!-- Back Button -->
+            <button class="btn-back-bottom" id="backBtn">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19 12H5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12 19L5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Back to Subjects
+            </button>
+        </main>
+    </div>
+
+    <script src="../js/auth.js"></script>
+    <script src="../js/progress-tracker-script.js"></script>
+</body>
+</html>

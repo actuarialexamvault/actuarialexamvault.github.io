@@ -61,8 +61,26 @@ signinForm.addEventListener('submit', (e) => {
             // Redirect to dashboard
             window.location.href = 'dashboard.html';
         } else {
-            // Show error
-            alert(result.message);
+            // Show error with more helpful information
+            let errorMessage = result.message;
+            
+            // If email not found, check if any users exist
+            if (result.message === 'Email not found') {
+                if (!authManager.hasUsers()) {
+                    errorMessage = 'Email not found.\n\n' +
+                                 'No accounts exist yet on this server.\n' +
+                                 'Please create a new account first.\n\n' +
+                                 'Note: Accounts created when opening HTML files directly\n' +
+                                 '(file:// protocol) are stored separately from accounts\n' +
+                                 'created on localhost (http:// protocol).';
+                } else {
+                    errorMessage = 'Email not found.\n\n' +
+                                 'This email is not registered.\n' +
+                                 'Please check your email or create a new account.';
+                }
+            }
+            
+            alert(errorMessage);
             signinButton.innerHTML = originalButtonContent;
             validateForm();
         }

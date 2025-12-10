@@ -219,9 +219,9 @@
     <div class="page-container" id="progressView" style="display: none;">
         <!-- Main Content -->
         <main class="main-content">
-            <!-- Progress Bar Section -->
-            <div class="progress-section">
-                <h2 class="progress-title" id="subjectProgressTitle">Subject Progress</h2>
+            <!-- Performance Line Graph Section -->
+            <div class="performance-graph-section">
+                <h2 class="progress-title" id="subjectProgressTitle">Performance Overview</h2>
                 <div class="progress-stats">
                     <div class="stat-item">
                         <span class="stat-value" id="attemptedCount">0</span>
@@ -233,10 +233,10 @@
                         <span class="stat-label">Total Available</span>
                     </div>
                 </div>
-                <div class="progress-bar-container">
-                    <div class="progress-bar-fill" id="progressBarFill"></div>
+                <div class="line-graph-container">
+                    <canvas id="performanceLineGraph"></canvas>
                 </div>
-                <p class="progress-percentage" id="progressPercentage">0% Complete</p>
+                <p class="graph-note">Average performance per paper across all attempted exams</p>
             </div>
 
             <!-- Performance Statistics Table -->
@@ -290,16 +290,31 @@
                 </p>
             </div>
 
-            <!-- Review Attempts Section -->
+            <!-- Attempted Papers Section -->
             <div class="papers-section">
-                <div class="section-header" id="reviewHeader">
+                <div class="section-header" id="attemptedHeader">
                     <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
-                    <h2>All Papers (2018-2025)</h2>
+                    <h2>Attempted Papers</h2>
+                    <span class="section-count" id="attemptedPapersCount">0</span>
                 </div>
-                <div class="papers-list" id="reviewList">
-                    <!-- Papers will be loaded here -->
+                <div class="papers-list" id="attemptedList">
+                    <!-- Attempted papers will be loaded here -->
+                </div>
+            </div>
+
+            <!-- Not Attempted Papers Section -->
+            <div class="papers-section">
+                <div class="section-header" id="notAttemptedHeader">
+                    <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <h2>All Papers (Not Attempted)</h2>
+                    <span class="section-count" id="notAttemptedPapersCount">0</span>
+                </div>
+                <div class="papers-list" id="notAttemptedList">
+                    <!-- Not attempted papers will be loaded here -->
                 </div>
             </div>
 
@@ -314,6 +329,9 @@
         </main>
     </div>
 
+    <!-- Chart.js Library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
     <script type="module" src="../js/progress-tracker-script.js"></script>
 </body>
 </html>

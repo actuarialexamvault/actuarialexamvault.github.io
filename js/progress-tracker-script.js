@@ -2,6 +2,8 @@
 import { firebaseAuth } from './firebase-auth.js';
 import { firestoreData } from './firebase-data.js';
 import { initActivityMonitor } from './activity-monitor.js';
+import { hasPDFLink } from './pdf-links.js';
+import { indexedDBStorage } from './indexeddb-storage.js';
 
 // Initialize activity monitor
 initActivityMonitor();
@@ -12,15 +14,21 @@ const subjectsView = document.getElementById('subjectsView');
 const progressView = document.getElementById('progressView');
 const subjectCards = document.querySelectorAll('.subject-card');
 const backBtn = document.getElementById('backBtn');
-const reviewHeader = document.getElementById('reviewHeader');
-const reviewList = document.getElementById('reviewList');
+const attemptedHeader = document.getElementById('attemptedHeader');
+const attemptedList = document.getElementById('attemptedList');
+const notAttemptedHeader = document.getElementById('notAttemptedHeader');
+const notAttemptedList = document.getElementById('notAttemptedList');
 
 // Progress elements
 const subjectProgressTitle = document.getElementById('subjectProgressTitle');
 const attemptedCount = document.getElementById('attemptedCount');
 const totalCount = document.getElementById('totalCount');
-const progressBarFill = document.getElementById('progressBarFill');
-const progressPercentage = document.getElementById('progressPercentage');
+const attemptedPapersCount = document.getElementById('attemptedPapersCount');
+const notAttemptedPapersCount = document.getElementById('notAttemptedPapersCount');
+const performanceLineGraph = document.getElementById('performanceLineGraph');
+
+// Chart.js instance
+let lineChartInstance = null;
 
 // Check if user is logged in and load profile
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
@@ -107,10 +115,15 @@ backBtn.addEventListener('click', () => {
     showSubjectsView();
 });
 
-// Toggle review section collapse
-reviewHeader.addEventListener('click', () => {
-    reviewHeader.classList.toggle('collapsed');
-    reviewList.classList.toggle('hidden');
+// Toggle sections collapse
+attemptedHeader.addEventListener('click', () => {
+    attemptedHeader.classList.toggle('collapsed');
+    attemptedList.classList.toggle('hidden');
+});
+
+notAttemptedHeader.addEventListener('click', () => {
+    notAttemptedHeader.classList.toggle('collapsed');
+    notAttemptedList.classList.toggle('hidden');
 });
 
 // Show subjects view
@@ -229,31 +242,32 @@ async function loadProgressData(subject, subjectTitle) {
     const allPapers = generateAllPapers(subject);
     const submissions = await getUserSubmissions();
     
-    // Calculate progress
-    const totalPapers = allPapers.length;
-    const attemptedPapers = allPapers.filter(paper => 
+    // Filter to only include papers with available PDFs
+    const availablePapers = allPapers.filter(paper => 
+        hasPDFLink(subject, paper.session, paper.year, paper.paper)
+    );
+    
+    // Calculate progress (only count available PDFs)
+    const totalPapers = availablePapers.length;
+    const attemptedPapers = availablePapers.filter(paper => 
         isPaperAttempted(submissions, subject, paper.year, paper.session, paper.paper)
     ).length;
-    
-    const percentage = totalPapers > 0 ? Math.round((attemptedPapers / totalPapers) * 100) : 0;
     
     // Update progress UI
     attemptedCount.textContent = attemptedPapers;
     totalCount.textContent = totalPapers;
-    progressBarFill.style.width = `${percentage}%`;
-    progressPercentage.textContent = `${percentage}% Complete`;
     
-    // Load performance statistics
-    await loadPerformanceStats(subject);
+    // Load performance statistics and graph, get gradings for paper lists
+    const gradings = await loadPerformanceStats(subject, allPapers, submissions);
     
-    // Load paper list
-    loadPaperList(subject, subjectTitle, allPapers, submissions);
+    // Load separate paper lists with gradings
+    loadPaperLists(subject, subjectTitle, allPapers, submissions, gradings);
 }
 
-// Load performance statistics
-async function loadPerformanceStats(subject) {
+// Load performance statistics and create line graph
+async function loadPerformanceStats(subject, allPapers, submissions) {
     const user = firebaseAuth.getCurrentUser();
-    if (!user) return;
+    if (!user) return null;
     
     try {
         // Get gradings from Firestore (includes standalone question grades)
@@ -278,11 +292,18 @@ async function loadPerformanceStats(subject) {
         // Calculate stats for AI-reviewed
         const aiStats = calculateStats(aiReviewed);
         updateStatsDisplay('ai', aiStats);
+        
+        // Create performance line graph
+        createPerformanceLineGraph(subject, allPapers, submissions, gradings);
+        
+        // Return gradings for use in paper lists
+        return gradings;
     } catch (error) {
         console.error('Error loading performance stats:', error);
         // Show zero stats on error
         updateStatsDisplay('self', { questionsCount: 0, possibleMarks: 0, scoredMarks: '0', performance: 0 });
         updateStatsDisplay('ai', { questionsCount: 0, possibleMarks: 0, scoredMarks: '0', performance: 0 });
+        return [];
     }
 }
 
@@ -318,28 +339,281 @@ function updateStatsDisplay(type, stats) {
     document.getElementById(`${type}Performance`).textContent = `${stats.performance}%`;
 }
 
-// Load paper list
-function loadPaperList(subject, subjectTitle, allPapers, submissions) {
-    reviewList.innerHTML = '';
+// Create performance line graph
+function createPerformanceLineGraph(subject, allPapers, submissions, gradings) {
+    // Get the performance graph section element
+    const performanceGraphSection = document.querySelector('.performance-graph-section');
     
-    if (allPapers.length === 0) {
-        reviewList.innerHTML = '<p style="color: #666; padding: 1rem;">No papers available</p>';
-        return;
+    // Destroy existing chart if it exists
+    if (lineChartInstance) {
+        lineChartInstance.destroy();
+        lineChartInstance = null;
     }
+    
+    // Filter for attempted papers and calculate performance for each
+    const paperPerformances = [];
     
     allPapers.forEach(paper => {
         const isAttempted = isPaperAttempted(submissions, subject, paper.year, paper.session, paper.paper);
-        const submissionDetails = isAttempted ? getSubmissionDetails(submissions, subject, paper.year, paper.session, paper.paper) : null;
+        if (!isAttempted) return;
         
-        const paperItem = createPaperItem(paper, subjectTitle, isAttempted, submissionDetails);
-        reviewList.appendChild(paperItem);
+        // Get submission details to retrieve completion timestamp
+        const submissionDetails = getSubmissionDetails(submissions, subject, paper.year, paper.session, paper.paper);
+        
+        // Get gradings for this specific paper
+        const paperGradings = gradings.filter(g => 
+            g.subject === subject && 
+            g.year === paper.year && 
+            g.session.toLowerCase() === paper.session.toLowerCase() && 
+            g.paper === paper.paper
+        );
+        
+        if (paperGradings.length > 0) {
+            const totalMarks = paperGradings.reduce((sum, g) => sum + (g.marks || 0), 0);
+            const totalMaxMarks = paperGradings.reduce((sum, g) => sum + (g.maxMarks || 0), 0);
+            const percentage = totalMaxMarks > 0 ? Math.round((totalMarks / totalMaxMarks) * 100) : 0;
+            
+            paperPerformances.push({
+                label: `${paper.displayYear} ${paper.displayPaper}`,
+                performance: percentage,
+                year: paper.year,
+                session: paper.session,
+                paper: paper.paper,
+                timestamp: submissionDetails ? submissionDetails.timestamp : null
+            });
+        }
+    });
+    
+    // Sort by completion date (timestamp) - earliest to latest
+    paperPerformances.sort((a, b) => {
+        // If either timestamp is missing, use paper chronology as fallback
+        if (!a.timestamp && !b.timestamp) {
+            if (a.year !== b.year) return a.year - b.year;
+            const sessionOrder = { 'june': 1, 'october': 2, 'november': 2 };
+            const sessionA = sessionOrder[a.session.toLowerCase()] || 0;
+            const sessionB = sessionOrder[b.session.toLowerCase()] || 0;
+            return sessionA - sessionB;
+        }
+        if (!a.timestamp) return 1;
+        if (!b.timestamp) return -1;
+        
+        // Sort by timestamp
+        return new Date(a.timestamp) - new Date(b.timestamp);
+    });
+    
+    // If no data, hide the entire graph section
+    if (paperPerformances.length === 0) {
+        if (performanceGraphSection) {
+            performanceGraphSection.style.display = 'none';
+        }
+        return;
+    }
+    
+    // Show the graph section if it was hidden
+    if (performanceGraphSection) {
+        performanceGraphSection.style.display = 'block';
+    }
+    
+    // Extract labels and data
+    const labels = paperPerformances.map(p => p.label);
+    const data = paperPerformances.map(p => p.performance);
+    
+    // Create the chart
+    const ctx = performanceLineGraph.getContext('2d');
+    lineChartInstance = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Performance',
+                data: data,
+                borderColor: 'rgb(75, 192, 192)',
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                tension: 0.3,
+                fill: false,
+                pointRadius: 6,
+                pointHoverRadius: 8,
+                pointBackgroundColor: 'rgb(75, 192, 192)',
+                pointBorderColor: '#fff',
+                pointBorderWidth: 2,
+                datalabels: {
+                    display: true,
+                    align: 'top',
+                    anchor: 'end',
+                    formatter: (value) => `${value}%`,
+                    color: '#1a1a1a',
+                    font: {
+                        weight: 'bold',
+                        size: 11
+                    }
+                }
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false
+                },
+                tooltip: {
+                    enabled: false
+                },
+                datalabels: {
+                    display: true,
+                    align: 'top',
+                    anchor: 'end',
+                    offset: 4,
+                    formatter: (value) => `${value}%`,
+                    color: '#1a1a1a',
+                    font: {
+                        weight: 'bold',
+                        size: 11
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    display: false,
+                    beginAtZero: true,
+                    max: 100
+                },
+                x: {
+                    offset: true,
+                    grid: {
+                        display: false
+                    },
+                    ticks: {
+                        color: '#666',
+                        font: {
+                            size: 11
+                        }
+                    }
+                }
+            },
+            interaction: {
+                mode: 'nearest',
+                axis: 'x',
+                intersect: false
+            }
+        },
+        plugins: [ChartDataLabels]
     });
 }
 
+// Load separate paper lists for attempted and not attempted
+function loadPaperLists(subject, subjectTitle, allPapers, submissions, gradings = []) {
+    // Clear both lists
+    attemptedList.innerHTML = '';
+    notAttemptedList.innerHTML = '';
+    
+    if (allPapers.length === 0) {
+        notAttemptedList.innerHTML = '<p style="color: #666; padding: 1rem;">No papers available</p>';
+        return;
+    }
+    
+    // Separate papers into attempted and not attempted
+    const attemptedPapers = [];
+    const notAttemptedPapers = [];
+    
+    allPapers.forEach(paper => {
+        const isAttempted = isPaperAttempted(submissions, subject, paper.year, paper.session, paper.paper);
+        if (isAttempted) {
+            attemptedPapers.push(paper);
+        } else {
+            notAttemptedPapers.push(paper);
+        }
+    });
+    
+    // Update section counts
+    attemptedPapersCount.textContent = attemptedPapers.length;
+    notAttemptedPapersCount.textContent = notAttemptedPapers.length;
+    
+    // Load attempted papers
+    if (attemptedPapers.length === 0) {
+        attemptedList.innerHTML = '<p style="color: #666; padding: 1rem;">No papers attempted yet</p>';
+    } else {
+        attemptedPapers.forEach(paper => {
+            const submissionDetails = getSubmissionDetails(submissions, subject, paper.year, paper.session, paper.paper);
+            // Add gradings to submission details for score calculation
+            if (submissionDetails) {
+                submissionDetails.gradings = gradings;
+            }
+            const paperItem = createPaperItem(paper, subject, subjectTitle, true, submissionDetails);
+            attemptedList.appendChild(paperItem);
+        });
+    }
+    
+    // Sort not attempted papers: PDFs available first, then unavailable
+    notAttemptedPapers.sort((a, b) => {
+        const aHasPDF = hasPDFLink(subject, a.session, a.year, a.paper);
+        const bHasPDF = hasPDFLink(subject, b.session, b.year, b.paper);
+        
+        // Papers with PDFs come first (return -1 if a has PDF and b doesn't)
+        if (aHasPDF && !bHasPDF) return -1;
+        if (!aHasPDF && bHasPDF) return 1;
+        
+        // If both have same PDF status, maintain original order (by year, then session)
+        return 0;
+    });
+    
+    // Load not attempted papers
+    if (notAttemptedPapers.length === 0) {
+        notAttemptedList.innerHTML = '<p style="color: #666; padding: 1rem;">All papers have been attempted!</p>';
+    } else {
+        notAttemptedPapers.forEach(paper => {
+            const paperItem = createPaperItem(paper, subject, subjectTitle, false, null);
+            notAttemptedList.appendChild(paperItem);
+        });
+    }
+}
+
 // Create paper item element
-function createPaperItem(paper, subjectTitle, isAttempted, submissionDetails) {
+function createPaperItem(paper, subject, subjectTitle, isAttempted, submissionDetails) {
     const div = document.createElement('div');
     div.className = 'paper-item';
+    
+    // Calculate overall score for attempted papers
+    let scoreHTML = '';
+    if (isAttempted && submissionDetails && submissionDetails.gradings) {
+        const paperGradings = submissionDetails.gradings.filter(g => 
+            g.subject === subject && 
+            g.year === paper.year && 
+            g.session.toLowerCase() === paper.session.toLowerCase() && 
+            g.paper === paper.paper
+        );
+        
+        if (paperGradings.length > 0) {
+            const totalMarks = paperGradings.reduce((sum, g) => sum + (g.marks || 0), 0);
+            const totalMaxMarks = paperGradings.reduce((sum, g) => sum + (g.maxMarks || 0), 0);
+            const percentage = totalMaxMarks > 0 ? Math.round((totalMarks / totalMaxMarks) * 100) : 0;
+            
+            let scoreClass = 'score-low';
+            if (percentage >= 60) scoreClass = 'score-high';
+            else if (percentage >= 40) scoreClass = 'score-medium';
+            
+            scoreHTML = `<div class="paper-score-badge ${scoreClass}">Grade: ${percentage}%</div>`;
+        } else {
+            // Paper attempted but not graded yet
+            scoreHTML = `<div class="paper-score-badge" style="background-color: #f3f4f6; color: #6b7280;">Not graded</div>`;
+        }
+    } else if (isAttempted) {
+        // Paper attempted but no grading data available
+        scoreHTML = `<div class="paper-score-badge" style="background-color: #f3f4f6; color: #6b7280;">Not graded</div>`;
+    }
+    
+    // Check PDF availability for not attempted papers
+    let pdfBannerHTML = '';
+    let badgeClass = 'attempted';
+    
+    if (!isAttempted) {
+        const hasPDF = hasPDFLink(subject, paper.session, paper.year, paper.paper);
+        pdfBannerHTML = `
+            <div class="pdf-availability-banner ${hasPDF ? 'pdf-available' : 'pdf-unavailable'}"></div>
+        `;
+        // Set badge class based on PDF availability
+        badgeClass = hasPDF ? 'available' : 'not-attempted';
+    }
     
     // Format timestamp if available
     let timestampHTML = '';
@@ -356,22 +630,26 @@ function createPaperItem(paper, subjectTitle, isAttempted, submissionDetails) {
     }
     
     div.innerHTML = `
-        <div class="paper-item-left">
-            <div class="paper-badge ${isAttempted ? 'attempted' : 'not-attempted'}">
-                <div>${paper.displayYear}</div>
-                <div style="font-size: 0.75rem; margin-top: 0.25rem;">${paper.displayPaper}</div>
+        ${pdfBannerHTML}
+        <div class="paper-item-content">
+            <div class="paper-item-left">
+                <div class="paper-badge ${badgeClass}">
+                    <div>${paper.displayYear}</div>
+                    <div style="font-size: 0.75rem; margin-top: 0.25rem;">${paper.displayPaper}</div>
+                </div>
+                <div class="paper-info">
+                    <div class="paper-title">${subjectTitle} - ${paper.displayYear} ${paper.displayPaper}</div>
+                    ${timestampHTML}
+                    ${scoreHTML}
+                </div>
             </div>
-            <div class="paper-info">
-                <div class="paper-title">${subjectTitle} - ${paper.displayYear} ${paper.displayPaper}</div>
-                ${timestampHTML}
+            <div class="paper-action">
+                <span class="action-label ${isAttempted ? 'completed' : 'new'}">${isAttempted ? 'REVIEW' : 'START'}</span>
+                <svg class="action-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12 5L19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
             </div>
-        </div>
-        <div class="paper-action">
-            <span class="action-label ${isAttempted ? 'completed' : 'new'}">${isAttempted ? 'REVIEW' : 'START'}</span>
-            <svg class="action-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M12 5L19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
         </div>
     `;
     

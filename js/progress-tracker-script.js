@@ -255,26 +255,35 @@ async function loadPerformanceStats(subject) {
     const user = firebaseAuth.getCurrentUser();
     if (!user) return;
     
-    // Get gradings from Firestore
-    const result = await firestoreData.getAllUserGradings(user.uid);
-    if (!result.success) return;
-    
-    const gradings = Object.values(result.data);
-    
-    // Filter gradings for current subject
-    const subjectGradings = gradings.filter(g => g.subject === subject);
-    
-    // Separate self-reviewed and AI-reviewed (placeholder for future AI feature)
-    const selfReviewed = subjectGradings.filter(g => !g.isAIReviewed);
-    const aiReviewed = subjectGradings.filter(g => g.isAIReviewed);
-    
-    // Calculate stats for self-reviewed
-    const selfStats = calculateStats(selfReviewed);
-    updateStatsDisplay('self', selfStats);
-    
-    // Calculate stats for AI-reviewed
-    const aiStats = calculateStats(aiReviewed);
-    updateStatsDisplay('ai', aiStats);
+    try {
+        // Get gradings from Firestore (includes standalone question grades)
+        let gradings = await firestoreData.getUserGradings(user.uid);
+        
+        // Fallback to IndexedDB if Firestore returns empty
+        if (!gradings || gradings.length === 0) {
+            gradings = await indexedDBStorage.getQuestionGrades(user.uid);
+        }
+        
+        // Filter gradings for current subject
+        const subjectGradings = gradings.filter(g => g.subject === subject);
+        
+        // Separate self-reviewed and AI-reviewed
+        const selfReviewed = subjectGradings.filter(g => !g.isAIReviewed);
+        const aiReviewed = subjectGradings.filter(g => g.isAIReviewed);
+        
+        // Calculate stats for self-reviewed
+        const selfStats = calculateStats(selfReviewed);
+        updateStatsDisplay('self', selfStats);
+        
+        // Calculate stats for AI-reviewed
+        const aiStats = calculateStats(aiReviewed);
+        updateStatsDisplay('ai', aiStats);
+    } catch (error) {
+        console.error('Error loading performance stats:', error);
+        // Show zero stats on error
+        updateStatsDisplay('self', { questionsCount: 0, possibleMarks: 0, scoredMarks: '0', performance: 0 });
+        updateStatsDisplay('ai', { questionsCount: 0, possibleMarks: 0, scoredMarks: '0', performance: 0 });
+    }
 }
 
 // Calculate statistics for a set of gradings

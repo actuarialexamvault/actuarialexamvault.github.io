@@ -188,30 +188,38 @@ function addTotalRow(existingGradings = []) {
     row.classList.add('total-row');
     row.id = 'totalRow';
     
-    // Calculate totals
+    // Calculate totals - marks awarded and available marks per question
     let totalMarksAwarded = 0;
-    let totalMaxMarks = 0;
+    let sumOfAvailableMarks = 0;
     
     existingGradings.forEach(g => {
-        if (g.marks !== undefined && g.maxMarks !== undefined) {
+        if (g.marks !== undefined) {
             totalMarksAwarded += parseFloat(g.marks) || 0;
-            totalMaxMarks += parseFloat(g.maxMarks) || 0;
+        }
+        if (g.maxMarks !== undefined) {
+            sumOfAvailableMarks += parseFloat(g.maxMarks) || 0;
         }
     });
     
-    const percentage = totalMaxMarks > 0 ? (totalMarksAwarded / totalMaxMarks) * 100 : 0;
-    const grade = totalMaxMarks > 0 ? calculateGradeFromPercentage(percentage) : '—';
-    const scoreDisplay = totalMaxMarks > 0 ? `${totalMarksAwarded.toFixed(1)}/${totalMaxMarks}` : '—/100';
+    // Always calculate percentage out of 100
+    const percentage = (totalMarksAwarded / 100) * 100; // This simplifies to totalMarksAwarded, but kept for clarity
+    const grade = totalMarksAwarded > 0 ? calculateGradeFromPercentage(percentage) : '—';
+    const scoreDisplay = `${totalMarksAwarded.toFixed(1)}/100`;
     
-    // Check if total exceeds 100
-    const warningClass = totalMaxMarks > 100 ? 'total-warning' : '';
-    const warningIcon = totalMaxMarks > 100 ? 
-        '<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 16px; height: 16px; margin-left: 5px; vertical-align: middle; color: #ffc107;"><path d="M12 2L2 22H22L12 2Z" stroke="currentColor" stroke-width="2" fill="none"/><path d="M12 9V13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="17" r="1" fill="currentColor"/></svg>' : '';
+    // Check if sum of available marks exceeds 100 (strictly greater than)
+    const warningClass = sumOfAvailableMarks > 100 ? 'total-warning' : '';
+    const warningIcon = sumOfAvailableMarks > 100 ? 
+        `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 16px; height: 16px; margin-left: 5px; vertical-align: middle; color: #ffc107;" title="Sum of available marks (${sumOfAvailableMarks.toFixed(1)}) exceeds 100!"><path d="M12 2L2 22H22L12 2Z" stroke="currentColor" stroke-width="2" fill="none"/><path d="M12 9V13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="17" r="1" fill="currentColor"/></svg>` : '';
+    
+    // Display sum of available marks only if it exceeds 100
+    const availableMarksInfo = sumOfAvailableMarks > 100 ? 
+        `<div style="font-size: 0.75em; color: rgba(255,255,255,0.7); margin-top: 2px;">⚠️ Sum of Available Marks Exceeds 100: ${sumOfAvailableMarks.toFixed(1)} marks</div>` : '';
     
     row.innerHTML = `
         <td><strong>TOTAL</strong></td>
         <td colspan="2" class="question-cell">
             <div class="question-title"><strong>Overall Exam Performance</strong></div>
+            ${availableMarksInfo}
         </td>
         <td class="score-cell ${warningClass}">
             <strong>${scoreDisplay}</strong>${warningIcon}

@@ -1,5 +1,16 @@
-// Question Grading functionality
-const authManager = new AuthManager();
+// Question Grading functionality with Firebase
+import { firebaseAuth } from './firebase-auth.js';
+import { firestoreData } from './firebase-data.js';
+import { indexedDBStorage } from './indexeddb-storage.js';
+import { initActivityMonitor } from './activity-monitor.js';
+import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
+import { auth } from './firebase-config.js';
+
+// Initialize activity monitor
+initActivityMonitor();
+
+let currentUser = null;
+let isAuthChecked = false;
 
 // Modal functions
 function showModal(title, message, type = 'info', buttons = [{ text: 'OK', primary: true, callback: null }]) {
@@ -49,11 +60,23 @@ function hideModal() {
 }
 
 // Check authentication
-const session = authManager.getSession();
-if (!session) {
-    alert('Please sign in to access question grading.');
-    window.location.href = 'signin.html';
-}
+onAuthStateChanged(auth, async (user) => {
+    if (user) {
+        currentUser = user;
+        isAuthChecked = true;
+        // Initialize page after authentication
+        await initializePage();
+    } else {
+        if (isAuthChecked || !user) {
+            setTimeout(() => {
+                if (!auth.currentUser) {
+                    alert('Please sign in to access question grading.');
+                    window.location.href = 'signin.html';
+                }
+            }, 500);
+        }
+    }
+});
 
 // Get question details from URL parameters
 const urlParams = new URLSearchParams(window.location.search);
@@ -84,13 +107,13 @@ const calculatedPercentage = document.getElementById('calculatedPercentage');
 const completeReviewBtn = document.getElementById('completeReviewBtn');
 const backBtn = document.getElementById('backBtn');
 
-// Initialize page
-document.addEventListener('DOMContentLoaded', function() {
+// Initialize page after auth check
+async function initializePage() {
     setupSliders();
     setupMarksInput();
     setupEventListeners();
-    loadExistingGrade();
-});
+    await loadExistingGrade();
+}
 
 // Setup sliders
 function setupSliders() {
@@ -219,18 +242,23 @@ function autoCalculateGrade() {
 // Setup event listeners
 function setupEventListeners() {
     // Sign out
-    signOutBtn.addEventListener('click', (e) => {
+    signOutBtn.addEventListener('click', async (e) => {
         e.preventDefault();
         if (confirm('Are you sure you want to sign out?')) {
-            authManager.signOut();
-            alert('You have been signed out successfully.');
-            window.location.href = '../index.html';
+            try {
+                await firebaseAuth.signOut();
+                alert('You have been signed out successfully.');
+                window.location.href = '../index.html';
+            } catch (error) {
+                console.error('Sign out error:', error);
+                alert('Error signing out. Please try again.');
+            }
         }
     });
 
     // Complete Review
-    completeReviewBtn.addEventListener('click', () => {
-        completeReview();
+    completeReviewBtn.addEventListener('click', async () => {
+        await completeReview();
     });
 
     // Back button
@@ -247,7 +275,7 @@ function setupEventListeners() {
 }
 
 // Complete review and save data
-function completeReview() {
+async function completeReview() {
     // Get calculated values
     const marksAwarded = parseFloat(marksInput.value);
     const totalMarks = parseFloat(totalMarksInput.value);
@@ -324,11 +352,15 @@ function completeReview() {
                         maxMarks: totalMarks,
                         isAIReviewed: isAIReview,
                         timestamp: new Date().toISOString(),
-                        studentEmail: session.email
+                        studentEmail: currentUser.email
                     };
                     
-                    // Save to localStorage
-                    saveGradingData(gradingData);
+                    // Save to Firestore and IndexedDB
+                    saveGradingData(gradingData).then(() => {
+                        console.log('Grading data saved successfully');
+                    }).catch(error => {
+                        console.error('Error saving grading data:', error);
+                    });
                     
                     // Show success message and redirect
                     showModal(
@@ -361,38 +393,53 @@ function completeReview() {
     );
 }
 
-// Save grading data to localStorage
-function saveGradingData(gradingData) {
-    const gradingKey = `questionGradings_${session.email}`;
-    let gradings = JSON.parse(localStorage.getItem(gradingKey) || '[]');
-    
-    // Remove existing grading for this question if it exists
-    gradings = gradings.filter(g => 
-        !(g.subject === gradingData.subject &&
-          g.year === gradingData.year &&
-          g.session === gradingData.session &&
-          g.paper === gradingData.paper &&
-          g.question === gradingData.question)
-    );
-    
-    // Add new grading
-    gradings.push(gradingData);
-    
-    localStorage.setItem(gradingKey, JSON.stringify(gradings));
+// Save grading data to Firestore and IndexedDB
+async function saveGradingData(gradingData) {
+    try {
+        // Save to Firestore
+        await firestoreData.saveQuestionGrade(currentUser.uid, gradingData);
+        
+        // Also save to IndexedDB for offline access
+        await indexedDBStorage.saveQuestionGrade(currentUser.uid, gradingData);
+        
+        console.log('Question grading saved successfully');
+    } catch (error) {
+        console.error('Error saving question grading:', error);
+        // Fallback to IndexedDB only if Firestore fails
+        try {
+            await indexedDBStorage.saveQuestionGrade(currentUser.uid, gradingData);
+            console.log('Grading saved to IndexedDB (offline mode)');
+        } catch (idbError) {
+            console.error('Error saving to IndexedDB:', idbError);
+            throw new Error('Failed to save grading data');
+        }
+    }
 }
 
 // Load existing grade if available
-function loadExistingGrade() {
-    const gradingKey = `questionGradings_${session.email}`;
-    const gradings = JSON.parse(localStorage.getItem(gradingKey) || '[]');
+async function loadExistingGrade() {
+    let existingGrade = null;
     
-    const existingGrade = gradings.find(g => 
-        g.subject === subject &&
-        g.year == year &&
-        g.session.toUpperCase() === sessionType.toUpperCase() &&
-        g.paper == paper &&
-        g.question == questionNumber
-    );
+    try {
+        // Try to load from Firestore first
+        let gradings = await firestoreData.getQuestionGrades(currentUser.uid);
+        
+        // Fallback to IndexedDB if Firestore fails
+        if (!gradings || gradings.length === 0) {
+            gradings = await indexedDBStorage.getQuestionGrades(currentUser.uid);
+        }
+        
+        existingGrade = gradings.find(g => 
+            g.subject === subject &&
+            g.year == year &&
+            g.session.toUpperCase() === sessionType.toUpperCase() &&
+            g.paper == paper &&
+            g.question == questionNumber
+        );
+    } catch (error) {
+        console.error('Error loading existing grade:', error);
+        // Continue without loading previous grade
+    }
     
     if (existingGrade) {
         // Populate sliders
@@ -425,22 +472,4 @@ document.addEventListener('click', function(event) {
     }
 });
 
-// Extend session on activity
-let activityTimeout;
-function resetActivityTimer() {
-    clearTimeout(activityTimeout);
-    
-    if (authManager.isLoggedIn()) {
-        authManager.extendSession();
-        
-        activityTimeout = setTimeout(() => {
-            console.log('User inactive');
-        }, 5 * 60 * 1000);
-    }
-}
-
-['mousedown', 'keydown', 'scroll', 'touchstart'].forEach(event => {
-    document.addEventListener(event, resetActivityTimer, true);
-});
-
-resetActivityTimer();
+// Activity monitoring is handled by activity-monitor.js imported at the top

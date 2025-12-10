@@ -5,6 +5,7 @@ import { indexedDBStorage } from './indexeddb-storage.js';
 import { initActivityMonitor } from './activity-monitor.js';
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
 import { auth } from './firebase-config.js';
+import { getExaminersReportLink, hasExaminersReport } from './memo-links.js';
 
 // Initialize activity monitor
 initActivityMonitor();
@@ -101,6 +102,19 @@ async function loadExamDetails() {
     // Update title
     reviewTitle.textContent = `${subjectTitle} - ${sessionType} ${year} Paper ${paper}`;
     reviewSubtitle.textContent = 'Review your exam attempt and grade your answers';
+    
+    // Update download memo button based on report availability
+    if (!hasExaminersReport(subject, sessionType, year, paper)) {
+        downloadMemoBtn.disabled = true;
+        downloadMemoBtn.title = "Examiner's report not yet available for this exam";
+        downloadMemoBtn.style.opacity = '0.5';
+        downloadMemoBtn.style.cursor = 'not-allowed';
+    } else {
+        downloadMemoBtn.disabled = false;
+        downloadMemoBtn.title = "Download Examiner's Report";
+        downloadMemoBtn.style.opacity = '1';
+        downloadMemoBtn.style.cursor = 'pointer';
+    }
     
     // Get submission data from Firestore
     submissionData = await getSubmissionData();
@@ -284,9 +298,16 @@ function setupEventListeners() {
         }
     });
     
-    // Download memo
+    // Download memo (examiners report)
     downloadMemoBtn.addEventListener('click', () => {
-        alert('Memo download functionality coming soon!\n\nThis will allow you to download the official marking memorandum for this exam.');
+        const reportLink = getExaminersReportLink(subject, sessionType, year, paper);
+        
+        if (reportLink) {
+            // Open the examiners report in a new tab
+            window.open(reportLink, '_blank');
+        } else {
+            alert(`Examiner's report not available for ${subjectTitle} ${sessionType} ${year} Paper ${paper}.\n\nReports may not yet be published for recent exams, or may not exist for this specific paper.`);
+        }
     });
     
     // Back button

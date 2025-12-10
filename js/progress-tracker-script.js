@@ -127,6 +127,10 @@ async function showProgressView(subject, subjectTitle) {
     // Update title
     subjectProgressTitle.textContent = `${subjectTitle} Progress`;
     
+    // Save as last accessed subject for "Continue Where You Left Off"
+    sessionStorage.setItem('selectedSubject', subject);
+    sessionStorage.setItem('selectedSubjectTitle', subjectTitle);
+    
     // Load progress data
     await loadProgressData(subject, subjectTitle);
 }
@@ -139,8 +143,8 @@ function generateAllPapers(subject) {
     
     years.forEach(year => {
         sessions.forEach(session => {
-            if (subject === 'A311') {
-                // A311 has Paper 1 and Paper 2 for each session
+            if (subject === 'A311' || subject === 'A211') {
+                // A311 and A211 have Paper 1 and Paper 2 for each session
                 papers.push({ 
                     year: year, 
                     session: session, 

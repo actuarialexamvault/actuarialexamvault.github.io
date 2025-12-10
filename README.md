@@ -1,73 +1,68 @@
-# Actuarial Risk Management (ARM) Exam Preparation Book
+# Actuarial Exam Vault
 
-## Project Overview
+**Vault Over The Hurdles. Unlock Your Future.** 🔐
 
-This comprehensive study guide contains past exam questions and model answers for the Actuarial Risk Management subject (A311). The book is designed to help students prepare effectively by providing:
+A web-based exam preparation platform for actuarial students, providing timed practice exams, progress tracking, and comprehensive past paper coverage.
 
-- **Complete Past Paper Coverage**: Questions from multiple exam sessions
-- **Model Answers**: Detailed, structured responses for each question
-- **Cross-References**: Links between similar questions across different papers
-- **Topic Organization**: Questions grouped by ARM syllabus areas
+## Features
 
-## Book Structure
+- 🔒 **Secure Authentication** - Firebase-powered user accounts
+- ⏱️ **Timed Exams** - Realistic 3.5-hour exam simulations with auto-save
+- 📊 **Progress Tracking** - Monitor attempts and performance across all subjects
+- 📄 **241 Past Papers** - Comprehensive coverage from 2018-2025
+- 💾 **IndexedDB Storage** - Offline-capable local file management
+- 🎯 **15 Subjects** - Associate to Fellowship level coverage
 
-### Chapter 1: Risk
+## Supported Subjects
 
-### Chapter 2: Products & Design
+**Associate Level:**
+- A211: Actuarial Mathematics
+- A311: Actuarial Risk Management
+- N211: Non-Life Insurance
 
-### Chapter 3: Professionalism & Environment
+**Fellowship Principles:**
+- F101: Health and Care
+- F102: Life Insurance
+- F103: General Insurance
+- F104: Pensions and Other Benefits
+- F105: Finance and Investment
+- F108: Enterprise Risk Management
 
-### Chapter 4: Risk & Capital Management
+**Fellowship Specialist Advanced:**
+- F201-F205: Life, General, Finance, Health & Care, Pensions
 
-### Chapter 5: Liabilities
+## Tech Stack
 
-### Chapter 6: Models
+- **Frontend**: Vanilla JavaScript (ES6 modules)
+- **Backend**: Firebase (Auth, Firestore)
+- **Storage**: IndexedDB for local files
+- **Styling**: Custom CSS with gradients and animations
 
-### Chapter 7: Investment Markets
+## Getting Started
 
-### Chapter 8: Investment Strategy
+1. Clone the repository
+2. Set up Firebase project and add your config to `js/firebase-config.js`
+3. Open `index.html` in a web browser or serve with Live Server
+4. Sign up and start practicing!
 
-### Chapter 9: Valuing Assets
+## Project Structure
 
-### Chapter 10: Project Management
-
-## How to Use This Book
-
-1. **Study by Topic**: Navigate to specific chapters based on your study plan
-2. **Practice by Paper**: Review complete past papers in chronological order
-3. **Cross-Reference**: Use the index to find similar questions across different papers
-4. **Model Answers**: Study the structured approach to answering each question type
+```
+├── pages/          # HTML pages (dashboard, subjects, exam views)
+├── js/             # JavaScript modules (auth, storage, exam logic)
+├── css/            # Stylesheets for each page
+├── resources/      # PDF links, markdown papers, scraping scripts
+└── index.html      # Landing page
+```
 
 ## Contributing
 
-This is a living document. Model answers are continuously refined based on:
-- Examiner feedback and reports
-- Student performance analysis
-- Updates to the ARM syllabus
-
-### For Contributors
-
-**Templates and Standards:**
-- [Question Template](templates/question_template.md) - Standard format for new questions
-- [Chapter Template](templates/chapter_template.md) - Structure for topic chapters
-
-**Contribution Guidelines:**
-- Follow the established template formats
-- Ensure model answers are comprehensive and exam-focused
-- Include cross-references to related questions
-- Maintain consistent formatting and style
-- Update the table of contents when adding new content
-
-## Export Formats
-
-This Markdown source can be exported to multiple formats for different use cases. See the [Export Guide](resources/export_guide.md) for detailed instructions.
-
-**Available Formats:**
-- **PDF** - For printing and offline study
-- **HTML** - For web-based learning and interactive navigation
-- **Microsoft Word** - For collaborative editing and annotations
-- **EPUB** - For e-reader compatibility and mobile study
+Contributions welcome! Focus areas:
+- Adding more past paper links
+- Improving exam timer accuracy
+- Enhancing progress analytics
+- Mobile responsiveness
 
 ---
 
-*Last Updated: August 2025*
+*Built with ❤️ for actuarial students | December 2025*

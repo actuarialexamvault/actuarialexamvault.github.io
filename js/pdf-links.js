@@ -259,6 +259,17 @@ const pdfLinksMap = {
                 '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/A211-JUNE-2020-EXAM-1.pdf'
             }
         },
+        'MAY': {
+            '2024': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/A211-MAY-2024-EXAM-1.pdf'
+            },
+            '2023': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/A211-MAY-2023-EXAM-1.pdf'
+            },
+            '2022': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/A211-MAY-2022-EXAM-1.pdf'
+            }
+        },
         'NOVEMBER': {
             '2024': {
                 '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/A211-NOVEMBER-2024-EXAM-1.pdf'
@@ -271,6 +282,407 @@ const pdfLinksMap = {
             },
             '2019': {
                 '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/A211-NOVEMBER-2019-EXAM-1.pdf'
+            }
+        }
+    },
+    
+    // N211: Non-Life Insurance
+    'N211': {
+        'JUNE': {
+            '2024': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/N211-JUNE-2024-EXAM-1.pdf'
+            },
+            '2023': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/N211-JUNE-2023-EXAM-1.pdf'
+            },
+            '2022': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/N211-JUNE-2022-EXAM-1.pdf'
+            },
+            '2021': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/N211-JUNE-2021-EXAM-1.pdf'
+            },
+            '2020': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/N211-JUNE-2020-EXAM-1.pdf'
+            },
+            '2019': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/N211-JUNE-2019-EXAM-1.pdf'
+            },
+            '2018': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/A302-JUNE-2018-EXAM-1.pdf'
+            }
+        
+        },
+        'NOVEMBER': {
+            '2024': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/N211-NOVEMBER-2024-EXAM-1.pdf'
+            },
+            '2023': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/N211-NOVEMBER-2023-EXAM-1.pdf'
+            },
+            '2022': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/N211-NOVEMBER-2022-EXAM-1.pdf'
+            },
+            '2021': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/N211-NOVEMBER-2021-EXAM-1.pdf'
+            },
+            '2020': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/N211-NOVEMBER-2020-EXAM-1.pdf'
+            },
+            '2019': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/N211-NOVEMBER-2019-EXAM-1.pdf'
+            },
+            '2018': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/A302-NOVEMBER-2018-EXAM-1.pdf'
+            }
+        }
+    },
+    
+    // F101: Health and Care
+    'F101': {
+        'JUNE': {
+            '2024': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F101-JUNE-2024-EXAM-1.pdf'
+            },
+            '2023': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F101-JUNE-2023-EXAM-1.pdf'
+            },
+            '2022': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F101-JUNE-2022-EXAM-1.pdf'
+            },
+            '2021': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F101-JUNE-2021-EXAM-1.pdf'
+            },
+            '2020': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F101-JUNE-2020-EXAM-1.pdf'
+            },
+            '2019': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F101-JUNE-2019-EXAM-1.pdf'
+            },
+            '2018': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F101-JUNE-2018-EXAM-1.pdf'
+            }
+        },
+        'NOVEMBER': {
+            '2023': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F101-NOVEMBER-2023-EXAM-1.pdf'
+            },
+            '2022': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F101-NOVEMBER-2022-EXAM-1.pdf'
+            },
+            '2021': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F101-NOVEMBER-2021-EXAM-1.pdf'
+            },
+            '2020': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F101-NOVEMBER-2020-EXAM-1.pdf'
+            },
+            '2019': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F101-NOVEMBER-2019-EXAM-1.pdf'
+            },
+            '2018': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F101-NOVEMBER-2018-EXAM-1.pdf'
+            }
+        }
+    },
+    
+    // F104: Pensions and Other Benefits
+    'F104': {
+        'JUNE': {
+            '2024': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F104-JUNE-2024-EXAM-1.pdf'
+            },
+            '2023': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F104-JUNE-2023-EXAM-1.pdf'
+            },
+            '2022': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F104-JUNE-2022-EXAM-1.pdf'
+            },
+            '2021': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F104-JUNE-2021-EXAM-1.pdf'
+            },
+            '2020': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F104-JUNE-2020-EXAM-1.pdf'
+            },
+            '2018': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F104-JUNE-2018-EXAM-1.pdf'
+            }
+        },
+        'NOVEMBER': {
+            '2023': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F104-NOVEMBER-2023-EXAM-1.pdf'
+            },
+            '2022': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F104-NOVEMBER-2022-EXAM-1.pdf'
+            },
+            '2021': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F104-NOVEMBER-2021-EXAM-1.pdf'
+            },
+            '2020': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F104-NOVEMBER-2020-EXAM-1.pdf'
+            },
+            '2019': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F104-NOVEMBER-2019-EXAM-1.pdf'
+            },
+            '2018': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F104-NOVEMBER-2018-EXAM-1.pdf'
+            }
+        }
+    },
+    
+    // F108: Enterprise Risk Management
+    'F108': {
+        'NOVEMBER': {
+            '2024': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F108-NOVEMBER-2024-EXAM-1.pdf'
+            }
+        }
+    },
+    
+    // F201: Life Insurance Specialist Advanced
+    'F201': {
+        'JUNE': {
+            '2024': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F201-JUNE-2024-EXAM-1.pdf'
+            },
+            '2023': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F201-JUNE-2023-EXAM-1.pdf'
+            },
+            '2022': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F201-JUNE-2022-EXAM-1.pdf'
+            },
+            '2021': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F201-JUNE-2021-EXAM-1.pdf'
+            },
+            '2020': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F201-JUNE-2020-EXAM-1.pdf'
+            },
+            '2019': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F201-JUNE-2019-EXAM-1.pdf'
+            },
+            '2018': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F201-JUNE-2018-EXAM-1.pdf'
+            }
+        },
+        'NOVEMBER': {
+            '2024': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F201-NOVEMBER-2024-EXAM-1.pdf'
+            },
+            '2023': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F201-NOVEMBER-2023-EXAM-1.pdf'
+            },
+            '2022': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F201-NOVEMBER-2022-EXAM-1.pdf'
+            },
+            '2021': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F201-NOVEMBER-2021-EXAM-1.pdf'
+            },
+            '2020': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F201-NOVEMBER-2020-EXAM-1.pdf'
+            },
+            '2019': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F201-NOVEMBER-2019-EXAM-1.pdf'
+            },
+            '2018': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F201-NOVEMBER-2018-EXAM-1.pdf'
+            }
+        }
+    },
+    
+    // F202: General Insurance Specialist Advanced
+    'F202': {
+        'JUNE': {
+            '2024': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F202-JUNE-2024-EXAM-1.pdf'
+            },
+            '2023': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F202-JUNE-2023-EXAM-1.pdf'
+            },
+            '2022': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F202-JUNE-2022-EXAM-1.pdf'
+            },
+            '2021': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F202-JUNE-2021-EXAM-1.pdf'
+            },
+            '2020': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F202-JUNE-2020-EXAM-1.pdf'
+            },
+            '2019': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F202-JUNE-2019-EXAM-1.pdf'
+            },
+            '2018': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F202-JUNE-2018-EXAM-1.pdf'
+            }
+        },
+        'NOVEMBER': {
+            '2024': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F202-NOVEMBER-2024-EXAM-1.pdf'
+            },
+            '2023': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F202-NOVEMBER-2023-EXAM-1.pdf'
+            },
+            '2022': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F202-NOVEMBER-2022-EXAM-1.pdf'
+            },
+            '2021': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F202-NOVEMBER-2021-EXAM-1.pdf'
+            },
+            '2020': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F202-NOVEMBER-2020-EXAM-1.pdf'
+            },
+            '2019': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F202-NOVEMBER-2019-EXAM-1.pdf'
+            },
+            '2018': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F202-NOVEMBER-2018-EXAM-1.pdf'
+            }
+        }
+    },
+    
+    // F203: Finance and Investment Specialist Advanced
+    'F203': {
+        'JUNE': {
+            '2024': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F203-JUNE-2024-EXAM-1.pdf'
+            },
+            '2023': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F203-JUNE-2023-EXAM-1.pdf'
+            },
+            '2022': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F203-JUNE-2022-EXAM-1.pdf'
+            },
+            '2021': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F203-JUNE-2021-EXAM-1.pdf'
+            },
+            '2020': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F203-JUNE-2020-EXAM-1.pdf'
+            },
+            '2019': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F203-JUNE-2019-EXAM-1.pdf'
+            },
+            '2018': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F203-JUNE-2018-EXAM-1.pdf'
+            }
+        },
+        'NOVEMBER': {
+            '2024': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F203-NOVEMBER-2024-EXAM-1.pdf'
+            },
+            '2023': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F203-NOVEMBER-2023-EXAM-1.pdf'
+            },
+            '2022': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F203-NOVEMBER-2022-EXAM-1.pdf'
+            },
+            '2021': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F203-NOVEMBER-2021-EXAM-1.pdf'
+            },
+            '2020': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F203-NOVEMBER-2020-EXAM-1.pdf'
+            },
+            '2019': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F203-NOVEMBER-2019-EXAM-1.pdf'
+            },
+            '2018': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F203-NOVEMBER-2018-EXAM-1.pdf'
+            }
+        }
+    },
+    
+    // F204: Health and Care Specialist Advanced
+    'F204': {
+        'JUNE': {
+            '2024': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F204-JUNE-2024-EXAM-1.pdf'
+            },
+            '2023': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F204-JUNE-2023-EXAM-1.pdf'
+            },
+            '2022': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F204-JUNE-2022-EXAM-1.pdf'
+            },
+            '2021': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F204-JUNE-2021-EXAM-1.pdf'
+            },
+            '2020': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F204-JUNE-2020-EXAM-1.pdf'
+            },
+            '2019': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F204-JUNE-2019-EXAM-1.pdf'
+            },
+            '2018': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F204-JUNE-2018-EXAM-1.pdf'
+            }
+        },
+        'NOVEMBER': {
+            '2024': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F204-NOVEMBER-2024-EXAM-1.pdf'
+            },
+            '2023': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F204-NOVEMBER-2023-EXAM-1.pdf'
+            },
+            '2022': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F204-NOVEMBER-2022-EXAM-1.pdf'
+            },
+            '2021': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F204-NOVEMBER-2021-EXAM-1.pdf'
+            },
+            '2020': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F204-NOVEMBER-2020-EXAM-1.pdf'
+            },
+            '2019': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F204-NOVEMBER-2019-EXAM-1.pdf'
+            },
+            '2018': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F204-NOVEMBER-2018-EXAM-1.pdf'
+            }
+        }
+    },
+    
+    // F205: Pensions and Other Benefits Specialist Advanced
+    'F205': {
+        'JUNE': {
+            '2024': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F205-JUNE-2024-EXAM-1.pdf'
+            },
+            '2023': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F205-JUNE-2023-EXAM-1.pdf'
+            },
+            '2022': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F205-JUNE-2022-EXAM-1.pdf'
+            },
+            '2021': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F205-JUNE-2021-EXAM-1.pdf'
+            },
+            '2020': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F205-JUNE-2020-EXAM-1.pdf'
+            },
+            '2019': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F205-JUNE-2019-EXAM-1.pdf'
+            },
+            '2018': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F205-JUNE-2018-EXAM-1.pdf'
+            }
+        },
+        'NOVEMBER': {
+            '2024': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F205-NOVEMBER-2024-EXAM-1.pdf'
+            },
+            '2023': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F205-NOVEMBER-2023-EXAM-1.pdf'
+            },
+            '2022': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F205-NOVEMBER-2022-EXAM-1.pdf'
+            },
+            '2021': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F205-NOVEMBER-2021-EXAM-1.pdf'
+            },
+            '2020': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F205-NOVEMBER-2020-EXAM-1.pdf'
+            },
+            '2019': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F205-NOVEMBER-2019-EXAM-1.pdf'
+            },
+            '2018': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F205-NOVEMBER-2018-EXAM-1.pdf'
             }
         }
     }

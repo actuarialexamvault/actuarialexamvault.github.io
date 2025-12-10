@@ -243,6 +243,70 @@ class IndexedDBStorageService {
             return { success: false, error: error.message };
         }
     }
+
+    // Save question grade to IndexedDB
+    async saveQuestionGrade(userId, gradingData) {
+        try {
+            await this.ensureDB();
+            
+            const gradingId = `grade_${userId}_${gradingData.subject}_${gradingData.year}_${gradingData.session}_P${gradingData.paper}_Q${gradingData.question}`;
+            
+            return new Promise((resolve, reject) => {
+                const transaction = this.db.transaction([this.storeName], 'readwrite');
+                const objectStore = transaction.objectStore(this.storeName);
+                
+                const data = {
+                    id: gradingId,
+                    userId: userId,
+                    type: 'questionGrade',
+                    ...gradingData,
+                    updatedAt: new Date().toISOString()
+                };
+                
+                const request = objectStore.put(data);
+
+                request.onsuccess = () => {
+                    resolve({ success: true });
+                };
+
+                request.onerror = () => {
+                    console.error('Error saving question grade to IndexedDB:', request.error);
+                    reject(request.error);
+                };
+            });
+        } catch (error) {
+            console.error('Error in saveQuestionGrade:', error);
+            return { success: false, error: error.message };
+        }
+    }
+
+    // Get all question grades for a user
+    async getQuestionGrades(userId) {
+        try {
+            await this.ensureDB();
+
+            return new Promise((resolve, reject) => {
+                const transaction = this.db.transaction([this.storeName], 'readonly');
+                const objectStore = transaction.objectStore(this.storeName);
+                const index = objectStore.index('userId');
+                const request = index.getAll(userId);
+
+                request.onsuccess = () => {
+                    // Filter only question grades
+                    const grades = request.result.filter(item => item.type === 'questionGrade');
+                    resolve(grades);
+                };
+
+                request.onerror = () => {
+                    console.error('Error getting question grades from IndexedDB:', request.error);
+                    reject(request.error);
+                };
+            });
+        } catch (error) {
+            console.error('Error in getQuestionGrades:', error);
+            return [];
+        }
+    }
 }
 
 // Create and export a single instance

@@ -253,6 +253,29 @@ class FirestoreDataService {
             return [];
         }
     }
+
+    // Save standalone question grade (without submission ID)
+    async saveQuestionGrade(userId, gradingData) {
+        try {
+            // Generate a unique grading ID based on exam details
+            const gradingId = `${userId}_${gradingData.subject}_${gradingData.year}_${gradingData.session}_P${gradingData.paper}_Q${gradingData.question}`;
+            const gradingRef = doc(db, this.gradingsCollection, gradingId);
+            await setDoc(gradingRef, {
+                userId: userId,
+                ...gradingData,
+                updatedAt: serverTimestamp()
+            }, { merge: true }); // Use merge to update existing or create new
+            return { success: true };
+        } catch (error) {
+            console.error('Error saving question grade:', error);
+            return { success: false, error: error.message };
+        }
+    }
+
+    // Get question grades (wrapper to match indexedDB interface)
+    async getQuestionGrades(userId) {
+        return await this.getUserGradings(userId);
+    }
 }
 
 // Create and export a single instance

@@ -7,7 +7,7 @@ A web-based exam preparation platform for actuarial students, providing timed pr
 ## Features
 
 - 🔒 **Secure Authentication** - Firebase-powered user accounts
-- ⏱️ **Timed Exams** - Realistic 3.5-hour exam simulations with auto-save
+- ⏱️ **Timed Exams** - Realistic 3.5-hour exam simulations
 - 📊 **Progress Tracking** - Monitor attempts and performance across all subjects
 - 📄 **241 Past Papers** - Comprehensive coverage from 2018-2025
 - 💾 **IndexedDB Storage** - Offline-capable local file management

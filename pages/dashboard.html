@@ -32,20 +32,22 @@
     <main class="dashboard-container">
         <div class="dashboard-header">
             <h1 class="dashboard-title">Welcome, <span id="userNameTitle"></span>!</h1>
-            <p class="dashboard-subtitle">Your actuarial exam preparation dashboard</p>
+            <p class="dashboard-subtitle">Vault Over The Hurdles. Unlock Your Future.</p>
         </div>
 
-        <div class="session-info">
-            <div class="session-card">
-                <svg class="session-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
-                    <path d="M12 6V12L16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <div class="session-info" id="continueSection" style="display: none;">
+            <a href="#" class="continue-card" id="continueCard">
+                <svg class="continue-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
-                <div class="session-details">
-                    <h3>Session Active</h3>
-                    <p class="session-note">Your session will automatically end after 30 minutes of no activity</p>
+                <div class="continue-details">
+                    <h3>Continue Where You Left Off</h3>
+                    <p class="continue-note" id="continueSubject">Loading...</p>
                 </div>
-            </div>
+                <svg class="continue-arrow" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </a>
         </div>
 
         <div class="dashboard-grid">

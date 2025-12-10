@@ -6,6 +6,9 @@ import { initActivityMonitor } from './activity-monitor.js';
 const userName = document.getElementById('userName');
 const userNameTitle = document.getElementById('userNameTitle');
 const signOutBtn = document.getElementById('signOutBtn');
+const continueSection = document.getElementById('continueSection');
+const continueCard = document.getElementById('continueCard');
+const continueSubject = document.getElementById('continueSubject');
 
 // Check if user is logged in and load profile
 async function checkAuthAndLoadProfile() {
@@ -39,6 +42,45 @@ async function loadUserProfile(user) {
         // Fallback to email if no full name
         userName.textContent = user.email;
         userNameTitle.textContent = user.email;
+    }
+    
+    // Load continue section
+    await loadContinueSection(user);
+}
+
+async function loadContinueSection(user) {
+    // Get last accessed subject from sessionStorage or Firestore
+    let lastSubject = sessionStorage.getItem('selectedSubject');
+    let lastSubjectTitle = sessionStorage.getItem('selectedSubjectTitle');
+    
+    // If not in session, try to get from recent submissions
+    if (!lastSubject) {
+        const submissions = await firestoreData.getExamSubmissions(user.uid);
+        if (submissions.success && submissions.data) {
+            const submissionsArray = Object.values(submissions.data);
+            if (submissionsArray.length > 0) {
+                // Sort by timestamp and get most recent
+                const sorted = submissionsArray.sort((a, b) => 
+                    new Date(b.timestamp) - new Date(a.timestamp)
+                );
+                lastSubject = sorted[0].subject;
+                lastSubjectTitle = `${lastSubject}: Continue practicing`;
+            }
+        }
+    }
+    
+    // Show continue section if we have a last subject
+    if (lastSubject) {
+        continueSubject.textContent = lastSubjectTitle || `${lastSubject}: View your progress`;
+        continueSection.style.display = 'block';
+        
+        // Add click handler to set session storage before navigating
+        continueCard.addEventListener('click', (e) => {
+            e.preventDefault();
+            sessionStorage.setItem('autoShowSubject', lastSubject);
+            sessionStorage.setItem('autoShowSubjectTitle', lastSubjectTitle || lastSubject);
+            window.location.href = 'progress-tracker.html';
+        });
     }
 }
 

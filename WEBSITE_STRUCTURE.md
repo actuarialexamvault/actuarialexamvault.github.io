@@ -1,11 +1,12 @@
 # Website File Organization
 
-## New Folder Structure
+## Current Folder Structure (With Firebase Integration)
 
 ```
 Actuarial-Exam-Book-main/
 │
 ├── index.html                          # Landing page (root level)
+├── firebase-test.html                  # Firebase connection test page
 │
 ├── css/                                # All stylesheets
 │   ├── styles.css                      # Landing page styles
@@ -14,30 +15,53 @@ Actuarial-Exam-Book-main/
 │   ├── subjects-styles.css             # Subjects page styles
 │   ├── papers-styles.css               # Papers page styles
 │   ├── subject-papers-styles.css       # Subject papers page styles
-│   └── exam-instructions-styles.css    # Exam instructions page styles
+│   ├── exam-instructions-styles.css    # Exam instructions page styles
+│   ├── exam-review-styles.css          # Exam review page styles
+│   └── help-support-styles.css         # Help & Support page styles
 │
-├── js/                                 # All JavaScript files
-│   ├── auth.js                         # Authentication manager
+├── js/                                 # All JavaScript files (ES6 Modules)
+│   ├── auth.js                         # Legacy authentication (deprecated)
+│   ├── firebase-config.js              # Firebase configuration & initialization
+│   ├── firebase-auth.js                # Firebase Authentication service
+│   ├── firebase-data.js                # Firestore Database service
+│   ├── firebase-storage.js             # Firebase Storage service (deprecated)
+│   ├── indexeddb-storage.js            # IndexedDB local storage service
+│   ├── activity-monitor.js             # 30-minute auto-logout monitor
 │   ├── pdf-links.js                    # PDF links mapping
 │   ├── landing-script.js               # Landing page functionality
-│   ├── signin-script.js                # Sign in page functionality
-│   ├── signup-script.js                # Sign up page functionality
-│   ├── dashboard-script.js             # Dashboard functionality
-│   ├── subjects-script.js              # Subjects page functionality
-│   ├── papers-script.js                # Papers page functionality
-│   ├── subject-papers-script.js        # Subject papers page functionality
-│   ├── year-papers-script.js           # Year papers page functionality
-│   └── exam-instructions-script.js     # Exam instructions functionality
+│   ├── signin-script.js                # Sign in page with Firebase Auth
+│   ├── signup-script.js                # Sign up page with Firebase Auth
+│   ├── dashboard-script.js             # Dashboard with Firebase profile
+│   ├── subjects-script.js              # Subjects page with Firebase Auth
+│   ├── papers-script.js                # Papers page with Firebase Auth
+│   ├── subject-papers-script.js        # Subject papers with Firebase Auth
+│   ├── year-papers-script.js           # Year papers functionality
+│   ├── exam-instructions-script.js     # Exam instructions with IndexedDB upload
+│   ├── exam-review-script.js           # Exam review with Firestore data
+│   └── help-support-script.js          # Help & Support page functionality
 │
-└── pages/                              # All secondary HTML pages
-    ├── signin.html                     # Sign in page
-    ├── signup.html                     # Sign up page
-    ├── dashboard.html                  # User dashboard
-    ├── subjects.html                   # Subjects selection
-    ├── papers.html                     # Papers overview
-    ├── subject-papers.html             # Subject-specific papers
-    ├── year-papers.html                # Year-specific papers
-    └── exam-instructions.html          # Exam instructions and timer
+├── pages/                              # All secondary HTML pages
+│   ├── signin.html                     # Sign in page (Firebase Auth)
+│   ├── signup.html                     # Sign up page (Firebase Auth)
+│   ├── dashboard.html                  # User dashboard (Firebase profile)
+│   ├── subjects.html                   # Subjects selection
+│   ├── papers.html                     # Papers overview
+│   ├── subject-papers.html             # Subject-specific papers
+│   ├── year-papers.html                # Year-specific papers
+│   ├── exam-instructions.html          # Exam setup, upload, and timer
+│   ├── exam-review.html                # Review exam submissions
+│   ├── progress-tracker.html           # Track exam progress
+│   ├── question-grading.html           # Grade individual questions
+│   ├── help-support.html               # Help & Support with contact form
+│   └── test-download.html              # Download test page
+│
+├── templates/                          # Document templates
+│   └── Exam practice template.docx     # Exam template for users
+│
+└── resources/                          # Past papers and resources
+    ├── exam_technique_guide.md
+    ├── markdown_papers/                # Converted past papers in markdown
+    └── pdfs/                           # PDF processing scripts
 
 ```
 
@@ -58,17 +82,43 @@ Actuarial-Exam-Book-main/
 
 1. **Landing (index.html)** → Sign In (pages/signin.html)
 2. **Sign In** → Dashboard (pages/dashboard.html) or Sign Up (pages/signup.html)
-3. **Dashboard** → Subjects (pages/subjects.html)
-4. **Subjects** → Subject Papers (pages/subject-papers.html)
-5. **Subject Papers** → Exam Instructions (pages/exam-instructions.html)
-6. **Exam Instructions** → Opens PDF + Timer
+3. **Dashboard** → 
+   - Subjects (pages/subjects.html)
+   - Progress Tracker (pages/progress-tracker.html)
+   - Help & Support (pages/help-support.html)
+4. **Subjects** → Papers (pages/papers.html)
+5. **Papers** → Subject Papers (pages/subject-papers.html)
+6. **Subject Papers** → Exam Instructions (pages/exam-instructions.html)
+7. **Exam Instructions** → Upload file + Timer → Exam Review
+8. **Progress Tracker** → Exam Review (pages/exam-review.html)
+9. **Exam Review** → Question Grading (pages/question-grading.html)
 
-### JavaScript Redirects:
+### JavaScript Module Structure:
 
-All JS files correctly reference:
-- Pages within `pages/` folder: Use relative paths like `dashboard.html`
-- Root index: Use `../index.html` when called from pages folder
-- Pages from root (landing-script.js): Use `pages/[filename].html`
+All JS files use ES6 modules with imports:
+- **Firebase Config**: Imported by all Firebase services
+- **Firebase Auth**: Used by all authenticated pages
+- **Firebase Data**: Used for Firestore operations
+- **IndexedDB Storage**: Used for local file storage
+- **Activity Monitor**: Imported by all authenticated pages for auto-logout
+
+### Firebase Integration:
+
+**Authentication:**
+- Email/Password authentication via Firebase Auth
+- onAuthStateChanged listeners on all protected pages
+- 30-minute auto-logout with 28-minute warning
+- User profile stored in Firestore
+
+**Data Storage:**
+- **Firestore Database**: User profiles, exam submissions metadata, question gradings
+- **IndexedDB**: Local file storage (exam PDFs/documents)
+- Files stored locally but metadata syncs across devices
+
+**Collections:**
+- `users`: User profile data (fullname, email, created timestamp)
+- `examSubmissions`: Exam metadata (subject, year, paper, timestamp)
+- `questionGradings`: Individual question grades and marks
 
 ## Benefits of This Structure:
 
@@ -78,11 +128,29 @@ All JS files correctly reference:
 4. ✅ **Professional structure** - Follows web development best practices
 5. ✅ **Better version control** - Changes are easier to track
 6. ✅ **Improved performance** - Browser caching is more efficient
+7. ✅ **Firebase backend** - Cloud authentication and data sync
+8. ✅ **Offline capability** - IndexedDB for local file storage
+9. ✅ **Secure** - Firebase Auth with activity monitoring
+10. ✅ **Cross-device sync** - Metadata available on all devices
 
-## All Links Have Been Updated:
+## Migration Status:
 
-- ✅ HTML `<link>` tags for CSS
-- ✅ HTML `<script>` tags for JS
-- ✅ HTML `<a>` navigation links
-- ✅ JavaScript `window.location.href` redirects
-- ✅ Relative paths corrected for new structure
+### ✅ Completed:
+- Firebase project setup (actuarial-exam-vault)
+- Firebase Authentication (Email/Password)
+- Firestore Database (test mode)
+- IndexedDB local storage implementation
+- Activity monitor (30-min auto-logout)
+- All pages migrated to Firebase auth
+- Exam submission to Firestore
+- Exam review from Firestore
+- Help & Support page with contact form
+
+### 🚧 In Progress:
+- Question grading to Firestore (partial)
+- Year-papers page Firebase migration
+
+### 📋 Pending:
+- Firebase security rules (production mode)
+- GitHub Pages deployment
+- Cross-device testing

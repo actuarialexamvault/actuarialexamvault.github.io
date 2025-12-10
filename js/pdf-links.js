@@ -97,8 +97,183 @@ const pdfLinksMap = {
                 '2': null
             }
         }
+    },
+    
+    // F102: Life Insurance Fellowship Principles
+    'F102': {
+        'JUNE': {
+            '2024': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F102-JUNE-2024-EXAM-1.pdf'
+            },
+            '2023': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F102-JUNE-2023-EXAM-1.pdf'
+            },
+            '2022': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F102-JUNE-2022-EXAM-1.pdf'
+            },
+            '2021': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F102-JUNE-2021-EXAM-1.pdf'
+            },
+            '2020': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F102-JUNE-2020-EXAM-1.pdf'
+            },
+            '2019': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F102-JUNE-2019-EXAM-1.pdf'
+            },
+            '2018': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F102-JUNE-2018-EXAM-1.pdf'
+            }
+        },
+        'NOVEMBER': {
+            '2024': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F102-NOVEMBER-2024-EXAM-1.pdf'
+            },
+            '2023': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F102-NOVEMBER-2023-EXAM-1.pdf'
+            },
+            '2022': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F102-NOVEMBER-2022-EXAM-1.pdf'
+            },
+            '2021': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F102-NOVEMBER-2021-EXAM-1.pdf'
+            },
+            '2020': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F102-NOVEMBER-2020-EXAM-1.pdf'
+            },
+            '2019': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F102-NOVEMBER-2019-EXAM-1.pdf'
+            },
+            '2018': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F102-NOVEMBER-2018-EXAM-1.pdf'
+            }
+        }
+    },
+    
+    // F103: General Insurance Fellowship Principles
+    'F103': {
+        'JUNE': {
+            '2024': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F103-JUNE-2024-EXAM-1.pdf'
+            },
+            '2023': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F103-JUNE-2023-EXAM-1.pdf'
+            },
+            '2022': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F103-JUNE-2022-EXAM-1.pdf'
+            },
+            '2021': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F103-JUNE-2021-EXAM-1.pdf'
+            },
+            '2020': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F103-JUNE-2020-EXAM-1.pdf'
+            },
+            '2019': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F103-JUNE-2019-EXAM-1.pdf'
+            },
+            '2018': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F103-JUNE-2018-EXAM-1.pdf'
+            }
+        },
+        'NOVEMBER': {
+            '2024': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F103-NOVEMBER-2024-EXAM-1.pdf'
+            },
+            '2023': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F103-NOVEMBER-2023-EXAM-1.pdf'
+            },
+            '2022': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F103-NOVEMBER-2022-EXAM-1.pdf'
+            },
+            '2021': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F103-NOVEMBER-2021-EXAM-1.pdf'
+            },
+            '2020': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F103-NOVEMBER-2020-EXAM-1.pdf'
+            },
+            '2019': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F103-NOVEMBER-2019-EXAM-1.pdf'
+            },
+            '2018': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F103-NOVEMBER-2018-EXAM-1.pdf'
+            }
+        }
+    },
+    
+    // F105: Finance and Investment Fellowship Principles
+    'F105': {
+        'JUNE': {
+            '2024': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F105-JUNE-2024-EXAM-1.pdf'
+            },
+            '2023': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F105-JUNE-2023-EXAM-1.pdf'
+            },
+            '2022': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F105-JUNE-2022-EXAM-1.pdf'
+            },
+            '2021': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F105-JUNE-2021-EXAM-1.pdf'
+            },
+            '2020': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F105-JUNE-2020-EXAM-1.pdf'
+            },
+            '2019': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F105-JUNE-2019-EXAM-1.pdf'
+            },
+            '2018': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F105-JUNE-2018-EXAM-1.pdf'
+            }
+        },
+        'NOVEMBER': {
+            '2024': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F105-NOVEMBER-2024-EXAM-1.pdf'
+            },
+            '2023': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F105-NOVEMBER-2023-EXAM-1.pdf'
+            },
+            '2022': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F105-NOVEMBER-2022-EXAM-1.pdf'
+            },
+            '2021': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F105-NOVEMBER-2021-EXAM-1.pdf'
+            },
+            '2020': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F105-NOVEMBER-2020-EXAM-1.pdf'
+            },
+            '2019': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F105-NOVEMBER-2019-EXAM-1.pdf'
+            },
+            '2018': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/F105-NOVEMBER-2018-EXAM-1.pdf'
+            }
+        }
+    },
+    
+    // A211: Actuarial Mathematics
+    'A211': {
+        'JUNE': {
+            '2021': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/A211-JUNE-2021-EXAM-1.pdf'
+            },
+            '2020': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/A211-JUNE-2020-EXAM-1.pdf'
+            }
+        },
+        'NOVEMBER': {
+            '2024': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/A211-NOVEMBER-2024-EXAM-1.pdf'
+            },
+            '2023': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/A211-NOVEMBER-2023-EXAM-1.pdf'
+            },
+            '2022': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/A211-NOVEMBER-2022-EXAM-1.pdf'
+            },
+            '2019': {
+                '1': 'https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/A211-NOVEMBER-2019-EXAM-1.pdf'
+            }
+        }
     }
-    // Can add other subjects here later when their PDF links are available
 };
 
 // Function to get PDF link for a given paper
@@ -134,3 +309,6 @@ function hasPDFLink(subject, session, year, paper) {
     const link = getPDFLink(subject, session, year, paper);
     return link !== null && link !== undefined;
 }
+
+// Export functions for use in other modules
+export { getPDFLink, hasPDFLink };

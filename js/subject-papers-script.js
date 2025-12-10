@@ -4,6 +4,7 @@ import { firestoreData } from './firebase-data.js';
 import { initActivityMonitor } from './activity-monitor.js';
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
 import { auth } from './firebase-config.js';
+import { hasPDFLink } from './pdf-links.js';
 
 // Initialize activity monitor
 initActivityMonitor();
@@ -52,8 +53,8 @@ function generateAvailablePapers() {
     
     years.forEach(year => {
         sessions.forEach(session => {
-            if (subject === 'A311') {
-                // A311 has Paper 1 and Paper 2 for each session
+            if (subject === 'A311' || subject === 'A211') {
+                // A311 and A211 have Paper 1 and Paper 2 for each session
                 papers.push({ 
                     year: year, 
                     session: session, 
@@ -69,7 +70,7 @@ function generateAvailablePapers() {
                     displayYear: `${session} ${year}`
                 });
             } else {
-                // Other subjects have only one paper per session
+                // Fellowship subjects (F102, F103, F105, etc.) have only one paper per session
                 papers.push({ 
                     year: year, 
                     session: session, 
@@ -106,9 +107,20 @@ function createPaperItem(paper, type) {
     const div = document.createElement('div');
     div.className = 'paper-item';
     
+    // Extract paper number (1 or 2) from paper.paper string
+    const paperNumber = paper.paper.includes('2') ? '2' : '1';
+    
+    // Convert session to uppercase and handle October -> November mapping
+    const sessionUpper = paper.session.toUpperCase();
+    const sessionForCheck = sessionUpper === 'OCTOBER' ? 'NOVEMBER' : sessionUpper;
+    
+    // Check if PDF link is available
+    const pdfAvailable = hasPDFLink(subject, sessionForCheck, paper.year, paperNumber);
+    const badgeClass = pdfAvailable ? 'available' : 'unavailable';
+    
     div.innerHTML = `
         <div class="paper-item-left">
-            <div class="paper-badge available">
+            <div class="paper-badge ${badgeClass}">
                 <div>${paper.displayYear}</div>
                 <div style="font-size: 0.75rem; margin-top: 0.25rem;">${paper.paper}</div>
             </div>

@@ -288,6 +288,11 @@ body {
     color: white;
 }
 
+.paper-badge.unavailable {
+    background: linear-gradient(135deg, #4b5563 0%, #374151 100%);
+    color: white;
+}
+
 .paper-info {
     display: flex;
     flex-direction: column;

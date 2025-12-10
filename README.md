@@ -61,7 +61,7 @@ Contributions welcome! Focus areas:
 - Adding more past paper links
 - Adding features
 - Enhancing progress analytics
-- Mobile responsiveness
+- Improving storage mechanics
 
 ---
 

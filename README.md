@@ -4,14 +4,6 @@
 
 A web-based exam preparation platform for actuarial students, providing timed practice exams, progress tracking, and comprehensive past paper coverage.
 
-## Features
-
-- 🔒 **Secure Authentication** - Firebase-powered user accounts
-- ⏱️ **Timed Exams** - Realistic 3.5-hour exam simulations
-- 📊 **Progress Tracking** - Monitor attempts and performance across all subjects
-- 📄 **241 Past Papers** - Comprehensive coverage from 2018-2025
-- 💾 **IndexedDB Storage** - Offline-capable local file management
-- 🎯 **15 Subjects** - Associate to Fellowship level coverage
 
 ## Supported Subjects
 

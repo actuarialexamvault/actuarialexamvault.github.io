@@ -1,58 +1,66 @@
+// Forgot Password functionality
+import { firebaseAuth } from './firebase-auth.js';
+
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('forgotForm');
     const message = document.getElementById('message');
+    const emailInput = document.getElementById('email');
+    const submitButton = form?.querySelector('button[type="submit"]');
 
     if (!form) return;
 
+    // Email validation
     const emailIsValid = (value) => {
         if (!value) return false;
-        // Simple-but-safe email regex
         const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return re.test(value);
     };
 
-    async function sendResetEmail(email) {
-        // If Firebase Auth is present, use it. Otherwise fallback to simulated flow.
-        if (window.firebase && firebase.auth && typeof firebase.auth === 'function') {
-            try {
-                await firebase.auth().sendPasswordResetEmail(email);
-                return { success: true };
-            } catch (err) {
-                return { success: false, error: err.message || String(err) };
-            }
-        }
+    // Show message helper
+    const showMessage = (text, isError = false) => {
+        message.textContent = text;
+        message.style.color = isError ? '#dc3545' : 'inherit';
+    };
 
-        // Simulated network call
-        await new Promise(res => setTimeout(res, 800));
-        return { success: true };
-    }
+    // Disable/enable form
+    const setFormDisabled = (disabled) => {
+        if (emailInput) emailInput.disabled = disabled;
+        if (submitButton) {
+            submitButton.disabled = disabled;
+            submitButton.textContent = disabled ? 'Sending...' : 'Send reset link';
+        }
+    };
 
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
-        message.textContent = '';
-        const email = (form.email.value || '').trim();
+        showMessage('');
+        
+        const email = (emailInput?.value || '').trim();
 
         if (!emailIsValid(email)) {
-            message.textContent = 'Please enter a valid email address.';
+            showMessage('Please enter a valid email address.', true);
             return;
         }
 
         try {
-            message.textContent = 'Sending reset link...';
-            const result = await sendResetEmail(email);
+            setFormDisabled(true);
+            showMessage('Sending reset link...');
+            
+            const result = await firebaseAuth.sendPasswordResetEmail(email);
 
             if (result.success) {
-                message.textContent = 'If an account with that email exists, a reset link has been sent.';
+                showMessage('If an account with that email exists, a password reset link has been sent. Please check your email.');
                 form.reset();
-                console.log('Forgot password requested for:', email);
+                console.log('Password reset email sent to:', email);
             } else {
                 console.error('Password reset error:', result.error);
-                // Provide a friendly message but keep it generic for security
-                message.textContent = 'Unable to send reset link. Please try again later.';
+                showMessage(result.error || 'Unable to send reset link. Please try again later.', true);
             }
         } catch (err) {
-            console.error(err);
-            message.textContent = 'An error occurred. Please try again later.';
+            console.error('Unexpected error:', err);
+            showMessage('An error occurred. Please try again later.', true);
+        } finally {
+            setFormDisabled(false);
         }
     });
 });

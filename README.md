@@ -4,15 +4,6 @@
 
 A web-based exam preparation platform for actuarial students, providing timed practice exams, progress tracking, and comprehensive past paper coverage.
 
-## Features
-
-- 🔒 **Secure Authentication** - Firebase-powered user accounts
-- ⏱️ **Timed Exams** - Realistic 3.5-hour exam simulations
-- 📊 **Progress Tracking** - Monitor attempts and performance across all subjects
-- 📄 **241 Past Papers** - Comprehensive coverage from 2018-2025
-- 💾 **IndexedDB Storage** - Offline-capable local file management
-- 🎯 **15 Subjects** - Associate to Fellowship level coverage
-
 ## Supported Subjects
 
 **Associate Level:**
@@ -37,13 +28,6 @@ A web-based exam preparation platform for actuarial students, providing timed pr
 - **Backend**: Firebase (Auth, Firestore)
 - **Storage**: IndexedDB for local files
 - **Styling**: Custom CSS with gradients and animations
-
-## Getting Started
-
-1. Clone the repository
-2. Set up Firebase project and add your config to `js/firebase-config.js`
-3. Open `index.html` in a web browser or serve with Live Server
-4. Sign up and start practicing!
 
 ## Project Structure
 

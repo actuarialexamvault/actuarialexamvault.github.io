@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grade Question - Actuarial Exam Vault</title>
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <script>
+        // Apply theme immediately to prevent flash
+        (function() {
+            const theme = localStorage.getItem('userTheme') || 'light';
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
     <link rel="stylesheet" href="../css/question-grading-styles.css">
 </head>
 <body>

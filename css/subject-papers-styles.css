@@ -4,22 +4,54 @@
     box-sizing: border-box;
 }
 
+:root {
+    --bg-primary: #f5f7fa;
+    --bg-secondary: #ffffff;
+    --bg-card: #ffffff;
+    --text-primary: #1a1a1a;
+    --text-secondary: #666666;
+    --text-muted: #999999;
+    --border-color: #e0e0e0;
+    --shadow-sm: rgba(0, 0, 0, 0.05);
+    --shadow-md: rgba(0, 0, 0, 0.08);
+    --shadow-lg: rgba(0, 0, 0, 0.1);
+    --gradient-primary: linear-gradient(135deg, #00d4aa 0%, #00a3ff 100%);
+    --card-hover-shadow: rgba(0, 163, 255, 0.15);
+}
+
+[data-theme="dark"] {
+    --bg-primary: #0f172a;
+    --bg-secondary: #1e293b;
+    --bg-card: #334155;
+    --text-primary: #f1f5f9;
+    --text-secondary: #cbd5e1;
+    --text-muted: #cbd5e1;
+    --border-color: #475569;
+    --shadow-sm: rgba(0, 0, 0, 0.3);
+    --shadow-md: rgba(0, 0, 0, 0.4);
+    --shadow-lg: rgba(0, 0, 0, 0.5);
+    --gradient-primary: linear-gradient(135deg, #00d4aa 0%, #00a3ff 100%);
+    --card-hover-shadow: rgba(0, 163, 255, 0.3);
+}
+
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background: #e8ecf0;
+    background: var(--bg-primary);
     min-height: 100vh;
+    transition: background 0.3s ease;
 }
 
 /* Navigation */
 .navbar {
-    background: white;
+    background: var(--bg-secondary);
     padding: 1rem 2rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 8px var(--shadow-sm);
     position: sticky;
     top: 0;
     z-index: 100;
+    transition: all 0.3s ease;
 }
 
 .nav-container {
@@ -59,7 +91,7 @@ body {
 }
 
 .nav-link {
-    color: #666;
+    color: var(--text-secondary);
     text-decoration: none;
     font-size: 0.875rem;
     font-weight: 600;
@@ -106,10 +138,10 @@ body {
 }
 
 .sidebar-section {
-    background: white;
+    background: var(--bg-card);
     border-radius: 12px;
     padding: 2rem 1.5rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 2px 8px var(--shadow-md);
     text-align: center;
     transition: all 0.3s ease;
     cursor: pointer;
@@ -117,25 +149,27 @@ body {
 
 .sidebar-section:hover {
     transform: translateY(-4px);
-    box-shadow: 0 8px 20px rgba(0, 163, 255, 0.15);
+    box-shadow: 0 8px 20px var(--card-hover-shadow);
 }
 
 .sidebar-icon {
     width: 60px;
     height: 60px;
-    background: #f0f0f0;
+    background: var(--bg-primary);
     border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 0 auto 1rem;
+    transition: background 0.3s ease;
 }
 
 .sidebar-icon svg {
     width: 32px;
     height: 32px;
-    color: #666;
-    stroke: #666;
+    color: var(--text-secondary);
+    stroke: var(--text-secondary);
+    transition: color 0.3s ease;
 }
 
 .sidebar-icon.lightbulb {
@@ -159,21 +193,24 @@ body {
 .sidebar-section h3 {
     font-size: 1.125rem;
     font-weight: 700;
-    color: #1a1a1a;
+    color: var(--text-primary);
     margin-bottom: 0.5rem;
+    transition: color 0.3s ease;
 }
 
 .sidebar-section p {
     font-size: 0.875rem;
-    color: #666;
+    color: var(--text-secondary);
+    transition: color 0.3s ease;
 }
 
 /* Main Content */
 .main-content {
-    background: white;
+    background: var(--bg-card);
     border-radius: 12px;
     padding: 3rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 2px 8px var(--shadow-md);
+    transition: all 0.3s ease;
 }
 
 .content-header {
@@ -184,16 +221,18 @@ body {
 .content-header h1 {
     font-size: 1.75rem;
     font-weight: 700;
-    color: #1a1a1a;
+    color: var(--text-primary);
     margin-bottom: 1rem;
+    transition: color 0.3s ease;
 }
 
 .content-subtitle {
     font-size: 0.95rem;
-    color: #666;
+    color: var(--text-secondary);
     line-height: 1.6;
     max-width: 900px;
     margin: 0 auto;
+    transition: color 0.3s ease;
 }
 
 /* Papers Section */
@@ -229,7 +268,7 @@ body {
 .section-header h2 {
     font-size: 1.25rem;
     font-weight: 700;
-    color: #1a1a1a;
+    color: var(--text-primary);
     transition: color 0.3s ease;
 }
 
@@ -250,15 +289,15 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 1rem 1.5rem;
-    background: #f9fafb;
-    border: 1px solid #e5e7eb;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
     border-radius: 8px;
     transition: all 0.3s ease;
     cursor: pointer;
 }
 
 .paper-item:hover {
-    background: #f0f8ff;
+    background: var(--bg-secondary);
     border-color: #00a3ff;
     transform: translateX(4px);
 }
@@ -301,13 +340,15 @@ body {
 
 .paper-title {
     font-size: 0.875rem;
-    color: #1a1a1a;
+    color: var(--text-primary);
     font-weight: 500;
+    transition: color 0.3s ease;
 }
 
 .paper-subtitle {
     font-size: 0.75rem;
-    color: #999;
+    color: var(--text-muted);
+    transition: color 0.3s ease;
 }
 
 .paper-action {
@@ -329,7 +370,8 @@ body {
 .action-icon {
     width: 20px;
     height: 20px;
-    color: #666;
+    color: var(--text-secondary);
+    transition: color 0.3s ease;
 }
 
 /* Back Button */
@@ -339,18 +381,18 @@ body {
     align-items: center;
     gap: 0.5rem;
     padding: 0.875rem 1.5rem;
-    background: white;
-    border: 2px solid #e5e7eb;
+    background: var(--bg-card);
+    border: 2px solid var(--border-color);
     border-radius: 8px;
     font-size: 0.95rem;
     font-weight: 600;
-    color: #666;
+    color: var(--text-secondary);
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
 .btn-back-bottom:hover {
-    background: #f9fafb;
+    background: var(--bg-primary);
     border-color: #00a3ff;
     color: #00a3ff;
 }

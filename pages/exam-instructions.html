@@ -6,6 +6,15 @@
     <title>Exam Instructions - Actuarial Exam Vault</title>
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
     <link rel="stylesheet" href="../css/exam-instructions-styles.css">
+    <!-- Load theme immediately to prevent flash -->
+    <script>
+        (function() {
+            const theme = localStorage.getItem('userTheme');
+            if (theme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        })();
+    </script>
 </head>
 <body>
     <nav class="navbar">

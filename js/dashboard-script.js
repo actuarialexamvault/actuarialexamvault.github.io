@@ -2,6 +2,7 @@
 import { firebaseAuth } from './firebase-auth.js';
 import { firestoreData } from './firebase-data.js';
 import { initActivityMonitor } from './activity-monitor.js';
+import { themeManager } from './theme-manager.js';
 
 const userName = document.getElementById('userName');
 const userNameTitle = document.getElementById('userNameTitle');
@@ -9,6 +10,18 @@ const signOutBtn = document.getElementById('signOutBtn');
 const continueSection = document.getElementById('continueSection');
 const continueCard = document.getElementById('continueCard');
 const continueSubject = document.getElementById('continueSubject');
+const themeToggle = document.getElementById('themeToggle');
+
+// Theme management
+function initTheme(user) {
+    // Load theme preference from Firebase
+    themeManager.init();
+    
+    // Add theme toggle event listener
+    themeToggle.addEventListener('click', () => {
+        themeManager.toggleTheme(user);
+    });
+}
 
 // Check if user is logged in and load profile
 async function checkAuthAndLoadProfile() {
@@ -23,10 +36,12 @@ async function checkAuthAndLoadProfile() {
                 window.location.href = 'signin.html';
             } else {
                 await loadUserProfile(retryUser);
+                initTheme(retryUser);
             }
         }, 1000);
     } else {
         await loadUserProfile(user);
+        initTheme(user);
     }
 }
 

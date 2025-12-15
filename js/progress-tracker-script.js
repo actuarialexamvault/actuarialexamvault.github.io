@@ -2,11 +2,15 @@
 import { firebaseAuth } from './firebase-auth.js';
 import { firestoreData } from './firebase-data.js';
 import { initActivityMonitor } from './activity-monitor.js';
+import { themeManager } from './theme-manager.js';
 import { hasPDFLink } from './pdf-links.js';
 import { indexedDBStorage } from './indexeddb-storage.js';
 
 // Initialize activity monitor
 initActivityMonitor();
+
+// Initialize theme
+themeManager.init();
 
 const userName = document.getElementById('userName');
 const signOutBtn = document.getElementById('signOutBtn');
@@ -418,6 +422,14 @@ function createPerformanceLineGraph(subject, allPapers, submissions, gradings) {
     const labels = paperPerformances.map(p => p.label);
     const data = paperPerformances.map(p => p.performance);
     
+    // Calculate dynamic y-axis range
+    const minValue = Math.min(...data);
+    const maxValue = Math.max(...data);
+    const range = maxValue - minValue;
+    const padding = Math.max(5, range * 0.5); // 5% padding or minimum 10 points
+    const yMin = Math.max(0, Math.floor(minValue - padding));
+    const yMax = Math.min(100, Math.ceil(maxValue + padding));
+    
     // Create the chart
     const ctx = performanceLineGraph.getContext('2d');
     lineChartInstance = new Chart(ctx, {
@@ -431,17 +443,17 @@ function createPerformanceLineGraph(subject, allPapers, submissions, gradings) {
                 backgroundColor: 'rgba(75, 192, 192, 0.2)',
                 tension: 0.3,
                 fill: false,
-                pointRadius: 6,
-                pointHoverRadius: 8,
+                pointRadius: 20,
+                pointHoverRadius: 22,
                 pointBackgroundColor: 'rgb(75, 192, 192)',
-                pointBorderColor: '#fff',
-                pointBorderWidth: 2,
+                pointBorderColor: 'white',
+                pointBorderWidth: 3,
                 datalabels: {
                     display: true,
-                    align: 'top',
-                    anchor: 'end',
+                    align: 'center',
+                    anchor: 'center',
                     formatter: (value) => `${value}%`,
-                    color: '#1a1a1a',
+                    color: 'white',
                     font: {
                         weight: 'bold',
                         size: 11
@@ -452,6 +464,12 @@ function createPerformanceLineGraph(subject, allPapers, submissions, gradings) {
         options: {
             responsive: true,
             maintainAspectRatio: false,
+            layout: {
+                padding: {
+                    top: 20,
+                    bottom: 10
+                }
+            },
             plugins: {
                 legend: {
                     display: false
@@ -461,22 +479,22 @@ function createPerformanceLineGraph(subject, allPapers, submissions, gradings) {
                 },
                 datalabels: {
                     display: true,
-                    align: 'top',
-                    anchor: 'end',
-                    offset: 4,
+                    align: 'center',
+                    anchor: 'center',
+                    offset: 0,
                     formatter: (value) => `${value}%`,
-                    color: '#1a1a1a',
+                    color: '#ffffff',
                     font: {
                         weight: 'bold',
-                        size: 11
+                        size: 12
                     }
                 }
             },
             scales: {
                 y: {
                     display: false,
-                    beginAtZero: true,
-                    max: 100
+                    min: yMin,
+                    max: yMax
                 },
                 x: {
                     offset: true,
@@ -508,7 +526,7 @@ function loadPaperLists(subject, subjectTitle, allPapers, submissions, gradings 
     notAttemptedList.innerHTML = '';
     
     if (allPapers.length === 0) {
-        notAttemptedList.innerHTML = '<p style="color: #666; padding: 1rem;">No papers available</p>';
+        notAttemptedList.innerHTML = '<p class="empty-state-message">No papers available</p>';
         return;
     }
     
@@ -531,7 +549,7 @@ function loadPaperLists(subject, subjectTitle, allPapers, submissions, gradings 
     
     // Load attempted papers
     if (attemptedPapers.length === 0) {
-        attemptedList.innerHTML = '<p style="color: #666; padding: 1rem;">No papers attempted yet</p>';
+        attemptedList.innerHTML = '<p class="empty-state-message">No papers attempted yet</p>';
     } else {
         attemptedPapers.forEach(paper => {
             const submissionDetails = getSubmissionDetails(submissions, subject, paper.year, paper.session, paper.paper);
@@ -559,7 +577,7 @@ function loadPaperLists(subject, subjectTitle, allPapers, submissions, gradings 
     
     // Load not attempted papers
     if (notAttemptedPapers.length === 0) {
-        notAttemptedList.innerHTML = '<p style="color: #666; padding: 1rem;">All papers have been attempted!</p>';
+        notAttemptedList.innerHTML = '<p class="empty-state-message">All papers have been attempted!</p>';
     } else {
         notAttemptedPapers.forEach(paper => {
             const paperItem = createPaperItem(paper, subject, subjectTitle, false, null);
@@ -595,11 +613,11 @@ function createPaperItem(paper, subject, subjectTitle, isAttempted, submissionDe
             scoreHTML = `<div class="paper-score-badge ${scoreClass}">Grade: ${percentage}%</div>`;
         } else {
             // Paper attempted but not graded yet
-            scoreHTML = `<div class="paper-score-badge" style="background-color: #f3f4f6; color: #6b7280;">Not graded</div>`;
+            scoreHTML = `<div class="paper-score-badge not-graded">Not graded</div>`;
         }
     } else if (isAttempted) {
         // Paper attempted but no grading data available
-        scoreHTML = `<div class="paper-score-badge" style="background-color: #f3f4f6; color: #6b7280;">Not graded</div>`;
+        scoreHTML = `<div class="paper-score-badge not-graded">Not graded</div>`;
     }
     
     // Check PDF availability for not attempted papers

@@ -55,13 +55,9 @@ Actuarial-Exam-Book-main/
 │   ├── help-support.html               # Help & Support with contact form
 │   └── test-download.html              # Download test page
 │
-├── templates/                          # Document templates
-│   └── Exam practice template.docx     # Exam template for users
-│
-└── resources/                          # Past papers and resources
-    ├── exam_technique_guide.md
-    ├── markdown_papers/                # Converted past papers in markdown
-    └── pdfs/                           # PDF processing scripts
+└── templates/                          # Document templates
+    └── Exam practice template.docx     # Exam template for users
+
 
 ```
 

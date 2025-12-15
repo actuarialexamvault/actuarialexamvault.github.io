@@ -6,6 +6,15 @@
     <title>Dashboard - Actuarial Exam Vault</title>
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
     <link rel="stylesheet" href="../css/dashboard-styles.css">
+    <!-- Load theme immediately to prevent flash -->
+    <script>
+        (function() {
+            const theme = localStorage.getItem('userTheme');
+            if (theme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        })();
+    </script>
 </head>
 <body>
     <nav class="navbar">
@@ -18,10 +27,15 @@
                 <span class="logo-text">Actuarial Exam Vault</span>
             </a>
             <div class="nav-right">
-                <div class="status-badge online">
-                    <span class="status-dot"></span>
-                    ONLINE
-                </div>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <svg class="theme-icon sun-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2"/>
+                        <path d="M12 1V3M12 21V23M4.22 4.22L5.64 5.64M18.36 18.36L19.78 19.78M1 12H3M21 12H23M4.22 19.78L5.64 18.36M18.36 5.64L19.78 4.22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                    <svg class="theme-icon moon-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
                 <div class="user-info">
                     <span class="user-name" id="userName"></span>
                     <button class="btn-signout" id="signOutBtn">Sign Out</button>

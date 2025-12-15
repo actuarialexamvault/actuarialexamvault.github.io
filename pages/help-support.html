@@ -6,6 +6,15 @@
     <title>Help & Support - Actuarial Exam Vault</title>
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
     <link rel="stylesheet" href="../css/help-support-styles.css">
+    <!-- Load theme immediately to prevent flash -->
+    <script>
+        (function() {
+            const theme = localStorage.getItem('userTheme');
+            if (theme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        })();
+    </script>
 </head>
 <body>
     <!-- Navigation -->
@@ -35,10 +44,22 @@
             <p class="page-subtitle">Learn about the platform and get in touch</p>
         </div>
 
+        <!-- Q&A Link Section -->
+        <section class="section qna-link-section">
+            <div class="section-content">
+                <div class="qna-callout">
+                    <h3 class="callout-title">Have Questions?</h3>
+                    <p class="callout-text">Check out our comprehensive Q&A page for answers to common questions about using the platform.</p>
+                    <a href="qna.html" class="btn-qna">View Q&A</a>
+                </div>
+            </div>
+        </section>
+
         <!-- About Section -->
         <section class="section about-section">
 
             <div class="section-content">
+                <h3 class="callout-title">About</h3>
                 <p class="about-text">
                     <strong>Actuarial Exam Vault</strong> is a comprehensive platform designed to help actuarial students prepare for and track their progress through professional actuarial examinations.
                 </p>
@@ -90,17 +111,6 @@
                         tracking are key to actuarial exam success. Actuarial Exam Vault provides the tools you need to 
                         practice under exam conditions, review your practice attempts, and track your progress—all in one place.
                     </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Q&A Link Section -->
-        <section class="section qna-link-section">
-            <div class="section-content">
-                <div class="qna-callout">
-                    <h3 class="callout-title">Have Questions?</h3>
-                    <p class="callout-text">Check out our comprehensive Q&A page for answers to common questions about using the platform.</p>
-                    <a href="qna.html" class="btn-qna">View Q&A</a>
                 </div>
             </div>
         </section>

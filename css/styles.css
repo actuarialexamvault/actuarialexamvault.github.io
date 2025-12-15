@@ -75,10 +75,27 @@ body {
 .logo-text {
     font-size: 1.25rem;
     font-weight: 700;
+    display: inline-flex;
+    gap: 0.25rem;
+    align-items: center;
+}
+
+/* Two-tone logo: 'Exam' + 'Vault' */
+.logo-exam {
+    color: var(--text-primary);
+    transition: color 0.2s ease;
+}
+
+.logo-vault {
     background: linear-gradient(135deg, #00d4aa 0%, #00a3ff 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+}
+
+/* Dark theme: swap exam color to light for contrast */
+[data-theme="dark"] .logo-exam {
+    color: var(--hero-text);
 }
 
 .nav-right {

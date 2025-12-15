@@ -1,4 +1,4 @@
-# Actuarial Exam Vault
+# ExamVault
 
 **Vault Over The Hurdles. Unlock Your Future.** 🔐
 
@@ -69,4 +69,4 @@ Manual testing:
 
 If you need this feature adapted (custom templates, rate limiting, server-side logging), that can be added in a follow-up.
 
-*Built with ❤️ for actuarial students | December 2025*
+*Built with ❤️ for students | December 2025*

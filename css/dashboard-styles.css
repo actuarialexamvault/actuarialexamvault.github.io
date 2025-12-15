@@ -463,13 +463,14 @@ body {
 
 /* Footer */
 .footer {
-    background: white;
+    background: var(--bg-card);
     padding: 2rem;
     text-align: center;
-    color: #666;
+    color: var(--text-secondary);
     font-size: 0.875rem;
-    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05);
+    box-shadow: var(--shadow-md);
     margin-top: auto;
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* Responsive Design */

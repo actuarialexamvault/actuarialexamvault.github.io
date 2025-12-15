@@ -8,8 +8,14 @@
     <script>
         // Apply theme immediately to prevent flash
         (function() {
-            const theme = localStorage.getItem('userTheme') || 'light';
+            const theme = localStorage.getItem('theme') || localStorage.getItem('userTheme') || 'light';
             document.documentElement.setAttribute('data-theme', theme);
+            // Set initial logo based on theme
+            window.addEventListener('DOMContentLoaded', function() {
+                const logoImages = document.querySelectorAll('.logo-icon');
+                const logoSrc = theme === 'dark' ? '../favicon.svg' : '../favicon-light.svg';
+                logoImages.forEach(img => img.src = logoSrc);
+            });
         })();
     </script>
     <link rel="stylesheet" href="../css/question-grading-styles.css">
@@ -18,7 +24,7 @@
     <nav class="navbar">
         <div class="nav-container">
             <a href="dashboard.html" class="logo">
-                <img src="../favicon.svg" alt="Actuarial Exam Vault Logo" class="logo-icon">
+                <img src="../favicon-light.svg" alt="Actuarial Exam Vault Logo" class="logo-icon">
                 <span class="logo-text">Actuarial Exam Vault</span>
             </a>
             <div class="nav-links">

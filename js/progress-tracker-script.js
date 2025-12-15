@@ -63,8 +63,19 @@ async function loadUserProfile(user) {
     // Get user profile from Firestore
     const result = await firestoreData.getUserProfile(user.uid);
     
-    if (result.success && result.data.fullname) {
-        userName.textContent = result.data.fullname;
+    if (result.success && result.data) {
+        // Display only first name (prefer 'name' field, fallback to splitting 'fullname')
+        let displayName;
+        if (result.data.name) {
+            displayName = result.data.name;
+        } else if (result.data.fullname) {
+            // For legacy users, extract first name from fullname
+            displayName = result.data.fullname.split(' ')[0];
+        } else {
+            // Final fallback to email
+            displayName = user.email;
+        }
+        userName.textContent = displayName;
     } else {
         userName.textContent = user.email;
     }

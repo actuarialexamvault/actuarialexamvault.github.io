@@ -6,13 +6,25 @@
     <title>Q&A - Actuarial Exam Vault</title>
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
     <link rel="stylesheet" href="../css/help-support-styles.css">
+    <script>
+        // Set logo based on theme
+        window.addEventListener('DOMContentLoaded', function() {
+            const theme = localStorage.getItem('theme') || localStorage.getItem('userTheme') || 'light';
+            if (theme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+            const logoImages = document.querySelectorAll('.logo-icon');
+            const logoSrc = theme === 'dark' ? '../favicon.svg' : '../favicon-light.svg';
+            logoImages.forEach(img => img.src = logoSrc);
+        });
+    </script>
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
             <a href="dashboard.html" class="logo">
-                <img src="../favicon.svg" alt="Actuarial Exam Vault Logo" class="logo-icon">
+                <img src="../favicon-light.svg" alt="Actuarial Exam Vault Logo" class="logo-icon">
                 <span class="logo-text">Actuarial Exam Vault</span>
             </a>
             <div class="nav-links">

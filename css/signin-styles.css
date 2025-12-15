@@ -4,19 +4,49 @@
     box-sizing: border-box;
 }
 
+:root {
+    /* Light Theme Colors */
+    --bg-primary: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
+    --bg-secondary: #ffffff;
+    --bg-card: #ffffff;
+    --text-primary: #1a1a1a;
+    --text-secondary: #666666;
+    --text-muted: #999999;
+    --border-color: #e0e0e0;
+    --shadow-sm: rgba(0, 0, 0, 0.05);
+    --shadow-md: rgba(0, 0, 0, 0.08);
+    --input-bg: #ffffff;
+    --input-border: #e0e0e0;
+}
+
+[data-theme="dark"] {
+    /* Dark Theme Colors */
+    --bg-primary: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    --bg-secondary: #1e293b;
+    --bg-card: #334155;
+    --text-primary: #f1f5f9;
+    --text-secondary: #cbd5e1;
+    --text-muted: #cbd5e1;
+    --border-color: #475569;
+    --shadow-sm: rgba(0, 0, 0, 0.3);
+    --shadow-md: rgba(0, 0, 0, 0.4);
+    --input-bg: #1e293b;
+    --input-border: #475569;
+}
+
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
+    background: var(--bg-primary);
     min-height: 100vh;
 }
 
 /* Navigation */
 .navbar {
-    background: white;
+    background: var(--bg-secondary);
     padding: 1rem 2rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 8px var(--shadow-sm);
 }
 
 .nav-container {
@@ -29,11 +59,12 @@ body {
     align-items: center;
     gap: 0.75rem;
     text-decoration: none;
+    color: var(--text-primary);
 }
 
 .logo-icon {
-    width: 32px;
-    height: 32px;
+    width: 40px;
+    height: 40px;
     color: #00d4aa;
 }
 
@@ -56,9 +87,9 @@ body {
 }
 
 .signin-card {
-    background: white;
+    background: var(--bg-card);
     border-radius: 12px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 40px var(--shadow-md);
     width: 100%;
     max-width: 440px;
     overflow: hidden;
@@ -83,7 +114,7 @@ body {
 
 .signin-subtitle {
     text-align: center;
-    color: #666;
+    color: var(--text-secondary);
     font-size: 0.95rem;
     margin-bottom: 2.5rem;
 }
@@ -103,7 +134,7 @@ body {
 
 .form-label {
     font-size: 0.875rem;
-    color: #333;
+    color: var(--text-primary);
     font-weight: 500;
     display: none; /* Hidden but accessible */
 }
@@ -118,11 +149,13 @@ body {
     width: 100%;
     padding: 0.875rem 1rem;
     padding-right: 3rem;
-    border: 1px solid #ddd;
+    border: 1px solid var(--input-border);
     border-radius: 8px;
     font-size: 1rem;
     transition: all 0.3s ease;
     outline: none;
+    background: var(--input-bg);
+    color: var(--text-primary);
 }
 
 .form-input:focus {
@@ -131,7 +164,7 @@ body {
 }
 
 .form-input::placeholder {
-    color: #999;
+    color: var(--text-muted);
 }
 
 .input-icon {
@@ -139,7 +172,7 @@ body {
     right: 1rem;
     width: 20px;
     height: 20px;
-    color: #999;
+    color: var(--text-muted);
     pointer-events: none;
 }
 
@@ -249,6 +282,36 @@ body {
 .btn-create-account:hover {
     background: #f0f8ff;
     transform: translateY(-2px);
+}
+
+.btn-google {
+    width: 100%;
+    padding: 0.875rem 1.5rem;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px var(--shadow-sm);
+}
+
+.btn-google:hover {
+    background: var(--bg-card);
+    border-color: #00a3ff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--shadow-md);
+}
+
+.btn-google svg {
+    width: 20px;
+    height: 20px;
 }
 
 .error-message {

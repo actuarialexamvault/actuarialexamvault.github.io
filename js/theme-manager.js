@@ -18,8 +18,8 @@ class ThemeManager {
         
         this.isLoading = true;
         
-        // First, try to load from localStorage for instant application
-        const cachedTheme = localStorage.getItem('userTheme');
+        // First, try to load from localStorage for instant application (check both keys)
+        const cachedTheme = localStorage.getItem('theme') || localStorage.getItem('userTheme');
         if (cachedTheme) {
             this.setTheme(cachedTheme);
         }
@@ -69,8 +69,8 @@ class ThemeManager {
             if (result.success && result.data.theme) {
                 this.setTheme(result.data.theme);
             } else {
-                // If no theme preference exists in Firebase, check localStorage
-                const cachedTheme = localStorage.getItem('userTheme');
+                // If no theme preference exists in Firebase, check localStorage (both keys)
+                const cachedTheme = localStorage.getItem('theme') || localStorage.getItem('userTheme');
                 if (cachedTheme) {
                     this.setTheme(cachedTheme);
                 } else {
@@ -80,8 +80,8 @@ class ThemeManager {
             }
         } catch (error) {
             console.error('Error loading theme preference:', error);
-            // On error, try to use cached theme from localStorage
-            const cachedTheme = localStorage.getItem('userTheme');
+            // On error, try to use cached theme from localStorage (check both keys)
+            const cachedTheme = localStorage.getItem('theme') || localStorage.getItem('userTheme');
             if (cachedTheme) {
                 this.setTheme(cachedTheme);
             } else if (!this.currentTheme || this.currentTheme === 'light') {
@@ -106,10 +106,26 @@ class ThemeManager {
             document.documentElement.removeAttribute('data-theme');
         }
         
-        // Save to localStorage for instant load on next page
+        // Update logo based on theme
+        this.updateLogos(theme);
+        
+        // Save to localStorage for instant load on next page (use both keys for compatibility)
         localStorage.setItem('userTheme', theme);
+        localStorage.setItem('theme', theme);
         
         console.log(`Theme set to: ${theme}`);
+    }
+
+    // Update all logo images based on theme
+    updateLogos(theme) {
+        const logoImages = document.querySelectorAll('.logo-icon');
+        const logoSrc = theme === 'dark' ? 'favicon.svg' : 'favicon-light.svg';
+        
+        logoImages.forEach(img => {
+            // Check if we're in a subdirectory (pages folder) by looking at current page URL
+            const isInSubdirectory = window.location.pathname.includes('/pages/');
+            img.src = isInSubdirectory ? `../${logoSrc}` : logoSrc;
+        });
     }
 
     // Get current theme

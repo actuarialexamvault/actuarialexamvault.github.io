@@ -3,11 +3,13 @@ import { firebaseAuth } from './firebase-auth.js';
 import { firestoreData } from './firebase-data.js';
 
 const signupForm = document.getElementById('signupForm');
-const fullnameInput = document.getElementById('fullname');
+const nameInput = document.getElementById('name');
+const surnameInput = document.getElementById('surname');
 const emailInput = document.getElementById('email');
 const passwordInput = document.getElementById('password');
 const confirmPasswordInput = document.getElementById('confirmPassword');
 const signupButton = document.querySelector('.btn-signin');
+const googleSignupBtn = document.getElementById('googleSignupBtn');
 const togglePasswordButton = document.getElementById('togglePassword');
 const toggleConfirmPasswordButton = document.getElementById('toggleConfirmPassword');
 
@@ -31,7 +33,8 @@ function validateForm() {
     confirmPasswordError.textContent = '';
 
     // Check all fields are filled
-    const fullnameValid = fullnameInput.value.trim() !== '';
+    const nameValid = nameInput.value.trim() !== '';
+    const surnameValid = surnameInput.value.trim() !== '';
     const emailValid = emailInput.value.trim() !== '' && emailInput.validity.valid;
     const passwordValid = passwordInput.value.trim() !== '';
     const confirmPasswordValid = confirmPasswordInput.value.trim() !== '';
@@ -49,7 +52,7 @@ function validateForm() {
     }
 
     // Enable/disable button
-    if (fullnameValid && emailValid && passwordValid && confirmPasswordValid && isValid) {
+    if (nameValid && surnameValid && emailValid && passwordValid && confirmPasswordValid && isValid) {
         signupButton.disabled = false;
     } else {
         signupButton.disabled = true;
@@ -59,7 +62,8 @@ function validateForm() {
 }
 
 // Listen for input changes
-fullnameInput.addEventListener('input', validateForm);
+nameInput.addEventListener('input', validateForm);
+surnameInput.addEventListener('input', validateForm);
 emailInput.addEventListener('input', validateForm);
 passwordInput.addEventListener('input', validateForm);
 confirmPasswordInput.addEventListener('input', validateForm);
@@ -90,7 +94,9 @@ signupForm.addEventListener('submit', async (e) => {
         return;
     }
 
-    const fullname = fullnameInput.value.trim();
+    const name = nameInput.value.trim();
+    const surname = surnameInput.value.trim();
+    const fullname = `${name} ${surname}`;
     const email = emailInput.value.trim();
     const password = passwordInput.value;
 
@@ -105,6 +111,8 @@ signupForm.addEventListener('submit', async (e) => {
     if (result.success) {
         // Save user profile to Firestore
         await firestoreData.saveUserProfile(result.user.uid, {
+            name: name,
+            surname: surname,
             fullname: fullname,
             email: email,
             createdAt: new Date().toISOString()
@@ -130,3 +138,53 @@ function showSuccessModal() {
         window.location.href = 'signin.html';
     });
 }
+
+// Google Sign Up Handler
+googleSignupBtn.addEventListener('click', async () => {
+    // Show loading state
+    const originalButtonContent = googleSignupBtn.innerHTML;
+    googleSignupBtn.innerHTML = '<span>Signing up with Google...</span>';
+    googleSignupBtn.disabled = true;
+
+    try {
+        const result = await firebaseAuth.signInWithGoogle();
+
+        if (result.success) {
+            // Split displayName into name and surname
+            const displayName = result.user.displayName || 'User';
+            const nameParts = displayName.trim().split(' ');
+            const name = nameParts[0] || displayName;
+            const surname = nameParts.length > 1 ? nameParts.slice(1).join(' ') : '';
+
+            // Save/update user profile to Firestore
+            const userProfile = {
+                name: name,
+                surname: surname,
+                fullname: displayName,
+                email: result.user.email,
+                photoURL: result.user.photoURL || null,
+                lastLogin: new Date().toISOString()
+            };
+
+            // Add createdAt only for new users
+            if (result.isNewUser) {
+                userProfile.createdAt = new Date().toISOString();
+            }
+
+            await firestoreData.saveUserProfile(result.user.uid, userProfile);
+
+            // Redirect to dashboard
+            window.location.href = 'dashboard.html';
+        } else {
+            // Show error
+            alert(result.error);
+            googleSignupBtn.innerHTML = originalButtonContent;
+            googleSignupBtn.disabled = false;
+        }
+    } catch (error) {
+        console.error('Google signup error:', error);
+        alert('An error occurred during Google sign up. Please try again.');
+        googleSignupBtn.innerHTML = originalButtonContent;
+        googleSignupBtn.disabled = false;
+    }
+});

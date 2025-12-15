@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="gradLight" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00d4aa;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00a3ff;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Inner shapes as solid gradient fills -->
+  <path d="M50 10L10 30L50 50L90 30L50 10Z" fill="url(#gradLight)"/>
+  <path d="M10 65L50 85L90 65" fill="url(#gradLight)" opacity="0.85"/>
+  <path d="M10 47L50 67L90 47" fill="url(#gradLight)" opacity="0.90"/>
+</svg>

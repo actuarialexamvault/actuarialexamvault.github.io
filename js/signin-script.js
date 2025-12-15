@@ -1,10 +1,12 @@
 // Sign in form functionality with Firebase
 import { firebaseAuth } from './firebase-auth.js';
+import { firestoreData } from './firebase-data.js';
 
 const signinForm = document.getElementById('signinForm');
 const emailInput = document.getElementById('email');
 const passwordInput = document.getElementById('password');
 const signinButton = document.querySelector('.btn-signin');
+const googleSigninBtn = document.getElementById('googleSigninBtn');
 const togglePasswordButton = document.getElementById('togglePassword');
 
 // Check if user is already logged in
@@ -92,3 +94,46 @@ function showErrorModal(message) {
         }
     };
 }
+
+// Google Sign In Handler
+googleSigninBtn.addEventListener('click', async () => {
+    // Show loading state
+    const originalButtonContent = googleSigninBtn.innerHTML;
+    googleSigninBtn.innerHTML = '<span>Signing in with Google...</span>';
+    googleSigninBtn.disabled = true;
+
+    try {
+        const result = await firebaseAuth.signInWithGoogle();
+
+        if (result.success) {
+            // Split displayName into name and surname
+            const displayName = result.user.displayName || 'User';
+            const nameParts = displayName.trim().split(' ');
+            const name = nameParts[0] || displayName;
+            const surname = nameParts.length > 1 ? nameParts.slice(1).join(' ') : '';
+
+            // Update user profile with last login
+            await firestoreData.saveUserProfile(result.user.uid, {
+                name: name,
+                surname: surname,
+                fullname: displayName,
+                email: result.user.email,
+                photoURL: result.user.photoURL || null,
+                lastLogin: new Date().toISOString()
+            });
+
+            // Redirect to dashboard
+            window.location.href = 'dashboard.html';
+        } else {
+            // Show error
+            showErrorModal(result.error);
+            googleSigninBtn.innerHTML = originalButtonContent;
+            googleSigninBtn.disabled = false;
+        }
+    } catch (error) {
+        console.error('Google signin error:', error);
+        showErrorModal('An error occurred during Google sign in. Please try again.');
+        googleSigninBtn.innerHTML = originalButtonContent;
+        googleSigninBtn.disabled = false;
+    }
+});

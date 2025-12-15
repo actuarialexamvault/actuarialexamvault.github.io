@@ -9,6 +9,10 @@ const ctaButtons = document.querySelector('.cta-buttons');
 
 // Check authentication status
 function updateAuthStatus() {
+    // Check if required elements exist (they may not exist on simple landing page)
+    if (!statusBadge || !userInfo || !userName || !ctaButtons) {
+        return;
+    }
     const session = authManager.getSession();
     
     if (session) {
@@ -69,24 +73,28 @@ function updateSessionTimer() {
 }
 
 // Handle sign out
-signOutBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    authManager.signOut();
-    updateAuthStatus();
-    alert('You have been signed out successfully.');
-    
-    // Restore original CTA buttons
-    ctaButtons.innerHTML = `
-        <a href="signin.html" class="btn btn-primary">
-            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
-                <path d="M12 6V12L16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            </svg>
-            Sign In
-        </a>
-        <a href="signin.html" class="btn btn-secondary">Sign in with Email</a>
-    `;
-});
+if (signOutBtn) {
+    signOutBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        authManager.signOut();
+        updateAuthStatus();
+        alert('You have been signed out successfully.');
+        
+        // Restore original CTA buttons
+        if (ctaButtons) {
+            ctaButtons.innerHTML = `
+                <a href="signin.html" class="btn btn-primary">
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                        <path d="M12 6V12L16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                    Sign In
+                </a>
+                <a href="signin.html" class="btn btn-secondary">Sign in with Email</a>
+            `;
+        }
+    });
+}
 
 // Initialize on page load
 updateAuthStatus();

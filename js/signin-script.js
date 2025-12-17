@@ -69,11 +69,15 @@ signinForm.addEventListener('submit', async (e) => {
     }
 });
 
-// Handle forgot password link
-document.querySelector('.forgot-password').addEventListener('click', (e) => {
-    e.preventDefault();
-    showErrorModal('Password reset functionality: In a production app, this would send a password reset email.');
-});
+// Handle forgot password link - navigate to the dedicated forgot-password page
+const forgotLink = document.querySelector('.forgot-password');
+if (forgotLink) {
+    forgotLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        // Navigate to the forgot password page in the same directory
+        window.location.href = 'forgot-password.html';
+    });
+}
 
 // Error Modal Functions
 function showErrorModal(message) {

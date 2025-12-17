@@ -6,7 +6,8 @@ import {
     signInWithPopup,
     GoogleAuthProvider,
     signOut,
-    onAuthStateChanged 
+    onAuthStateChanged,
+    sendPasswordResetEmail
 } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
 
 class FirebaseAuthService {
@@ -120,6 +121,23 @@ class FirebaseAuthService {
         return auth.currentUser ? auth.currentUser.uid : null;
     }
 
+    // Send password reset email
+    async sendPasswordResetEmail(email) {
+        try {
+            await sendPasswordResetEmail(auth, email);
+            console.log('Password reset email sent to:', email);
+            return {
+                success: true
+            };
+        } catch (error) {
+            console.error('Password reset error:', error);
+            return {
+                success: false,
+                error: this.getErrorMessage(error.code)
+            };
+        }
+    }
+
     // Convert Firebase error codes to user-friendly messages
     getErrorMessage(errorCode) {
         const errorMessages = {
@@ -136,7 +154,9 @@ class FirebaseAuthService {
             'auth/wrong-password': 'Incorrect password',
             'auth/invalid-credential': 'Invalid email or password',
             'auth/too-many-requests': 'Too many failed attempts. Please try again later',
-            'auth/unauthorized-domain': 'This domain is not authorized. Add it to Firebase Console: Authentication → Settings → Authorized domains'
+            'auth/unauthorized-domain': 'This domain is not authorized. Add it to Firebase Console: Authentication → Settings → Authorized domains',
+            'auth/user-not-found': 'No account found with this email',
+            'auth/missing-email': 'Please enter an email address'
         };
         
         return errorMessages[errorCode] || 'An error occurred. Please try again.';

@@ -76,7 +76,7 @@ body {
     font-size: 1.25rem;
     font-weight: 700;
     display: inline-flex;
-    gap: 0.06rem; /* tightened so the two parts appear as one word */
+    gap: 0.02rem; /* tightened so the two parts appear as one word */
     align-items: center;
 }
 
@@ -85,7 +85,7 @@ body {
     color: var(--text-primary);
     transition: color 0.2s ease;
     display: inline-block;
-    margin-right: 0.06rem; /* slight negative space visually reduced by small margin */
+    margin-right: 0.02rem; /* slight negative space visually reduced by small margin */
     letter-spacing: normal;
 }
 

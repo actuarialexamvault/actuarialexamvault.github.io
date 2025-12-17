@@ -78,6 +78,41 @@ body {
 .logo-text {
     font-size: 1.25rem;
     font-weight: 700;
+    display: inline-flex;
+    gap: 0.02rem;
+    align-items: center;
+}
+
+/* Two-tone logo children (copied from global styles to ensure consistency) */
+.logo-text .logo-exam {
+    color: var(--text-primary);
+    transition: color 0.2s ease;
+    display: inline-block;
+    margin-right: 0.02rem;
+    letter-spacing: normal;
+}
+
+.logo-text .logo-vault {
+    background: linear-gradient(135deg, #00d4aa 0%, #00a3ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block;
+    letter-spacing: -0.01em;
+}
+
+/* Dark theme adjustments */
+[data-theme="dark"] .logo-text .logo-exam {
+    color: var(--text-primary);
+}
+
+/* Prevent link/active/visited styles from overriding the gradient */
+.logo a, .logo a:link, .logo a:visited, .logo a:active {
+    color: inherit;
+    text-decoration: none;
+}
+
+.logo a .logo-vault, .logo a:visited .logo-vault, .logo a:active .logo-vault {
     background: linear-gradient(135deg, #00d4aa 0%, #00a3ff 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;

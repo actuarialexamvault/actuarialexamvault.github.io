@@ -398,6 +398,52 @@ body {
     transition: all 0.3s ease;
 }
 
+/* Modal Styles (shared with signin page) */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.modal-content {
+    background: var(--bg-card);
+    border-radius: 16px;
+    max-width: 480px;
+    width: 90%;
+    box-shadow: 0 20px 60px var(--shadow-lg);
+    text-align: center;
+    animation: slideUp 0.3s ease;
+    position: relative;
+    transition: background 0.3s ease;
+    padding: 1.5rem;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.modal-header { padding: 1rem 0; border-bottom: 1px solid var(--border-color); }
+.modal-header h2 { margin: 0; color: var(--text-primary); }
+.modal-body { padding: 1rem 0; color: var(--text-secondary); }
+.modal-footer { display:flex; gap:0.5rem; justify-content:center; padding-top:0.5rem; }
+.modal-icon { width:48px; height:48px; color:var(--text-primary); margin-bottom:0.5rem; }
+.btn-primary { background: var(--gradient-primary); color: #fff; border: none; padding: 0.6rem 1rem; border-radius: 8px; cursor:pointer; }
+.btn-secondary { background: transparent; color: var(--text-primary); border: 1px solid var(--border-color); padding: 0.5rem 0.9rem; border-radius: 8px; cursor: pointer; }
+
 .dashboard-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 8px 20px var(--card-hover-shadow);

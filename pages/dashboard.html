@@ -115,6 +115,27 @@
     <p>&copy; Open Source under MIT License </p>
     </footer>
 
+    <!-- Sign out confirmation modal (reuses project modal styles) -->
+    <div id="signoutConfirmModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <svg class="modal-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                    <path d="M12 8V12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <circle cx="12" cy="16" r="1" fill="currentColor"/>
+                </svg>
+                <h2>Confirm</h2>
+            </div>
+            <div class="modal-body">
+                <p id="signoutConfirmMessage">Are you sure you want to sign out?</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-primary" id="signoutConfirmYes">Yes</button>
+                <button class="btn-secondary" id="signoutConfirmNo">No</button>
+            </div>
+        </div>
+    </div>
+
     <script type="module" src="../js/dashboard-script.js"></script>
 </body>
 </html>

@@ -114,14 +114,36 @@ async function loadContinueSection(user) {
 checkAuthAndLoadProfile();
 
 // Handle sign out
-signOutBtn.addEventListener('click', async (e) => {
-    e.preventDefault();
-    
-    if (confirm('Are you sure you want to sign out?')) {
+const signoutModal = document.getElementById('signoutConfirmModal');
+const signoutYes = signoutModal && signoutModal.querySelector('#signoutConfirmYes');
+const signoutNo = signoutModal && signoutModal.querySelector('#signoutConfirmNo');
+
+function showSignoutModal() {
+    if (!signoutModal) return;
+    signoutModal.style.display = 'flex';
+}
+
+function hideSignoutModal() {
+    if (!signoutModal) return;
+    signoutModal.style.display = 'none';
+}
+
+if (signOutBtn) {
+    signOutBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        showSignoutModal();
+    });
+}
+
+if (signoutNo) signoutNo.addEventListener('click', () => hideSignoutModal());
+if (signoutYes) signoutYes.addEventListener('click', async () => {
+    hideSignoutModal();
+    try {
         await firebaseAuth.signout();
-        alert('You have been signed out successfully.');
-        window.location.href = '../index.html';
+    } catch (err) {
+        console.error('Sign out failed:', err);
     }
+    window.location.href = '../index.html';
 });
 
 // Initialize activity monitor for auto-logout

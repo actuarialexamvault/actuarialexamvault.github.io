@@ -4,12 +4,18 @@ import { initActivityMonitor } from './activity-monitor.js';
 import { themeManager } from './theme-manager.js';
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
 import { auth } from './firebase-config.js';
+import { attachSignOutHandler } from './signout-modal.js';
 
 // Initialize activity monitor
 initActivityMonitor();
 
 // Initialize theme
 themeManager.init();
+
+console.log('[help-support] script loaded');
+
+// Attach sign-out handler early so it still works if later code throws
+attachSignOutHandler('#signOutBtn');
 
 let currentUser = null;
 
@@ -39,29 +45,24 @@ const messageTextarea = document.getElementById('message');
 const charCount = document.getElementById('charCount');
 const submitBtn = document.getElementById('submitBtn');
 
-// Character counter for message textarea
-messageTextarea.addEventListener('input', () => {
-    const length = messageTextarea.value.length;
-    charCount.textContent = length;
-    
-    if (length > 2000) {
-        messageTextarea.value = messageTextarea.value.substring(0, 2000);
-        charCount.textContent = '2000';
-    }
-});
+// Character counter for message textarea (guard in case textarea is absent on this page)
+if (messageTextarea) {
+    messageTextarea.addEventListener('input', () => {
+        const length = messageTextarea.value.length;
+        if (charCount) charCount.textContent = length;
+        
+        if (length > 2000) {
+            messageTextarea.value = messageTextarea.value.substring(0, 2000);
+            if (charCount) charCount.textContent = '2000';
+        }
+    });
+}
 
-// Sign out handler
-signOutBtn.addEventListener('click', async (e) => {
-    e.preventDefault();
-    if (confirm('Are you sure you want to sign out?')) {
-        await firebaseAuth.signout();
-        alert('You have been signed out successfully.');
-        window.location.href = '../index.html';
-    }
-});
+// (sign-out attached above)
 
-// Form submission handler
-contactForm.addEventListener('submit', async (e) => {
+// Form submission handler (guard in case contact form is not present on this page)
+if (contactForm) {
+    contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     
     // Get form values
@@ -150,15 +151,13 @@ function createMailtoLink(name, email, subject, message) {
 function showMessage(text, type) {
     // Remove any existing message
     const existingMessage = document.querySelector('.message');
-    if (existingMessage) {
-        existingMessage.remove();
-    }
-    
+    if (existingMessage) existingMessage.remove();
+
     // Create message element
-    const message = document.createElement('div');
-    message.className = `message message-${type}`;
-    
-    const icon = type === 'success' 
+    const msg = document.createElement('div');
+    msg.className = `message message-${type}`;
+
+    const icon = type === 'success'
         ? `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
              <path d="M9 11L12 14L22 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
              <path d="M21 12V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -168,19 +167,17 @@ function showMessage(text, type) {
              <path d="M12 8V12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
              <circle cx="12" cy="16" r="0.5" fill="currentColor" stroke="currentColor" stroke-width="1"/>
            </svg>`;
-    
-    message.innerHTML = `${icon}<span>${text}</span>`;
-    
-    // Insert before form
-    contactForm.parentNode.insertBefore(message, contactForm);
-    
+
+    msg.innerHTML = `${icon}<span>${text}</span>`;
+    if (contactForm && contactForm.parentNode) contactForm.parentNode.insertBefore(msg, contactForm);
+
     // Auto-remove after 10 seconds
     setTimeout(() => {
-        if (message.parentNode) {
-            message.remove();
-        }
+        if (msg.parentNode) msg.remove();
     }, 10000);
 }
+
+} // end if contactForm
 
 // Add spin animation for loading state
 const style = document.createElement('style');

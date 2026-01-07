@@ -7,11 +7,13 @@ A web-based exam preparation platform for actuarial students, providing timed pr
 ## Supported Subjects
 
 **Associate Level:**
+
 - A211: Actuarial Mathematics
 - A311: Actuarial Risk Management
 - N211: Non-Life Insurance
 
 **Fellowship Principles:**
+
 - F101: Health and Care
 - F102: Life Insurance
 - F103: General Insurance
@@ -20,6 +22,7 @@ A web-based exam preparation platform for actuarial students, providing timed pr
 - F108: Enterprise Risk Management
 
 **Fellowship Specialist Advanced:**
+
 - F201-F205: Life, General, Finance, Health & Care, Pensions
 
 ## Tech Stack
@@ -42,31 +45,34 @@ A web-based exam preparation platform for actuarial students, providing timed pr
 ## Contributing
 
 Contributions welcome! Focus areas:
-- Adding more past paper links
+
+- Adding more past paper and memo links
 - Adding features
-- Enhancing progress analytics
-- Improving storage mechanics
 
 ---
 
-## Forgot Password (Password Reset)
+*Built with ❤️ for students*
 
-A new "Forgot Password" flow has been added to allow users to request a password reset email.
+## Planned features (requested)
 
-- Location: `pages/forgot-password.html`
-- Client script: `js/forgot-password.js`
-- Styling: `css/forgot-password-styles.css`
-- Integrates with Firebase Authentication's `sendPasswordResetEmail` when Firebase is configured.
+1. Calendar / Study Plan & Countdown (Priority: High)
+   
+   - Let users add their future exam date and generate a personalised study plan.
+   - Show a live countdown (days remaining) on the dashboard and study pages.
+   - The study plan should suggest practice papers and topics each week based on available time and historical performance.
 
-Key points:
-- The flow validates email addresses on the client and shows a generic success message (to avoid account enumeration).
-- If Firebase Auth is initialized in the app, the page will call Firebase's `sendPasswordResetEmail(email)` and display success/error messages accordingly.
-- The page respects the app theme (reads `localStorage` `theme` or `userTheme`) and updates the logo to match the selected theme.
+2. Schedule Practice Exams (Priority: High)
+   
+   - Allow users to schedule timed practice sessions inside ExamVault and reserve slots on their study calendar.
+   - Export or sync scheduled sessions with Google Calendar and Outlook (OAuth-backed calendar events).
+   - Send scheduled reminders (browser notifications / optional email) for upcoming practice sessions or milestones.
 
-Manual testing:
-- Open `pages/forgot-password.html` in a browser and submit a valid/invalid email to see behavior.
-- When Firebase is configured, sending should trigger the Firebase email flow for registered accounts.
+3. Timed Exam Simulator with Focus Mode (Priority: Very High)
+   
+   - Simulated timed exams that replicate exam conditions.
+   - Optional focus-mode that hides non-essential UI, warns on tab switches, and shows timeout notifications (including a prominent '5 minutes remaining' alert).
+   - Autosubmit or prompt submission on timeout to preserve exam integrity. (cnnot submit after exam timer is over, cannot submit in the first 20mins)
 
-If you need this feature adapted (custom templates, rate limiting, server-side logging), that can be added in a follow-up.
+Implementation notes:
 
-*Built with ❤️ for students | December 2025*
+- These features will use a combination of client-side scheduling, Firestore user metadata, and browser Notification APIs. Calendar sync requires OAuth credentials (Google/Outlook) and secure handling of tokens.

@@ -1,3 +1,62 @@
+/* Global modal styles: used by signout modal and other in-app modals */
+.modal {
+    display: none; /* shown by JS by setting display:flex */
+    position: fixed;
+    inset: 0; /* top:0; right:0; bottom:0; left:0 */
+    background: rgba(0,0,0,0.45);
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    padding: 1rem;
+}
+
+.modal-content {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    border-radius: 10px;
+    max-width: 520px;
+    width: 100%;
+    box-shadow: 0 12px 30px rgba(2,6,23,0.3);
+    padding: 1rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.modal-icon { font-size: 1.5rem; }
+
+.modal-body { color: var(--text-secondary); padding-top: 0.25rem; }
+
+.modal-footer { display:flex; gap:0.5rem; justify-content:flex-end; padding-top:0.5rem; }
+
+.modal-btn {
+    padding: 0.5rem 0.9rem;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.modal-btn-primary {
+    background: linear-gradient(135deg, #00d4aa 0%, #00a3ff 100%);
+    color: white;
+}
+
+.modal-btn-secondary {
+    background: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+
+@media (max-width: 480px) {
+    .modal-content { padding: 0.75rem; }
+}
 * {
     margin: 0;
     padding: 0;

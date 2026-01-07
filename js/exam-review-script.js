@@ -7,6 +7,7 @@ import { themeManager } from './theme-manager.js';
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
 import { auth } from './firebase-config.js';
 import { getExaminersReportLink, hasExaminersReport } from './memo-links.js';
+import { attachSignOutHandler } from './signout-modal.js';
 
 // Initialize activity monitor
 initActivityMonitor();
@@ -410,15 +411,8 @@ function navigateToGrading(questionNumber, isAIReview = false) {
 
 // Setup event listeners
 function setupEventListeners() {
-    // Sign out
-    signOutBtn.addEventListener('click', async (e) => {
-        e.preventDefault();
-        if (confirm('Are you sure you want to sign out?')) {
-            await firebaseAuth.signout();
-            alert('You have been signed out successfully.');
-            window.location.href = '../index.html';
-        }
-    });
+    // Attach shared sign-out modal (use selector fallback)
+    attachSignOutHandler('#signOutBtn');
     
     // Add question row
     addRowBtn.addEventListener('click', async () => {

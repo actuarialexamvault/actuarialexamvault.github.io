@@ -257,19 +257,10 @@ function autoCalculateGrade() {
 // Setup event listeners
 function setupEventListeners() {
     // Sign out
-    signOutBtn.addEventListener('click', async (e) => {
-        e.preventDefault();
-        if (confirm('Are you sure you want to sign out?')) {
-            try {
-                await firebaseAuth.signOut();
-                alert('You have been signed out successfully.');
-                window.location.href = '../index.html';
-            } catch (error) {
-                console.error('Sign out error:', error);
-                alert('Error signing out. Please try again.');
-            }
-        }
-    });
+        // Use shared sign-out modal
+        import('./signout-modal.js').then(mod => {
+            mod.attachSignOutHandler('#signOutBtn');
+        }).catch(err => console.error('Failed to load signout modal:', err));
 
     // Complete Review
     completeReviewBtn.addEventListener('click', async () => {

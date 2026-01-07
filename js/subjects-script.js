@@ -5,6 +5,16 @@ import { initActivityMonitor } from './activity-monitor.js';
 import { themeManager } from './theme-manager.js';
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
 import { auth } from './firebase-config.js';
+// Backwards-compatible shim: some pages reference a global AuthManager instance
+// Ensure a minimal `authManager` exists so older code that calls isLoggedIn()/extendSession() won't crash.
+const authManager = window.authManagerInstance || (window.authManagerInstance = {
+    isLoggedIn: () => !!(typeof firebaseAuth !== 'undefined' && firebaseAuth.getCurrentUser && firebaseAuth.getCurrentUser()),
+    extendSession: () => { /* no-op: firebase handles session */ },
+    signOut: async () => { if (typeof firebaseAuth !== 'undefined') await firebaseAuth.signout(); },
+    getSession: () => null,
+    getSessionTimeRemaining: () => 0
+});
+import { attachSignOutHandler } from './signout-modal.js';
 
 // Initialize activity monitor
 initActivityMonitor();
@@ -61,15 +71,7 @@ async function loadUserProfile(user) {
 }
 
 // Handle sign out
-signOutBtn.addEventListener('click', async (e) => {
-    e.preventDefault();
-    
-    if (confirm('Are you sure you want to sign out?')) {
-        await firebaseAuth.signout();
-        alert('You have been signed out successfully.');
-        window.location.href = '../index.html';
-    }
-});
+attachSignOutHandler('#signOutBtn');
 
 // Handle subject card clicks
 subjectCards.forEach(card => {

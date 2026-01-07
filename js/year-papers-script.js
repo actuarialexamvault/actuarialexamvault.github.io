@@ -177,16 +177,9 @@ window.openPaper = function(year, filename) {
     // In production, you would open the file in a viewer or navigate to a paper view page
 };
 
-// Handle sign out
-signOutBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    
-    if (confirm('Are you sure you want to sign out?')) {
-        authManager.signOut();
-        alert('You have been signed out successfully.');
-        window.location.href = '../index.html';
-    }
-});
+// Handle sign out using shared modal
+import { attachSignOutHandler } from './signout-modal.js';
+attachSignOutHandler('#signOutBtn');
 
 // Load papers
 setTimeout(() => {

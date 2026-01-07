@@ -4,6 +4,7 @@ import { initActivityMonitor } from './activity-monitor.js';
 import { themeManager } from './theme-manager.js';
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
 import { auth } from './firebase-config.js';
+import { attachSignOutHandler } from './signout-modal.js';
 
 // Initialize activity monitor
 initActivityMonitor();
@@ -17,6 +18,15 @@ const papersGrid = document.getElementById('papersGrid');
 const noPapers = document.getElementById('noPapers');
 
 let isAuthChecked = false;
+
+// Backwards-compatible shim for pages that reference authManager
+const authManager = window.authManagerInstance || (window.authManagerInstance = {
+    isLoggedIn: () => !!(typeof firebaseAuth !== 'undefined' && firebaseAuth.getCurrentUser && firebaseAuth.getCurrentUser()),
+    extendSession: () => { /* no-op */ },
+    signOut: async () => { if (typeof firebaseAuth !== 'undefined') await firebaseAuth.signout(); },
+    getSession: () => null,
+    getSessionTimeRemaining: () => 0
+});
 
 // Check if user is logged in
 onAuthStateChanged(auth, (user) => {
@@ -191,15 +201,8 @@ window.viewYearPapers = function(year) {
 };
 
 // Handle sign out
-signOutBtn.addEventListener('click', async (e) => {
-    e.preventDefault();
-    
-    if (confirm('Are you sure you want to sign out?')) {
-        await firebaseAuth.signout();
-        alert('You have been signed out successfully.');
-        window.location.href = '../index.html';
-    }
-});
+// Attach the shared sign-out modal behavior (use selector fallback)
+attachSignOutHandler('#signOutBtn');
 
 // Load papers on page load
 setTimeout(() => {

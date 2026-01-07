@@ -20,7 +20,7 @@ const year = urlParams.get('year') || sessionStorage.getItem('selectedYear');
 const subjectTitleText = sessionStorage.getItem('selectedSubjectTitle');
 
 if (!subject || !year) {
-    window.location.href = 'subjects.html';
+    window.location.href = 'progress-tracker.html';
 }
 
 // Update titles

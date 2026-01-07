@@ -479,9 +479,10 @@ function setupEventListeners() {
     });
     
     // Download memo (examiners report)
-    downloadMemoBtn.addEventListener('click', () => {
+    downloadMemoBtn.addEventListener('click', async () => {
+        await memoLinksReady;
         const reportLink = getExaminersReportLink(subject, sessionType, year, paper);
-        
+
         if (reportLink) {
             // Open the examiners report in a new tab
             window.open(reportLink, '_blank');

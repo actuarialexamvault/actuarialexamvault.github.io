@@ -82,13 +82,16 @@ subjectCards.forEach(card => {
         // Show loading state
         showLoading();
         
-        // Store selected subject
+        // Store selected subject for compatibility and set auto-show keys so the progress
+        // tracker can immediately display the subject's progress (new flow).
         sessionStorage.setItem('selectedSubject', subject);
         sessionStorage.setItem('selectedSubjectTitle', subjectTitle);
-        
-        // Redirect to subject papers page
+        sessionStorage.setItem('autoShowSubject', subject);
+        sessionStorage.setItem('autoShowSubjectTitle', subjectTitle);
+
+        // Redirect to progress tracker which now hosts subject-specific views
         setTimeout(() => {
-            window.location.href = `subject-papers.html?subject=${subject}`;
+            window.location.href = 'progress-tracker.html';
         }, 500);
     });
 });

@@ -6,7 +6,7 @@ import { initActivityMonitor } from './activity-monitor.js';
 import { themeManager } from './theme-manager.js';
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
 import { auth } from './firebase-config.js';
-import { getPDFLink } from './pdf-links.js';
+import { getPDFLink, ready as pdfLinksReady } from './pdf-links.js';
 
 // Initialize activity monitor
 initActivityMonitor();
@@ -171,7 +171,7 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('beforeunload', preventNavigation);
 });
 
-function startExam() {
+async function startExam() {
     console.log('startExam function called');
     console.log('examStarted:', examStarted);
     
@@ -184,9 +184,9 @@ function startExam() {
         return;
     }
     
-    // Get PDF link
+    // Get PDF link (wait for pdf-links data to be ready)
     console.log('Getting PDF link for:', subject, session_type, year, paper);
-    const pdfUrl = getPDFLink(subject, session_type, year, paper);
+    const pdfUrl = await (async () => { await pdfLinksReady; return getPDFLink(subject, session_type, year, paper); })();
     console.log('PDF URL:', pdfUrl);
     
     if (!pdfUrl) {
@@ -436,7 +436,10 @@ function leaveExam() {
                 clearInterval(timerInterval);
             }
             localStorage.removeItem('currentExam');
-            window.location.href = `subject-papers.html?subject=${subject}&subjectTitle=${encodeURIComponent(subjectTitle)}`;
+            // Set auto-show so the progress tracker will immediately open this subject's progress
+            sessionStorage.setItem('autoShowSubject', subject);
+            sessionStorage.setItem('autoShowSubjectTitle', subjectTitle);
+            window.location.href = 'progress-tracker.html';
         }
     );
 }

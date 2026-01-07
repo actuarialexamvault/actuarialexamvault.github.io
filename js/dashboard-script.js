@@ -159,7 +159,7 @@ document.querySelectorAll('.action-btn').forEach(btn => {
 // Add click handlers for dashboard cards (except Past Papers, Progress Tracker, and Help & Support which have real links)
 document.querySelectorAll('.card-link').forEach(link => {
     const href = link.getAttribute('href');
-    if (href !== 'subjects.html' && href !== 'progress-tracker.html' && href !== 'help-support.html') {
+    if (href !== 'progress-tracker.html' && href !== 'help-support.html' && href !== 'practice.html') {
         link.addEventListener('click', (e) => {
             e.preventDefault();
             alert('This feature is coming soon! For now, explore the past papers in the workspace.');

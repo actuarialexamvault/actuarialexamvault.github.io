@@ -8,25 +8,27 @@
 }
 
 :root {
-    --primary-color: #4285f4;
-    --secondary-color: #34a853;
-    --text-primary: #202124;
-    --text-secondary: #5f6368;
-    --text-tertiary: #80868b;
-    --background-color: #f8f9fa;
-    --border-color: #dadce0;
+    /* Only define page helpers here — don't re-define core variables that the global theme provides */
+    --primary-color: var(--gradient-primary, #4285f4);
+    --secondary-color: var(--gradient-primary, #34a853);
+    --primary-gradient-start: var(--gradient-primary-start, #00d4aa);
+    --primary-gradient-end: var(--gradient-primary-end, #00a3ff);
+    --card-background: var(--bg-card, #ffffff);
+    --callout-bg: var(--callout-bg, linear-gradient(135deg, #e0f7f4 0%, #e6f4ff 100%));
+    --local-border-color: var(--border-color, #dadce0);
 }
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: var(--background-color);
+    /* Use the global site background so dark mode is applied */
+    background: var(--bg-primary);
     color: var(--text-primary);
 }
 
 /* Navigation Bar */
 .navbar {
-    background: white;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background: var(--bg-secondary, white);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -156,7 +158,7 @@ body {
 
 .page-title {
     font-size: 2.5rem;
-    color: var(--text-primary);
+    color: var(--hero-text, var(--text-primary));
     margin-bottom: 0.5rem;
 }
 
@@ -167,11 +169,11 @@ body {
 
 /* Section Styles */
 .section {
-    background: white;
+    background: var(--bg-card, white);
     border-radius: 12px;
     padding: 2rem;
     margin-bottom: 2rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .section-header {
@@ -189,7 +191,7 @@ body {
     color: var(--primary-color);
 }
 
-.section-title {
+    .section-title {
     font-size: 1.8rem;
     color: var(--text-primary);
     margin: 0;
@@ -213,8 +215,8 @@ body {
     margin-bottom: 2rem;
 }
 
-.feature-card {
-    background: var(--background-color);
+    .feature-card {
+    background: var(--bg-card, var(--background-color));
     border-radius: 8px;
     padding: 1.5rem;
     transition: transform 0.2s, box-shadow 0.2s;
@@ -284,12 +286,14 @@ body {
     font-size: 0.95rem;
 }
 
-.form-input,
-.form-textarea {
+    .form-input,
+    .form-textarea {
     width: 100%;
     padding: 0.75rem;
-    border: 2px solid #e0e0e0;
+    border: 2px solid var(--border-color, #e0e0e0);
     border-radius: 8px;
+    background: var(--bg-card, white);
+    color: var(--text-primary);
     font-size: 1rem;
     font-family: inherit;
     transition: border-color 0.2s, box-shadow 0.2s;
@@ -351,10 +355,10 @@ body {
     height: 20px;
 }
 
-.contact-info {
+    .contact-info {
     margin-top: 3rem;
     padding-top: 2rem;
-    border-top: 1px solid #e0e0e0;
+    border-top: 1px solid var(--border-color, #e0e0e0);
 }
 
 .info-text {
@@ -497,51 +501,63 @@ body {
 
 /* Q&A Link Section */
 .qna-link-section {
-    background: transparent;
+    /* apply the darker green gradient at the section container level so it spans the full section */
+    background: linear-gradient(135deg, #0b6b3a 0%, #19a162 100%);
     padding: 2rem 0;
+    border-radius: 16px;
+    border: 1px solid rgba(0,0,0,0.12);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+    color: #ffffff;
 }
 
 .qna-callout {
     text-align: center;
     padding: 3rem 2rem;
-    background: linear-gradient(135deg, #e0f7f4 0%, #e6f4ff 100%);
-    border-radius: 16px;
-    border: 2px solid var(--primary-gradient-start);
+    /* make inner callout transparent so the parent section gradient is visible */
+    background: transparent;
+    border-radius: 0; /* parent handles rounding */
+    border: none;
+    box-shadow: none;
+    color: inherit; /* inherit white from parent */
+    text-shadow: 0 1px 2px rgba(0,0,0,0.45);
 }
 
 .callout-title {
     font-size: 2rem;
     font-weight: 700;
-    color: var(--text-primary);
+    color: #ffffff;
     margin-bottom: 1rem;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.45);
 }
 
 .callout-text {
     font-size: 1.1rem;
-    color: var(--text-secondary);
+    color: rgba(255,255,255,0.95);
     margin-bottom: 2rem;
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.35);
 }
 
 .btn-qna {
     display: inline-block;
     padding: 1rem 2.5rem;
-    background: linear-gradient(135deg, var(--primary-gradient-start) 0%, var(--primary-gradient-end) 100%);
-    color: #2d3748;
+    background: linear-gradient(135deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.06) 100%);
+    color: #ffffff;
     text-decoration: none;
     border-radius: 8px;
-    font-weight: 600;
+    font-weight: 700;
     font-size: 1.1rem;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(0, 163, 255, 0.3);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255,255,255,0.12);
 }
 
 .btn-qna:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(0, 163, 255, 0.4);
-    color: #1a202c;
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.32);
+    color: #ffffff;
 }
 
 /* Footer */

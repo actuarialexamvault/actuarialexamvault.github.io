@@ -5,18 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Help & Support - ExamVault</title>
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <!-- Global styles (variables + shared components) -->
+    <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/help-support-styles.css">
     <!-- Load theme immediately to prevent flash -->
     <script>
         (function() {
-            const theme = localStorage.getItem('theme') || localStorage.getItem('userTheme') || 'light';
-            if (theme === 'dark') {
-                document.documentElement.setAttribute('data-theme', 'dark');
-            }
+            // Match dashboard behavior: set the saved theme explicitly (light or dark)
+            const savedTheme = localStorage.getItem('theme') || localStorage.getItem('userTheme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
             // Set initial logo based on theme
             window.addEventListener('DOMContentLoaded', function() {
                 const logoImages = document.querySelectorAll('.logo-icon');
-                const logoSrc = theme === 'dark' ? '../favicon.svg' : '../favicon-light.svg';
+                const logoSrc = savedTheme === 'dark' ? '../favicon.svg' : '../favicon-light.svg';
                 logoImages.forEach(img => img.src = logoSrc);
             });
         })();
@@ -47,24 +48,13 @@
             <p class="page-subtitle">Learn about the platform and get in touch</p>
         </div>
 
-        <!-- Q&A Link Section -->
-        <section class="section qna-link-section">
-            <div class="section-content">
-                <div class="qna-callout">
-                    <h3 class="callout-title">Have Questions?</h3>
-                    <p class="callout-text">Check out our comprehensive Q&A page for answers to common questions about using the platform.</p>
-                    <a href="qna.html" class="btn-qna">View Q&A</a>
-                </div>
-            </div>
-        </section>
-
         <!-- About Section -->
         <section class="section about-section">
 
             <div class="section-content">
-                <h3 class="callout-title">About</h3>
+                <h3 class="section-title">About</h3>
                 <p class="about-text">
-                    <strong>ExamVault</strong> is a comprehensive platform designed to help students prepare for and track their progress through professional examinations.
+                    ExamVault is a comprehensive platform designed to help students prepare for and track their progress through professional examinations.
                 </p>
                 
                 <div class="features-grid">
@@ -114,6 +104,17 @@
                         tracking are key to exam success. ExamVault provides the tools you need to 
                         practice under exam conditions, review your practice attempts, and track your progress—all in one place.
                     </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Q&A Link Section -->
+        <section class="section qna-link-section">
+            <div class="section-content">
+                <div class="qna-callout">
+                    <h3 class="callout-title">Have Questions?</h3>
+                    <p class="callout-text">Check out our comprehensive Q&A page for answers to common questions about using the platform.</p>
+                    <a href="qna.html" class="btn-qna">View Q&A</a>
                 </div>
             </div>
         </section>

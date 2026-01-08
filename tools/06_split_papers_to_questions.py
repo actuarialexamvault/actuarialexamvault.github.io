@@ -170,19 +170,33 @@ def process_subject(in_dir: Path, subject: str, out_dir: Path, chapter_map_path:
         # attempt to derive metadata from filename tokens
         fname = md.stem
         tokens = fname.split('_')
-        # look for patterns like F102_JUNE_2024_1_Exam
+        # Handle two filename patterns:
+        # 1. Exam papers: F102_JUNE_2024_1_Exam (Subject_Session_Year_Paper_Type)
+        # 2. Examiners reports: F102_2024_NOVEMBER_general_Examiners_Report (Subject_Year_Session_Paper_Type)
         subj = subject
         session = ''
         year = None
         paper = ''
+        
         if len(tokens) >= 4 and tokens[0].upper() == subject.upper():
-            # tokens[1]=session, tokens[2]=year, tokens[3]=paper
-            session = tokens[1]
+            # Check if second token is a year (4 digits) or session (letters)
             try:
-                year = int(tokens[2])
-            except Exception:
-                year = None
-            paper = tokens[3]
+                potential_year = int(tokens[1])
+                # Pattern 2: Subject_Year_Session_Paper (examiner report)
+                year = potential_year
+                session = tokens[2] if len(tokens) > 2 else ''
+                paper = tokens[3] if len(tokens) > 3 else ''
+                logger.info(f"Parsed as examiner report pattern: year={year}, session={session}, paper={paper}")
+            except ValueError:
+                # Pattern 1: Subject_Session_Year_Paper (exam paper)
+                session = tokens[1]
+                try:
+                    year = int(tokens[2]) if len(tokens) > 2 else None
+                except ValueError:
+                    year = None
+                paper = tokens[3] if len(tokens) > 3 else ''
+                logger.info(f"Parsed as exam paper pattern: session={session}, year={year}, paper={paper}")
+        
         # fallback: try to read header lines for Year/Session
         if year is None:
             # look for 'Year': in header
@@ -209,18 +223,25 @@ def process_subject(in_dir: Path, subject: str, out_dir: Path, chapter_map_path:
             if total_marks is not None:
                 # round to 1 decimal place
                 time_allocated = round(float(total_marks) * 1.8, 1)
+            
+            # Normalize session name to uppercase for consistency
+            session_upper = session.upper() if session else ''
+            
             # create output path
-            # place examiners' report outputs under a 'solutions' subfolder to avoid mixing with exam questions
+            # Solutions go to: solutions/Subject/Year/Session/Paper/
+            # Questions go to: questions/Subject/Session/Year/Paper/questions/
             if source_type == 'examiners_report':
-                out_subdir = out_dir / subject / session / str(year) / f"Paper{paper}" / 'solutions'
+                # Solutions folder structure: solutions -> Subject -> Year -> Session -> Paper
+                out_subdir = out_dir.parent / 'solutions' / subject / str(year) / session_upper / f"Paper{paper}"
             else:
-                out_subdir = out_dir / subject / session / str(year) / f"Paper{paper}" / 'questions'
+                # Questions folder structure: questions -> Subject -> Session -> Year -> Paper -> questions
+                out_subdir = out_dir / subject / session_upper / str(year) / f"Paper{paper}" / 'questions'
             out_subdir.mkdir(parents=True, exist_ok=True)
-            out_filename = f"{subject}_{session}_{year}_Paper{paper}_Q{qnum}.md"
+            out_filename = f"{subject}_{session_upper}_{year}_Paper{paper}_Q{qnum}.md"
             out_path = out_subdir / out_filename
             front = {
                 'subject': subject,
-                'session': session,
+                'session': session_upper,
                 'year': year or '',
                 'paper': paper,
                 'question': f'Q{qnum}',
@@ -229,9 +250,28 @@ def process_subject(in_dir: Path, subject: str, out_dir: Path, chapter_map_path:
                 'time_allocated_minutes': time_allocated or '',
             }
             fm = make_frontmatter(front)
-            content = fm + '\n' + qmd + '\n'
+            # Clean question markdown before writing:
+            # - remove leading 'QUESTION N' header from the chunk (we'll add a canonical '## QUESTION N')
+            # - normalise [Total N] to its own bolded line
+            # - collapse excessive blank lines
+            cleaned = qmd.replace('\r\n', '\n')
+            # remove first occurrence of QUESTION header (case-insensitive)
+            cleaned = re.sub(r'^\s*(?:QUESTION|Question)\s+\d+[^\n]*\n', '', cleaned, flags=re.IGNORECASE)
+            cleaned = cleaned.strip()
+            # normalise Total marks marker onto its own bolded line
+            cleaned = re.sub(r"\[\s*Total\s+(\d+)\s*\]", r"\n\n**[Total \1]**\n\n", cleaned, flags=re.IGNORECASE)
+            # collapse 3+ newlines into two
+            cleaned = re.sub(r"\n{3,}", "\n\n", cleaned)
+            # ensure we have a canonical question title at the top
+            title = f"## QUESTION {qnum}\n\n"
+            content = fm + '\n' + title + cleaned + '\n'
             out_path.write_text(content, encoding='utf-8')
-            manifest.append({'source': str(md), 'question': f'Q{qnum}', 'output': str(out_path), 'chapters': chapters})
+            # prefer posix (forward-slash) relative path in manifest to avoid Windows backslashes
+            try:
+                rel = out_path.relative_to(Path.cwd()).as_posix()
+            except Exception:
+                rel = out_path.as_posix()
+            manifest.append({'source': str(md), 'question': f'Q{qnum}', 'output': rel, 'chapters': chapters})
             logger.info(f"Wrote question: {out_path}")
     # write manifest
     manifest_path = out_dir / subject / 'manifest_questions.json'

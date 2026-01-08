@@ -37,5 +37,7 @@ body: |
   - [ ] Use IndexedDB helper (`indexeddb-storage.js`) for draft persistence; add migration/fallback logic.
   - [ ] Add unit tests for timer calculations and autosave debounce logic.
   - [ ] Update docs in `resources/practice/README.md` describing editor behavior and offline notes.
+  - [ ] The Webapp should check if the user finished the question within the time limit by checking the countdown timer and keep a record of record time finishes vs going over time on questions. This will be a good statistics for giving feedback to the student. 
+
 
 labels: enhancement, frontend, ux, backend

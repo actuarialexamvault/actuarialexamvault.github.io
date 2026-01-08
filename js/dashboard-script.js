@@ -156,10 +156,18 @@ document.querySelectorAll('.action-btn').forEach(btn => {
     });
 });
 
-// Add click handlers for dashboard cards (except Past Papers, Progress Tracker, and Help & Support which have real links)
+// Add click handlers for dashboard cards (except those with real navigation targets)
+// Allow practice-by-chapter.html as a real link so the Practice card navigates to the new page.
+const allowedLinks = new Set([
+    'progress-tracker.html',
+    'help-support.html',
+    'practice.html',
+    'practice-by-chapter.html',
+    'subjects.html?mode=practice'
+]);
 document.querySelectorAll('.card-link').forEach(link => {
     const href = link.getAttribute('href');
-    if (href !== 'progress-tracker.html' && href !== 'help-support.html' && href !== 'practice.html') {
+    if (!allowedLinks.has(href)) {
         link.addEventListener('click', (e) => {
             e.preventDefault();
             alert('This feature is coming soon! For now, explore the past papers in the workspace.');

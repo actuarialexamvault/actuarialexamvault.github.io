@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chapter Questions - ExamVault</title>
+    <link rel="stylesheet" href="../css/progress-tracker-styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="dashboard.html" class="logo">
+                <img src="../favicon-light.svg" alt="ExamVault Logo" class="logo-icon">
+                <span class="logo-text"><span class="logo-exam">Exam</span><span class="logo-vault">Vault</span></span>
+            </a>
+            <div class="nav-links">
+                <a href="subjects.html" class="nav-link">SUBJECTS</a>
+                <a href="dashboard.html" class="nav-link">ACCOUNT</a>
+                <button class="btn-signout-nav" id="signOutBtn">SIGN OUT</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="subjects-container">
+        <div class="subjects-header">
+            <h1 id="pageTitle">Chapter Questions</h1>
+            <p id="subTitle" style="color:#666;">Select a question to practice.</p>
+        </div>
+
+        <div id="questionsContainer" class="subjects-list">
+            <!-- Topic overview (kept for legacy) -->
+        </div>
+
+        <!-- Questions Detail View -->
+        <div class="page-container" id="questionsView">
+            <main class="main-content">
+                <div class="content-header">
+                    <h1 id="subjectChapterTitle">Questions for chapter</h1>
+                    <p class="content-subtitle">Attempted questions are shown first so you can review past work; available questions are below to start practice.</p>
+                </div>
+
+                <!-- Attempted Questions Section -->
+                <div class="papers-section">
+                    <div class="section-header" id="attemptedHeader">
+                        <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <h2>Attempted Questions</h2>
+                        <span class="section-count" id="attemptedQuestionsCount">0</span>
+                    </div>
+                    <div class="papers-list" id="attemptedList">
+                        <!-- Attempted questions go here -->
+                    </div>
+                </div>
+
+                <!-- Available Questions Section -->
+                <div class="papers-section">
+                    <div class="section-header" id="notAttemptedHeader">
+                        <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <h2>Available Questions</h2>
+                        <span class="section-count" id="notAttemptedQuestionsCount">0</span>
+                    </div>
+                    <div class="papers-list" id="notAttemptedList">
+                        <!-- Not attempted questions go here -->
+                    </div>
+                </div>
+
+                <button class="btn-back-bottom" id="backBtn">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19 12H5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M12 19L5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Back to Chapters
+                </button>
+            </main>
+        </div>
+    </main>
+
+    <script type="module" src="../js/chapter-questions-script.js"></script>
+</body>
+</html>

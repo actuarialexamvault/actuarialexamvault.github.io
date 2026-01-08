@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Question Answer Editor - ExamVault</title>
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <script>
+    // Apply theme immediately to prevent flash
+    (function() {
+      const theme = localStorage.getItem('theme') || localStorage.getItem('userTheme') || 'light';
+      document.documentElement.setAttribute('data-theme', theme);
+      // Set initial logo based on theme
+      window.addEventListener('DOMContentLoaded', function() {
+        const logoImages = document.querySelectorAll('.logo-icon');
+        const logoSrc = theme === 'dark' ? '../favicon.svg' : '../favicon-light.svg';
+        logoImages.forEach(img => img.src = logoSrc);
+      });
+    })();
+  </script>
+  <link rel="stylesheet" href="../css/question-editor-styles.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="dashboard.html" class="logo">
+        <img src="../favicon-light.svg" alt="ExamVault Logo" class="logo-icon">
+        <span class="logo-text"><span class="logo-exam">Exam</span><span class="logo-vault">Vault</span></span>
+      </a>
+      <div class="nav-links">
+        <a href="subjects.html" class="nav-link">SUBJECTS</a>
+        <a href="dashboard.html" class="nav-link">ACCOUNT</a>
+        <button class="btn-signout-nav" id="signOutBtn">SIGN OUT</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="editor-container">
+    <!-- Header Section -->
+    <div class="editor-header">
+      <h1>Answer the Question</h1>
+      <p class="subtitle">Read the question carefully and provide your detailed answer below</p>
+    </div>
+
+    <div class="content-wrapper">
+      <!-- Question Section -->
+      <section class="question-section">
+        <div id="questionContent">Loading question...</div>
+      </section>
+
+      <!-- Answer Section -->
+      <section class="answer-section">
+        <div class="answer-header">
+          <h2>Your Answer</h2>
+          <div class="timer" id="timer">--:--</div>
+        </div>
+        <p class="section-description">Type your answer in the text area below. Your work is automatically saved as you type.</p>
+        <textarea id="editor" class="editor-area" placeholder="Write your answer here..."></textarea>
+        <div class="autosave-indicator" id="autosaveIndicator">Autosave active</div>
+      </section>
+
+      <!-- Finalize Section -->
+      <section class="finalize-section">
+        <div class="finalize-content">
+          <h3>Finish & Review</h3>
+          <p>When you're ready, save your answer and go to the review page to finalize your submission.</p>
+        </div>
+        <button id="saveReview" class="btn-complete-review">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+            <path d="M9 11L12 14L16 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Save & Review
+        </button>
+      </section>
+    </div>
+  </main>
+
+  <script type="module" src="../js/question-editor.js"></script>
+</body>
+</html>

@@ -28,7 +28,7 @@ CURRENT_YEAR = datetime.date.today().year
 YEARS = list(range(CURRENT_YEAR, START_YEAR - 1, -1))
 
 # Sessions
-SESSIONS = ['JUNE', 'MAY', 'NOVEMBER', 'OCTOBER']
+SESSIONS = ['JUNE', 'MAY', 'NOVEMBER', 'OCTOBER', 'NOV', 'OCT']
 
 # Papers (for reports that specify paper number)
 PAPERS = [1, 2]
@@ -55,7 +55,7 @@ EXAMINERS_REPORT_PATTERNS = [
     "https://www.actuarialsociety.org.za/wp-content/uploads/2025/07/{subject}_S2_{year}_Examiners_Report.pdf",
 ]
 
-def load_existing_reports(reports_file='examiners_reports_found.json'):
+def load_existing_reports(reports_file='resources/pdfs/examiners_manifest.json'):
     """Load previously found examiners reports.
 
     Primary source: parse `js/memo-links.js` for examiner report URLs and populate the
@@ -87,18 +87,30 @@ def load_existing_reports(reports_file='examiners_reports_found.json'):
 
                 # Try to extract subject, session and year from URL using a few heuristics
                 # Pattern 1: /{subject}-{session}-{year}- ... e.g. /A311-JUNE-2024-...
-                m = re.search(r"/([A-Z0-9\-]+)[-_ ]?(JUNE|MAY|NOVEMBER|OCTOBER)[-_ ]?(20\d{2})", url, re.IGNORECASE)
+                m = re.search(r"/([A-Z0-9\-]+)[-_ ]?(JUNE|MAY|NOVEMBER|OCTOBER|NOV|OCT)[-_ ]?(20\d{2})", url, re.IGNORECASE)
                 if m:
                     subject = m.group(1).upper()
                     # normalize session to canonical tokens (MAY/JUNE -> JUNE; OCTOBER/NOVEMBER -> NOVEMBER)
                     raw_session = m.group(2).upper()
                     if raw_session in ('MAY', 'JUNE'):
                         session = 'JUNE'
-                    elif raw_session in ('OCTOBER', 'NOVEMBER'):
+                    elif raw_session in ('OCTOBER', 'NOVEMBER', 'OCT', 'NOV'):
                         session = 'NOVEMBER'
                     else:
                         session = raw_session
                     year = m.group(3)
+                # Pattern 1b: /{subject}-{year}-{session}- ... e.g. /F102-2010-NOV-...
+                elif re.search(r"/([A-Z0-9\-]+)[-_ ]?(20\d{2})[-_ ]?(JUNE|MAY|NOVEMBER|OCTOBER|NOV|OCT)", url, re.IGNORECASE):
+                    m1b = re.search(r"/([A-Z0-9\-]+)[-_ ]?(20\d{2})[-_ ]?(JUNE|MAY|NOVEMBER|OCTOBER|NOV|OCT)", url, re.IGNORECASE)
+                    subject = m1b.group(1).upper()
+                    year = m1b.group(2)
+                    raw_session = m1b.group(3).upper()
+                    if raw_session in ('MAY', 'JUNE'):
+                        session = 'JUNE'
+                    elif raw_session in ('OCTOBER', 'NOVEMBER', 'OCT', 'NOV'):
+                        session = 'NOVEMBER'
+                    else:
+                        session = raw_session
                 else:
                     # Pattern 2: /{subject}_S1_{year}_ or _S2_ format -> map S1->MAY, S2->NOVEMBER
                     m2 = re.search(r"/([A-Z0-9\-]+)_S([12])_(20\d{2})", url, re.IGNORECASE)
@@ -136,7 +148,7 @@ def load_existing_reports(reports_file='examiners_reports_found.json'):
         print("Will perform full checks instead.")
         return existing
 
-def save_reports(results, reports_file='examiners_reports_found.json'):
+def save_reports(results, reports_file='resources/pdfs/examiners_manifest.json'):
     """Save found reports to JSON file for future reference"""
     # Convert defaultdict to regular dict for JSON serialization
     data = {}
@@ -195,7 +207,7 @@ def main(argv=None):
         verify = args.ca_bundle
 
     # Load existing reports
-    print("\nLoading existing reports from examiners_reports_found.json...")
+    print("\nLoading existing reports from resources/pdfs/examiners_manifest.json...")
     existing_reports = load_existing_reports()
 
     # Prepare results container (used by normal probing flow and crawl-manifest ingestion)
@@ -218,14 +230,26 @@ def main(argv=None):
                 continue
 
             # Try to extract metadata similar to load_existing_reports heuristics
-            m = re.search(r"/([A-Z0-9\-]+)[-_ ]?(JUNE|MAY|NOVEMBER|OCTOBER)[-_ ]?(20\d{2})", u, re.IGNORECASE)
+            m = re.search(r"/([A-Z0-9\-]+)[-_ ]?(JUNE|MAY|NOVEMBER|OCTOBER|NOV|OCT)[-_ ]?(20\d{2})", u, re.IGNORECASE)
             if m:
                 subject = m.group(1).upper()
                 raw_session = m.group(2).upper()
                 year = m.group(3)
                 if raw_session in ('MAY', 'JUNE'):
                     canonical = 'JUNE'
-                elif raw_session in ('OCTOBER', 'NOVEMBER'):
+                elif raw_session in ('OCTOBER', 'NOVEMBER', 'NOV', 'OCT'):
+                    canonical = 'NOVEMBER'
+                else:
+                    canonical = raw_session
+            # Pattern for SUBJECT-YEAR-SESSION (e.g., F102-2010-NOV-)
+            elif re.search(r"/([A-Z0-9\-]+)[-_ ]?(20\d{2})[-_ ]?(JUNE|MAY|NOVEMBER|OCTOBER|NOV|OCT)", u, re.IGNORECASE):
+                m1b = re.search(r"/([A-Z0-9\-]+)[-_ ]?(20\d{2})[-_ ]?(JUNE|MAY|NOVEMBER|OCTOBER|NOV|OCT)", u, re.IGNORECASE)
+                subject = m1b.group(1).upper()
+                year = m1b.group(2)
+                raw_session = m1b.group(3).upper()
+                if raw_session in ('MAY', 'JUNE'):
+                    canonical = 'JUNE'
+                elif raw_session in ('OCTOBER', 'NOVEMBER', 'NOV', 'OCT'):
                     canonical = 'NOVEMBER'
                 else:
                     canonical = raw_session
@@ -251,7 +275,7 @@ def main(argv=None):
 
             results[subject][year][canonical].append({'paper': paper, 'url': url})
 
-        # Save and write manifest
+        # Save manifest
         manifest_path = 'resources/pdfs/examiners_manifest.json'
         manifest = {}
         for subject in results:
@@ -260,7 +284,7 @@ def main(argv=None):
                 manifest[subject][year] = results[subject][year]
 
         if not args.dry_run:
-            save_reports(results)
+            # Save the manifest (no separate reports file needed)
             try:
                 with open(manifest_path, 'w', encoding='utf-8') as mf:
                     json.dump(manifest, mf, indent=2)
@@ -268,7 +292,7 @@ def main(argv=None):
             except Exception as e:
                 print(f"Failed to write manifest: {e}")
         else:
-            print('Dry run: manifests not written')
+            print('Dry run: manifest not written')
 
         return
     

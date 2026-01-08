@@ -40,8 +40,12 @@ def save_json(obj: Dict[str, Any], path: Path) -> None:
 
 def manifest_to_canonical(manifest: Dict[str, Any]) -> Dict[str, Any]:
     """
-    Convert manifest shape subject->year->session->paper->url
+    Convert manifest shape subject->year->session->papers
     into canonical shape subject->session->year->paper->url
+    
+    Papers can be either:
+    - A dictionary {paper: url, ...}
+    - A list [{paper: ..., url: ...}, ...]
     """
     out: Dict[str, Any] = {}
     for subj, years in manifest.items():
@@ -50,9 +54,20 @@ def manifest_to_canonical(manifest: Dict[str, Any]) -> Dict[str, Any]:
                 subj_map = out.setdefault(subj, {})
                 sess_map = subj_map.setdefault(session, {})
                 year_map = sess_map.setdefault(year, {})
-                for paper, url in papers.items():
-                    # Keep whatever URL is present (could be null)
-                    year_map[paper] = url
+                
+                # Handle both dict and list formats
+                if isinstance(papers, dict):
+                    # Original dict format: {paper: url}
+                    for paper, url in papers.items():
+                        year_map[paper] = url
+                elif isinstance(papers, list):
+                    # List format: [{paper: ..., url: ...}, ...]
+                    for entry in papers:
+                        if isinstance(entry, dict) and 'paper' in entry and 'url' in entry:
+                            paper = entry['paper']
+                            url = entry['url']
+                            # If multiple entries for same paper, keep the last one
+                            year_map[paper] = url
     return out
 
 
@@ -191,7 +206,7 @@ def main(argv: List[str]) -> int:
 
     # After applying changes, regenerate memo-links.json from the examiners manifest
     try:
-        regen_script = Path(__file__).resolve().parent / 'regenerate_memo_links_from_manifest.py'
+        regen_script = Path(__file__).resolve().parent / '03b_regenerate_memo_links.py'
         if regen_script.exists():
             print('Running memo regeneration to update resources/pdfs/memo-links.json...')
             rc = subprocess.run([sys.executable, str(regen_script)]).returncode

@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Practice by Chapter - ExamVault</title>
-    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
     <link rel="stylesheet" href="../css/subjects-styles.css">
 </head>
 <body>
@@ -15,20 +14,23 @@
                 <span class="logo-text"><span class="logo-exam">Exam</span><span class="logo-vault">Vault</span></span>
             </a>
             <div class="nav-links">
-                <a href="progress-tracker.html" class="nav-link">SUBJECTS</a>
+                <a href="subjects.html" class="nav-link">SUBJECTS</a>
                 <a href="dashboard.html" class="nav-link">ACCOUNT</a>
                 <button class="btn-signout-nav" id="signOutBtn">SIGN OUT</button>
             </div>
         </div>
     </nav>
 
-    <main class="main-content">
-        <div style="padding: 2rem; max-width: 900px; margin: 0 auto;">
-            <h1>Practice by Chapter (Coming Soon)</h1>
-            <p>This feature will let you practice questions grouped by chapter/topic. For now this is a placeholder page. We'll wire chapter content and question banks in a follow-up change.</p>
+    <main class="subjects-container">
+        <div class="subjects-header">
+            <h1 id="pageTitle">Select a chapter to practice questions</h1>
+        </div>
+
+        <div id="chaptersContainer" class="subjects-list">
+            <!-- Chapters rendered here -->
         </div>
     </main>
 
-    <script type="module" src="../js/subject-papers-script.js"></script>
+    <script type="module" src="../js/practice-by-chapter-script.js"></script>
 </body>
 </html>

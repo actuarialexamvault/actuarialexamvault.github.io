@@ -1,5 +1,10 @@
 import { themeManager } from './theme-manager.js';
 import { attachSignOutHandler } from './signout-modal.js';
+import { firebaseAuth } from './firebase-auth.js';
+import { indexedDBStorage } from './indexeddb-storage.js';
+
+// Modal state
+let currentQuestion = null;
 
 // Utility function to format question filename to readable name
 function formatQuestionName(filename) {
@@ -18,6 +23,125 @@ function formatQuestionName(filename) {
     
     // Fallback: just return the basename with underscores replaced by spaces
     return basename.replace(/_/g, ' ');
+}
+
+// Modal functions
+function showReviewTypeModal() {
+    const modal = document.getElementById('reviewTypeModal');
+    if (modal) modal.style.display = 'flex';
+}
+
+function hideReviewTypeModal() {
+    const modal = document.getElementById('reviewTypeModal');
+    if (modal) modal.style.display = 'none';
+}
+
+async function showAiInstructionsModal() {
+    const modal = document.getElementById('aiInstructionsModal');
+    const promptText = document.getElementById('aiPromptText');
+    
+    if (!modal || !promptText) return;
+    
+    // Build comprehensive prompt
+    const basePrompt = `You are a strict Actuarial board exam marker. You are known for producing the best Actuaries, known for their competence, strong professional and analytical skills hence you look for the clear demonstration of these factors when marking exam questions. When you mark a question you do not assign marks leniently, you stick to what was asked vs what is expected. You expect students to know and apply the core concepts that are being tested to demonstrate the competency that is expected of an Actuary.
+
+The Final Grade & score depends on the number of points that the student articulated against what is in the memo.
+Mark allocation: One valid point is equivalent to a 0.5 mark. That is, if a question has 2 marks available then the student should give 4 valid and distinct points. If the point is not directly mentioned in the memo use the spirit of the memo wording to award marks if what the student said is in line with what is expected.
+
+Your summary feedback to the student should include the annotated answer marked against the examiners report/feedback and a brief feedback summary focusing on identifying weak areas and topics that require further study.
+
+---
+
+`;
+    
+    try {
+        // Get current question and answer
+        const question = currentQuestion || JSON.parse(sessionStorage.getItem('selectedQuestion') || '{}');
+        const userAnswer = editor ? editor.value : '';
+        
+        promptText.value = basePrompt + "Loading question and solution...";
+        
+        const questionText = await loadQuestionText(question);
+        const solutionText = await loadSolutionText(question);
+        
+        const fullPrompt = basePrompt +
+            `QUESTION:\n${questionText}\n\n` +
+            `EXAMINER'S SOLUTION/MEMO:\n${solutionText}\n\n` +
+            `STUDENT'S ANSWER:\n${userAnswer}\n\n` +
+            `Please provide your detailed feedback and grading for this answer.`;
+        
+        promptText.value = fullPrompt;
+    } catch (error) {
+        console.error('Error building AI prompt:', error);
+        promptText.value = basePrompt + "\n\n[Error loading question details. Please review manually.]";
+    }
+    
+    modal.style.display = 'flex';
+}
+
+function hideAiInstructionsModal() {
+    const modal = document.getElementById('aiInstructionsModal');
+    if (modal) modal.style.display = 'none';
+    
+    // Ensure reviewType is set to 'ai' and navigate to grading page
+    sessionStorage.setItem('reviewType', 'ai');
+    
+    // Question data should already be in sessionStorage from the page load
+    // Navigate to grading page for AI review
+    window.location.href = 'chapter-question-grading.html';
+}
+
+// Helper functions to load question/solution text
+async function loadQuestionText(question) {
+    try {
+        if (!question || !question.output) return '[Question not available]';
+        
+        const response = await fetch(question.output);
+        if (!response.ok) throw new Error('Failed to load question');
+        return await response.text();
+    } catch (error) {
+        console.error('Error loading question:', error);
+        return '[Question text could not be loaded]';
+    }
+}
+
+async function loadSolutionText(question) {
+    try {
+        if (!question || !question.output) return '[Solution not available]';
+        
+        // Parse question path to build solution path
+        const questionPath = question.output || '';
+        const normalizedPath = questionPath.replace(/\\/g, '/');
+        const pathParts = normalizedPath.split('/');
+        
+        const questionsIndex = pathParts.indexOf('questions');
+        if (questionsIndex === -1) return '[Solution not available]';
+        
+        const subject = pathParts[questionsIndex + 1];
+        const session = pathParts[questionsIndex + 2];
+        const year = pathParts[questionsIndex + 3];
+        const paper = pathParts[questionsIndex + 4];
+        
+        const filename = pathParts[pathParts.length - 1];
+        const qMatch = filename.match(/_Q(\d+)\.md$/);
+        const questionNum = qMatch ? qMatch[1] : '1';
+        
+        const solutionPaths = [
+            `../resources/markdown_questions/solutions/${subject}/${year}/${session}/${paper}/${subject}_${session}_${year}_${paper}_Q${questionNum}.md`,
+            `../resources/markdown_questions/solutions/${subject}/${year}/${session}/Papergeneral/${subject}_${session}_${year}_Papergeneral_Q${questionNum}.md`
+        ];
+        
+        let response = await fetch(solutionPaths[0]);
+        if (!response.ok) {
+            response = await fetch(solutionPaths[1]);
+            if (!response.ok) throw new Error('Solution not found');
+        }
+        
+        return await response.text();
+    } catch (error) {
+        console.error('Error loading solution:', error);
+        return '[Solution not available]';
+    }
 }
 
 themeManager.init();
@@ -133,6 +257,7 @@ if (!sel) {
     questionContent.innerHTML = '<p style="color:#666;">Please choose a question from Practice → Chapter.</p>';
 } else {
     const q = JSON.parse(sel);
+    currentQuestion = q; // Store for modal use
     // Resolve the question markdown URL relative to this page.
     // Many manifest entries contain paths like 'resources/...' (root-relative),
     // but this page lives in `pages/` so we need to prefix '../' when necessary.
@@ -269,12 +394,108 @@ editor.addEventListener('input', () => {
     }, 1000);
 });
 
-// Save & Review button: persist draft and navigate to review page
+// Clear Answer button and modal
+const clearAnswerBtn = document.getElementById('clearAnswerBtn');
+const clearAnswerModal = document.getElementById('clearAnswerModal');
+const cancelClearBtn = document.getElementById('cancelClearBtn');
+const confirmClearBtn = document.getElementById('confirmClearBtn');
+
+if (clearAnswerBtn && clearAnswerModal) {
+    clearAnswerBtn.addEventListener('click', () => {
+        clearAnswerModal.style.display = 'flex';
+    });
+}
+
+if (cancelClearBtn && clearAnswerModal) {
+    cancelClearBtn.addEventListener('click', () => {
+        clearAnswerModal.style.display = 'none';
+    });
+}
+
+if (confirmClearBtn && clearAnswerModal) {
+    confirmClearBtn.addEventListener('click', () => {
+        editor.value = '';
+        if (draftKey) localStorage.removeItem(draftKey);
+        clearAnswerModal.style.display = 'none';
+    });
+}
+
+// Close modal when clicking outside
+if (clearAnswerModal) {
+    clearAnswerModal.addEventListener('click', (e) => {
+        if (e.target === clearAnswerModal) {
+            clearAnswerModal.style.display = 'none';
+        }
+    });
+}
+
+// Save & Review button: save draft and show review modal
 if (saveReviewBtn) {
     saveReviewBtn.addEventListener('click', () => {
         if (draftKey) localStorage.setItem(draftKey, editor.value);
-        // navigate to the chapter question grading/review page
+        // Show review type modal instead of directly navigating
+        showReviewTypeModal();
+    });
+}
+
+// Set up modal button event listeners
+const selfReviewBtn = document.getElementById('selfReviewBtn');
+const aiReviewBtn = document.getElementById('aiReviewBtn');
+const reviewTypeModal = document.getElementById('reviewTypeModal');
+const aiInstructionsModal = document.getElementById('aiInstructionsModal');
+const copyPromptBtn = document.getElementById('copyPromptBtn');
+const closeAiInstructionsBtn = document.getElementById('closeAiInstructionsBtn');
+
+if (selfReviewBtn) {
+    selfReviewBtn.addEventListener('click', () => {
+        hideReviewTypeModal();
+        // Navigate to grading page for self-review
+        sessionStorage.setItem('reviewType', 'self');
         window.location.href = 'chapter-question-grading.html';
+    });
+}
+
+if (aiReviewBtn) {
+    aiReviewBtn.addEventListener('click', async () => {
+        hideReviewTypeModal();
+        // Store review type for AI review
+        sessionStorage.setItem('reviewType', 'ai');
+        // Show AI instructions modal
+        await showAiInstructionsModal();
+    });
+}
+
+// Close modals when clicking outside
+if (reviewTypeModal) {
+    reviewTypeModal.addEventListener('click', (e) => {
+        if (e.target === reviewTypeModal) hideReviewTypeModal();
+    });
+}
+
+if (copyPromptBtn) {
+    copyPromptBtn.addEventListener('click', () => {
+        const promptText = document.getElementById('aiPromptText');
+        if (promptText) {
+            promptText.select();
+            document.execCommand('copy');
+            
+            // Visual feedback
+            const originalText = copyPromptBtn.textContent;
+            copyPromptBtn.textContent = 'Copied!';
+            setTimeout(() => {
+                copyPromptBtn.textContent = originalText;
+            }, 2000);
+        }
+    });
+}
+
+if (closeAiInstructionsBtn) {
+    closeAiInstructionsBtn.addEventListener('click', hideAiInstructionsModal);
+}
+
+if (aiInstructionsModal) {
+    aiInstructionsModal.addEventListener('click', (e) => {
+        if (e.target === aiInstructionsModal) hideAiInstructionsModal();
     });
 }
 

@@ -14,12 +14,25 @@ class FirebaseAuthService {
     constructor() {
         this.currentUser = null;
         this.googleProvider = new GoogleAuthProvider();
+        this.authReady = false;
+        this.authReadyPromise = new Promise((resolve) => {
+            this.authReadyResolver = resolve;
+        });
         
         // Listen for auth state changes
         onAuthStateChanged(auth, (user) => {
             this.currentUser = user;
             console.log('Auth state changed:', user ? user.email : 'No user');
+            if (!this.authReady) {
+                this.authReady = true;
+                this.authReadyResolver();
+            }
         });
+    }
+
+    // Wait for auth state to be initialized
+    async waitForAuthReady() {
+        return this.authReadyPromise;
     }
 
     // Sign up new user

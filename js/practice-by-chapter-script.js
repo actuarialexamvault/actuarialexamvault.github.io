@@ -15,23 +15,37 @@ const subjectTitle = params.get('subjectTitle') || sessionStorage.getItem('selec
 
 attachSignOutHandler('#signOutBtn');
 
-if (!subject) {
-    chaptersContainer.innerHTML = '<p style="color:#666; padding:1rem;">No subject selected.</p>';
-} else {
-    loadManifest(subject).then(async manifest => {
+// Wait for auth to be ready before loading data
+async function initializePage() {
+    if (!subject) {
+        chaptersContainer.innerHTML = '<p style="color:#666; padding:1rem;">No subject selected.</p>';
+        return;
+    }
+    
+    try {
+        // Wait for auth state to be ready
+        await firebaseAuth.waitForAuthReady();
+        
+        const manifest = await loadManifest(subject);
         const grades = await getUserQuestionGrades();
         const chapters = aggregateChapters(manifest, grades);
         renderChapters(chapters);
-    }).catch(err => {
+    } catch (err) {
         console.error('Failed to load manifest for subject', subject, err);
         chaptersContainer.innerHTML = '<p style="color:#666; padding:1rem;">Failed to load chapter manifest.</p>';
-    });
+    }
 }
+
+// Initialize the page
+initializePage();
 
 async function getUserQuestionGrades() {
     try {
         const user = firebaseAuth.getCurrentUser();
-        if (!user) return [];
+        if (!user) {
+            console.warn('No user found when fetching grades');
+            return [];
+        }
 
         // Try Firestore first
         const fbGrades = await firestoreData.getQuestionGrades(user.uid);
@@ -72,18 +86,24 @@ function aggregateChapters(manifest, grades = []) {
     // compute attempted counts by matching manifest entries to grades
     // build a lookup of graded questions for quick match
     const gradedSet = new Set();
+    console.log('Total grades loaded:', grades.length);
     for (const g of grades) {
         try {
             const key = `${(g.subject||'').toString().toUpperCase()}|${(g.year||'').toString()}|${(g.session||'').toString().toLowerCase().slice(0,3)}|${(g.paper||'').toString()}|${(g.question||'').toString().toLowerCase().replace(/^q/,'')}`;
             gradedSet.add(key);
+            if (grades.indexOf(g) < 5) { // Log first 5 for debugging
+                console.log('Grade key:', key, 'from', g);
+            }
         } catch (e) {
             // ignore malformed grade entries
         }
     }
+    console.log('Graded questions set size:', gradedSet.size);
 
     // helper to normalize session tokens
     function normSess(s) { return (s||'').toString().toLowerCase().slice(0,3); }
 
+    let matchCount = 0;
     for (const item of manifest) {
         const out = item.output || '';
         const basename = out.split(/[\\/]/).pop() || '';
@@ -97,13 +117,20 @@ function aggregateChapters(manifest, grades = []) {
         const qnum = m[5];
         const key = `${subj.toString().toUpperCase()}|${year}|${normSess(sess)}|${paper}|${qnum}`;
         const attempted = gradedSet.has(key);
-        if (attempted && Array.isArray(item.chapters)) {
-            for (const ch of item.chapters) {
-                const cur = map.get(ch);
-                if (cur) cur.attempted = (cur.attempted || 0) + 1;
+        if (matchCount < 5 && manifest.indexOf(item) < 20) { // Log first few
+            console.log('Manifest key:', key, 'attempted:', attempted);
+        }
+        if (attempted) {
+            matchCount++;
+            if (Array.isArray(item.chapters)) {
+                for (const ch of item.chapters) {
+                    const cur = map.get(ch);
+                    if (cur) cur.attempted = (cur.attempted || 0) + 1;
+                }
             }
         }
     }
+    console.log('Total matched questions:', matchCount);
     // convert to list sorted by count desc
     return Array.from(map.values()).sort((a,b) => b.count - a.count);
 }

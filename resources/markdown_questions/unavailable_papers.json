@@ -1,0 +1,70 @@
+{
+  "F102": {
+    "scanned_pdfs_requiring_ocr": [
+      {
+        "session": "JUNE",
+        "year": "2010",
+        "paper": "1",
+        "reason": "Scanned PDF - no text extraction possible without OCR",
+        "pdf_available": true,
+        "practice_by_chapter_available": false
+      },
+      {
+        "session": "JUNE",
+        "year": "2011",
+        "paper": "1",
+        "reason": "Scanned PDF - no text extraction possible without OCR",
+        "pdf_available": true,
+        "practice_by_chapter_available": false
+      },
+      {
+        "session": "NOVEMBER",
+        "year": "2012",
+        "paper": "1",
+        "reason": "Scanned PDF - no text extraction possible without OCR",
+        "pdf_available": true,
+        "practice_by_chapter_available": false
+      },
+      {
+        "session": "NOVEMBER",
+        "year": "2014",
+        "paper": "1",
+        "reason": "Scanned PDF - no text extraction possible without OCR",
+        "pdf_available": true,
+        "practice_by_chapter_available": false
+      },
+      {
+        "session": "NOVEMBER",
+        "year": "2016",
+        "paper": "1",
+        "reason": "Scanned PDF - no text extraction possible without OCR",
+        "pdf_available": true,
+        "practice_by_chapter_available": false
+      },
+      {
+        "session": "NOVEMBER",
+        "year": "2017",
+        "paper": "1",
+        "reason": "Scanned PDF - no text extraction possible without OCR",
+        "pdf_available": true,
+        "practice_by_chapter_available": false
+      },
+      {
+        "session": "NOVEMBER",
+        "year": "2018",
+        "paper": "1",
+        "reason": "Scanned PDF - no text extraction possible without OCR",
+        "pdf_available": true,
+        "practice_by_chapter_available": false
+      },
+      {
+        "session": "NOVEMBER",
+        "year": "2019",
+        "paper": "1",
+        "reason": "Scanned PDF - no text extraction possible without OCR",
+        "pdf_available": true,
+        "practice_by_chapter_available": false
+      }
+    ]
+  }
+}

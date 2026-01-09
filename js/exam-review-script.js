@@ -6,7 +6,7 @@ import { initActivityMonitor } from './activity-monitor.js';
 import { themeManager } from './theme-manager.js';
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
 import { auth } from './firebase-config.js';
-import { getExaminersReportLink, hasExaminersReport } from './memo-links.js';
+import { getExaminersReportLink, hasExaminersReport, ready as memoLinksReady } from './memo-links.js';
 import { attachSignOutHandler } from './signout-modal.js';
 
 // Initialize activity monitor
@@ -81,10 +81,48 @@ function hideDeleteConfirmModal() {
 // Get exam details from URL parameters
 const urlParams = new URLSearchParams(window.location.search);
 const subject = urlParams.get('subject');
-const subjectTitle = urlParams.get('subjectTitle');
+let subjectTitle = urlParams.get('subjectTitle'); // Will be populated from user profile if not provided
 const sessionType = urlParams.get('session');
 const year = urlParams.get('year');
 const paper = urlParams.get('paper');
+
+// Subject code to title mapping
+const SUBJECT_TITLES = {
+    'A211': 'Actuarial Statistics 1',
+    'A212': 'Actuarial Statistics 2', 
+    'A213': 'Actuarial Mathematics 1',
+    'A214': 'Actuarial Mathematics 2',
+    'F101': 'Health & Care',
+    'F102': 'Life Insurance',
+    'F103': 'General Insurance',
+    'F104': 'Pensions & Other Benefits',
+    'F106': 'Finance & Investment'
+};
+
+// Load subject title from user profile if not provided
+async function loadSubjectTitle() {
+    if (!subjectTitle && currentUser) {
+        try {
+            const userProfile = await firestoreData.getUserProfile(currentUser.uid);
+            if (userProfile.success && userProfile.data) {
+                const primaryExam = userProfile.data.primaryExam;
+                // Use primary exam if it matches the current subject, or use mapping
+                if (primaryExam === subject) {
+                    subjectTitle = SUBJECT_TITLES[subject] || subject;
+                } else {
+                    subjectTitle = SUBJECT_TITLES[subject] || subject;
+                }
+            } else {
+                subjectTitle = SUBJECT_TITLES[subject] || subject;
+            }
+        } catch (error) {
+            console.error('Error loading subject title:', error);
+            subjectTitle = SUBJECT_TITLES[subject] || subject;
+        }
+    } else if (!subjectTitle) {
+        subjectTitle = SUBJECT_TITLES[subject] || subject;
+    }
+}
 
 // DOM elements
 const signOutBtn = document.getElementById('signOutBtn');
@@ -131,6 +169,9 @@ function saveQuestionCount(count) {
 
 // Initialize page after auth check
 async function initializePage() {
+    // Load subject title from user profile if needed
+    await loadSubjectTitle();
+    
     // Load the saved question count
     questionCount = loadQuestionCount();
     setupEventListeners();
@@ -145,7 +186,7 @@ async function loadExamDetails() {
     reviewSubtitle.textContent = 'Review your exam attempt and grade your answers';
     
     // Update download memo button based on report availability
-    if (!hasExaminersReport(subject, sessionType, year, paper)) {
+    if (!hasExaminersReport(subject, year, sessionType, paper)) {
         downloadMemoBtn.disabled = true;
         downloadMemoBtn.title = "Examiner's report not yet available for this exam. Check the actuarial society website for updates";
         downloadMemoBtn.style.opacity = '0.5';
@@ -479,9 +520,10 @@ function setupEventListeners() {
     });
     
     // Download memo (examiners report)
-    downloadMemoBtn.addEventListener('click', () => {
-        const reportLink = getExaminersReportLink(subject, sessionType, year, paper);
-        
+    downloadMemoBtn.addEventListener('click', async () => {
+        await memoLinksReady;
+        const reportLink = getExaminersReportLink(subject, year, sessionType, paper);
+
         if (reportLink) {
             // Open the examiners report in a new tab
             window.open(reportLink, '_blank');

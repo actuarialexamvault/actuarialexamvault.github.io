@@ -47,7 +47,7 @@ def start_server():
     print(f"  - Sign In:      http://{HOST}:{PORT}/pages/signin.html")
     print(f"  - Sign Up:      http://{HOST}:{PORT}/pages/signup.html")
     print(f"  - Dashboard:    http://{HOST}:{PORT}/pages/dashboard.html")
-    print(f"  - Subjects:     http://{HOST}:{PORT}/pages/subjects.html")
+    print(f"  - Subjects:     http://{HOST}:{PORT}/pages/progress-tracker.html")
     print("\nPress Ctrl+C to stop the server\n")
     print("=" * 70)
     

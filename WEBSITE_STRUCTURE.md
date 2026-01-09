@@ -44,9 +44,8 @@ Actuarial-Exam-Book-main/
 │   ├── signin.html                     # Sign in page (Firebase Auth)
 │   ├── signup.html                     # Sign up page (Firebase Auth)
 │   ├── dashboard.html                  # User dashboard (Firebase profile)
-│   ├── subjects.html                   # Subjects selection
+│   ├── practice.html                   # Practice by chapter (new)
 │   ├── papers.html                     # Papers overview
-│   ├── subject-papers.html             # Subject-specific papers
 │   ├── year-papers.html                # Year-specific papers
 │   ├── exam-instructions.html          # Exam setup, upload, and timer
 │   ├── exam-review.html                # Review exam submissions
@@ -79,11 +78,11 @@ Actuarial-Exam-Book-main/
 1. **Landing (index.html)** → Sign In (pages/signin.html)
 2. **Sign In** → Dashboard (pages/dashboard.html) or Sign Up (pages/signup.html)
 3. **Dashboard** → 
-   - Subjects (pages/subjects.html)
-   - Progress Tracker (pages/progress-tracker.html)
-   - Help & Support (pages/help-support.html)
-4. **Subjects** → Papers (pages/papers.html)
-5. **Papers** → Subject Papers (pages/subject-papers.html)
+    - Progress Tracker (pages/progress-tracker.html)
+    - Practice by Chapter (pages/practice.html)
+    - Help & Support (pages/help-support.html)
+4. **Progress Tracker** → Papers (pages/papers.html)
+5. **Papers** → Exam Instructions (pages/exam-instructions.html)
 6. **Subject Papers** → Exam Instructions (pages/exam-instructions.html)
 7. **Exam Instructions** → Upload file + Timer → Exam Review
 8. **Progress Tracker** → Exam Review (pages/exam-review.html)

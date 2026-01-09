@@ -164,10 +164,13 @@ async function showProgressView(subject, subjectTitle) {
     await loadProgressData(subject, subjectTitle);
 }
 
-// Generate all available papers for a subject (2018-2025)
+// Generate all available papers for a subject (2010-2025)
 function generateAllPapers(subject) {
     const papers = [];
-    const years = [2025, 2024, 2023, 2022, 2021, 2020, 2019, 2018];
+    const startYear = 2025;
+    const endYear = 2010;
+    const years = [];
+    for (let y = startYear; y >= endYear; y--) years.push(y);
     const sessions = ['June', 'October'];
     
     years.forEach(year => {

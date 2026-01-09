@@ -45,7 +45,7 @@ const subject = urlParams.get('subject') || sessionStorage.getItem('selectedSubj
 const subjectTitleText = sessionStorage.getItem('selectedSubjectTitle');
 
 if (!subject) {
-    window.location.href = 'subjects.html';
+    window.location.href = 'progress-tracker.html';
 }
 
 // Update page title

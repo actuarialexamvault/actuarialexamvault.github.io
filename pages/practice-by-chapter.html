@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Practice by Chapter - ExamVault</title>
+    <link rel="stylesheet" href="../css/subjects-styles.css">
+    <link rel="stylesheet" href="../css/progress-tracker-styles.css">
+    <!-- Load theme immediately to prevent flash -->
+    <script>
+        (function() {
+            const theme = localStorage.getItem('theme') || localStorage.getItem('userTheme') || 'light';
+            if (theme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+            // Set initial logo based on theme
+            window.addEventListener('DOMContentLoaded', function() {
+                const logoImages = document.querySelectorAll('.logo-icon');
+                const logoSrc = theme === 'dark' ? '../favicon.svg' : '../favicon-light.svg';
+                logoImages.forEach(img => img.src = logoSrc);
+            });
+        })();
+    </script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="dashboard.html" class="logo">
+                <img src="../favicon-light.svg" alt="ExamVault Logo" class="logo-icon">
+                <span class="logo-text"><span class="logo-exam">Exam</span><span class="logo-vault">Vault</span></span>
+            </a>
+            <div class="nav-links">
+                <a href="subjects.html" class="nav-link">SUBJECTS</a>
+                <a href="account.html" class="nav-link">ACCOUNT</a>
+                <button class="btn-signout-nav" id="signOutBtn">SIGN OUT</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="subjects-container">
+        <div class="subjects-header">
+            <h1 id="pageTitle">Select a chapter to practice questions</h1>
+        </div>
+
+        <div id="chaptersContainer" class="subjects-list">
+            <!-- Chapters rendered here -->
+        </div>
+    </main>
+
+    <script type="module" src="../js/practice-by-chapter-script.js"></script>
+</body>
+</html>

@@ -72,7 +72,3 @@ Contributions welcome! Focus areas:
    - Simulated timed exams that replicate exam conditions.
    - Optional focus-mode that hides non-essential UI, warns on tab switches, and shows timeout notifications (including a prominent '5 minutes remaining' alert).
    - Autosubmit or prompt submission on timeout to preserve exam integrity. (cnnot submit after exam timer is over, cannot submit in the first 20mins)
-
-Implementation notes:
-
-- These features will use a combination of client-side scheduling, Firestore user metadata, and browser Notification APIs. Calendar sync requires OAuth credentials (Google/Outlook) and secure handling of tokens.

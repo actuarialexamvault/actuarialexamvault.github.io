@@ -1,0 +1,578 @@
+[
+  {
+    "source_pdf": "resources\\pdfs\\downloads\\F102\\2010\\JUNE\\Examiners_Report\\F102_2010_JUNE_general_Examiners_Report.pdf",
+    "output_md": "resources\\markdown_questions\\all\\solutions\\F102\\2010\\JUNE\\F102_2010_JUNE_general_Examiners_Report.md",
+    "status": "ok",
+    "subject": "2010",
+    "session": "JUNE",
+    "year": "Examiners_Report",
+    "doc_type": "F102_2010_JUNE_general_Examiners_Report.pdf"
+  },
+  {
+    "source_pdf": "resources\\pdfs\\downloads\\F102\\2010\\NOVEMBER\\Examiners_Report\\F102_2010_NOVEMBER_general_Examiners_Report.pdf",
+    "output_md": "resources\\markdown_questions\\all\\solutions\\F102\\2010\\NOVEMBER\\F102_2010_NOVEMBER_general_Examiners_Report.md",
+    "status": "ok",
+    "subject": "2010",
+    "session": "NOVEMBER",
+    "year": "Examiners_Report",
+    "doc_type": "F102_2010_NOVEMBER_general_Examiners_Report.pdf"
+  },
+  {
+    "source_pdf": "resources\\pdfs\\downloads\\F102\\2011\\JUNE\\Examiners_Report\\F102_2011_JUNE_general_Examiners_Report.pdf",
+    "output_md": "resources\\markdown_questions\\all\\solutions\\F102\\2011\\JUNE\\F102_2011_JUNE_general_Examiners_Report.md",
+    "status": "ok",
+    "subject": "2011",
+    "session": "JUNE",
+    "year": "Examiners_Report",
+    "doc_type": "F102_2011_JUNE_general_Examiners_Report.pdf"
+  },
+  {
+    "source_pdf": "resources\\pdfs\\downloads\\F102\\2011\\NOVEMBER\\Examiners_Report\\F102_2011_NOVEMBER_general_Examiners_Report.pdf",
+    "output_md": "resources\\markdown_questions\\all\\solutions\\F102\\2011\\NOVEMBER\\F102_2011_NOVEMBER_general_Examiners_Report.md",
+    "status": "ok",
+    "subject": "2011",
+    "session": "NOVEMBER",
+    "year": "Examiners_Report",
+    "doc_type": "F102_2011_NOVEMBER_general_Examiners_Report.pdf"
+  },
+  {
+    "source_pdf": "resources\\pdfs\\downloads\\F102\\2012\\JUNE\\Examiners_Report\\F102_2012_JUNE_general_Examiners_Report.pdf",
+    "output_md": "resources\\markdown_questions\\all\\solutions\\F102\\2012\\JUNE\\F102_2012_JUNE_general_Examiners_Report.md",
+    "status": "ok",
+    "subject": "2012",
+    "session": "JUNE",
+    "year": "Examiners_Report",
+    "doc_type": "F102_2012_JUNE_general_Examiners_Report.pdf"
+  },
+  {
+    "source_pdf": "resources\\pdfs\\downloads\\F102\\2012\\NOVEMBER\\Examiners_Report\\F102_2012_NOVEMBER_general_Examiners_Report.pdf",
+    "output_md": "resources\\markdown_questions\\all\\solutions\\F102\\2012\\NOVEMBER\\F102_2012_NOVEMBER_general_Examiners_Report.md",
+    "status": "ok",
+    "subject": "2012",
+    "session": "NOVEMBER",
+    "year": "Examiners_Report",
+    "doc_type": "F102_2012_NOVEMBER_general_Examiners_Report.pdf"
+  },
+  {
+    "source_pdf": "resources\\pdfs\\downloads\\F102\\2013\\JUNE\\Examiners_Report\\F102_2013_JUNE_general_Examiners_Report.pdf",
+    "output_md": "resources\\markdown_questions\\all\\solutions\\F102\\2013\\JUNE\\F102_2013_JUNE_general_Examiners_Report.md",
+    "status": "ok",
+    "subject": "2013",
+    "session": "JUNE",
+    "year": "Examiners_Report",
+    "doc_type": "F102_2013_JUNE_general_Examiners_Report.pdf"
+  },
+  {
+    "source_pdf": "resources\\pdfs\\downloads\\F102\\2013\\NOVEMBER\\Examiners_Report\\F102_2013_NOVEMBER_general_Examiners_Report.pdf",
+    "output_md": "resources\\markdown_questions\\all\\solutions\\F102\\2013\\NOVEMBER\\F102_2013_NOVEMBER_general_Examiners_Report.md",
+    "status": "ok",
+    "subject": "2013",
+    "session": "NOVEMBER",
+    "year": "Examiners_Report",
+    "doc_type": "F102_2013_NOVEMBER_general_Examiners_Report.pdf"
+  },
+  {
+    "source_pdf": "resources\\pdfs\\downloads\\F102\\2014\\JUNE\\Examiners_Report\\F102_2014_JUNE_general_Examiners_Report.pdf",
+    "output_md": "resources\\markdown_questions\\all\\solutions\\F102\\2014\\JUNE\\F102_2014_JUNE_general_Examiners_Report.md",
+    "status": "ok",
+    "subject": "2014",
+    "session": "JUNE",
+    "year": "Examiners_Report",
+    "doc_type": "F102_2014_JUNE_general_Examiners_Report.pdf"
+  },
+  {
+    "source_pdf": "resources\\pdfs\\downloads\\F102\\2014\\NOVEMBER\\Examiners_Report\\F102_2014_NOVEMBER_general_Examiners_Report.pdf",
+    "output_md": "resources\\markdown_questions\\all\\solutions\\F102\\2014\\NOVEMBER\\F102_2014_NOVEMBER_general_Examiners_Report.md",
+    "status": "ok",
+    "subject": "2014",
+    "session": "NOVEMBER",
+    "year": "Examiners_Report",
+    "doc_type": "F102_2014_NOVEMBER_general_Examiners_Report.pdf"
+  },
+  {
+    "source_pdf": "resources\\pdfs\\downloads\\F102\\2015\\JUNE\\Examiners_Report\\F102_2015_JUNE_general_Examiners_Report.pdf",
+    "output_md": "resources\\markdown_questions\\all\\solutions\\F102\\2015\\JUNE\\F102_2015_JUNE_general_Examiners_Report.md",
+    "status": "ok",
+    "subject": "2015",
+    "session": "JUNE",
+    "year": "Examiners_Report",
+    "doc_type": "F102_2015_JUNE_general_Examiners_Report.pdf"
+  },
+  {
+    "source_pdf": "resources\\pdfs\\downloads\\F102\\2015\\NOVEMBER\\Examiners_Report\\F102_2015_NOVEMBER_general_Examiners_Report.pdf",
+    "output_md": "resources\\markdown_questions\\all\\solutions\\F102\\2015\\NOVEMBER\\F102_2015_NOVEMBER_general_Examiners_Report.md",
+    "status": "ok",
+    "subject": "2015",
+    "session": "NOVEMBER",
+    "year": "Examiners_Report",
+    "doc_type": "F102_2015_NOVEMBER_general_Examiners_Report.pdf"
+  },
+  {
+    "source_pdf": "resources\\pdfs\\downloads\\F102\\2016\\JUNE\\Examiners_Report\\F102_2016_JUNE_general_Examiners_Report.pdf",
+    "output_md": "resources\\markdown_questions\\all\\solutions\\F102\\2016\\JUNE\\F102_2016_JUNE_general_Examiners_Report.md",
+    "status": "ok",
+    "subject": "2016",
+    "session": "JUNE",
+    "year": "Examiners_Report",
+    "doc_type": "F102_2016_JUNE_general_Examiners_Report.pdf"
+  },
+  {
+    "source_pdf": "resources\\pdfs\\downloads\\F102\\2016\\NOVEMBER\\Examiners_Report\\F102_2016_NOVEMBER_general_Examiners_Report.pdf",
+    "output_md": "resources\\markdown_questions\\all\\solutions\\F102\\2016\\NOVEMBER\\F102_2016_NOVEMBER_general_Examiners_Report.md",
+    "status": "ok",
+    "subject": "2016",
+    "session": "NOVEMBER",
+    "year": "Examiners_Report",
+    "doc_type": "F102_2016_NOVEMBER_general_Examiners_Report.pdf"
+  },
+  {
+    "source_pdf": "resources\\pdfs\\downloads\\F102\\2017\\JUNE\\Examiners_Report\\F102_2017_JUNE_general_Examiners_Report.pdf",
+    "output_md": "resources\\markdown_questions\\all\\solutions\\F102\\2017\\JUNE\\F102_2017_JUNE_general_Examiners_Report.md",
+    "status": "ok",
+    "subject": "2017",
+    "session": "JUNE",
+    "year": "Examiners_Report",
+    "doc_type": "F102_2017_JUNE_general_Examiners_Report.pdf"
+  },
+  {
+    "source_pdf": "resources\\pdfs\\downloads\\F102\\2017\\NOVEMBER\\Examiners_Report\\F102_2017_NOVEMBER_general_Examiners_Report.pdf",
+    "output_md": "resources\\markdown_questions\\all\\solutions\\F102\\2017\\NOVEMBER\\F102_2017_NOVEMBER_general_Examiners_Report.md",
+    "status": "ok",
+    "subject": "2017",
+    "session": "NOVEMBER",
+    "year": "Examiners_Report",
+    "doc_type": "F102_2017_NOVEMBER_general_Examiners_Report.pdf"
+  },
+  {
+    "source_pdf": "resources\\pdfs\\downloads\\F102\\2018\\JUNE\\Examiners_Report\\F102_2018_JUNE_general_Examiners_Report.pdf",
+    "output_md": "resources\\markdown_questions\\all\\solutions\\F102\\2018\\JUNE\\F102_2018_JUNE_general_Examiners_Report.md",
+    "status": "ok",
+    "subject": "2018",
+    "session": "JUNE",
+    "year": "Examiners_Report",
+    "doc_type": "F102_2018_JUNE_general_Examiners_Report.pdf"
+  },
+  {
+    "source_pdf": "resources\\pdfs\\downloads\\F102\\2018\\NOVEMBER\\Examiners_Report\\F102_2018_NOVEMBER_general_Examiners_Report.pdf",
+    "output_md": "resources\\markdown_questions\\all\\solutions\\F102\\2018\\NOVEMBER\\F102_2018_NOVEMBER_general_Examiners_Report.md",
+    "status": "ok",
+    "subject": "2018",
+    "session": "NOVEMBER",
+    "year": "Examiners_Report",
+    "doc_type": "F102_2018_NOVEMBER_general_Examiners_Report.pdf"
+  },
+  {
+    "source_pdf": "resources\\pdfs\\downloads\\F102\\2019\\JUNE\\Examiners_Report\\F102_2019_JUNE_general_Examiners_Report.pdf",
+    "output_md": "resources\\markdown_questions\\all\\solutions\\F102\\2019\\JUNE\\F102_2019_JUNE_general_Examiners_Report.md",
+    "status": "ok",
+    "subject": "2019",
+    "session": "JUNE",
+    "year": "Examiners_Report",
+    "doc_type": "F102_2019_JUNE_general_Examiners_Report.pdf"
+  },
+  {
+    "source_pdf": "resources\\pdfs\\downloads\\F102\\2019\\NOVEMBER\\Examiners_Report\\F102_2019_NOVEMBER_general_Examiners_Report.pdf",
+    "output_md": "resources\\markdown_questions\\all\\solutions\\F102\\2019\\NOVEMBER\\F102_2019_NOVEMBER_general_Examiners_Report.md",
+    "status": "ok",
+    "subject": "2019",
+    "session": "NOVEMBER",
+    "year": "Examiners_Report",
+    "doc_type": "F102_2019_NOVEMBER_general_Examiners_Report.pdf"
+  },
+  {
+    "source_pdf": "resources\\pdfs\\downloads\\F102\\2020\\JUNE\\Examiners_Report\\F102_2020_JUNE_general_Examiners_Report.pdf",
+    "output_md": "resources\\markdown_questions\\all\\solutions\\F102\\2020\\JUNE\\F102_2020_JUNE_general_Examiners_Report.md",
+    "status": "ok",
+    "subject": "2020",
+    "session": "JUNE",
+    "year": "Examiners_Report",
+    "doc_type": "F102_2020_JUNE_general_Examiners_Report.pdf"
+  },
+  {
+    "source_pdf": "resources\\pdfs\\downloads\\F102\\2020\\NOVEMBER\\Examiners_Report\\F102_2020_NOVEMBER_general_Examiners_Report.pdf",
+    "output_md": "resources\\markdown_questions\\all\\solutions\\F102\\2020\\NOVEMBER\\F102_2020_NOVEMBER_general_Examiners_Report.md",
+    "status": "ok",
+    "subject": "2020",
+    "session": "NOVEMBER",
+    "year": "Examiners_Report",
+    "doc_type": "F102_2020_NOVEMBER_general_Examiners_Report.pdf"
+  },
+  {
+    "source_pdf": "resources\\pdfs\\downloads\\F102\\2021\\JUNE\\Examiners_Report\\F102_2021_JUNE_general_Examiners_Report.pdf",
+    "output_md": "resources\\markdown_questions\\all\\solutions\\F102\\2021\\JUNE\\F102_2021_JUNE_general_Examiners_Report.md",
+    "status": "ok",
+    "subject": "2021",
+    "session": "JUNE",
+    "year": "Examiners_Report",
+    "doc_type": "F102_2021_JUNE_general_Examiners_Report.pdf"
+  },
+  {
+    "source_pdf": "resources\\pdfs\\downloads\\F102\\2021\\NOVEMBER\\Examiners_Report\\F102_2021_NOVEMBER_general_Examiners_Report.pdf",
+    "output_md": "resources\\markdown_questions\\all\\solutions\\F102\\2021\\NOVEMBER\\F102_2021_NOVEMBER_general_Examiners_Report.md",
+    "status": "ok",
+    "subject": "2021",
+    "session": "NOVEMBER",
+    "year": "Examiners_Report",
+    "doc_type": "F102_2021_NOVEMBER_general_Examiners_Report.pdf"
+  },
+  {
+    "source_pdf": "resources\\pdfs\\downloads\\F102\\2022\\JUNE\\Examiners_Report\\F102_2022_JUNE_general_Examiners_Report.pdf",
+    "output_md": "resources\\markdown_questions\\all\\solutions\\F102\\2022\\JUNE\\F102_2022_JUNE_general_Examiners_Report.md",
+    "status": "ok",
+    "subject": "2022",
+    "session": "JUNE",
+    "year": "Examiners_Report",
+    "doc_type": "F102_2022_JUNE_general_Examiners_Report.pdf"
+  },
+  {
+    "source_pdf": "resources\\pdfs\\downloads\\F102\\2022\\NOVEMBER\\Examiners_Report\\F102_2022_NOVEMBER_general_Examiners_Report.pdf",
+    "output_md": "resources\\markdown_questions\\all\\solutions\\F102\\2022\\NOVEMBER\\F102_2022_NOVEMBER_general_Examiners_Report.md",
+    "status": "ok",
+    "subject": "2022",
+    "session": "NOVEMBER",
+    "year": "Examiners_Report",
+    "doc_type": "F102_2022_NOVEMBER_general_Examiners_Report.pdf"
+  },
+  {
+    "source_pdf": "resources\\pdfs\\downloads\\F102\\2023\\JUNE\\Examiners_Report\\F102_2023_JUNE_general_Examiners_Report.pdf",
+    "output_md": "resources\\markdown_questions\\all\\solutions\\F102\\2023\\JUNE\\F102_2023_JUNE_general_Examiners_Report.md",
+    "status": "ok",
+    "subject": "2023",
+    "session": "JUNE",
+    "year": "Examiners_Report",
+    "doc_type": "F102_2023_JUNE_general_Examiners_Report.pdf"
+  },
+  {
+    "source_pdf": "resources\\pdfs\\downloads\\F102\\2023\\NOVEMBER\\Examiners_Report\\F102_2023_NOVEMBER_general_Examiners_Report.pdf",
+    "output_md": "resources\\markdown_questions\\all\\solutions\\F102\\2023\\NOVEMBER\\F102_2023_NOVEMBER_general_Examiners_Report.md",
+    "status": "ok",
+    "subject": "2023",
+    "session": "NOVEMBER",
+    "year": "Examiners_Report",
+    "doc_type": "F102_2023_NOVEMBER_general_Examiners_Report.pdf"
+  },
+  {
+    "source_pdf": "resources\\pdfs\\downloads\\F102\\2024\\JUNE\\Examiners_Report\\F102_2024_JUNE_general_Examiners_Report.pdf",
+    "output_md": "resources\\markdown_questions\\all\\solutions\\F102\\2024\\JUNE\\F102_2024_JUNE_general_Examiners_Report.md",
+    "status": "ok",
+    "subject": "2024",
+    "session": "JUNE",
+    "year": "Examiners_Report",
+    "doc_type": "F102_2024_JUNE_general_Examiners_Report.pdf"
+  },
+  {
+    "source_pdf": "resources\\pdfs\\downloads\\F102\\2024\\NOVEMBER\\Examiners_Report\\F102_2024_NOVEMBER_general_Examiners_Report.pdf",
+    "output_md": "resources\\markdown_questions\\all\\solutions\\F102\\2024\\NOVEMBER\\F102_2024_NOVEMBER_general_Examiners_Report.md",
+    "status": "ok",
+    "subject": "2024",
+    "session": "NOVEMBER",
+    "year": "Examiners_Report",
+    "doc_type": "F102_2024_NOVEMBER_general_Examiners_Report.pdf"
+  },
+  {
+    "source_pdf": "resources\\pdfs\\downloads\\F102\\2025\\JUNE\\Examiners_Report\\F102_2025_JUNE_general_Examiners_Report.pdf",
+    "output_md": "resources\\markdown_questions\\all\\solutions\\F102\\2025\\JUNE\\F102_2025_JUNE_general_Examiners_Report.md",
+    "status": "ok",
+    "subject": "2025",
+    "session": "JUNE",
+    "year": "Examiners_Report",
+    "doc_type": "F102_2025_JUNE_general_Examiners_Report.pdf"
+  },
+  {
+    "source_pdf": "resources\\pdfs\\downloads\\F102\\2025\\NOVEMBER\\Examiners_Report\\F102_2025_NOVEMBER_general_Examiners_Report.pdf",
+    "output_md": "resources\\markdown_questions\\all\\solutions\\F102\\2025\\NOVEMBER\\F102_2025_NOVEMBER_general_Examiners_Report.md",
+    "status": "ok",
+    "subject": "2025",
+    "session": "NOVEMBER",
+    "year": "Examiners_Report",
+    "doc_type": "F102_2025_NOVEMBER_general_Examiners_Report.pdf"
+  },
+  {
+    "source_pdf": "resources\\pdfs\\downloads\\F102\\JUNE\\2010\\Exam\\F102_2010_JUNE_1_Exam.pdf",
+    "output_md": "resources\\markdown_questions\\all\\exams\\F102\\JUNE\\2010\\F102_2010_JUNE_1_Exam.md",
+    "status": "failed",
+    "subject": "JUNE",
+    "session": "2010",
+    "year": "Exam",
+    "doc_type": "F102_2010_JUNE_1_Exam.pdf"
+  },
+  {
+    "source_pdf": "resources\\pdfs\\downloads\\F102\\JUNE\\2011\\Exam\\F102_2011_JUNE_1_Exam.pdf",
+    "output_md": "resources\\markdown_questions\\all\\exams\\F102\\JUNE\\2011\\F102_2011_JUNE_1_Exam.md",
+    "status": "failed",
+    "subject": "JUNE",
+    "session": "2011",
+    "year": "Exam",
+    "doc_type": "F102_2011_JUNE_1_Exam.pdf"
+  },
+  {
+    "source_pdf": "resources\\pdfs\\downloads\\F102\\JUNE\\2012\\Exam\\F102_2012_JUNE_1_Exam.pdf",
+    "output_md": "resources\\markdown_questions\\all\\exams\\F102\\JUNE\\2012\\F102_2012_JUNE_1_Exam.md",
+    "status": "ok",
+    "subject": "JUNE",
+    "session": "2012",
+    "year": "Exam",
+    "doc_type": "F102_2012_JUNE_1_Exam.pdf"
+  },
+  {
+    "source_pdf": "resources\\pdfs\\downloads\\F102\\JUNE\\2013\\Exam\\F102_2013_JUNE_1_Exam.pdf",
+    "output_md": "resources\\markdown_questions\\all\\exams\\F102\\JUNE\\2013\\F102_2013_JUNE_1_Exam.md",
+    "status": "ok",
+    "subject": "JUNE",
+    "session": "2013",
+    "year": "Exam",
+    "doc_type": "F102_2013_JUNE_1_Exam.pdf"
+  },
+  {
+    "source_pdf": "resources\\pdfs\\downloads\\F102\\JUNE\\2014\\Exam\\F102_2014_JUNE_1_Exam.pdf",
+    "output_md": "resources\\markdown_questions\\all\\exams\\F102\\JUNE\\2014\\F102_2014_JUNE_1_Exam.md",
+    "status": "ok",
+    "subject": "JUNE",
+    "session": "2014",
+    "year": "Exam",
+    "doc_type": "F102_2014_JUNE_1_Exam.pdf"
+  },
+  {
+    "source_pdf": "resources\\pdfs\\downloads\\F102\\JUNE\\2015\\Exam\\F102_2015_JUNE_1_Exam.pdf",
+    "output_md": "resources\\markdown_questions\\all\\exams\\F102\\JUNE\\2015\\F102_2015_JUNE_1_Exam.md",
+    "status": "ok",
+    "subject": "JUNE",
+    "session": "2015",
+    "year": "Exam",
+    "doc_type": "F102_2015_JUNE_1_Exam.pdf"
+  },
+  {
+    "source_pdf": "resources\\pdfs\\downloads\\F102\\JUNE\\2016\\Exam\\F102_2016_JUNE_1_Exam.pdf",
+    "output_md": "resources\\markdown_questions\\all\\exams\\F102\\JUNE\\2016\\F102_2016_JUNE_1_Exam.md",
+    "status": "ok",
+    "subject": "JUNE",
+    "session": "2016",
+    "year": "Exam",
+    "doc_type": "F102_2016_JUNE_1_Exam.pdf"
+  },
+  {
+    "source_pdf": "resources\\pdfs\\downloads\\F102\\JUNE\\2017\\Exam\\F102_2017_JUNE_1_Exam.pdf",
+    "output_md": "resources\\markdown_questions\\all\\exams\\F102\\JUNE\\2017\\F102_2017_JUNE_1_Exam.md",
+    "status": "ok",
+    "subject": "JUNE",
+    "session": "2017",
+    "year": "Exam",
+    "doc_type": "F102_2017_JUNE_1_Exam.pdf"
+  },
+  {
+    "source_pdf": "resources\\pdfs\\downloads\\F102\\JUNE\\2018\\Exam\\F102_2018_JUNE_1_Exam.pdf",
+    "output_md": "resources\\markdown_questions\\all\\exams\\F102\\JUNE\\2018\\F102_2018_JUNE_1_Exam.md",
+    "status": "ok",
+    "subject": "JUNE",
+    "session": "2018",
+    "year": "Exam",
+    "doc_type": "F102_2018_JUNE_1_Exam.pdf"
+  },
+  {
+    "source_pdf": "resources\\pdfs\\downloads\\F102\\JUNE\\2019\\Exam\\F102_2019_JUNE_1_Exam.pdf",
+    "output_md": "resources\\markdown_questions\\all\\exams\\F102\\JUNE\\2019\\F102_2019_JUNE_1_Exam.md",
+    "status": "ok",
+    "subject": "JUNE",
+    "session": "2019",
+    "year": "Exam",
+    "doc_type": "F102_2019_JUNE_1_Exam.pdf"
+  },
+  {
+    "source_pdf": "resources\\pdfs\\downloads\\F102\\JUNE\\2020\\Exam\\F102_2020_JUNE_1_Exam.pdf",
+    "output_md": "resources\\markdown_questions\\all\\exams\\F102\\JUNE\\2020\\F102_2020_JUNE_1_Exam.md",
+    "status": "ok",
+    "subject": "JUNE",
+    "session": "2020",
+    "year": "Exam",
+    "doc_type": "F102_2020_JUNE_1_Exam.pdf"
+  },
+  {
+    "source_pdf": "resources\\pdfs\\downloads\\F102\\JUNE\\2021\\Exam\\F102_2021_JUNE_1_Exam.pdf",
+    "output_md": "resources\\markdown_questions\\all\\exams\\F102\\JUNE\\2021\\F102_2021_JUNE_1_Exam.md",
+    "status": "ok",
+    "subject": "JUNE",
+    "session": "2021",
+    "year": "Exam",
+    "doc_type": "F102_2021_JUNE_1_Exam.pdf"
+  },
+  {
+    "source_pdf": "resources\\pdfs\\downloads\\F102\\JUNE\\2022\\Exam\\F102_2022_JUNE_1_Exam.pdf",
+    "output_md": "resources\\markdown_questions\\all\\exams\\F102\\JUNE\\2022\\F102_2022_JUNE_1_Exam.md",
+    "status": "ok",
+    "subject": "JUNE",
+    "session": "2022",
+    "year": "Exam",
+    "doc_type": "F102_2022_JUNE_1_Exam.pdf"
+  },
+  {
+    "source_pdf": "resources\\pdfs\\downloads\\F102\\JUNE\\2023\\Exam\\F102_2023_JUNE_1_Exam.pdf",
+    "output_md": "resources\\markdown_questions\\all\\exams\\F102\\JUNE\\2023\\F102_2023_JUNE_1_Exam.md",
+    "status": "ok",
+    "subject": "JUNE",
+    "session": "2023",
+    "year": "Exam",
+    "doc_type": "F102_2023_JUNE_1_Exam.pdf"
+  },
+  {
+    "source_pdf": "resources\\pdfs\\downloads\\F102\\JUNE\\2024\\Exam\\F102_2024_JUNE_1_Exam.pdf",
+    "output_md": "resources\\markdown_questions\\all\\exams\\F102\\JUNE\\2024\\F102_2024_JUNE_1_Exam.md",
+    "status": "ok",
+    "subject": "JUNE",
+    "session": "2024",
+    "year": "Exam",
+    "doc_type": "F102_2024_JUNE_1_Exam.pdf"
+  },
+  {
+    "source_pdf": "resources\\pdfs\\downloads\\F102\\JUNE\\2025\\Exam\\F102_2025_JUNE_1_Exam.pdf",
+    "output_md": "resources\\markdown_questions\\all\\exams\\F102\\JUNE\\2025\\F102_2025_JUNE_1_Exam.md",
+    "status": "ok",
+    "subject": "JUNE",
+    "session": "2025",
+    "year": "Exam",
+    "doc_type": "F102_2025_JUNE_1_Exam.pdf"
+  },
+  {
+    "source_pdf": "resources\\pdfs\\downloads\\F102\\NOVEMBER\\2010\\Exam\\F102_2010_NOVEMBER_1_Exam.pdf",
+    "output_md": "resources\\markdown_questions\\all\\exams\\F102\\NOVEMBER\\2010\\F102_2010_NOVEMBER_1_Exam.md",
+    "status": "ok",
+    "subject": "NOVEMBER",
+    "session": "2010",
+    "year": "Exam",
+    "doc_type": "F102_2010_NOVEMBER_1_Exam.pdf"
+  },
+  {
+    "source_pdf": "resources\\pdfs\\downloads\\F102\\NOVEMBER\\2011\\Exam\\F102_2011_NOVEMBER_1_Exam.pdf",
+    "output_md": "resources\\markdown_questions\\all\\exams\\F102\\NOVEMBER\\2011\\F102_2011_NOVEMBER_1_Exam.md",
+    "status": "ok",
+    "subject": "NOVEMBER",
+    "session": "2011",
+    "year": "Exam",
+    "doc_type": "F102_2011_NOVEMBER_1_Exam.pdf"
+  },
+  {
+    "source_pdf": "resources\\pdfs\\downloads\\F102\\NOVEMBER\\2012\\Exam\\F102_2012_NOVEMBER_1_Exam.pdf",
+    "output_md": "resources\\markdown_questions\\all\\exams\\F102\\NOVEMBER\\2012\\F102_2012_NOVEMBER_1_Exam.md",
+    "status": "ok",
+    "subject": "NOVEMBER",
+    "session": "2012",
+    "year": "Exam",
+    "doc_type": "F102_2012_NOVEMBER_1_Exam.pdf"
+  },
+  {
+    "source_pdf": "resources\\pdfs\\downloads\\F102\\NOVEMBER\\2013\\Exam\\F102_2013_NOVEMBER_1_Exam.pdf",
+    "output_md": "resources\\markdown_questions\\all\\exams\\F102\\NOVEMBER\\2013\\F102_2013_NOVEMBER_1_Exam.md",
+    "status": "ok",
+    "subject": "NOVEMBER",
+    "session": "2013",
+    "year": "Exam",
+    "doc_type": "F102_2013_NOVEMBER_1_Exam.pdf"
+  },
+  {
+    "source_pdf": "resources\\pdfs\\downloads\\F102\\NOVEMBER\\2014\\Exam\\F102_2014_NOVEMBER_1_Exam.pdf",
+    "output_md": "resources\\markdown_questions\\all\\exams\\F102\\NOVEMBER\\2014\\F102_2014_NOVEMBER_1_Exam.md",
+    "status": "ok",
+    "subject": "NOVEMBER",
+    "session": "2014",
+    "year": "Exam",
+    "doc_type": "F102_2014_NOVEMBER_1_Exam.pdf"
+  },
+  {
+    "source_pdf": "resources\\pdfs\\downloads\\F102\\NOVEMBER\\2015\\Exam\\F102_2015_NOVEMBER_1_Exam.pdf",
+    "output_md": "resources\\markdown_questions\\all\\exams\\F102\\NOVEMBER\\2015\\F102_2015_NOVEMBER_1_Exam.md",
+    "status": "ok",
+    "subject": "NOVEMBER",
+    "session": "2015",
+    "year": "Exam",
+    "doc_type": "F102_2015_NOVEMBER_1_Exam.pdf"
+  },
+  {
+    "source_pdf": "resources\\pdfs\\downloads\\F102\\NOVEMBER\\2016\\Exam\\F102_2016_NOVEMBER_1_Exam.pdf",
+    "output_md": "resources\\markdown_questions\\all\\exams\\F102\\NOVEMBER\\2016\\F102_2016_NOVEMBER_1_Exam.md",
+    "status": "failed",
+    "subject": "NOVEMBER",
+    "session": "2016",
+    "year": "Exam",
+    "doc_type": "F102_2016_NOVEMBER_1_Exam.pdf"
+  },
+  {
+    "source_pdf": "resources\\pdfs\\downloads\\F102\\NOVEMBER\\2017\\Exam\\F102_2017_NOVEMBER_1_Exam.pdf",
+    "output_md": "resources\\markdown_questions\\all\\exams\\F102\\NOVEMBER\\2017\\F102_2017_NOVEMBER_1_Exam.md",
+    "status": "failed",
+    "subject": "NOVEMBER",
+    "session": "2017",
+    "year": "Exam",
+    "doc_type": "F102_2017_NOVEMBER_1_Exam.pdf"
+  },
+  {
+    "source_pdf": "resources\\pdfs\\downloads\\F102\\NOVEMBER\\2018\\Exam\\F102_2018_NOVEMBER_1_Exam.pdf",
+    "output_md": "resources\\markdown_questions\\all\\exams\\F102\\NOVEMBER\\2018\\F102_2018_NOVEMBER_1_Exam.md",
+    "status": "failed",
+    "subject": "NOVEMBER",
+    "session": "2018",
+    "year": "Exam",
+    "doc_type": "F102_2018_NOVEMBER_1_Exam.pdf"
+  },
+  {
+    "source_pdf": "resources\\pdfs\\downloads\\F102\\NOVEMBER\\2019\\Exam\\F102_2019_NOVEMBER_1_Exam.pdf",
+    "output_md": "resources\\markdown_questions\\all\\exams\\F102\\NOVEMBER\\2019\\F102_2019_NOVEMBER_1_Exam.md",
+    "status": "failed",
+    "subject": "NOVEMBER",
+    "session": "2019",
+    "year": "Exam",
+    "doc_type": "F102_2019_NOVEMBER_1_Exam.pdf"
+  },
+  {
+    "source_pdf": "resources\\pdfs\\downloads\\F102\\NOVEMBER\\2020\\Exam\\F102_2020_NOVEMBER_1_Exam.pdf",
+    "output_md": "resources\\markdown_questions\\all\\exams\\F102\\NOVEMBER\\2020\\F102_2020_NOVEMBER_1_Exam.md",
+    "status": "ok",
+    "subject": "NOVEMBER",
+    "session": "2020",
+    "year": "Exam",
+    "doc_type": "F102_2020_NOVEMBER_1_Exam.pdf"
+  },
+  {
+    "source_pdf": "resources\\pdfs\\downloads\\F102\\NOVEMBER\\2021\\Exam\\F102_2021_NOVEMBER_1_Exam.pdf",
+    "output_md": "resources\\markdown_questions\\all\\exams\\F102\\NOVEMBER\\2021\\F102_2021_NOVEMBER_1_Exam.md",
+    "status": "ok",
+    "subject": "NOVEMBER",
+    "session": "2021",
+    "year": "Exam",
+    "doc_type": "F102_2021_NOVEMBER_1_Exam.pdf"
+  },
+  {
+    "source_pdf": "resources\\pdfs\\downloads\\F102\\NOVEMBER\\2022\\Exam\\F102_2022_NOVEMBER_1_Exam.pdf",
+    "output_md": "resources\\markdown_questions\\all\\exams\\F102\\NOVEMBER\\2022\\F102_2022_NOVEMBER_1_Exam.md",
+    "status": "ok",
+    "subject": "NOVEMBER",
+    "session": "2022",
+    "year": "Exam",
+    "doc_type": "F102_2022_NOVEMBER_1_Exam.pdf"
+  },
+  {
+    "source_pdf": "resources\\pdfs\\downloads\\F102\\NOVEMBER\\2023\\Exam\\F102_2023_NOVEMBER_1_Exam.pdf",
+    "output_md": "resources\\markdown_questions\\all\\exams\\F102\\NOVEMBER\\2023\\F102_2023_NOVEMBER_1_Exam.md",
+    "status": "ok",
+    "subject": "NOVEMBER",
+    "session": "2023",
+    "year": "Exam",
+    "doc_type": "F102_2023_NOVEMBER_1_Exam.pdf"
+  },
+  {
+    "source_pdf": "resources\\pdfs\\downloads\\F102\\NOVEMBER\\2024\\Exam\\F102_2024_NOVEMBER_1_Exam.pdf",
+    "output_md": "resources\\markdown_questions\\all\\exams\\F102\\NOVEMBER\\2024\\F102_2024_NOVEMBER_1_Exam.md",
+    "status": "ok",
+    "subject": "NOVEMBER",
+    "session": "2024",
+    "year": "Exam",
+    "doc_type": "F102_2024_NOVEMBER_1_Exam.pdf"
+  },
+  {
+    "source_pdf": "resources\\pdfs\\downloads\\F102\\NOVEMBER\\2025\\Exam\\F102_2025_NOVEMBER_1_Exam.pdf",
+    "output_md": "resources\\markdown_questions\\all\\exams\\F102\\NOVEMBER\\2025\\F102_2025_NOVEMBER_1_Exam.md",
+    "status": "ok",
+    "subject": "NOVEMBER",
+    "session": "2025",
+    "year": "Exam",
+    "doc_type": "F102_2025_NOVEMBER_1_Exam.pdf"
+  }
+]

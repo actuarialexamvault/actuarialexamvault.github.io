@@ -153,7 +153,7 @@ body {
 
 /* Main Container */
 .grading-container {
-    max-width: 900px;
+    max-width: 1000px;
     margin: 0 auto;
     padding: 2rem;
 }
@@ -167,13 +167,13 @@ body {
 .grading-header h1 {
     font-size: 2rem;
     font-weight: 700;
-    color: #1a1a1a;
+    color: var(--text-primary);
     margin-bottom: 0.5rem;
 }
 
 .subtitle {
     font-size: 1rem;
-    color: #6b7280;
+    color: var(--text-secondary);
     font-style: italic;
 }
 
@@ -186,33 +186,126 @@ body {
 
 /* Section Styles */
 section {
-    background: white;
+    background: var(--bg-card);
     border-radius: 12px;
     padding: 2rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 2px 8px var(--shadow-md);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 section h2 {
     font-size: 1.5rem;
     font-weight: 700;
-    color: #1a1a1a;
+    color: var(--text-primary);
     margin-bottom: 0.5rem;
 }
 
 .section-description {
     font-size: 0.95rem;
-    color: #6b7280;
+    color: var(--text-secondary);
     font-style: italic;
     margin-bottom: 1.5rem;
 }
 
+/* Content Display Sections (for question, answer, solution) */
+.content-display {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--text-primary);
+    padding: 1.5rem;
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    border-left: 4px solid #00d4aa;
+    /* Removed max-height and overflow-y to show all content without scrolling */
+}
+
+.content-display h1,
+.content-display h2,
+.content-display h3 {
+    color: var(--text-primary);
+    margin-top: 1rem;
+    margin-bottom: 0.75rem;
+}
+
+.content-display h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.content-display h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.content-display h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+}
+
+.content-display p {
+    margin-bottom: 1rem;
+    color: var(--text-secondary);
+}
+
+.content-display ul,
+.content-display ol {
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.content-display li {
+    margin-bottom: 0.5rem;
+    color: var(--text-secondary);
+}
+
+.content-display pre {
+    background: var(--bg-primary);
+    padding: 1rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin-bottom: 1rem;
+}
+
+.content-display code {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9rem;
+}
+
+.content-display strong {
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.content-display em {
+    font-style: italic;
+}
+
+/* Scrollbar styling removed - content sections are no longer scrollable */
+
+/* Question Section specific styling */
+.question-section .content-display {
+    border-left-color: #00a3ff;
+}
+
+/* Answer Section specific styling */
+.answer-section .content-display {
+    border-left-color: #00d4aa;
+}
+
+/* Solution Section specific styling */
+.solution-section .content-display {
+    border-left-color: #ff9800;
+}
+
+
 /* Dimension Cards */
 .dimension-card {
-    background: #f9fafb;
+    background: var(--bg-secondary);
     border-radius: 12px;
     padding: 1.5rem;
     margin-bottom: 1.5rem;
     border-left: 4px solid #00d4aa;
+    transition: background-color 0.3s ease;
 }
 
 .dimension-card:last-child {
@@ -230,14 +323,14 @@ section h2 {
 .dimension-info h3 {
     font-size: 0.875rem;
     font-weight: 700;
-    color: #1a1a1a;
+    color: var(--text-primary);
     letter-spacing: 0.5px;
     margin-bottom: 0.375rem;
 }
 
 .dimension-info p {
     font-size: 0.875rem;
-    color: #6b7280;
+    color: var(--text-secondary);
     font-style: italic;
     line-height: 1.5;
 }
@@ -259,10 +352,11 @@ section h2 {
     width: 100%;
     height: 8px;
     border-radius: 5px;
-    background: #e5e7eb;
+    background: var(--border-color);
     outline: none;
     -webkit-appearance: none;
     appearance: none;
+    transition: background-color 0.3s ease;
 }
 
 .dimension-slider::-webkit-slider-thumb {
@@ -314,19 +408,19 @@ section h2 {
 .input-group label {
     font-size: 0.75rem;
     font-weight: 700;
-    color: #6b7280;
+    color: var(--text-secondary);
     letter-spacing: 0.5px;
 }
 
 .grade-select,
 .marks-input {
     padding: 0.875rem 1rem;
-    border: 2px solid #e5e7eb;
+    border: 2px solid var(--border-color);
     border-radius: 8px;
     font-size: 1rem;
     font-weight: 500;
-    color: #1a1a1a;
-    background: white;
+    color: var(--text-primary);
+    background: var(--bg-card);
     transition: all 0.3s ease;
 }
 
@@ -343,7 +437,7 @@ section h2 {
 
 .input-group small {
     font-size: 0.8rem;
-    color: #9ca3af;
+    color: var(--text-muted);
     font-style: italic;
 }
 
@@ -353,9 +447,10 @@ section h2 {
     align-items: center;
     gap: 1rem;
     padding: 1rem;
-    background: #f9fafb;
+    background: var(--bg-secondary);
     border-radius: 8px;
-    border: 2px solid #e5e7eb;
+    border: 2px solid var(--border-color);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .grade-badge {
@@ -373,13 +468,18 @@ section h2 {
 .percentage-display {
     font-size: 1rem;
     font-weight: 600;
-    color: #6b7280;
+    color: var(--text-secondary);
 }
 
 /* Finalize Section */
 .finalize-section {
     background: linear-gradient(135deg, #e6f9f5 0%, #e6f3ff 100%);
     border: 2px solid #00d4aa;
+}
+
+[data-theme="dark"] .finalize-section {
+    background: linear-gradient(135deg, rgba(0, 212, 170, 0.15) 0%, rgba(0, 163, 255, 0.15) 100%);
+    border-color: #00d4aa;
 }
 
 .finalize-content {
@@ -390,13 +490,13 @@ section h2 {
 .finalize-content h3 {
     font-size: 1.25rem;
     font-weight: 700;
-    color: #1a1a1a;
+    color: var(--text-primary);
     margin-bottom: 0.5rem;
 }
 
 .finalize-content p {
     font-size: 0.95rem;
-    color: #6b7280;
+    color: var(--text-secondary);
 }
 
 .btn-complete-review {
@@ -431,7 +531,8 @@ section h2 {
 .action-buttons {
     display: flex;
     gap: 1rem;
-    justify-content: flex-start;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .btn-back {
@@ -439,8 +540,8 @@ section h2 {
     align-items: center;
     gap: 0.75rem;
     padding: 1rem 2rem;
-    background: #f3f4f6;
-    color: #1a1a1a;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
     border: none;
     border-radius: 10px;
     font-size: 1rem;
@@ -450,11 +551,36 @@ section h2 {
 }
 
 .btn-back:hover {
-    background: #e5e7eb;
+    background: var(--border-color);
     transform: translateX(-4px);
 }
 
 .btn-back svg {
+    width: 20px;
+    height: 20px;
+}
+
+.btn-next {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 2rem;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-next:hover {
+    background: var(--border-color);
+    transform: translateX(4px);
+}
+
+.btn-next svg {
     width: 20px;
     height: 20px;
 }
@@ -485,7 +611,7 @@ section h2 {
 }
 
 .modal-content {
-    background: white;
+    background: var(--bg-card);
     border-radius: 16px;
     padding: 2.5rem;
     max-width: 500px;
@@ -494,6 +620,7 @@ section h2 {
     text-align: center;
     animation: slideUp 0.3s ease;
     position: relative;
+    transition: background-color 0.3s ease;
 }
 
 @keyframes slideUp {
@@ -532,13 +659,13 @@ section h2 {
 }
 
 .modal-content h2 {
-    color: #1a1a1a;
+    color: var(--text-primary);
     font-size: 1.5rem;
     margin-bottom: 1rem;
 }
 
 .modal-content p {
-    color: #555;
+    color: var(--text-secondary);
     line-height: 1.6;
     margin-bottom: 2rem;
     font-size: 1rem;
@@ -573,13 +700,14 @@ section h2 {
 }
 
 .modal-btn-secondary {
-    background: white;
-    color: #666;
-    border: 2px solid #e0e0e0;
+    background: var(--bg-card);
+    color: var(--text-secondary);
+    border: 2px solid var(--border-color);
+    transition: all 0.3s ease;
 }
 
 .modal-btn-secondary:hover {
-    background: #f5f5f5;
+    background: var(--bg-secondary);
     border-color: #00a3ff;
     color: #00a3ff;
 }
@@ -615,4 +743,17 @@ section h2 {
         grid-template-columns: 1fr;
         gap: 1.5rem;
     }
+}
+
+/* Dark theme specific adjustments */
+[data-theme="dark"] {
+    color-scheme: dark;
+}
+
+[data-theme="dark"] .nav-link {
+    color: var(--text-secondary);
+}
+
+[data-theme="dark"] .nav-link:hover {
+    color: #00a3ff;
 }

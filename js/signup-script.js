@@ -99,6 +99,7 @@ signupForm.addEventListener('submit', async (e) => {
     const fullname = `${name} ${surname}`;
     const email = emailInput.value.trim();
     const password = passwordInput.value;
+    const primaryExam = document.getElementById('primaryExam')?.value || '';
 
     // Show loading state
     const originalButtonContent = signupButton.innerHTML;
@@ -110,13 +111,20 @@ signupForm.addEventListener('submit', async (e) => {
 
     if (result.success) {
         // Save user profile to Firestore
-        await firestoreData.saveUserProfile(result.user.uid, {
+        const userProfile = {
             name: name,
             surname: surname,
             fullname: fullname,
             email: email,
             createdAt: new Date().toISOString()
-        });
+        };
+        
+        // Add primaryExam if selected
+        if (primaryExam) {
+            userProfile.primaryExam = primaryExam;
+        }
+        
+        await firestoreData.saveUserProfile(result.user.uid, userProfile);
 
         // Show success modal
         showSuccessModal();

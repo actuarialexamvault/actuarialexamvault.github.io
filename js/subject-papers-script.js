@@ -5,7 +5,7 @@ import { initActivityMonitor } from './activity-monitor.js';
 import { themeManager } from './theme-manager.js';
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
 import { auth } from './firebase-config.js';
-import { hasPDFLink } from './pdf-links.js';
+import { hasPDFLink, ready as pdfLinksReady } from './pdf-links.js';
 import { attachSignOutHandler } from './signout-modal.js';
 
 // Initialize activity monitor
@@ -47,13 +47,16 @@ const subject = urlParams.get('subject') || sessionStorage.getItem('selectedSubj
 const subjectTitle = sessionStorage.getItem('selectedSubjectTitle');
 
 if (!subject) {
-    window.location.href = 'subjects.html';
+    window.location.href = 'progress-tracker.html';
 }
 
-// Generate available papers based on subject and years (2018-2025)
+// Generate available papers based on subject and years (2010-2025)
 function generateAvailablePapers() {
     const papers = [];
-    const years = [2025, 2024, 2023, 2022, 2021, 2020, 2019, 2018];
+    const startYear = 2025;
+    const endYear = 2010;
+    const years = [];
+    for (let y = startYear; y >= endYear; y--) years.push(y);
     const sessions = ['June', 'October'];
     
     years.forEach(year => {
@@ -95,15 +98,24 @@ const availablePapers = generateAvailablePapers();
 // Load available papers
 function loadAvailablePapers() {
     availableList.innerHTML = '';
-    
-    if (availablePapers.length === 0) {
-        availableList.innerHTML = '<p style="color: #666; padding: 1rem;">No available papers</p>';
-        return;
-    }
-    
-    availablePapers.forEach(paper => {
-        const paperItem = createPaperItem(paper, 'available');
-        availableList.appendChild(paperItem);
+    // Ensure pdf links map is loaded
+    pdfLinksReady.then(() => {
+        if (availablePapers.length === 0) {
+            availableList.innerHTML = '<p style="color: #666; padding: 1rem;">No available papers</p>';
+            return;
+        }
+
+        availablePapers.forEach(paper => {
+            const paperItem = createPaperItem(paper, 'available');
+            availableList.appendChild(paperItem);
+        });
+    }).catch(err => {
+        console.error('Failed to load PDF links before rendering available papers', err);
+        // Render fallback list without availability badges
+        availablePapers.forEach(paper => {
+            const paperItem = createPaperItem(paper, 'available');
+            availableList.appendChild(paperItem);
+        });
     });
 }
 

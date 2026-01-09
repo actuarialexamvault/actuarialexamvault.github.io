@@ -42,7 +42,11 @@
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </button>
-                <button class="btn-signout" id="signOutBtn">Sign Out</button>
+                <div class="nav-links">
+                    <a href="dashboard.html" class="nav-link">HOME</a>
+                    <a href="account.html" class="nav-link">ACCOUNT</a>
+                    <button class="btn-signout-nav" id="signOutBtn">SIGN OUT</button>
+                </div>
 
             </div>
         </div>
@@ -112,6 +116,199 @@
                 <h2>Help & Support</h2>
                 <p>Get help with the platform or exams</p>
                 <a href="help-support.html" class="card-link">Get Help →</a>
+            </div>
+        </div>
+
+        <!-- Performance Analytics Section -->
+        <div class="analytics-section" id="analyticsSection" style="display: none;">
+            <h2 class="analytics-title">Performance & Analytics</h2>
+            <div class="analytics-grid">
+                <!-- Readiness & Countdown Wrapper -->
+                <div class="readiness-wrapper">
+                    <!-- Exam Readiness Score -->
+                    <div class="analytics-card readiness-card">
+                        <div class="analytics-header">
+                            <div class="analytics-icon">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M12 6V12L16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </div>
+                            <h3>Exam Readiness Score</h3>
+                        </div>
+                        <div class="readiness-score" id="readinessScore" title="Formula: 50% Average Score + 45% Chapter Coverage + 5% Improvement Trend">
+                            <div class="score-value" id="scoreValue">--</div>
+                            <div class="score-status" id="scoreStatus">Calculating...</div>
+                        </div>
+                        <div class="readiness-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="readinessProgress" style="width: 0%;"></div>
+                            </div>
+                        </div>
+                        <div class="readiness-details">
+                            <div class="detail-item">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                                <span id="chaptersCompleted">-- chapters practiced</span>
+                            </div>
+                            <div class="detail-item">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M7 10L12 15L17 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M7 5L12 10L17 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                <span id="improvementTrend">-- improvement</span>
+                            </div>
+                            <div class="detail-item">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                <span id="projectedScore">Projected: --</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Study Plan Countdown -->
+                    <div class="analytics-card countdown-card">
+                        <div class="analytics-header">
+                            <div class="analytics-icon">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2"/>
+                                    <line x1="16" y1="2" x2="16" y2="6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                    <line x1="8" y1="2" x2="8" y2="6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                    <line x1="3" y1="10" x2="21" y2="10" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </div>
+                            <h3>Study Plan</h3>
+                        </div>
+                        <div class="countdown-display">
+                            <div class="countdown-main" id="daysLeftDisplay">
+                                <div class="countdown-number">--</div>
+                                <div class="countdown-label">Days Until Exam</div>
+                            </div>
+                            <div class="countdown-hours-stat">
+                                <span class="countdown-hours-label">Total Hours Available</span>
+                                <span class="countdown-hours-value" id="totalAvailableHours">--</span>
+                            </div>
+                        </div>
+                        <div class="study-stats">
+                            <div class="stat-item">
+                                <span class="stat-label"> Practice Hours</span>
+                                <span class="stat-value" id="practiceHours">--</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Reading Hours</span>
+                                <span class="stat-value" id="readingHours">--</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Hours Spent</span>
+                                <span class="stat-value" id="studyProgress">--</span>
+                            </div>
+                        </div>
+                        <a href="account.html" class="view-all-link" id="setupPlanLink">Set Up Study Plan →</a>
+                    </div>
+                </div>
+
+                <!-- Weak Areas Wrapper (Topics + Exams) -->
+                <div class="weak-areas-wrapper">
+                    <!-- Chapter Topics Dashboard -->
+                    <div class="analytics-card weak-topics-card">
+                        <div class="analytics-header">
+                            <div class="analytics-icon">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 9V13M12 17H12.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </div>
+                            <h3>Topics Needing Attention</h3>
+                        </div>
+                        <div class="weak-topics-list" id="weakTopicsList">
+                            <div class="loading-state">Loading topics...</div>
+                        </div>
+                        <a href="practice-by-chapter.html" class="view-all-link">View All Topics →</a>
+                    </div>
+
+                    <!-- Exam Papers Dashboard -->
+                    <div class="analytics-card weak-exams-card">
+                        <div class="analytics-header">
+                            <div class="analytics-icon">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M14 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V8L14 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M14 2V8H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <h3>Exams Needing Attention</h3>
+                        </div>
+                        <div class="weak-topics-list" id="weakExamsList">
+                            <div class="loading-state">Loading exams...</div>
+                        </div>
+                        <a href="#" class="view-all-link" id="viewAllPapersLink">View All Papers →</a>
+                    </div>
+                </div>
+
+                <!-- Time Management & Consistency Tracker -->
+                <div class="analytics-card habits-card">
+                    <div class="analytics-header">
+                        <div class="analytics-icon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M22 11.08V12C22 17.52 17.52 22 12 22C6.48 22 2 17.52 2 12C2 6.48 6.48 2 12 2C14.11 2 16.06 2.66 17.66 3.77" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M22 4L12 14.01L9 11.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <h3>Study Habits</h3>
+                    </div>
+                    <div class="habits-stats">
+                        <div class="streak-display" id="streakDisplay">
+                            <div class="streak-icon">🔥</div>
+                            <div class="streak-value" id="streakValue">0</div>
+                            <div class="streak-label">day streak</div>
+                        </div>
+
+                        <div class="last-practice" id="lastPractice">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                                <path d="M12 6V12L16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                            <span>Last practiced: <strong id="lastPracticeTime">Never</strong></span>
+                        </div>
+                    </div>
+                    <div class="habits-details" id="habitsDetails">
+                        <h4 id="thisWeekHeader">This Week</h4>
+                        <div class="habit-stat">
+                            <span id="stat1Label">Questions completed</span>
+                            <strong id="stat1Value">0</strong>
+                        </div>
+                        <div class="habit-stat">
+                            <span id="stat2Label">Practice sessions</span>
+                            <strong id="stat2Value">0</strong>
+                        </div>
+                        <div class="habit-stat">
+                            <span id="stat3Label">Avg per session</span>
+                            <strong id="stat3Value">0</strong>
+                        </div>
+                        <div class="habit-stat">
+                            <span id="stat4Label">Best score</span>
+                            <strong id="stat4Value">--</strong>
+                        </div>
+                    </div>
+                    <div class="habit-goal">
+                        <span class="goal-icon">🎯</span>
+                        <span class="goal-text" id="goalText">Loading goal...</span>
+                    </div>
+                    
+                    <!-- Activity Histogram (only for chapter practice) -->
+                    <div class="activity-histogram" id="activityHistogram" style="display: none;">
+                        <h4 id="weekHeader">Last 5 Days</h4>
+                        <div class="histogram-bars" id="histogramBars">
+                            <!-- Bars will be generated by JavaScript -->
+                        </div>
+                    </div>
+
+                    <a href="account.html#study-plan" class="view-all-link">Change Study Goal →</a>
+
+                    </div>
+                </div>
             </div>
         </div>
 

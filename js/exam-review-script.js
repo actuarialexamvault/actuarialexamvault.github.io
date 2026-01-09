@@ -6,7 +6,7 @@ import { initActivityMonitor } from './activity-monitor.js';
 import { themeManager } from './theme-manager.js';
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
 import { auth } from './firebase-config.js';
-import { getExaminersReportLink, hasExaminersReport } from './memo-links.js';
+import { getExaminersReportLink, hasExaminersReport, ready as memoLinksReady } from './memo-links.js';
 import { attachSignOutHandler } from './signout-modal.js';
 
 // Initialize activity monitor
@@ -145,7 +145,7 @@ async function loadExamDetails() {
     reviewSubtitle.textContent = 'Review your exam attempt and grade your answers';
     
     // Update download memo button based on report availability
-    if (!hasExaminersReport(subject, sessionType, year, paper)) {
+    if (!hasExaminersReport(subject, year, sessionType, paper)) {
         downloadMemoBtn.disabled = true;
         downloadMemoBtn.title = "Examiner's report not yet available for this exam. Check the actuarial society website for updates";
         downloadMemoBtn.style.opacity = '0.5';
@@ -481,7 +481,7 @@ function setupEventListeners() {
     // Download memo (examiners report)
     downloadMemoBtn.addEventListener('click', async () => {
         await memoLinksReady;
-        const reportLink = getExaminersReportLink(subject, sessionType, year, paper);
+        const reportLink = getExaminersReportLink(subject, year, sessionType, paper);
 
         if (reportLink) {
             // Open the examiners report in a new tab

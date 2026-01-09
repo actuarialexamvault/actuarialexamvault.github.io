@@ -238,8 +238,68 @@ async function initializePage() {
     // Load solution
     await loadSolution();
     
+    // Load existing grade if available
+    await loadExistingGrade();
+    
     // Setup event listeners
     setupEventListeners();
+}
+
+// Load existing grade if available
+async function loadExistingGrade() {
+    let existingGrade = null;
+    
+    try {
+        const currentUser = firebaseAuth.getCurrentUser();
+        if (!currentUser) return;
+        
+        // Try to load from Firestore first
+        let gradings = await firestoreData.getUserGradings(currentUser.uid);
+        
+        // Fallback to IndexedDB if Firestore fails
+        if (!gradings || gradings.length === 0) {
+            gradings = await indexedDBStorage.getQuestionGrades(currentUser.uid);
+        }
+        
+        // Extract question metadata from filename to match against grades
+        const basename = (questionData.output || '').split(/[\/\\]/).pop() || '';
+        const match = basename.match(/([^_]+)_([^_]+)_(\d{4})_Paper(\d+)_Q(\d+)\.md$/i);
+        
+        if (!match) return;
+        
+        const subject = match[1];
+        const session = match[2];
+        const year = match[3];
+        const paper = match[4];
+        const questionNumber = match[5];
+        
+        // Find existing grade for this question
+        existingGrade = gradings.find(g => 
+            g.subject && g.subject.toUpperCase() === subject.toUpperCase() &&
+            g.year == year &&
+            g.session && g.session.toLowerCase().slice(0, 3) === session.toLowerCase().slice(0, 3) &&
+            g.paper == paper &&
+            g.question == questionNumber
+        );
+        
+        console.log('Looking for existing grade:', { subject, session, year, paper, questionNumber });
+        console.log('Found existing grade:', existingGrade);
+    } catch (error) {
+        console.error('Error loading existing grade:', error);
+        // Continue without loading previous grade
+    }
+    
+    if (existingGrade) {
+        // Populate total marks and marks awarded
+        totalMarksInput.value = existingGrade.maxMarks;
+        totalMarksHint.textContent = existingGrade.maxMarks;
+        marksInput.value = existingGrade.marks;
+        
+        // Recalculate and display the grade
+        calculateGrade();
+        
+        console.log('Loaded existing grade:', existingGrade.marks, '/', existingGrade.maxMarks);
+    }
 }
 
 // Load question content
@@ -559,6 +619,7 @@ async function handleCompleteReview() {
                     // Create grading record
                     const gradingData = {
                         subject: subject,
+                        chapter: sessionStorage.getItem('selectedChapter'), // Add chapter field
                         session: session,
                         year: parseInt(year),
                         paper: paper,
@@ -568,6 +629,7 @@ async function handleCompleteReview() {
                         marks: marksAwarded,
                         maxMarks: totalMarks,
                         performance: Math.round((marksAwarded / totalMarks) * 100),
+                        reviewType: sessionStorage.getItem('reviewType') || 'self',
                         timestamp: new Date().toISOString(),
                         studentEmail: currentUser.email
                     };
@@ -643,45 +705,6 @@ async function saveGradingData(gradingData) {
             console.error('Error saving to IndexedDB:', idbError);
             throw new Error('Failed to save grading data');
         }
-    }
-}
-
-// Load existing grade if available
-async function loadExistingGrade() {
-    let existingGrade = null;
-    
-    try {
-        // Try to load from Firestore first
-        existingGrade = await firestoreData.getQuestionGrade(currentUser.uid, questionData);
-    } catch (error) {
-        console.warn('Could not load grade from Firestore:', error);
-    }
-    
-    if (!existingGrade) {
-        try {
-            // Fallback to IndexedDB
-            existingGrade = await indexedDBStorage.getQuestionGrade(currentUser.uid, questionData);
-        } catch (error) {
-            console.warn('Could not load grade from IndexedDB:', error);
-        }
-    }
-    
-    if (existingGrade) {
-        // Populate the form with existing grade
-        marksInput.value = existingGrade.marks || 0;
-        totalMarksInput.value = existingGrade.maxMarks || 0;
-        
-        if (existingGrade.dimensions) {
-            keyIdeasSlider.value = existingGrade.dimensions.keyIdeas || 3;
-            useOfInfoSlider.value = existingGrade.dimensions.useOfInfo || 3;
-            concisenessSlider.value = existingGrade.dimensions.conciseness || 3;
-            ideaGenerationSlider.value = existingGrade.dimensions.ideaGeneration || 3;
-            
-            updateSliderLabels();
-        }
-        
-        // Trigger calculation
-        calculateGrade();
     }
 }
 

@@ -405,8 +405,8 @@ function calculateWeakTopics(grades, subject) {
         return;
     }
     
-    // Always show up to 3 topics (the weakest)
-    const weakTopics = chaptersWithScores.slice(0, 3);
+    // Always show up to 2 topics (the weakest)
+    const weakTopics = chaptersWithScores.slice(0, 2);
     
     weakTopicsList.innerHTML = weakTopics.map(topic => `
         <div class="weak-topic-item">

@@ -188,6 +188,13 @@ body {
     border-image-slice: 1;
 }
 
+.subjects-header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    transition: color 0.3s ease;
+}
+
 .subjects-title {
     font-size: 2rem;
     font-weight: 700;

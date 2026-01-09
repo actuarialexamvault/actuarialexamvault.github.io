@@ -291,7 +291,7 @@ async function completeReview() {
                         grade: grade,
                         marks: marksAwarded,
                         maxMarks: totalMarks,
-                        isAIReviewed: isAIReview,
+                        reviewType: isAIReview ? 'ai' : 'self',
                         timestamp: new Date().toISOString(),
                         studentEmail: currentUser.email
                     };

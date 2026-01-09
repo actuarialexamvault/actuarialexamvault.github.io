@@ -75,9 +75,10 @@ async function loadUserProfile(user) {
 }
 
 async function loadContinueSection(user) {
-    // Get last accessed subject from sessionStorage or Firestore
+    // Get last accessed subject and chapter from sessionStorage
     let lastSubject = sessionStorage.getItem('selectedSubject');
     let lastSubjectTitle = sessionStorage.getItem('selectedSubjectTitle');
+    let lastChapter = sessionStorage.getItem('selectedChapter');
     
     // If not in session, try to get from recent submissions
     if (!lastSubject) {
@@ -97,15 +98,28 @@ async function loadContinueSection(user) {
     
     // Show continue section if we have a last subject
     if (lastSubject) {
-        continueSubject.textContent = lastSubjectTitle || `${lastSubject}: View your progress`;
+        // Determine the display text based on whether we have chapter info
+        if (lastChapter) {
+            continueSubject.textContent = `${lastSubjectTitle || lastSubject}: ${lastChapter}`;
+        } else {
+            continueSubject.textContent = lastSubjectTitle || `${lastSubject}: View your progress`;
+        }
+        
         continueSection.style.display = 'block';
         
-        // Add click handler to set session storage before navigating
+        // Add click handler to navigate to appropriate page
         continueCard.addEventListener('click', (e) => {
             e.preventDefault();
-            sessionStorage.setItem('autoShowSubject', lastSubject);
-            sessionStorage.setItem('autoShowSubjectTitle', lastSubjectTitle || lastSubject);
-            window.location.href = 'progress-tracker.html';
+            
+            // If user was viewing chapter questions, go back to that chapter
+            if (lastChapter) {
+                window.location.href = `chapter-questions.html?subject=${encodeURIComponent(lastSubject)}&chapter=${encodeURIComponent(lastChapter)}`;
+            } else {
+                // Otherwise, go to progress tracker
+                sessionStorage.setItem('autoShowSubject', lastSubject);
+                sessionStorage.setItem('autoShowSubjectTitle', lastSubjectTitle || lastSubject);
+                window.location.href = 'progress-tracker.html';
+            }
         });
     }
 }

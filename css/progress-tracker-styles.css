@@ -721,6 +721,17 @@ body {
     color: #166534;
 }
 
+.action-label.unavailable {
+    background: #f3f4f6;
+    color: #6b7280;
+    font-size: 0.75rem;
+}
+
+.paper-badge.unavailable {
+    background: #f3f4f6;
+    color: #9ca3af;
+}
+
 .action-icon {
     width: 20px;
     height: 20px;

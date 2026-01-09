@@ -531,7 +531,8 @@ section h2 {
 .action-buttons {
     display: flex;
     gap: 1rem;
-    justify-content: flex-start;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .btn-back {
@@ -555,6 +556,31 @@ section h2 {
 }
 
 .btn-back svg {
+    width: 20px;
+    height: 20px;
+}
+
+.btn-next {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 2rem;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-next:hover {
+    background: var(--border-color);
+    transform: translateX(4px);
+}
+
+.btn-next svg {
     width: 20px;
     height: 20px;
 }

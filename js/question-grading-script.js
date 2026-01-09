@@ -95,14 +95,6 @@ const isAIReview = urlParams.get('isAIReview') === 'true';
 
 // DOM elements
 const signOutBtn = document.getElementById('signOutBtn');
-const keyIdeasSlider = document.getElementById('keyIdeasSlider');
-const useOfInfoSlider = document.getElementById('useOfInfoSlider');
-const concisenessSlider = document.getElementById('concisenessSlider');
-const ideaGenerationSlider = document.getElementById('ideaGenerationSlider');
-const keyIdeasValue = document.getElementById('keyIdeasValue');
-const useOfInfoValue = document.getElementById('useOfInfoValue');
-const concisenessValue = document.getElementById('concisenessValue');
-const ideaGenerationValue = document.getElementById('ideaGenerationValue');
 const totalMarksInput = document.getElementById('totalMarksInput');
 const marksInput = document.getElementById('marksInput');
 const totalMarksHint = document.getElementById('totalMarksHint');
@@ -113,37 +105,9 @@ const backBtn = document.getElementById('backBtn');
 
 // Initialize page after auth check
 async function initializePage() {
-    setupSliders();
     setupMarksInput();
     setupEventListeners();
     await loadExistingGrade();
-}
-
-// Setup sliders
-function setupSliders() {
-    // Key Ideas
-    keyIdeasSlider.addEventListener('input', function() {
-        keyIdeasValue.textContent = `${this.value}/10`;
-        calculateSuggestedGrade();
-    });
-
-    // Use of Information
-    useOfInfoSlider.addEventListener('input', function() {
-        useOfInfoValue.textContent = `${this.value}/10`;
-        calculateSuggestedGrade();
-    });
-
-    // Conciseness
-    concisenessSlider.addEventListener('input', function() {
-        concisenessValue.textContent = `${this.value}/10`;
-        calculateSuggestedGrade();
-    });
-
-    // Idea Generation
-    ideaGenerationSlider.addEventListener('input', function() {
-        ideaGenerationValue.textContent = `${this.value}/10`;
-        calculateSuggestedGrade();
-    });
 }
 
 // Setup marks input
@@ -179,35 +143,6 @@ function setupMarksInput() {
         // Auto-calculate grade based on marks
         autoCalculateGrade();
     });
-}
-
-// Calculate suggested grade based on dimension scores
-function calculateSuggestedGrade() {
-    const keyIdeas = parseInt(keyIdeasSlider.value);
-    const useOfInfo = parseInt(useOfInfoSlider.value);
-    const conciseness = parseInt(concisenessSlider.value);
-    const ideaGeneration = parseInt(ideaGenerationSlider.value);
-    
-    // Calculate average score (out of 10)
-    const avgScore = (keyIdeas + useOfInfo + conciseness + ideaGeneration) / 4;
-    
-    // Convert to percentage
-    const percentage = (avgScore / 10) * 100;
-    
-    // Get total marks
-    const totalMarks = parseFloat(totalMarksInput.value) || 0;
-    
-    // Only suggest marks if total marks is set
-    if (totalMarks > 0) {
-        // Suggest marks based on percentage
-        const suggestedMarks = ((percentage / 100) * totalMarks).toFixed(1);
-        
-        // Auto-populate marks if empty
-        if (!marksInput.value || marksInput.value === '0') {
-            marksInput.value = suggestedMarks;
-            autoCalculateGrade();
-        }
-    }
 }
 
 // Auto-calculate grade based on marks entered
@@ -316,12 +251,12 @@ async function completeReview() {
         return;
     }
     
-    // Get dimension scores
+    // Note: Dimension scoring has been removed - only marks-based grading
     const dimensions = {
-        keyIdeas: parseInt(keyIdeasSlider.value),
-        useOfInfo: parseInt(useOfInfoSlider.value),
-        conciseness: parseInt(concisenessSlider.value),
-        ideaGeneration: parseInt(ideaGenerationSlider.value)
+        keyIdeas: 0,
+        useOfInfo: 0,
+        conciseness: 0,
+        ideaGeneration: 0
     };
     
     // Create summary for confirmation
@@ -448,18 +383,6 @@ async function loadExistingGrade() {
     }
     
     if (existingGrade) {
-        // Populate sliders
-        keyIdeasSlider.value = existingGrade.dimensions.keyIdeas;
-        useOfInfoSlider.value = existingGrade.dimensions.useOfInfo;
-        concisenessSlider.value = existingGrade.dimensions.conciseness;
-        ideaGenerationSlider.value = existingGrade.dimensions.ideaGeneration;
-        
-        // Update display values
-        keyIdeasValue.textContent = `${existingGrade.dimensions.keyIdeas}/10`;
-        useOfInfoValue.textContent = `${existingGrade.dimensions.useOfInfo}/10`;
-        concisenessValue.textContent = `${existingGrade.dimensions.conciseness}/10`;
-        ideaGenerationValue.textContent = `${existingGrade.dimensions.ideaGeneration}/10`;
-        
         // Populate total marks and marks awarded
         totalMarksInput.value = existingGrade.maxMarks;
         totalMarksHint.textContent = existingGrade.maxMarks;

@@ -4,6 +4,25 @@ import { firebaseAuth } from './firebase-auth.js';
 import { firestoreData } from './firebase-data.js';
 import { indexedDBStorage } from './indexeddb-storage.js';
 
+// Utility function to format question filename to readable name
+function formatQuestionName(filename) {
+    // Remove path and .md extension
+    const basename = filename.split(/[\\/]/).pop().replace(/\.md$/, '');
+    
+    // Parse the filename: F102_JUNE_2012_Paper1_Q7
+    const parts = basename.match(/^([A-Z]\d+)_([A-Z]+)_(\d{4})_Paper(\d+)_Q(\d+)$/i);
+    
+    if (parts) {
+        const [, subject, session, year, paper, question] = parts;
+        // Capitalize session (JUNE -> June, NOVEMBER -> November)
+        const sessionFormatted = session.charAt(0) + session.slice(1).toLowerCase();
+        return `${subject} ${sessionFormatted} ${year} Paper ${paper} Question ${question}`;
+    }
+    
+    // Fallback: just return the basename with underscores replaced by spaces
+    return basename.replace(/_/g, ' ');
+}
+
 themeManager.init();
 attachSignOutHandler('#signOutBtn');
 
@@ -19,7 +38,16 @@ const notAttemptedCountEl = document.getElementById('notAttemptedQuestionsCount'
 const subjectChapterTitle = document.getElementById('subjectChapterTitle');
 const backBtn = document.getElementById('backBtn');
 
-backBtn.addEventListener('click', () => { window.history.back(); });
+backBtn.addEventListener('click', () => {
+    const subjectTitle = sessionStorage.getItem('selectedSubjectTitle') || subject;
+    if (subject && subjectTitle) {
+        window.location.href = `practice-by-chapter.html?subject=${encodeURIComponent(subject)}&subjectTitle=${encodeURIComponent(subjectTitle)}`;
+    } else if (subject) {
+        window.location.href = `practice-by-chapter.html?subject=${encodeURIComponent(subject)}`;
+    } else {
+        window.history.back();
+    }
+});
 
 if (!subject || !chapter) {
     container.innerHTML = '<p style="color:#666; padding:1rem;">No subject or chapter selected.</p>';
@@ -31,9 +59,14 @@ if (!subject || !chapter) {
     subjectChapterTitle.textContent = title;
     const topHeader = document.querySelector('.subjects-header');
     if (topHeader) topHeader.style.display = 'none';
-    loadManifest(subject).then(manifest => {
+    
+    Promise.all([
+        loadManifest(subject),
+        loadUnavailablePapers()
+    ]).then(([manifest, unavailable]) => {
         const questions = manifest.filter(item => (item.chapters||[]).includes(chapter));
-        loadAndRenderQuestions(questions);
+        const filtered = filterAvailableQuestions(questions, unavailable, subject);
+        loadAndRenderQuestions(filtered.available, filtered.unavailableCount);
     }).catch(err => {
         console.error('Failed to load manifest for subject', subject, err);
         container.innerHTML = '<p style="color:#666; padding:1rem;">Failed to load questions for this chapter.</p>';
@@ -47,7 +80,55 @@ async function loadManifest(subject) {
     return res.json();
 }
 
-async function loadAndRenderQuestions(questions) {
+async function loadUnavailablePapers() {
+    try {
+        const url = '../resources/markdown_questions/unavailable_papers.json';
+        const res = await fetch(url);
+        if (!res.ok) return {};
+        return res.json();
+    } catch (e) {
+        console.warn('Could not load unavailable papers list', e);
+        return {};
+    }
+}
+
+function filterAvailableQuestions(questions, unavailableData, subject) {
+    const unavailableList = unavailableData[subject]?.scanned_pdfs_requiring_ocr || [];
+    const questionsWithAvailability = [];
+    let unavailableCount = 0;
+    
+    for (const q of questions) {
+        // Extract year, session, paper from output path
+        // Path format: resources/markdown_questions/questions/F102/SESSION/YEAR/PaperX/questions/...
+        const pathParts = (q.output || '').split(/[\/\\]/);
+        const sessionIdx = pathParts.findIndex(p => p === subject) + 1;
+        const session = pathParts[sessionIdx];
+        const year = pathParts[sessionIdx + 1];
+        const paperPart = pathParts[sessionIdx + 2]; // e.g., "Paper1"
+        const paper = paperPart ? paperPart.replace(/^Paper/, '') : null;
+        
+        // Check if this paper is in the unavailable list
+        const isUnavailable = unavailableList.some(u => 
+            u.session === session && 
+            u.year === year && 
+            u.paper === paper
+        );
+        
+        // Mark question with availability status
+        questionsWithAvailability.push({
+            ...q,
+            _isUnavailable: isUnavailable
+        });
+        
+        if (isUnavailable) {
+            unavailableCount++;
+        }
+    }
+    
+    return { available: questionsWithAvailability, unavailableCount };
+}
+
+async function loadAndRenderQuestions(questions, unavailableCount) {
     // Load user gradings (try Firestore then IndexedDB)
     let gradings = [];
     const user = firebaseAuth.getCurrentUser();
@@ -71,8 +152,15 @@ async function loadAndRenderQuestions(questions) {
     // Partition questions into attempted vs available by matching gradings
     const attempted = [];
     const available = [];
+    const unavailable = [];
 
     for (const q of questions) {
+        // Check if question is marked as unavailable
+        if (q._isUnavailable) {
+            unavailable.push(q);
+            continue;
+        }
+        
         // grading id format: grade_<user>_<subject>_<year>_<session>_P<paper>_Q<question>
         const parts = (q.output||'').split(/[_\/\\\.]/);
         // Try to parse year/session/paper/question from q metadata if present
@@ -97,15 +185,19 @@ async function loadAndRenderQuestions(questions) {
         else available.push(q);
     }
 
-    renderQuestionSections(attempted, available);
+    renderQuestionSections(attempted, available, unavailable, unavailableCount);
 }
 
-function renderQuestionSections(attempted, available) {
+function renderQuestionSections(attempted, available, unavailable, unavailableCount) {
     attemptedList.innerHTML = '';
     notAttemptedList.innerHTML = '';
 
     attemptedCountEl.textContent = attempted.length;
-    notAttemptedCountEl.textContent = available.length;
+    notAttemptedCountEl.textContent = available.length + unavailable.length;
+
+    // Store all available (non-unavailable) questions in sessionStorage for navigation
+    const allAvailableQuestions = [...attempted.map(a => a.q), ...available];
+    sessionStorage.setItem('questionsList', JSON.stringify(allAvailableQuestions));
 
     if (attempted.length === 0) {
         attemptedList.innerHTML = '<p class="empty-state-message">No questions attempted yet</p>';
@@ -116,22 +208,35 @@ function renderQuestionSections(attempted, available) {
         });
     }
 
-    if (available.length === 0) {
+    if (available.length === 0 && unavailable.length === 0) {
         notAttemptedList.innerHTML = '<p class="empty-state-message">No available questions</p>';
     } else {
+        // First add available questions
         available.forEach(q => {
             const item = createQuestionItem(q, false, null);
+            notAttemptedList.appendChild(item);
+        });
+        
+        // Then add unavailable questions
+        unavailable.forEach(q => {
+            const item = createQuestionItem(q, false, null, true); // Pass true for isUnavailable
             notAttemptedList.appendChild(item);
         });
     }
 }
 
-function createQuestionItem(q, isAttempted, grade) {
+function createQuestionItem(q, isAttempted, grade, isUnavailable = false) {
     const div = document.createElement('div');
     div.className = 'paper-item';
+    
+    // Add unavailable styling
+    if (isUnavailable) {
+        div.style.opacity = '0.6';
+        div.style.cursor = 'not-allowed';
+    }
 
     const basename = (q.output||'').split(/[\\/]/).pop() || q.output;
-    const title = basename;
+    const title = formatQuestionName(basename);
 
     // Try to determine the year for the badge: prefer explicit metadata, then filename
     let year = q.year || q.session_year || null;
@@ -162,12 +267,25 @@ function createQuestionItem(q, isAttempted, grade) {
     }
 
     const pdfBannerHTML = '';
+    
+    // Determine action label and styling
+    let actionLabel, actionClass;
+    if (isUnavailable) {
+        actionLabel = 'NOT AVAILABLE';
+        actionClass = 'unavailable';
+    } else if (isAttempted) {
+        actionLabel = 'REVIEW';
+        actionClass = 'completed';
+    } else {
+        actionLabel = 'START';
+        actionClass = 'new';
+    }
 
     div.innerHTML = `
         ${pdfBannerHTML}
         <div class="paper-item-content">
             <div class="paper-item-left">
-                <div class="paper-badge ${isAttempted ? 'attempted' : 'available'}">
+                <div class="paper-badge ${isAttempted ? 'attempted' : (isUnavailable ? 'unavailable' : 'available')}">
                     <div style="font-size:0.95rem; font-weight:700;">${year || ''}</div>
                     <div style="font-size:0.7rem; margin-top:0.25rem;">${questionNum ? `Q${questionNum}` : ''}</div>
                 </div>
@@ -178,16 +296,22 @@ function createQuestionItem(q, isAttempted, grade) {
                 </div>
             </div>
             <div class="paper-action">
-                <span class="action-label ${isAttempted ? 'completed' : 'new'}">${isAttempted ? 'REVIEW' : 'START'}</span>
+                <span class="action-label ${actionClass}">${actionLabel}</span>
+                ${isUnavailable ? '' : `
                 <svg class="action-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     <path d="M12 5L19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
+                `}
             </div>
         </div>
     `;
 
     div.addEventListener('click', () => {
+        // Don't navigate if unavailable
+        if (isUnavailable) {
+            return;
+        }
         // Normalize output path for page-relative fetch in the editor
         const outRaw = q.output || '';
         let outNorm = outRaw.replace(/\\/g, '/');

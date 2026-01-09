@@ -1,6 +1,25 @@
 import { themeManager } from './theme-manager.js';
 import { attachSignOutHandler } from './signout-modal.js';
 
+// Utility function to format question filename to readable name
+function formatQuestionName(filename) {
+    // Remove path and .md extension
+    const basename = filename.split(/[\\/]/).pop().replace(/\.md$/, '');
+    
+    // Parse the filename: F102_JUNE_2012_Paper1_Q7
+    const parts = basename.match(/^([A-Z]\d+)_([A-Z]+)_(\d{4})_Paper(\d+)_Q(\d+)$/i);
+    
+    if (parts) {
+        const [, subject, session, year, paper, question] = parts;
+        // Capitalize session (JUNE -> June, NOVEMBER -> November)
+        const sessionFormatted = session.charAt(0) + session.slice(1).toLowerCase();
+        return `${subject} ${sessionFormatted} ${year} Paper ${paper} Question ${question}`;
+    }
+    
+    // Fallback: just return the basename with underscores replaced by spaces
+    return basename.replace(/_/g, ' ');
+}
+
 themeManager.init();
 attachSignOutHandler('#signOutBtn');
 
@@ -209,7 +228,11 @@ if (!sel) {
             exportName = friendlyTitle;
 
             const formattedBody = preformatQuestionBody(parsed.body);
-            questionContent.innerHTML = renderMarkdown(formattedBody);
+            const readableName = formatQuestionName(basename);
+            questionContent.innerHTML = `
+                <div style="color: #666; font-size: 0.9rem; margin-bottom: 1rem; font-weight: 500;">${readableName}</div>
+                ${renderMarkdown(formattedBody)}
+            `;
             // setup timer from frontmatter
             const t = parsed.frontmatter && parsed.frontmatter.time_allocated_minutes ? parseFloat(parsed.frontmatter.time_allocated_minutes): null;
             if (t) {

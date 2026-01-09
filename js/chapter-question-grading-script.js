@@ -8,6 +8,25 @@ import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.7.1/fi
 import { auth } from './firebase-config.js';
 import { attachSignOutHandler } from './signout-modal.js';
 
+// Utility function to format question filename to readable name
+function formatQuestionName(filename) {
+    // Remove path and .md extension
+    const basename = filename.split(/[\\/]/).pop().replace(/\.md$/, '');
+    
+    // Parse the filename: F102_JUNE_2012_Paper1_Q7
+    const parts = basename.match(/^([A-Z]\d+)_([A-Z]+)_(\d{4})_Paper(\d+)_Q(\d+)$/i);
+    
+    if (parts) {
+        const [, subject, session, year, paper, question] = parts;
+        // Capitalize session (JUNE -> June, NOVEMBER -> November)
+        const sessionFormatted = session.charAt(0) + session.slice(1).toLowerCase();
+        return `${subject} ${sessionFormatted} ${year} Paper ${paper} Question ${question}`;
+    }
+    
+    // Fallback: just return the basename with underscores replaced by spaces
+    return basename.replace(/_/g, ' ');
+}
+
 // Initialize activity monitor
 initActivityMonitor();
 
@@ -21,6 +40,8 @@ let currentUser = null;
 let isAuthChecked = false;
 let questionData = null;
 let userAnswer = null;
+let questionsList = [];
+let currentQuestionIndex = -1;
 
 // Modal functions
 function showModal(title, message, type = 'info', buttons = [{ text: 'OK', primary: true, callback: null }]) {
@@ -172,6 +193,7 @@ const calculatedGrade = document.getElementById('calculatedGrade');
 const calculatedPercentage = document.getElementById('calculatedPercentage');
 const completeReviewBtn = document.getElementById('completeReviewBtn');
 const backBtn = document.getElementById('backBtn');
+const nextQuestionBtn = document.getElementById('nextQuestionBtn');
 
 // Initialize page
 async function initializePage() {
@@ -185,6 +207,27 @@ async function initializePage() {
     }
 
     questionData = JSON.parse(questionStr);
+    
+    // Get questions list and find current index
+    const questionsListStr = sessionStorage.getItem('questionsList');
+    if (questionsListStr) {
+        try {
+            questionsList = JSON.parse(questionsListStr);
+            // Find current question index by matching output path
+            // Normalize both paths for comparison (remove ../ prefix and backslashes)
+            const normalizeForComparison = (path) => {
+                if (!path) return '';
+                return path.replace(/\\/g, '/').replace(/^\.\.\//, '');
+            };
+            const currentPath = normalizeForComparison(questionData.output);
+            currentQuestionIndex = questionsList.findIndex(q => 
+                normalizeForComparison(q.output) === currentPath
+            );
+            console.log('Questions list:', questionsList.length, 'Current index:', currentQuestionIndex);
+        } catch (e) {
+            console.warn('Failed to parse questions list', e);
+        }
+    }
     
     // Load question content
     await loadQuestionContent();
@@ -242,10 +285,17 @@ async function loadQuestionContent() {
             throw new Error('Failed to load question from all candidate paths');
         }
         
+        // Get the basename for formatting
+        const basename = (questionData.output || '').split(/[\\/]/).pop() || questionData.output;
+        const readableName = formatQuestionName(basename);
+        
         // Parse frontmatter and format the body (same as question-editor.js)
         const parsed = parseFrontmatter(markdown);
         const formattedBody = preformatQuestionBody(parsed.body);
-        questionContent.innerHTML = renderMarkdown(formattedBody);
+        questionContent.innerHTML = `
+            <div style="color: #666; font-size: 0.9rem; margin-bottom: 1rem; font-weight: 500;">${readableName}</div>
+            ${renderMarkdown(formattedBody)}
+        `;
     } catch (error) {
         console.error('Error loading question:', error);
         questionContent.innerHTML = '<p style="color: #ff4444;">Failed to load question content</p>';
@@ -282,18 +332,65 @@ async function loadUserAnswer() {
 // Load solution (memo)
 async function loadSolution() {
     try {
-        // Try to find the corresponding memo file
-        // Replace "questions" path with "memos" and change filename pattern
-        let memoPath = questionData.output.replace('/questions/', '/memos/');
-        memoPath = memoPath.replace(/(_Q\d+)\.md$/, '$1_memo.md');
+        // Parse question path to get subject, session, year, paper, and question number
+        // Example: resources/markdown_questions/questions/F102/NOVEMBER/2010/Paper1/questions/F102_NOVEMBER_2010_Paper1_Q1.md
+        const questionPath = questionData.output || '';
         
-        const response = await fetch(memoPath);
-        if (!response.ok) throw new Error('Solution not available');
+        console.log('Original question path:', questionPath);
+        
+        // Normalize the path and split it
+        const normalizedPath = questionPath.replace(/\\/g, '/');
+        const pathParts = normalizedPath.split('/');
+        
+        console.log('Path parts:', pathParts);
+        
+        // Find the index of "questions" folder (first occurrence)
+        const questionsIndex = pathParts.indexOf('questions');
+        if (questionsIndex === -1) {
+            throw new Error('Invalid question path format');
+        }
+        
+        // Extract components: questions/F102/SESSION/YEAR/Paper/questions/filename.md
+        const subject = pathParts[questionsIndex + 1]; // F102
+        const session = pathParts[questionsIndex + 2]; // JUNE or NOVEMBER
+        const year = pathParts[questionsIndex + 3];    // 2010
+        const paper = pathParts[questionsIndex + 4];   // Paper1 or Papergeneral
+        
+        // Extract question number from filename
+        // Example: F102_NOVEMBER_2010_Paper1_Q1.md -> Q1
+        const filename = pathParts[pathParts.length - 1];
+        const qMatch = filename.match(/_Q(\d+)\.md$/);
+        const questionNum = qMatch ? qMatch[1] : '1';
+        
+        // Construct solution path based on the split examiner reports structure
+        // Solutions are in: resources/markdown_questions/solutions/F102/YEAR/SESSION/PaperX/F102_SESSION_YEAR_PaperX_Q1.md
+        // Note: Some examiner reports use "Papergeneral" instead of specific paper numbers
+        const solutionPaths = [
+            `../resources/markdown_questions/solutions/${subject}/${year}/${session}/${paper}/${subject}_${session}_${year}_${paper}_Q${questionNum}.md`,
+            `../resources/markdown_questions/solutions/${subject}/${year}/${session}/Papergeneral/${subject}_${session}_${year}_Papergeneral_Q${questionNum}.md`
+        ];
+        
+        console.log('Attempting to load solution from:', solutionPaths[0]);
+        
+        let response = await fetch(solutionPaths[0]);
+        if (!response.ok) {
+            console.log('First path failed, trying:', solutionPaths[1]);
+            response = await fetch(solutionPaths[1]);
+            if (!response.ok) {
+                throw new Error(`Solution not found at ${solutionPaths[0]} or ${solutionPaths[1]}`);
+            }
+        }
+        
         const markdown = await response.text();
-        solutionContent.innerHTML = renderMarkdown(markdown);
+        
+        // Parse the markdown and render it
+        const parsed = parseFrontmatter(markdown);
+        solutionContent.innerHTML = renderMarkdown(parsed.body || markdown);
+        
+        console.log('Solution loaded successfully');
     } catch (error) {
         console.error('Error loading solution:', error);
-        solutionContent.innerHTML = '<p style="color: #999;">Solution not available for this question</p>';
+        solutionContent.innerHTML = '<p style="color: #999;">Solution not available for this question. The examiner report may not be available for this paper.</p>';
     }
 }
 
@@ -313,77 +410,298 @@ function setupEventListeners() {
     // Complete review button
     completeReviewBtn.addEventListener('click', handleCompleteReview);
     
-    // Back button
-    backBtn.addEventListener('click', () => window.history.back());
+    // Back button - navigate back to chapter questions with subject and chapter
+    backBtn.addEventListener('click', () => {
+        const subject = sessionStorage.getItem('selectedSubject');
+        const chapter = sessionStorage.getItem('selectedChapter');
+        if (subject && chapter) {
+            window.location.href = `chapter-questions.html?subject=${encodeURIComponent(subject)}&chapter=${encodeURIComponent(chapter)}`;
+        } else {
+            window.history.back();
+        }
+    });
+    
+    // Next question button
+    if (nextQuestionBtn) {
+        // Show/hide based on whether there's a next question
+        if (currentQuestionIndex >= 0 && currentQuestionIndex < questionsList.length - 1) {
+            nextQuestionBtn.style.display = 'flex';
+            nextQuestionBtn.addEventListener('click', handleNextQuestion);
+        } else {
+            nextQuestionBtn.style.display = 'none';
+        }
+    }
 }
 
 // Calculate grade
 function calculateGrade() {
-    const total = parseFloat(totalMarksInput.value) || 0;
-    const awarded = parseFloat(marksInput.value) || 0;
+    const marksAwarded = parseFloat(marksInput.value) || 0;
+    const totalMarks = parseFloat(totalMarksInput.value) || 0;
     
-    if (total === 0) {
+    // Can't calculate percentage if total marks is 0
+    if (totalMarks === 0) {
         calculatedGrade.textContent = '-';
         calculatedPercentage.textContent = '-';
         return;
     }
     
-    const percentage = Math.round((awarded / total) * 100);
-    calculatedPercentage.textContent = `${percentage}%`;
+    const percentage = (marksAwarded / totalMarks) * 100;
     
-    // Determine grade
-    let grade = 'F';
-    if (percentage >= 90) grade = 'A+';
-    else if (percentage >= 80) grade = 'A';
-    else if (percentage >= 70) grade = 'B';
-    else if (percentage >= 60) grade = 'C';
-    else if (percentage >= 50) grade = 'D';
+    let grade = '';
+    let gradeDescription = '';
     
-    calculatedGrade.textContent = grade;
+    if (percentage >= 60) {
+        grade = 'P';
+        gradeDescription = 'Pass (60% and above)';
+    } else if (percentage >= 50) {
+        grade = 'FA';
+        gradeDescription = 'Fail A (50% to 60%)';
+    } else if (percentage >= 40) {
+        grade = 'FB';
+        gradeDescription = 'Fail B (40% to 50%)';
+    } else if (percentage >= 30) {
+        grade = 'FC';
+        gradeDescription = 'Fail C (30% to 40%)';
+    } else {
+        grade = 'FD';
+        gradeDescription = 'Fail D (Less than 30%)';
+    }
+    
+    // Update the display
+    if (marksAwarded > 0) {
+        calculatedGrade.textContent = grade;
+        calculatedPercentage.textContent = `${percentage.toFixed(1)}% - ${gradeDescription}`;
+    } else {
+        calculatedGrade.textContent = '-';
+        calculatedPercentage.textContent = '-';
+    }
 }
 
 // Handle complete review
 async function handleCompleteReview() {
-    const total = parseFloat(totalMarksInput.value) || 0;
-    const awarded = parseFloat(marksInput.value) || 0;
+    // Get calculated values
+    const marksAwarded = parseFloat(marksInput.value);
+    const totalMarks = parseFloat(totalMarksInput.value);
+    const grade = calculatedGrade.textContent;
+    const percentage = calculatedPercentage.textContent;
     
-    if (total === 0) {
-        showModal('Missing Information', 'Please enter the total marks available.', 'error');
+    // Validate inputs
+    if (grade === '-' || !grade) {
+        showModal(
+            'Incomplete Grading',
+            'Please enter marks to calculate a grade before completing the review.',
+            'error'
+        );
         return;
     }
     
-    // Prepare grading data (assessment dimensions removed)
-    const gradeData = {
-        marks: awarded,
-        maxMarks: total,
-        performance: Math.round((awarded / total) * 100),
-        timestamp: Date.now()
+    if (isNaN(marksAwarded) || marksAwarded < 0 || marksAwarded > totalMarks) {
+        showModal(
+            'Invalid Marks',
+            `Please enter a valid mark between 0 and ${totalMarks}.`,
+            'error'
+        );
+        return;
+    }
+    
+    if (isNaN(totalMarks) || totalMarks < 1) {
+        showModal(
+            'Invalid Total Marks',
+            'Please enter a valid total marks value.',
+            'error'
+        );
+        return;
+    }
+    
+    // Note: Chapter grading page doesn't have dimension sliders
+    // Dimensions are only available in the main question-grading.html page
+    const dimensions = {
+        keyIdeas: 0,
+        useOfInfo: 0,
+        conciseness: 0,
+        ideaGeneration: 0
     };
     
     // Extract question metadata from filename
     const basename = (questionData.output || '').split(/[\/\\]/).pop() || '';
+    const readableName = formatQuestionName(basename);
     const match = basename.match(/([^_]+)_([^_]+)_(\d{4})_Paper(\d+)_Q(\d+)\.md$/i);
     
+    let subject = '', session = '', year = '', paper = '', questionNumber = '';
     if (match) {
-        gradeData.subject = match[1];
-        gradeData.session = match[2];
-        gradeData.year = match[3];
-        gradeData.paper = match[4];
-        gradeData.question = match[5];
+        subject = match[1];
+        session = match[2];
+        year = match[3];
+        paper = match[4];
+        questionNumber = match[5];
     }
     
+    // Create summary for confirmation
+    const summaryHTML = `
+        <div style="text-align: left; margin: 1rem 0;">
+            <p style="margin-bottom: 0.5rem;"><strong>Question:</strong> ${readableName}</p>
+            <p style="margin-bottom: 0.5rem;"><strong>Marks:</strong> ${marksAwarded} / ${totalMarks}</p>
+            <p style="margin-bottom: 0.5rem;"><strong>Grade:</strong> ${grade} (${percentage})</p>
+        </div>
+        <p style="margin-top: 1rem;">Are you ready to finalize this grading, or would you like to edit your review?</p>
+    `;
+    
+    // Show confirmation modal
+    showModal(
+        'Confirm Grading',
+        summaryHTML,
+        'info',
+        [
+            { 
+                text: 'Confirm Grading', 
+                primary: true, 
+                callback: async () => {
+                    // Create grading record
+                    const gradingData = {
+                        subject: subject,
+                        session: session,
+                        year: parseInt(year),
+                        paper: paper,
+                        question: questionNumber,
+                        dimensions: dimensions,
+                        grade: grade,
+                        marks: marksAwarded,
+                        maxMarks: totalMarks,
+                        performance: Math.round((marksAwarded / totalMarks) * 100),
+                        timestamp: new Date().toISOString(),
+                        studentEmail: currentUser.email
+                    };
+                    
+                    // Save to Firestore and IndexedDB
+                    try {
+                        await saveGradingData(gradingData);
+                        console.log('Grading data saved successfully');
+                        
+                        // Show success message with options
+                        const backSubject = sessionStorage.getItem('selectedSubject');
+                        const backChapter = sessionStorage.getItem('selectedChapter');
+                        
+                        showModal(
+                            'Review Completed!',
+                            'Your grading has been saved successfully. What would you like to do next?',
+                            'success',
+                            [
+                                { 
+                                    text: 'Return to Chapter Questions', 
+                                    primary: true, 
+                                    callback: () => {
+                                        if (backSubject && backChapter) {
+                                            window.location.href = `chapter-questions.html?subject=${encodeURIComponent(backSubject)}&chapter=${encodeURIComponent(backChapter)}`;
+                                        } else {
+                                            window.history.back();
+                                        }
+                                    }
+                                },
+                                { 
+                                    text: 'Stay on This Page', 
+                                    primary: false, 
+                                    callback: null 
+                                }
+                            ]
+                        );
+                    } catch (error) {
+                        console.error('Error saving grading data:', error);
+                        showModal(
+                            'Save Failed',
+                            'Failed to save grading data. Please try again.',
+                            'error'
+                        );
+                    }
+                }
+            },
+            { 
+                text: 'Edit Review', 
+                primary: false, 
+                callback: null 
+            }
+        ]
+    );
+}
+
+// Save grading data to Firestore and IndexedDB
+async function saveGradingData(gradingData) {
     try {
         // Save to Firestore
-        await firestoreData.saveQuestionGrade(currentUser.uid, gradeData);
+        await firestoreData.saveQuestionGrade(currentUser.uid, gradingData);
         
-        // Also save to IndexedDB as backup
-        await indexedDBStorage.saveQuestionGrade(currentUser.uid, gradeData);
+        // Also save to IndexedDB for offline access
+        await indexedDBStorage.saveQuestionGrade(currentUser.uid, gradingData);
         
-        showModal('Review Complete', 'Your review has been saved successfully!', 'success', [
-            { text: 'OK', primary: true, callback: () => window.history.back() }
-        ]);
+        console.log('Question grading saved successfully');
     } catch (error) {
-        console.error('Error saving review:', error);
-        showModal('Error', 'Failed to save your review. Please try again.', 'error');
+        console.error('Error saving question grading:', error);
+        // Fallback to IndexedDB only if Firestore fails
+        try {
+            await indexedDBStorage.saveQuestionGrade(currentUser.uid, gradingData);
+            console.log('Grading saved to IndexedDB (offline mode)');
+        } catch (idbError) {
+            console.error('Error saving to IndexedDB:', idbError);
+            throw new Error('Failed to save grading data');
+        }
+    }
+}
+
+// Load existing grade if available
+async function loadExistingGrade() {
+    let existingGrade = null;
+    
+    try {
+        // Try to load from Firestore first
+        existingGrade = await firestoreData.getQuestionGrade(currentUser.uid, questionData);
+    } catch (error) {
+        console.warn('Could not load grade from Firestore:', error);
+    }
+    
+    if (!existingGrade) {
+        try {
+            // Fallback to IndexedDB
+            existingGrade = await indexedDBStorage.getQuestionGrade(currentUser.uid, questionData);
+        } catch (error) {
+            console.warn('Could not load grade from IndexedDB:', error);
+        }
+    }
+    
+    if (existingGrade) {
+        // Populate the form with existing grade
+        marksInput.value = existingGrade.marks || 0;
+        totalMarksInput.value = existingGrade.maxMarks || 0;
+        
+        if (existingGrade.dimensions) {
+            keyIdeasSlider.value = existingGrade.dimensions.keyIdeas || 3;
+            useOfInfoSlider.value = existingGrade.dimensions.useOfInfo || 3;
+            concisenessSlider.value = existingGrade.dimensions.conciseness || 3;
+            ideaGenerationSlider.value = existingGrade.dimensions.ideaGeneration || 3;
+            
+            updateSliderLabels();
+        }
+        
+        // Trigger calculation
+        calculateGrade();
+    }
+}
+
+// Handle next question
+function handleNextQuestion() {
+    if (currentQuestionIndex >= 0 && currentQuestionIndex < questionsList.length - 1) {
+        const nextQuestion = questionsList[currentQuestionIndex + 1];
+        
+        // Normalize output path for page-relative fetch
+        const outRaw = nextQuestion.output || '';
+        let outNorm = outRaw.replace(/\\/g, '/');
+        if (outNorm && !outNorm.startsWith('/') && !outNorm.startsWith('../') && !outNorm.startsWith('./')) {
+            outNorm = `../${outNorm}`;
+        }
+        const qForStorage = Object.assign({}, nextQuestion, { output: outNorm });
+        
+        // Update session storage with next question
+        sessionStorage.setItem('selectedQuestion', JSON.stringify(qForStorage));
+        
+        // Navigate to question editor to attempt the next question
+        window.location.href = 'question-editor.html';
     }
 }

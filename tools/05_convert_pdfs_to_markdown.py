@@ -78,14 +78,229 @@ def clean_text(text):
     if not text:
         return ""
     
-    # Remove excessive whitespace
-    text = re.sub(r'\n\s*\n\s*\n', '\n\n', text)
-    text = re.sub(r' +', ' ', text)
+    # Character mapping for common PDF special characters
+    # Map various bullet point characters and other special symbols to standard markdown
+    char_replacements = {
+        # Bullet points - various unicode representations
+        '\uf0b7': '- ',  # Common PDF bullet (Private Use Area)
+        '\u2022': '- ',  # Bullet point (•)
+        '\u2023': '- ',  # Triangular bullet (‣)
+        '\u25e6': '- ',  # White bullet (◦)
+        '\u2043': '- ',  # Hyphen bullet (⁃)
+        '\u2219': '- ',  # Bullet operator (∙)
+        '\u25aa': '- ',  # Black small square (▪)
+        '\u25ab': '- ',  # White small square (▫)
+        '\u25cf': '- ',  # Black circle (●)
+        '\u25cb': '- ',  # White circle (○)
+        '\u25b8': '- ',  # Black right-pointing small triangle (▸)
+        '\u2794': '- ',  # Heavy wide-headed rightwards arrow (➔)
+        '\u00b7': '- ',  # Middle dot (·)
+        '\u00d8': '- ',  # Latin capital letter O with stroke (Ø)
+        
+        # Dashes and hyphens
+        '\u2013': '-',   # En dash (–)
+        '\u2014': '--',  # Em dash (—)
+        '\u2212': '-',   # Minus sign (−)
+        
+        # Quotes
+        '\u2018': "'",   # Left single quote (')
+        '\u2019': "'",   # Right single quote (')
+        '\u201c': '"',   # Left double quote (")
+        '\u201d': '"',   # Right double quote (")
+        
+        # Other common symbols
+        '\u2026': '...',  # Ellipsis (…)
+        '\u00a0': ' ',    # Non-breaking space
+        '\u00ad': '',     # Soft hyphen (invisible)
+        '\ufeff': '',     # Zero width no-break space (BOM)
+        
+        # Additional private use area characters that might be bullets
+        '\uf0a7': '- ',   # Another common bullet variant
+        '\uf0d8': '- ',   # Yet another bullet variant
+        '\uf076': '- ',   # Another bullet variant
+        '\uf0fc': '- ',   # Another bullet variant
+    }
     
-    # Fix common issues
+    # Apply character replacements
+    for old_char, new_char in char_replacements.items():
+        text = text.replace(old_char, new_char)
+    
+    # Replace any remaining Private Use Area characters (U+E000 to U+F8FF) with empty string
+    # These are often used in PDF metadata and should be removed
+    text = re.sub(r'[\ue000-\uf8ff]+', '', text)
+    
+    # Remove common PDF artifacts and metadata
+    # Remove patterns like (cid:1)(cid:2)(cid:3) which are PDF internal character IDs
+    text = re.sub(r'\(cid:\d+\)+', '', text)
+    text = re.sub(r'\(cid:\d+\)\s*', '', text)
+    
+    # Remove lines that contain only exam codes and copyright/unicode artifacts
+    # Pattern: F102 N2011 followed by unicode/cid artifacts on same or next line
+    text = re.sub(r'F\d{3}\s+[NJ]\d{4}\s+\(cid:.*?\n', '\n', text, flags=re.DOTALL)
+    text = re.sub(r'F\d{3}\s+[NJ]\d{4}\s*\n', '\n', text)
+    
+    # Remove standalone lines with only unicode artifacts
+    text = re.sub(r'\n\s*\(cid:.*?\n', '\n', text)
+    
+    # Fix common issues first
     text = text.replace('\x00', '')  # Remove null characters
     text = text.replace('\r\n', '\n')  # Normalize line endings
     text = text.replace('\r', '\n')
+    
+    # Fix line breaks in the middle of sentences (hyphenated words at end of line)
+    # Remove hyphen + newline when it's breaking a word
+    text = re.sub(r'-\n([a-z])', r'\1', text)
+    
+    # Add newlines after mark allocation brackets to create paragraph breaks
+    # Pattern: [number] at end of line should be followed by blank line
+    text = re.sub(r'(\[\d+\])\s*\n', r'\1\n\n', text)
+    
+    # Join lines that are part of the same sentence/paragraph
+    # (not starting with bullet, number, or after double newline)
+    lines = text.split('\n')
+    cleaned_lines = []
+    i = 0
+    while i < len(lines):
+        line = lines[i].strip()
+        
+        # Keep empty lines
+        if not line:
+            cleaned_lines.append('')
+            i += 1
+            continue
+        
+        # Check if this is a bullet point
+        is_bullet = (
+            line.startswith('- ') or 
+            line.startswith('o ') or 
+            line.startswith('• ')
+        )
+        
+        # Check if this is a numbered list or heading
+        is_other_list_item = (
+            re.match(r'^\d+[\.)]\s', line) or  # numbered list like 1. or 1)
+            re.match(r'^[ivxlcdm]+[\.)]\s', line.lower()[:5]) or  # Roman numerals like i. ii. iii.
+            re.match(r'^\([ivxlcdm]+\)', line.lower()[:5])  # Parentheses format (i), (ii)
+        )
+        
+        # Check if this is a heading or special marker
+        is_heading = (
+            line.startswith('#') or  # heading
+            line.startswith('**') or  # bold heading
+            line.isupper() or  # all caps heading
+            re.match(r'^[A-Z][a-z]*:', line) or  # Label followed by colon
+            line.startswith('[')  # Marks like [Total 6]
+        )
+        
+        # Handle bullet points specially - join all content until next bullet/marker
+        if is_bullet:
+            current_bullet = line
+            i += 1
+            
+            # Keep joining lines until we hit another bullet, list item, or heading
+            while i < len(lines):
+                next_line = lines[i].strip()
+                
+                # Stop if empty line
+                if not next_line:
+                    break
+                
+                # Stop if next line is a bullet, list item, or heading
+                next_is_bullet = (
+                    next_line.startswith('- ') or
+                    next_line.startswith('o ') or
+                    next_line.startswith('• ')
+                )
+                
+                next_is_list_or_heading = (
+                    re.match(r'^\d+[\.)]\s', next_line) or
+                    re.match(r'^[ivxlcdm]+[\.)]\s', next_line.lower()[:5]) or
+                    re.match(r'^\([ivxlcdm]+\)', next_line.lower()[:5]) or
+                    next_line.startswith('#') or
+                    next_line.startswith('**') or
+                    next_line.isupper() or
+                    next_line.startswith('[')
+                )
+                
+                if next_is_bullet or next_is_list_or_heading:
+                    break
+                
+                # Join this line to the current bullet
+                current_bullet = current_bullet + ' ' + next_line
+                i += 1
+            
+            cleaned_lines.append(current_bullet)
+            continue
+        
+        # Handle other list items and headings
+        if is_other_list_item or is_heading:
+            cleaned_lines.append(line)
+            i += 1
+            continue
+        
+        # Build up a complete paragraph by joining lines
+        current_paragraph = line
+        i += 1
+        
+        # Keep joining lines while they're part of the same paragraph
+        while i < len(lines):
+            next_line = lines[i].strip()
+            
+            # Stop if we hit an empty line (paragraph break)
+            if not next_line:
+                break
+            
+            # Stop if next line is a list item or special marker
+            next_is_special = (
+                next_line.startswith('- ') or
+                next_line.startswith('o ') or
+                next_line.startswith('• ') or
+                re.match(r'^\d+[\.)]\s', next_line) or  # numbered list like 1. or 1)
+                re.match(r'^[ivxlcdm]+[\.)]\s', next_line.lower()[:5]) or  # Roman numerals like i. ii. iii.
+                re.match(r'^\([ivxlcdm]+\)', next_line.lower()[:5]) or  # Parentheses format (i), (ii)
+                next_line.startswith('#') or
+                next_line.startswith('**') or
+                next_line.isupper() or
+                next_line.startswith('[')  # Marks like [Total 6]
+            )
+            
+            if next_is_special:
+                break
+            
+            # Stop if current paragraph ends with proper punctuation followed by capital letter
+            # But don't stop if it ends with punctuation inside brackets like [4]
+            if re.search(r'[.!?]\s*$', current_paragraph) and not re.search(r'\[\d+\]\s*$', current_paragraph):
+                if next_line and len(next_line) > 0 and next_line[0].isupper():
+                    break
+            
+            # Stop if current line ends with a closing bracket like [4] or [Total 10]
+            # and next line starts with something else (likely a new question)
+            if re.search(r'\]\s*$', current_paragraph) and next_line:
+                if next_line[0].isupper() or next_line.startswith('F10') or next_line.startswith('Question'):
+                    break
+            
+            # Join this line to the current paragraph
+            current_paragraph = current_paragraph + ' ' + next_line
+            i += 1
+        
+        cleaned_lines.append(current_paragraph)
+    
+    text = '\n'.join(cleaned_lines)
+    
+    # Fix indentation for nested bullet points (o becomes properly indented sub-bullet)
+    text = re.sub(r'\no\s+', '\n  - ', text)  # Convert "o" to indented bullet
+    
+    # Ensure proper spacing around bullet points
+    # Add blank line before bullet lists (if not already there)
+    text = re.sub(r'([^\n])\n(- )', r'\1\n\n\2', text)
+    
+    # Add blank line after bullet lists (if not already there)
+    text = re.sub(r'(- [^\n]+)\n([^\n-])', r'\1\n\n\2', text)
+    
+    # Remove excessive whitespace but keep double newlines for paragraphs
+    text = re.sub(r'\n\s*\n\s*\n+', '\n\n', text)
+    text = re.sub(r' +', ' ', text)
+    text = re.sub(r'\t+', '  ', text)  # Convert tabs to 2 spaces
     
     # Add proper markdown formatting for page breaks
     text = re.sub(r'--- Page (\d+) ---', r'## Page \1', text)
@@ -102,16 +317,33 @@ def generate_markdown_header(pdf_path):
     # Try to extract metadata from the path if possible
     try:
         p = Path(pdf_path)
-        # expect structure like <in_dir>/<subject>/<session>/<year>/<type>/filename.pdf
+        # Can be two structures:
+        # 1. <in_dir>/<subject>/<year>/<session>/<type>/filename.pdf (from memo-links)
+        # 2. <in_dir>/<subject>/<session>/<year>/<type>/filename.pdf (from exam-links)
         parts = p.parts
         # get last 5 parts
         if len(parts) >= 5:
-            # filename is last, type is -2, year -3, session -4, subject -5
+            # filename is last, type is -2
             filename_only = parts[-1]
             doc_type = parts[-2]
-            year = parts[-3]
-            session = parts[-4]
-            exam_code = parts[-5]
+            
+            # Determine structure by checking if parts[-3] is a year (4 digits) or session name
+            potential_third = parts[-3]
+            try:
+                # Try parsing as year
+                test_year = int(potential_third)
+                if 2000 <= test_year <= 2100:
+                    # Structure 2: Subject/Session/Year/Type/
+                    year = parts[-3]
+                    session = parts[-4]
+                    exam_code = parts[-5]
+                else:
+                    raise ValueError("Not a valid year")
+            except (ValueError, TypeError):
+                # Structure 1: Subject/Year/Session/Type/
+                session = parts[-3]
+                year = parts[-4]
+                exam_code = parts[-5]
         else:
             # fallback to parsing filename tokens
             tokens = filename.replace('.pdf', '').split('_')
@@ -186,11 +418,13 @@ def main():
     parser.add_argument('--in-dir', type=Path, default=Path('resources/pdfs/sample_downloads'), help='Input downloads directory')
     parser.add_argument('--out-dir', type=Path, default=Path('resources/markdown_questions/sample'), help='Output markdown directory')
     parser.add_argument('--manifest', type=Path, default=None, help='Path to write manifest.json (defaults to out-dir/manifest.json)')
+    parser.add_argument('--subject', type=str, default=None, help='Subject code (e.g., F102). If not provided, will be extracted from filename')
     parser.add_argument('--dry-run', action='store_true', help='Do not write files, just report')
     args = parser.parse_args()
 
     downloaded_papers_dir = args.in_dir
     markdown_output_dir = args.out_dir
+    subject_override = args.subject
 
     if not downloaded_papers_dir.exists():
         logger.error(f"Directory '{downloaded_papers_dir}' not found!")
@@ -202,9 +436,44 @@ def main():
         for file in files:
             if file.lower().endswith('.pdf'):
                 pdf_path = Path(root) / file
-                # Create corresponding markdown path (mirror directory under out-dir)
+                
+                # Parse the path structure to determine subject and document type
+                # Two possible structures:
+                # 1. downloads/F102/Year/Session/Examiners_Report/file.pdf (memo-links, when --in-dir points to subject folder)
+                # 2. downloads/F102/Session/Year/Exam/file.pdf (exam-links, when --in-dir points to subject folder)
+                # OR if --in-dir is downloads/, paths include subject as first part
                 rel_path = pdf_path.relative_to(downloaded_papers_dir)
-                markdown_path = markdown_output_dir.joinpath(rel_path).with_suffix('.md')
+                parts = rel_path.parts
+                
+                # Extract subject from filename (e.g., F102_2010_JUNE_1_Exam.pdf)
+                filename = parts[-1]
+                if subject_override:
+                    subject = subject_override
+                else:
+                    subject = filename.split('_')[0]  # Extract F102 from F102_2010_JUNE_1_Exam.pdf
+                
+                # Determine output path based on document type
+                if len(parts) >= 3:
+                    doc_type_folder = parts[-2]  # Should be 'Exam' or 'Examiners_Report'
+                    
+                    # Map document type to output folder
+                    if 'Exam' in doc_type_folder and 'Report' not in doc_type_folder:
+                        output_subdir = 'exams'
+                    elif 'Report' in doc_type_folder or 'Examiners' in doc_type_folder:
+                        output_subdir = 'solutions'
+                    else:
+                        output_subdir = 'other'
+                    
+                    # Build output path: out-dir/[exams|solutions]/Subject/rest-of-path
+                    # Keep the same Year/Session or Session/Year structure as input
+                    # Exclude the document type folder (Exam/Examiners_Report) from the remaining path
+                    remaining_path = Path(*parts[:-2], parts[-1])  # Everything except doc_type folder
+                    markdown_path = markdown_output_dir / output_subdir / subject / remaining_path
+                    markdown_path = markdown_path.with_suffix('.md')
+                else:
+                    # Fallback: mirror directory structure
+                    markdown_path = markdown_output_dir.joinpath(rel_path).with_suffix('.md')
+                
                 pdf_files.append((pdf_path, markdown_path))
     
     if not pdf_files:

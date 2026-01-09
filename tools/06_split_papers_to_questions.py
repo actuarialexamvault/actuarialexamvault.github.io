@@ -29,20 +29,31 @@ def session_normalize(s: str):
     return s[:3]
 
 
+def paper_normalize(p: str):
+    """Normalize paper identifier. 'general' is treated as '1'."""
+    if not p:
+        return ''
+    p = p.strip().lower()
+    if p == 'general':
+        return '1'
+    return p
+
+
 def find_chapters_for_question(chapter_map: dict, subject: str, session: str, year: int, paper: str, question: str):
     # chapter_map: { chapter_name: [ {session, year, paper, question, part}, ... ] }
     matches = []
     wanted_s = session_normalize(session)
+    wanted_p = paper_normalize(str(paper))
     for chapter, entries in chapter_map.items():
         for e in entries:
             try:
                 es = session_normalize(str(e.get('session', '')))
                 ey = int(e.get('year'))
-                ep = str(e.get('paper'))
+                ep = paper_normalize(str(e.get('paper')))
                 eq = str(e.get('question'))
             except Exception:
                 continue
-            if es == wanted_s and ey == year and ep == str(paper) and eq.lower().lstrip('q') == str(question).lower().lstrip('q'):
+            if es == wanted_s and ey == year and ep == wanted_p and eq.lower().lstrip('q') == str(question).lower().lstrip('q'):
                 matches.append(chapter)
                 break
     return matches
@@ -64,6 +75,65 @@ def split_markdown_into_questions(md_text: str):
         start = m.start()
         end = matches[i+1].start() if i+1 < len(matches) else len(cleaned)
         chunk = cleaned[start:end].strip()
+        results.append((qnum, chunk))
+    return results
+
+
+def split_examiners_report_into_solutions(md_text: str):
+    """
+    Split Examiner's Report into solution sections.
+    Examiner's Reports typically have structure:
+    - General Comments
+    - Comments on questions
+    - "Possible Solutions" or "Solutions" section
+    
+    We want to extract only the solutions section and split by Question markers.
+    """
+    # Clean the text first
+    cleaned = strip_common_headers_and_footers(md_text)
+    
+    # Find the "Possible Solutions" or "Solutions" section
+    # Common patterns: "Possible Solutions", "Solutions", "SOLUTIONS"
+    solutions_start_patterns = [
+        r'(?m)^#+\s*Possible\s+Solutions?\s*$',
+        r'(?m)^Possible\s+Solutions?\s*$',
+        r'(?m)^#+\s*Solutions?\s*$',
+        r'(?m)^Solutions?\s*$',
+    ]
+    
+    solutions_start_idx = None
+    for pattern in solutions_start_patterns:
+        match = re.search(pattern, cleaned, re.IGNORECASE)
+        if match:
+            solutions_start_idx = match.end()
+            break
+    
+    # If no "Solutions" section found, try splitting normally
+    # (some reports might have different structure)
+    if solutions_start_idx is None:
+        # Fallback: look for first "Question 1" after skipping initial content
+        # Skip first 500 chars to avoid comments section
+        search_text = cleaned[min(500, len(cleaned)):]
+        first_q = re.search(r'(?m)^Question\s+1\b', search_text, re.IGNORECASE)
+        if first_q:
+            solutions_start_idx = min(500, len(cleaned)) + first_q.start()
+        else:
+            # Last resort: use the whole document
+            solutions_start_idx = 0
+    
+    solutions_text = cleaned[solutions_start_idx:]
+    
+    # Now split by "Question X" markers within the solutions section
+    matches = list(QUESTION_RE.finditer(solutions_text))
+    if not matches:
+        return []
+    
+    results = []
+    for i, m in enumerate(matches):
+        qnum = m.group(1)
+        start = m.start()
+        end = matches[i+1].start() if i+1 < len(matches) else len(solutions_text)
+        chunk = solutions_text[start:end].strip()
         results.append((qnum, chunk))
     return results
 
@@ -207,9 +277,14 @@ def process_subject(in_dir: Path, subject: str, out_dir: Path, chapter_map_path:
             m = re.search(r'- \*\*Session\*\*:\s*([A-Za-z]+)', text)
             if m:
                 session = m.group(1)
-        # split into questions
-        # If this is an examiners' report, treat it as 'solutions' and write into a separate folder
-        qlist = split_markdown_into_questions(text)
+        
+        # Split into questions/solutions based on document type
+        # If this is an examiners' report, use specialized splitting to extract solutions section
+        if source_type == 'examiners_report':
+            qlist = split_examiners_report_into_solutions(text)
+        else:
+            qlist = split_markdown_into_questions(text)
+        
         if not qlist:
             logger.warning(f"No questions found in {md}")
             continue
@@ -228,14 +303,14 @@ def process_subject(in_dir: Path, subject: str, out_dir: Path, chapter_map_path:
             session_upper = session.upper() if session else ''
             
             # create output path
-            # Solutions go to: solutions/Subject/Year/Session/Paper/
-            # Questions go to: questions/Subject/Session/Year/Paper/questions/
+            # Solutions go to: markdown_questions/solutions/Subject/Year/Session/Paper/
+            # Questions go to: markdown_questions/Subject/Session/Year/Paper/questions/
             if source_type == 'examiners_report':
-                # Solutions folder structure: solutions -> Subject -> Year -> Session -> Paper
-                out_subdir = out_dir.parent / 'solutions' / subject / str(year) / session_upper / f"Paper{paper}"
+                # Solutions folder structure: markdown_questions -> solutions -> Subject -> Year -> Session -> Paper
+                out_subdir = out_dir / 'solutions' / subject / str(year) / session_upper / f"Paper{paper}"
             else:
-                # Questions folder structure: questions -> Subject -> Session -> Year -> Paper -> questions
-                out_subdir = out_dir / subject / session_upper / str(year) / f"Paper{paper}" / 'questions'
+                # Questions folder structure: markdown_questions -> questions -> Subject -> Session -> Year -> Paper -> questions
+                out_subdir = out_dir / 'questions' / subject / session_upper / str(year) / f"Paper{paper}" / 'questions'
             out_subdir.mkdir(parents=True, exist_ok=True)
             out_filename = f"{subject}_{session_upper}_{year}_Paper{paper}_Q{qnum}.md"
             out_path = out_subdir / out_filename
@@ -271,10 +346,12 @@ def process_subject(in_dir: Path, subject: str, out_dir: Path, chapter_map_path:
                 rel = out_path.relative_to(Path.cwd()).as_posix()
             except Exception:
                 rel = out_path.as_posix()
-            manifest.append({'source': str(md), 'question': f'Q{qnum}', 'output': rel, 'chapters': chapters})
+            # Only add questions to manifest, not solutions
+            if source_type != 'examiners_report':
+                manifest.append({'source': str(md), 'question': f'Q{qnum}', 'output': rel, 'chapters': chapters})
             logger.info(f"Wrote question: {out_path}")
     # write manifest
-    manifest_path = out_dir / subject / 'manifest_questions.json'
+    manifest_path = out_dir / 'questions' / subject / 'manifest_questions.json'
     manifest_path.parent.mkdir(parents=True, exist_ok=True)
     with manifest_path.open('w', encoding='utf-8') as f:
         json.dump(manifest, f, indent=2, ensure_ascii=False)

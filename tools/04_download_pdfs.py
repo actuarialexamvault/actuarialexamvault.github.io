@@ -71,15 +71,18 @@ def flatten_exam_links(exam_json):
     """Given the canonical exam_links.json structure, produce iterable items
     yielding dicts with keys: subject, session, year, paper, url, type
     This function contains defensive handling for several common shapes.
+    Actual structure: { subject: { session: { year: { paper: url }}}}
     """
     items = []
-    # Expecting structure like { subject: { year: { session: { paper: url }}}}
+    # exam_links.json structure: Subject → Session → Year → Paper
     if isinstance(exam_json, dict):
-        for subject, by_year in exam_json.items():
-            if not isinstance(by_year, dict):
+        for subject, by_session in exam_json.items():
+            if not isinstance(by_session, dict):
                 continue
-            for year, by_session in by_year.items():
-                for session, papers in by_session.items():
+            for session, by_year in by_session.items():
+                if not isinstance(by_year, dict):
+                    continue
+                for year, papers in by_year.items():
                     if isinstance(papers, dict):
                         for paper, url in papers.items():
                             items.append({'subject': subject, 'year': str(year), 'session': str(session), 'paper': str(paper), 'url': url, 'type': 'Exam'})
@@ -91,10 +94,18 @@ def flatten_exam_links(exam_json):
 
 
 def flatten_memo_links(memo_json):
+    """
+    Flatten memo_links.json structure.
+    Actual structure: { subject: { year: { session: { paper: url }}}}
+    """
     items = []
     if isinstance(memo_json, dict):
         for subject, by_year in memo_json.items():
+            if not isinstance(by_year, dict):
+                continue
             for year, by_session in by_year.items():
+                if not isinstance(by_session, dict):
+                    continue
                 for session, papers in by_session.items():
                     if isinstance(papers, dict):
                         for paper, url in papers.items():
@@ -115,6 +126,7 @@ def parse_args():
     p.add_argument('--exam-json', type=Path, default=Path('resources/pdfs/exam_links.json'), help='Path to canonical exam_links.json')
     p.add_argument('--memo-json', type=Path, default=Path('resources/pdfs/memo-links.json'), help='Path to canonical memo-links.json')
     p.add_argument('--out-dir', type=Path, default=Path('resources/pdfs/downloads'), help='Base output directory')
+    p.add_argument('--subject', type=str, default=None, help='Filter to download only specific subject (e.g., F102)')
     p.add_argument('--force', action='store_true', help='Overwrite existing files')
     p.add_argument('--retries', type=int, default=3, help='Number of download retries')
     p.add_argument('--timeout', type=int, default=30, help='HTTP timeout seconds')
@@ -155,6 +167,14 @@ def main():
         logging.error("No entries found to download. Exiting.")
         return 1
 
+    # Filter by subject if specified
+    if args.subject:
+        entries = [e for e in entries if e.get('subject') == args.subject]
+        if not entries:
+            logging.error(f"No entries found for subject '{args.subject}'. Exiting.")
+            return 1
+        logging.info(f"Filtered to {len(entries)} entries for subject '{args.subject}'")
+
     out_base: Path = args.out_dir
     manifest = []
     success = 0
@@ -168,8 +188,16 @@ def main():
         url = item.get('url')
         ptype = item.get('type', 'Exam')
 
-        # Layout: out_base/subject/year/session/type/
-        target_dir = out_base / subject / year / session / ptype
+        # Use different folder structures for exams vs examiner reports:
+        # - Exams (from exam_links.json): Subject/Session/Year/Exam/
+        # - Memos (from memo_links.json): Subject/Year/Session/Examiners_Report/
+        if ptype == 'Exam':
+            # exam_links.json structure: Subject → Session → Year → Exam
+            target_dir = out_base / subject / session / year / 'Exam'
+        else:
+            # memo_links.json structure: Subject → Year → Session → Examiners_Report
+            target_dir = out_base / subject / year / session / 'Examiners_Report'
+        
         clean_name = generate_clean_filename(subject, year, session, paper, ptype, url)
         target_path = target_dir / clean_name
 

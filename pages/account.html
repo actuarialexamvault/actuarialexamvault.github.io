@@ -11,11 +11,15 @@
         (function() {
             const savedTheme = localStorage.getItem('theme') || localStorage.getItem('userTheme') || 'light';
             document.documentElement.setAttribute('data-theme', savedTheme);
-            
+            // Block CSS transitions during initial load to prevent flash
+            const _nt = document.createElement('style');
+            _nt.textContent = '*, *::before, *::after { transition: none !important; }';
+            document.head.appendChild(_nt);
             window.addEventListener('DOMContentLoaded', function() {
                 const logoImages = document.querySelectorAll('.logo-icon');
                 const logoSrc = savedTheme === 'dark' ? '../favicon.svg' : '../favicon-light.svg';
                 logoImages.forEach(img => img.src = logoSrc);
+                requestAnimationFrame(function() { _nt.remove(); });
             });
         })();
     </script>
@@ -192,12 +196,21 @@
                         <h3>Practice</h3>
                         <p>Browse subjects</p>
                     </a>
-                    <a href="progress-tracker.html" class="action-card">
+                    <a href="past-exams.html" class="action-card">
                         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M22 12H18L15 21L9 3L6 12H2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
-                        <h3>Progress Tracker</h3>
+                        <h3>Past Exams</h3>
                         <p>Track your performance</p>
+                    </a>
+                    <a href="help-support.html" class="action-card">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                            <path d="M12 16V12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="12" cy="8" r="0.5" fill="currentColor" stroke="currentColor" stroke-width="1"/>
+                        </svg>
+                        <h3>Help &amp; Support</h3>
+                        <p>Get help with the platform</p>
                     </a>
                 </div>
             </div>

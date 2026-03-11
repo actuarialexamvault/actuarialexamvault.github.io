@@ -16,13 +16,11 @@ themeManager.init();
 
 let currentUser = null;
 
-onAuthStateChanged(auth, (user) => {
-    if (user) {
-        currentUser = user;
-    } else {
-        window.location.href = 'signin.html';
-    }
-});
+(async () => {
+    const user = await firebaseAuth.requireAuth('signin.html');
+    if (!user) return;
+    currentUser = user;
+})();
 
 // Custom Modal Functions
 function showModal(title, message, type = 'info', buttons = [{ text: 'OK', primary: true, callback: null }]) {
@@ -100,6 +98,11 @@ const session_type = urlParams.get('session');
 const year = urlParams.get('year');
 const paper = urlParams.get('paper');
 
+// Guard: if no subject param, this page was opened without context
+if (!subject) {
+    window.location.replace('past-exams.html');
+}
+
 // Calculate exam duration (100 marks as default, can be customized per subject)
 const totalMarks = 100;
 const readingTime = 15; // minutes
@@ -166,9 +169,6 @@ document.addEventListener('DOMContentLoaded', function() {
     if (uploadBtn) uploadBtn.addEventListener('click', triggerFileUpload);
     if (fileInput) fileInput.addEventListener('change', handleTemplateUpload);
     if (signOutBtn) signOutBtn.addEventListener('click', signOut);
-    
-    // Prevent navigation when exam is in progress
-    window.addEventListener('beforeunload', preventNavigation);
 });
 
 async function startExam() {
@@ -436,10 +436,10 @@ function leaveExam() {
                 clearInterval(timerInterval);
             }
             localStorage.removeItem('currentExam');
-            // Set auto-show so the progress tracker will immediately open this subject's progress
+            // Set auto-show so the past exams page will immediately open this subject's progress
             sessionStorage.setItem('autoShowSubject', subject);
             sessionStorage.setItem('autoShowSubjectTitle', subjectTitle);
-            window.location.href = 'progress-tracker.html';
+            window.location.href = 'past-exams.html';
         }
     );
 }
@@ -550,7 +550,7 @@ async function handleTemplateUpload(event) {
         uploadTimestamp: new Date().toISOString(),
         uploadDate: new Date().toLocaleString(),
         status: 'submitted',
-        timestamp: new Date().toISOString() // Add for progress tracker compatibility
+        timestamp: new Date().toISOString() // Add for past exams compatibility
     };
     
     console.log('Saving submission:', submission);

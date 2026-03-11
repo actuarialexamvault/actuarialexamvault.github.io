@@ -19,23 +19,12 @@ let currentUser = null;
 let isAuthChecked = false;
 
 // Check authentication
-onAuthStateChanged(auth, async (user) => {
-    if (user) {
-        currentUser = user;
-        isAuthChecked = true;
-        // Initialize page after authentication
-        await initializePage();
-    } else {
-        if (isAuthChecked || !user) {
-            setTimeout(() => {
-                if (!auth.currentUser) {
-                    alert('Please sign in to access exam reviews.');
-                    window.location.href = 'signin.html';
-                }
-            }, 500);
-        }
-    }
-});
+(async () => {
+    const user = await firebaseAuth.requireAuth('signin.html');
+    if (!user) return;
+    currentUser = user;
+    await initializePage();
+})();
 
 // Modal management
 let currentQuestionNumber = null;
@@ -85,6 +74,11 @@ let subjectTitle = urlParams.get('subjectTitle'); // Will be populated from user
 const sessionType = urlParams.get('session');
 const year = urlParams.get('year');
 const paper = urlParams.get('paper');
+
+// Guard: if no subject param, this page was opened without context
+if (!subject) {
+    window.location.replace('past-exams.html');
+}
 
 // Subject code to title mapping
 const SUBJECT_TITLES = {
@@ -158,7 +152,9 @@ function getQuestionCountStorageKey() {
 function loadQuestionCount() {
     const storageKey = getQuestionCountStorageKey();
     const stored = localStorage.getItem(storageKey);
-    return stored ? parseInt(stored, 10) : 8; // Default to 8 if not found
+    const count = stored ? parseInt(stored, 10) : 8;
+    // Ensure a valid positive integer; fall back to 8 if parse fails or value is invalid
+    return (Number.isFinite(count) && count >= 1) ? count : 8;
 }
 
 // Save question count to localStorage
@@ -186,6 +182,7 @@ async function loadExamDetails() {
     reviewSubtitle.textContent = 'Review your exam attempt and grade your answers';
     
     // Update download memo button based on report availability
+    await memoLinksReady;
     if (!hasExaminersReport(subject, year, sessionType, paper)) {
         downloadMemoBtn.disabled = true;
         downloadMemoBtn.title = "Examiner's report not yet available for this exam. Check the actuarial society website for updates";
@@ -434,20 +431,102 @@ function openQuestionGrading(questionNumber) {
     showReviewTypeModal(questionNumber);
 }
 
-// Navigate to grading page with review type
+// Open inline grading modal (replaces page navigation)
 function navigateToGrading(questionNumber, isAIReview = false) {
-    const params = new URLSearchParams({
-        subject: subject,
-        subjectTitle: subjectTitle,
+    showGradingModal(questionNumber, isAIReview);
+}
+
+// ── Inline Grading Modal ──────────────────────────────────────────────────────
+let currentGradingQuestion = null;
+let currentGradingIsAI = false;
+
+function showGradingModal(questionNumber, isAIReview = false) {
+    currentGradingQuestion = questionNumber;
+    currentGradingIsAI = isAIReview;
+    document.getElementById('gradingModalTitle').textContent = `Grade Q${questionNumber}`;
+    document.getElementById('gradingModalSubtitle').textContent =
+        `${subjectTitle || subject} — ${sessionType} ${year} Paper ${paper} | ${isAIReview ? 'AI Review' : 'Self Review'}`;
+    // Reset inputs
+    document.getElementById('modalTotalMarksInput').value = 0;
+    document.getElementById('modalMarksInput').value = 0;
+    document.getElementById('modalTotalMarksHint').textContent = '0';
+    document.getElementById('modalCalculatedGrade').textContent = '-';
+    document.getElementById('modalCalculatedPercentage').textContent = '-';
+    // Load existing grade asynchronously
+    loadGradeForModal(questionNumber);
+    document.getElementById('gradingModal').style.display = 'flex';
+}
+
+async function loadGradeForModal(questionNumber) {
+    const existingGradings = await loadExistingGradings();
+    const existing = existingGradings.find(g => g.question == questionNumber);
+    if (existing) {
+        document.getElementById('modalTotalMarksInput').value = existing.maxMarks || 0;
+        document.getElementById('modalMarksInput').value = existing.marks || 0;
+        document.getElementById('modalTotalMarksHint').textContent = existing.maxMarks || 0;
+        autoCalculateGradeModal();
+    }
+}
+
+function hideGradingModal() {
+    document.getElementById('gradingModal').style.display = 'none';
+}
+
+function autoCalculateGradeModal() {
+    const marksAwarded = parseFloat(document.getElementById('modalMarksInput').value) || 0;
+    const totalMarks = parseFloat(document.getElementById('modalTotalMarksInput').value) || 0;
+    const gradeEl = document.getElementById('modalCalculatedGrade');
+    const pctEl = document.getElementById('modalCalculatedPercentage');
+    if (totalMarks === 0) { gradeEl.textContent = '-'; pctEl.textContent = '-'; return; }
+    const pct = (marksAwarded / totalMarks) * 100;
+    let grade = 'FD';
+    if (pct >= 60) grade = 'P';
+    else if (pct >= 50) grade = 'FA';
+    else if (pct >= 40) grade = 'FB';
+    else if (pct >= 30) grade = 'FC';
+    if (marksAwarded > 0) {
+        gradeEl.textContent = grade;
+        pctEl.textContent = `${pct.toFixed(1)}%`;
+    } else {
+        gradeEl.textContent = '-';
+        pctEl.textContent = '-';
+    }
+}
+
+async function completeInlineGrading() {
+    const marksAwarded = parseFloat(document.getElementById('modalMarksInput').value);
+    const totalMarks = parseFloat(document.getElementById('modalTotalMarksInput').value);
+    const grade = document.getElementById('modalCalculatedGrade').textContent;
+    if (!grade || grade === '-') {
+        alert('Please enter marks to get a grade before completing the review.');
+        return;
+    }
+    if (isNaN(marksAwarded) || isNaN(totalMarks) || totalMarks < 1) {
+        alert('Please enter valid marks before completing.');
+        return;
+    }
+    const gradingData = {
+        subject,
+        subjectTitle: subjectTitle || subject,
         session: sessionType,
-        year: year,
-        paper: paper,
-        question: questionNumber,
-        maxMarks: 20, // Default, can be customized per question
-        isAIReview: isAIReview
-    });
-    
-    window.location.href = `question-grading.html?${params.toString()}`;
+        year: parseInt(year),
+        paper,
+        question: currentGradingQuestion,
+        dimensions: { keyIdeas: 0, useOfInfo: 0, conciseness: 0, ideaGeneration: 0 },
+        grade,
+        marks: marksAwarded,
+        maxMarks: totalMarks,
+        reviewType: currentGradingIsAI ? 'ai' : 'self',
+        isAIReviewed: currentGradingIsAI,
+        timestamp: new Date().toISOString(),
+        studentEmail: currentUser ? currentUser.email : ''
+    };
+    try { await firestoreData.saveQuestionGrade(currentUser.uid, gradingData); }
+    catch (err) { console.error('Firestore save failed:', err); }
+    try { await indexedDBStorage.saveQuestionGrade(currentUser.uid, gradingData); }
+    catch (err) { console.error('IndexedDB save failed:', err); }
+    hideGradingModal();
+    await initializeTable();
 }
 
 // Setup event listeners
@@ -534,10 +613,10 @@ function setupEventListeners() {
     
     // Back button
     backBtn.addEventListener('click', () => {
-        // Return to progress tracker with subject auto-shown
+        // Return to past exams with subject auto-shown
         sessionStorage.setItem('autoShowSubject', subject);
         sessionStorage.setItem('autoShowSubjectTitle', subjectTitle);
-        window.location.href = 'progress-tracker.html';
+        window.location.href = 'past-exams.html';
     });
 
     // Modal event listeners
@@ -623,6 +702,28 @@ function setupEventListeners() {
                 deleteConfirmResolve = null;
             }
         }
+    });
+
+    // Inline grading modal event listeners
+    document.getElementById('modalTotalMarksInput').addEventListener('input', function() {
+        if (parseFloat(this.value) < 0) this.value = 0;
+        document.getElementById('modalTotalMarksHint').textContent = this.value || '0';
+        autoCalculateGradeModal();
+    });
+    document.getElementById('modalMarksInput').addEventListener('input', function() {
+        const total = parseFloat(document.getElementById('modalTotalMarksInput').value) || 0;
+        if (parseFloat(this.value) > total) this.value = total;
+        if (parseFloat(this.value) < 0) this.value = 0;
+        autoCalculateGradeModal();
+    });
+    document.getElementById('completeGradingBtn').addEventListener('click', async () => {
+        await completeInlineGrading();
+    });
+    document.getElementById('cancelGradingBtn').addEventListener('click', () => {
+        hideGradingModal();
+    });
+    document.getElementById('gradingModal').addEventListener('click', (e) => {
+        if (e.target === document.getElementById('gradingModal')) hideGradingModal();
     });
 }
 

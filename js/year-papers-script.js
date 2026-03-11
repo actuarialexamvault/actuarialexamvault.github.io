@@ -1,17 +1,21 @@
 // Year papers page functionality
-const authManager = new AuthManager();
+import { firebaseAuth } from './firebase-auth.js';
+import { themeManager } from './theme-manager.js';
+import { attachSignOutHandler } from './signout-modal.js';
+
+themeManager.init();
+attachSignOutHandler('#signOutBtn');
+
+// Auth guard: hide body and redirect to sign-in if not authenticated
+(async () => {
+    const user = await firebaseAuth.requireAuth('signin.html');
+    if (!user) return;
+})();
 
 const signOutBtn = document.getElementById('signOutBtn');
 const yearTitle = document.getElementById('yearTitle');
 const subjectSubtitle = document.getElementById('subjectSubtitle');
 const paperItemsList = document.getElementById('paperItemsList');
-
-// Check if user is logged in
-const session = authManager.getSession();
-if (!session) {
-    alert('Please sign in to access past papers.');
-    window.location.href = 'signin.html';
-}
 
 // Get parameters
 const urlParams = new URLSearchParams(window.location.search);
@@ -20,7 +24,7 @@ const year = urlParams.get('year') || sessionStorage.getItem('selectedYear');
 const subjectTitleText = sessionStorage.getItem('selectedSubjectTitle');
 
 if (!subject || !year) {
-    window.location.href = 'progress-tracker.html';
+    window.location.href = 'past-exams.html';
 }
 
 // Update titles
@@ -177,10 +181,6 @@ window.openPaper = function(year, filename) {
     // In production, you would open the file in a viewer or navigate to a paper view page
 };
 
-// Handle sign out using shared modal
-import { attachSignOutHandler } from './signout-modal.js';
-attachSignOutHandler('#signOutBtn');
-
 // Load papers
 setTimeout(() => {
     loadYearPapers();
@@ -190,8 +190,7 @@ setTimeout(() => {
 let activityTimeout;
 function resetActivityTimer() {
     clearTimeout(activityTimeout);
-    if (authManager.isLoggedIn()) {
-        authManager.extendSession();
+    if (firebaseAuth.getCurrentUser()) {
         activityTimeout = setTimeout(() => {}, 5 * 60 * 1000);
     }
 }

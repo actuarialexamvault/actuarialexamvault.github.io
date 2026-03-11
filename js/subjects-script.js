@@ -26,27 +26,12 @@ const userName = document.getElementById('userName');
 const signOutBtn = document.getElementById('signOutBtn');
 const subjectCards = document.querySelectorAll('.subject-card');
 
-let isAuthChecked = false;
-
 // Check if user is logged in and load profile
-onAuthStateChanged(auth, async (user) => {
-    if (user) {
-        // User is signed in
-        await loadUserProfile(user);
-        isAuthChecked = true;
-    } else {
-        // User is not signed in
-        if (isAuthChecked || !user) {
-            // Only show alert if auth has been checked or definitely no user
-            setTimeout(() => {
-                if (!auth.currentUser) {
-                    alert('Please sign in to access subjects.');
-                    window.location.href = 'signin.html';
-                }
-            }, 500);
-        }
-    }
-});
+(async () => {
+    const user = await firebaseAuth.requireAuth('signin.html');
+    if (!user) return;
+    await loadUserProfile(user);
+})();
 
 async function loadUserProfile(user) {
     // Get user profile from Firestore
@@ -133,13 +118,13 @@ subjectCards.forEach(card => {
         let redirectUrl;
         if (isPracticeMode) {
             // If in practice mode and F102, go to practice-by-chapter
-            // Otherwise, go to progress tracker (past papers)
+            // Otherwise, go to past exams (past papers)
             if (subject === 'F102') {
                 const params = new URLSearchParams({ subject, subjectTitle });
                 redirectUrl = `practice-by-chapter.html?${params.toString()}`;
             } else {
-                // For non-F102 subjects, redirect to progress tracker
-                redirectUrl = 'progress-tracker.html';
+                // For non-F102 subjects, redirect to past exams
+                redirectUrl = 'past-exams.html';
             }
         } else {
             // Default behavior: go to practice-by-chapter

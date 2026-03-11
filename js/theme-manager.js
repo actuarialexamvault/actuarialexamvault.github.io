@@ -92,9 +92,24 @@ class ThemeManager {
 
     // Apply theme to the page
     setTheme(theme) {
-        // Only update if theme actually changed
-        if (this.currentTheme === theme && document.documentElement.getAttribute('data-theme') === (theme === 'dark' ? 'dark' : null)) {
+        // Only update if theme is already correctly applied
+        // Light mode can be represented as null OR 'light' attribute, so check both
+        const currentDataTheme = document.documentElement.getAttribute('data-theme');
+        const alreadyApplied = (theme === 'dark')
+            ? (currentDataTheme === 'dark')
+            : (currentDataTheme !== 'dark'); // null or 'light' both mean light mode
+        if (this.currentTheme === theme && alreadyApplied) {
             return;
+        }
+
+        // Block CSS transitions to prevent animated flash during theme switch
+        const blockerId = '__theme-no-transition__';
+        let blocker = document.getElementById(blockerId);
+        if (!blocker) {
+            blocker = document.createElement('style');
+            blocker.id = blockerId;
+            blocker.textContent = '*, *::before, *::after { transition: none !important; animation-duration: 0s !important; }';
+            document.head.appendChild(blocker);
         }
         
         this.currentTheme = theme;
@@ -108,6 +123,9 @@ class ThemeManager {
         
         // Update logo based on theme
         this.updateLogos(theme);
+
+        // Re-enable transitions after next paint
+        requestAnimationFrame(() => { if (blocker) blocker.remove(); });
         
         // Save to localStorage for instant load on next page (use both keys for compatibility)
         localStorage.setItem('userTheme', theme);

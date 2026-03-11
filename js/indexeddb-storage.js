@@ -244,12 +244,18 @@ class IndexedDBStorageService {
         }
     }
 
-    // Save question grade to IndexedDB
-    async saveQuestionGrade(userId, gradingData) {
+    // Save question grade to IndexedDB.
+    // pendingSync=true marks the record as not yet written to Firestore (offline fallback).
+    async saveQuestionGrade(userId, gradingData, pendingSync = false) {
         try {
             await this.ensureDB();
             
-            const gradingId = `grade_${userId}_${gradingData.subject}_${gradingData.year}_${gradingData.session}_P${gradingData.paper}_Q${gradingData.question}`;
+            // Chapter question grades include the chapter name so that the same
+            // question number in different chapters gets its own record.
+            const chapterSuffix = gradingData.chapter
+                ? `_CH${gradingData.chapter.replace(/[^a-zA-Z0-9]/g, '_')}`
+                : '';
+            const gradingId = `grade_${userId}_${gradingData.subject}_${gradingData.year}_${gradingData.session}_P${gradingData.paper}_Q${gradingData.question}${chapterSuffix}`;
             
             return new Promise((resolve, reject) => {
                 const transaction = this.db.transaction([this.storeName], 'readwrite');
@@ -259,6 +265,7 @@ class IndexedDBStorageService {
                     id: gradingId,
                     userId: userId,
                     type: 'questionGrade',
+                    pendingSync: pendingSync,
                     ...gradingData,
                     updatedAt: new Date().toISOString()
                 };
@@ -280,8 +287,55 @@ class IndexedDBStorageService {
         }
     }
 
-    // Get all question grades for a user
-    async getQuestionGrades(userId) {
+    // Get all grades that failed to reach Firestore and need to be synced.
+    async getPendingSyncGrades(userId) {
+        try {
+            await this.ensureDB();
+            return new Promise((resolve, reject) => {
+                const transaction = this.db.transaction([this.storeName], 'readonly');
+                const objectStore = transaction.objectStore(this.storeName);
+                const index = objectStore.index('userId');
+                const request = index.getAll(userId);
+                request.onsuccess = () => {
+                    const pending = request.result.filter(
+                        item => item.type === 'questionGrade' && item.pendingSync === true
+                    );
+                    resolve(pending);
+                };
+                request.onerror = () => reject(request.error);
+            });
+        } catch (error) {
+            console.error('Error in getPendingSyncGrades:', error);
+            return [];
+        }
+    }
+
+    // Mark a grade record as successfully synced to Firestore.
+    async markGradeSynced(gradeId) {
+        try {
+            await this.ensureDB();
+            return new Promise((resolve, reject) => {
+                const transaction = this.db.transaction([this.storeName], 'readwrite');
+                const objectStore = transaction.objectStore(this.storeName);
+                const getReq = objectStore.get(gradeId);
+                getReq.onsuccess = () => {
+                    const record = getReq.result;
+                    if (!record) { resolve({ success: true }); return; }
+                    record.pendingSync = false;
+                    const putReq = objectStore.put(record);
+                    putReq.onsuccess = () => resolve({ success: true });
+                    putReq.onerror = () => reject(putReq.error);
+                };
+                getReq.onerror = () => reject(getReq.error);
+            });
+        } catch (error) {
+            console.error('Error in markGradeSynced:', error);
+            return { success: false, error: error.message };
+        }
+    }
+
+    // Get all question grades for a user, optionally filtered by subject
+    async getQuestionGrades(userId, subject = null) {
         try {
             await this.ensureDB();
 
@@ -292,8 +346,8 @@ class IndexedDBStorageService {
                 const request = index.getAll(userId);
 
                 request.onsuccess = () => {
-                    // Filter only question grades
-                    const grades = request.result.filter(item => item.type === 'questionGrade');
+                    let grades = request.result.filter(item => item.type === 'questionGrade');
+                    if (subject) grades = grades.filter(g => g.subject === subject);
                     resolve(grades);
                 };
 
@@ -305,6 +359,58 @@ class IndexedDBStorageService {
         } catch (error) {
             console.error('Error in getQuestionGrades:', error);
             return [];
+        }
+    }
+
+    // Seed IndexedDB with grades fetched from Firestore so they are available
+    // when the user goes offline. Skips any record that already has pendingSync=true
+    // to avoid overwriting unsynced local writes.
+    async seedGradeCache(userId, grades) {
+        if (!grades || grades.length === 0) return;
+        try {
+            // Collect IDs of grades that are pending sync so we can skip them
+            const pending = await this.getPendingSyncGrades(userId);
+            const pendingIds = new Set(pending.map(p => p.id));
+
+            for (const grade of grades) {
+                // Must have minimum fields to build a deterministic key
+                if (!grade.subject || !grade.year || !grade.session || grade.paper == null || grade.question == null) continue;
+                const id = `grade_${userId}_${grade.subject}_${grade.year}_${grade.session}_P${grade.paper}_Q${grade.question}`;
+                if (pendingIds.has(id)) continue; // keep the pending local write intact
+                await this.saveQuestionGrade(userId, grade, false);
+            }
+        } catch (err) {
+            console.warn('[IndexedDB] seedGradeCache error:', err);
+        }
+    }
+
+    // Delete all grade records for a user from IndexedDB
+    async clearAllGrades(userId) {
+        try {
+            await this.ensureDB();
+            return new Promise((resolve, reject) => {
+                const transaction = this.db.transaction([this.storeName], 'readwrite');
+                const objectStore = transaction.objectStore(this.storeName);
+                const index = objectStore.index('userId');
+                const request = index.getAll(userId);
+                request.onsuccess = () => {
+                    const gradeRecords = request.result.filter(item => item.type === 'questionGrade');
+                    const deletes = gradeRecords.map(item =>
+                        new Promise((res, rej) => {
+                            const r = objectStore.delete(item.id);
+                            r.onsuccess = () => res();
+                            r.onerror = () => rej(r.error);
+                        })
+                    );
+                    Promise.all(deletes)
+                        .then(() => resolve({ success: true }))
+                        .catch(err => reject(err));
+                };
+                request.onerror = () => reject(request.error);
+            });
+        } catch (error) {
+            console.error('Error clearing all grades from IndexedDB:', error);
+            return { success: false, error: error.message };
         }
     }
 

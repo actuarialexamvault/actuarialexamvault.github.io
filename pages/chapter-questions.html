@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Chapter Questions - ExamVault</title>
-    <link rel="stylesheet" href="../css/progress-tracker-styles.css">
+    <link rel="stylesheet" href="../css/past-exams-styles.css">
     <!-- Load theme immediately to prevent flash -->
     <script>
         (function() {
@@ -12,11 +12,16 @@
             if (theme === 'dark') {
                 document.documentElement.setAttribute('data-theme', 'dark');
             }
+            // Block CSS transitions during initial load to prevent flash
+            const _nt = document.createElement('style');
+            _nt.textContent = '*, *::before, *::after { transition: none !important; }';
+            document.head.appendChild(_nt);
             // Set initial logo based on theme
             window.addEventListener('DOMContentLoaded', function() {
                 const logoImages = document.querySelectorAll('.logo-icon');
                 const logoSrc = theme === 'dark' ? '../favicon.svg' : '../favicon-light.svg';
                 logoImages.forEach(img => img.src = logoSrc);
+                requestAnimationFrame(function() { _nt.remove(); });
             });
         })();
     </script>
@@ -73,50 +78,6 @@
                         <canvas id="performanceLineGraph"></canvas>
                     </div>
                     <p class="section-description" style="text-align: center;">Track your improvement for this chapter across multiple attempts</p>
-                </div>
-
-                <!-- Performance Statistics Table -->
-                <div class="performance-stats-section" id="performanceStatsSection" style="display: none; max-width: 1400px; margin: 2rem auto 1rem auto;">
-                    <h2 class="stats-title">Overall Attempt History & Performance</h2>
-                    <div class="stats-table-container">
-                        <table class="stats-table">
-                            <thead>
-                                <tr>
-                                    <th>REVIEW TYPE</th>
-                                    <th>QUESTIONS</th>
-                                    <th>POSSIBLE MARKS</th>
-                                    <th>SCORED MARKS</th>
-                                    <th>PERFORMANCE</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <span class="review-type-indicator self"></span>
-                                        <span>Self-reviewed</span>
-                                    </td>
-                                    <td id="selfQuestionsCount">0</td>
-                                    <td id="selfPossibleMarks">0</td>
-                                    <td id="selfScoredMarks">0</td>
-                                    <td>
-                                        <span class="performance-badge" id="selfPerformance">0%</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <span class="review-type-indicator ai"></span>
-                                        <span>AI-reviewed</span>
-                                    </td>
-                                    <td id="aiQuestionsCount">0</td>
-                                    <td id="aiPossibleMarks">0</td>
-                                    <td id="aiScoredMarks">0</td>
-                                    <td>
-                                        <span class="performance-badge" id="aiPerformance">0%</span>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
                 </div>
 
                 <!-- Attempted Questions Section -->

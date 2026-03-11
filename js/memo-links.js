@@ -4,11 +4,20 @@ let examinersReportLinksMap = null;
 
 export const ready = (async () => {
     try {
-        const res = await fetch(new URL('../resources/pdfs/memo-links.json', import.meta.url));
+        const res = await fetch('/resources/pdfs/memo-links.json');
+        if (!res.ok) throw new Error(`HTTP ${res.status}: ${res.statusText}`);
         examinersReportLinksMap = await res.json();
     } catch (err) {
         console.error('Failed to load memo-links.json', err);
-        examinersReportLinksMap = {};
+        // Fallback: try import.meta.url relative path
+        try {
+            const res2 = await fetch(new URL('../resources/pdfs/memo-links.json', import.meta.url));
+            if (!res2.ok) throw new Error(`HTTP ${res2.status}`);
+            examinersReportLinksMap = await res2.json();
+        } catch (err2) {
+            console.error('Fallback fetch also failed:', err2);
+            examinersReportLinksMap = {};
+        }
     }
 })();
 

@@ -36,10 +36,14 @@
   </nav>
 
   <main class="editor-container">
-    <!-- Header Section -->
-    <div class="editor-header">
-      <h1>Answer the Question</h1>
-      <p class="subtitle">Read the question carefully and provide your detailed answer below</p>
+    <div class="layout-toolbar">
+      <button id="splitViewToggle" class="btn-layout-toggle" title="Toggle side-by-side layout">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="15" height="15">
+          <rect x="3" y="3" width="7" height="18" rx="1.5" stroke="currentColor" stroke-width="2"/>
+          <rect x="14" y="3" width="7" height="18" rx="1.5" stroke="currentColor" stroke-width="2"/>
+        </svg>
+        <span id="splitViewLabel">Split View</span>
+      </button>
     </div>
 
     <div class="content-wrapper">

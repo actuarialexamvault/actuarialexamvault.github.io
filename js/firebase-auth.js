@@ -99,6 +99,26 @@ class FirebaseAuthService {
         }
     }
 
+    // Guard protected pages: immediately hide the body, wait for Firebase auth
+    // to initialise, then either reveal the page (user signed in) or redirect
+    // to the sign-in page (user not signed in).  Returns the authenticated user
+    // so callers can use it directly, or null if a redirect was triggered.
+    async requireAuth(signinPath = 'signin.html') {
+        // Hide the page instantly so protected content never flashes
+        document.body.style.visibility = 'hidden';
+
+        await this.waitForAuthReady();
+
+        if (!this.currentUser) {
+            window.location.replace(signinPath);
+            return null;
+        }
+
+        // Authenticated – reveal the page
+        document.body.style.visibility = 'visible';
+        return this.currentUser;
+    }
+
     // Sign out user
     async signout() {
         try {

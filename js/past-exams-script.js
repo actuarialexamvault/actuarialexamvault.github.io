@@ -1,10 +1,11 @@
-// Progress Tracker functionality with Firebase
+// Past Exams functionality with Firebase
 import { firebaseAuth } from './firebase-auth.js';
 import { firestoreData } from './firebase-data.js';
 import { initActivityMonitor } from './activity-monitor.js';
 import { themeManager } from './theme-manager.js';
-import { hasPDFLink } from './pdf-links.js';
+import { hasPDFLink, ready as pdfLinksReady } from './pdf-links.js';
 import { indexedDBStorage } from './indexeddb-storage.js';
+import { cacheGradesLocally } from './offline-sync.js';
 
 // Initialize activity monitor
 initActivityMonitor();
@@ -47,26 +48,11 @@ const authManager = window.authManagerInstance || (window.authManagerInstance = 
 });
 import { attachSignOutHandler } from './signout-modal.js';
 
-let isAuthChecked = false;
-
-onAuthStateChanged(auth, async (user) => {
-    if (user) {
-        // User is signed in
-        await loadUserProfile(user);
-        isAuthChecked = true;
-    } else {
-        // User is not signed in
-        if (isAuthChecked || !user) {
-            // Only show alert if auth has been checked or definitely no user
-            setTimeout(() => {
-                if (!auth.currentUser) {
-                    alert('Please sign in to view your progress.');
-                    window.location.href = 'signin.html';
-                }
-            }, 500);
-        }
-    }
-});
+(async () => {
+    const user = await firebaseAuth.requireAuth('signin.html');
+    if (!user) return;
+    await loadUserProfile(user);
+})();
 
 async function loadUserProfile(user) {
     // Get user profile from Firestore
@@ -258,6 +244,9 @@ function getSubmissionDetails(submissions, subject, year, session, paper) {
 
 // Load progress data
 async function loadProgressData(subject, subjectTitle) {
+    // Ensure PDF links are loaded before checking availability
+    await pdfLinksReady;
+    
     const allPapers = generateAllPapers(subject);
     const submissions = await getUserSubmissions();
     
@@ -289,11 +278,19 @@ async function loadPerformanceStats(subject, allPapers, submissions) {
     if (!user) return null;
     
     try {
-        // Get gradings from Firestore (includes standalone question grades)
-        let gradings = await firestoreData.getUserGradings(user.uid);
-        
-        // Fallback to IndexedDB if Firestore returns empty
-        if (!gradings || gradings.length === 0) {
+        // Get gradings from Firestore; seed local cache for offline use
+        let gradings;
+        try {
+            gradings = await firestoreData.getUserGradings(user.uid);
+            if (gradings && gradings.length > 0) {
+                // Seed IndexedDB so offline fallback has up-to-date data
+                cacheGradesLocally(user.uid, gradings).catch(() => {});
+            } else {
+                // Firestore returned nothing — use local cache
+                gradings = await indexedDBStorage.getQuestionGrades(user.uid);
+            }
+        } catch {
+            // Firestore unreachable (offline) — fall back to local cache
             gradings = await indexedDBStorage.getQuestionGrades(user.uid);
         }
         
@@ -350,12 +347,16 @@ function calculateStats(gradings) {
     };
 }
 
-// Update stats display in the table
+// Update stats display in the table (elements may not exist if table was moved)
 function updateStatsDisplay(type, stats) {
-    document.getElementById(`${type}QuestionsCount`).textContent = stats.questionsCount;
-    document.getElementById(`${type}PossibleMarks`).textContent = stats.possibleMarks;
-    document.getElementById(`${type}ScoredMarks`).textContent = stats.scoredMarks;
-    document.getElementById(`${type}Performance`).textContent = `${stats.performance}%`;
+    const q = document.getElementById(`${type}QuestionsCount`);
+    const p = document.getElementById(`${type}PossibleMarks`);
+    const s = document.getElementById(`${type}ScoredMarks`);
+    const b = document.getElementById(`${type}Performance`);
+    if (q) q.textContent = stats.questionsCount;
+    if (p) p.textContent = stats.possibleMarks;
+    if (s) s.textContent = stats.scoredMarks;
+    if (b) b.textContent = `${stats.performance}%`;
 }
 
 // Create performance line graph
@@ -686,24 +687,22 @@ function createPaperItem(paper, subject, subjectTitle, isAttempted, submissionDe
         </div>
     `;
     
-    div.addEventListener('click', () => {
-        handlePaperClick(paper, subjectTitle, isAttempted);
+        div.addEventListener('click', () => {
+        handlePaperClick(paper, subject, subjectTitle, isAttempted);
     });
     
     return div;
 }
 
 // Handle paper click
-function handlePaperClick(paper, subjectTitle, isAttempted) {
-    // Get the actual subject code (extract from subjectTitle)
-    const subjectMatch = subjectTitle.match(/^([A-Z]\d+)/);
-    const subjectCode = subjectMatch ? subjectMatch[1] : 'A311';
+function handlePaperClick(paper, subject, subjectTitle, isAttempted) {
+    // Use the subject code directly (already the correct key like 'F102', 'A311', etc.)
     
     if (isAttempted) {
         // Navigate to exam review page for completed exams
         const params = new URLSearchParams({
-            subject: subjectCode,
-            subjectTitle: subjectTitle,
+            subject: subject,
+            subjectTitle: subjectTitle || subject,
             session: paper.session.toUpperCase(),
             year: paper.year,
             paper: paper.paper
@@ -713,12 +712,12 @@ function handlePaperClick(paper, subjectTitle, isAttempted) {
     } else {
         // Navigate to exam instructions page for new attempts
         const params = new URLSearchParams({
-            subject: subjectCode,
-            subjectTitle: subjectTitle,
+            subject: subject,
+            subjectTitle: subjectTitle || subject,
             session: paper.session.toUpperCase(),
             year: paper.year,
             paper: paper.paper,
-            from: 'progress' // Indicate this came from progress tracker
+            from: 'progress' // Indicate this came from past exams
         });
         
         window.location.href = `exam-instructions.html?${params.toString()}`;

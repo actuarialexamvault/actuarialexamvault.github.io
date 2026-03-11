@@ -240,17 +240,16 @@ class FirestoreDataService {
     }
 
     // Get user gradings as array (includes both submission-based and standalone grades)
-    async getUserGradings(userId) {
+    async getUserGradings(userId, subject = null) {
         try {
-            const q = query(
-                collection(db, this.gradingsCollection),
-                where('userId', '==', userId)
-            );
+            const constraints = [where('userId', '==', userId)];
+            if (subject) constraints.push(where('subject', '==', subject));
+            const q = query(collection(db, this.gradingsCollection), ...constraints);
             const querySnapshot = await getDocs(q);
             
             const gradings = [];
             querySnapshot.forEach((doc) => {
-                gradings.push(doc.data());
+                gradings.push({ _id: doc.id, ...doc.data() });
             });
             
             return gradings;
@@ -263,8 +262,13 @@ class FirestoreDataService {
     // Save standalone question grade (without submission ID)
     async saveQuestionGrade(userId, gradingData) {
         try {
-            // Generate a unique grading ID based on exam details
-            const gradingId = `${userId}_${gradingData.subject}_${gradingData.year}_${gradingData.session}_P${gradingData.paper}_Q${gradingData.question}`;
+            // Generate a unique grading ID based on exam details.
+            // Chapter question grades include the chapter name so that the same
+            // question number in different chapters gets its own document.
+            const chapterSuffix = gradingData.chapter
+                ? `_CH${gradingData.chapter.replace(/[^a-zA-Z0-9]/g, '_')}`
+                : '';
+            const gradingId = `${userId}_${gradingData.subject}_${gradingData.year}_${gradingData.session}_P${gradingData.paper}_Q${gradingData.question}${chapterSuffix}`;
             const gradingRef = doc(db, this.gradingsCollection, gradingId);
             await setDoc(gradingRef, {
                 userId: userId,
@@ -279,8 +283,24 @@ class FirestoreDataService {
     }
 
     // Get question grades (wrapper to match indexedDB interface)
-    async getQuestionGrades(userId) {
-        return await this.getUserGradings(userId);
+    async getQuestionGrades(userId, subject = null) {
+        return await this.getUserGradings(userId, subject);
+    }
+
+    // Delete every grade document for a user
+    async clearAllGrades(userId) {
+        try {
+            const q = query(
+                collection(db, this.gradingsCollection),
+                where('userId', '==', userId)
+            );
+            const snap = await getDocs(q);
+            await Promise.all(snap.docs.map(d => deleteDoc(d.ref)));
+            return { success: true };
+        } catch (error) {
+            console.error('Error clearing all grades:', error);
+            return { success: false, error: error.message };
+        }
     }
 
     // Delete a specific question grade

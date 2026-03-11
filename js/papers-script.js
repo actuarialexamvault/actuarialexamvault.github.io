@@ -17,27 +17,11 @@ const subjectTitle = document.getElementById('subjectTitle');
 const papersGrid = document.getElementById('papersGrid');
 const noPapers = document.getElementById('noPapers');
 
-let isAuthChecked = false;
-
-// Backwards-compatible shim for pages that reference authManager
-const authManager = window.authManagerInstance || (window.authManagerInstance = {
-    isLoggedIn: () => !!(typeof firebaseAuth !== 'undefined' && firebaseAuth.getCurrentUser && firebaseAuth.getCurrentUser()),
-    extendSession: () => { /* no-op */ },
-    signOut: async () => { if (typeof firebaseAuth !== 'undefined') await firebaseAuth.signout(); },
-    getSession: () => null,
-    getSessionTimeRemaining: () => 0
-});
-
 // Check if user is logged in
-onAuthStateChanged(auth, (user) => {
-    if (!user && !isAuthChecked) {
-        isAuthChecked = true;
-        alert('Please sign in to access past papers.');
-        window.location.href = 'signin.html';
-    } else if (user) {
-        isAuthChecked = true;
-    }
-});
+(async () => {
+    const user = await firebaseAuth.requireAuth('signin.html');
+    if (!user) return;
+})();
 
 // Get subject from URL or sessionStorage
 const urlParams = new URLSearchParams(window.location.search);
@@ -45,7 +29,7 @@ const subject = urlParams.get('subject') || sessionStorage.getItem('selectedSubj
 const subjectTitleText = sessionStorage.getItem('selectedSubjectTitle');
 
 if (!subject) {
-    window.location.href = 'progress-tracker.html';
+    window.location.href = 'past-exams.html';
 }
 
 // Update page title

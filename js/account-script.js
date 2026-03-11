@@ -9,14 +9,8 @@ attachSignOutHandler('#signOutBtn');
 
 // Get current user and display info
 async function loadUserInfo() {
-    // Wait for auth to be ready
-    await firebaseAuth.waitForAuthReady();
-    
-    const user = firebaseAuth.getCurrentUser();
-    if (!user) {
-        window.location.href = 'signin.html';
-        return;
-    }
+    const user = await firebaseAuth.requireAuth('signin.html');
+    if (!user) return;
 
     // Display user info
     const userEmail = document.getElementById('userEmail');

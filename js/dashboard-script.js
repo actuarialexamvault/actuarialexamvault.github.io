@@ -25,24 +25,10 @@ function initTheme(user) {
 
 // Check if user is logged in and load profile
 async function checkAuthAndLoadProfile() {
-    const user = firebaseAuth.getCurrentUser();
-    
-    if (!user) {
-        // Wait a moment for Firebase to initialize
-        setTimeout(async () => {
-            const retryUser = firebaseAuth.getCurrentUser();
-            if (!retryUser) {
-                alert('Please sign in to access the dashboard.');
-                window.location.href = 'signin.html';
-            } else {
-                await loadUserProfile(retryUser);
-                initTheme(retryUser);
-            }
-        }, 1000);
-    } else {
-        await loadUserProfile(user);
-        initTheme(user);
-    }
+    const user = await firebaseAuth.requireAuth('signin.html');
+    if (!user) return;
+    await loadUserProfile(user);
+    initTheme(user);
 }
 
 async function loadUserProfile(user) {
@@ -72,9 +58,6 @@ async function loadUserProfile(user) {
     
     // Load continue section
     await loadContinueSection(user);
-    
-    // Load analytics if user has a primary exam
-    await loadAnalytics(user);
 }
 
 async function loadContinueSection(user) {
@@ -118,10 +101,10 @@ async function loadContinueSection(user) {
             if (lastChapter) {
                 window.location.href = `chapter-questions.html?subject=${encodeURIComponent(lastSubject)}&chapter=${encodeURIComponent(lastChapter)}`;
             } else {
-                // Otherwise, go to progress tracker
+                // Otherwise, go to past exams
                 sessionStorage.setItem('autoShowSubject', lastSubject);
                 sessionStorage.setItem('autoShowSubjectTitle', lastSubjectTitle || lastSubject);
-                window.location.href = 'progress-tracker.html';
+                window.location.href = 'past-exams.html';
             }
         });
     }
@@ -197,7 +180,7 @@ async function loadAnalytics(user) {
         // Set up View All Papers link with primary subject
         const viewAllPapersLink = document.getElementById('viewAllPapersLink');
         if (viewAllPapersLink && primaryExam) {
-            viewAllPapersLink.href = `progress-tracker.html?subject=${encodeURIComponent(primaryExam)}`;
+            viewAllPapersLink.href = `past-exams.html?subject=${encodeURIComponent(primaryExam)}`;
         }
         
         // Calculate study plan countdown
@@ -292,7 +275,7 @@ function calculateExamReadiness(grades, subject) {
             projectedExamScore = Math.round(examResults.reduce((sum, e) => sum + e.percentage, 0) / examResults.length);
         }
     }
-    projectedExamScore = Math.max(0, Math.min(100, projectedExamScore)); // Clamp between 0-100
+    projectedExamScore = Math.round(Math.max(0, Math.min(100, projectedExamScore))); // Clamp and round
     
     // Calculate weighted readiness score
     // 50% average score + 45% chapter coverage + 5% improvement trend (0-100 scale)
@@ -889,8 +872,8 @@ document.querySelectorAll('.action-btn').forEach(btn => {
 // Add click handlers for dashboard cards (except those with real navigation targets)
 // Allow practice-by-chapter.html as a real link so the Practice card navigates to the new page.
 const allowedLinks = new Set([
-    'progress-tracker.html',
-    'help-support.html',
+    'past-exams.html',
+    'analytics.html',
     'practice.html',
     'practice-by-chapter.html',
     'subjects.html?mode=practice'

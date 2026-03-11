@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Progress Tracker - ExamVault</title>
+    <title>Past Exams - ExamVault</title>
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-    <link rel="stylesheet" href="../css/progress-tracker-styles.css">
+    <link rel="stylesheet" href="../css/past-exams-styles.css">
     <!-- Load theme immediately to prevent flash -->
     <script>
         (function() {
@@ -13,11 +13,16 @@
             if (theme === 'dark') {
                 document.documentElement.setAttribute('data-theme', 'dark');
             }
+            // Block CSS transitions during initial load to prevent flash
+            const _nt = document.createElement('style');
+            _nt.textContent = '*, *::before, *::after { transition: none !important; }';
+            document.head.appendChild(_nt);
             // Set initial logo based on theme
             window.addEventListener('DOMContentLoaded', function() {
                 const logoImages = document.querySelectorAll('.logo-icon');
                 const logoSrc = theme === 'dark' ? '../favicon.svg' : '../favicon-light.svg';
                 logoImages.forEach(img => img.src = logoSrc);
+                requestAnimationFrame(function() { _nt.remove(); });
             });
         })();
     </script>
@@ -41,12 +46,12 @@
     <main class="subjects-container" id="subjectsView">
         <div class="subjects-header">
             <h1 class="subjects-title">
-                <span id="userName">User</span>, select a subject to view your progress 📊
+                <span id="userName">User</span>, select a subject to start practicing exams 📊
             </h1>
         </div>
 
         <div class="subjects-list">
-            <!-- A211: Actuarial Mathematics -->
+            <!-- A211: Actuarial Mathematics -->  
             <div class="subject-card" data-subject="A211">
                 <div class="subject-icon">
                     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -252,50 +257,6 @@
                 <p class="graph-note">Average performance per paper across all attempted exams</p>
             </div>
 
-            <!-- Performance Statistics Table -->
-            <div class="performance-stats-section">
-                <h2 class="stats-title">Your Progress & Attempt History</h2>
-                <div class="stats-table-container">
-                    <table class="stats-table">
-                        <thead>
-                            <tr>
-                                <th>REVIEW TYPE</th>
-                                <th>QUESTIONS</th>
-                                <th>POSSIBLE MARKS</th>
-                                <th>SCORED MARKS</th>
-                                <th>PERFORMANCE</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <span class="review-type-indicator self"></span>
-                                    <span>Self-reviewed</span>
-                                </td>
-                                <td id="selfQuestionsCount">0</td>
-                                <td id="selfPossibleMarks">0</td>
-                                <td id="selfScoredMarks">0</td>
-                                <td>
-                                    <span class="performance-badge" id="selfPerformance">0%</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <span class="review-type-indicator ai"></span>
-                                    <span>AI-reviewed</span>
-                                </td>
-                                <td id="aiQuestionsCount">0</td>
-                                <td id="aiPossibleMarks">0</td>
-                                <td id="aiScoredMarks">0</td>
-                                <td>
-                                    <span class="performance-badge" id="aiPerformance">0%</span>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
             <div class="content-header">
                 <h1>Review Your Exam Attempts</h1>
                 <p class="content-subtitle">
@@ -345,6 +306,6 @@
     <!-- Chart.js Library -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
-    <script type="module" src="../js/progress-tracker-script.js"></script>
+    <script type="module" src="../js/past-exams-script.js"></script>
 </body>
 </html>

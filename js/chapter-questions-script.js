@@ -239,8 +239,12 @@ async function loadChapterQuestions() {
     }
 }
 
-// Initial load
-loadChapterQuestions();
+// Initial load with auth guard
+(async () => {
+    const user = await firebaseAuth.requireAuth('signin.html');
+    if (!user) return;
+    await loadChapterQuestions();
+})();
 
 // Reload questions when page becomes visible (user returns from grading page)
 document.addEventListener('visibilitychange', () => {
@@ -563,58 +567,58 @@ function updatePerformanceStats(grades, subject, chapter) {
     console.log('updatePerformanceStats - Sample grades:', subjectGrades.slice(0, 3));
     
     if (subjectGrades.length === 0) {
-        performanceStatsSection.style.display = 'none';
+        if (performanceStatsSection) performanceStatsSection.style.display = 'none';
         return;
     }
     
-    // Show the stats section
-    performanceStatsSection.style.display = 'block';
+    // Show the stats section (may not exist if table was removed from this page)
+    if (performanceStatsSection) performanceStatsSection.style.display = 'block';
     
     // Split by review type - handle both new reviewType field and old isAIReviewed field
     const selfReviewed = subjectGrades.filter(g => {
-        // New format: reviewType === 'self'
         if (g.reviewType === 'self') return true;
-        // Old format: isAIReviewed === false or undefined
         if (g.reviewType === undefined && !g.isAIReviewed) return true;
         return false;
     });
     
     const aiReviewed = subjectGrades.filter(g => {
-        // New format: reviewType === 'ai'
         if (g.reviewType === 'ai') return true;
-        // Old format: isAIReviewed === true
         if (g.reviewType === undefined && g.isAIReviewed === true) return true;
         return false;
     });
     
-    console.log('updatePerformanceStats - Self-reviewed:', selfReviewed.length, 'AI-reviewed:', aiReviewed.length);
-    console.log('updatePerformanceStats - Unclassified:', subjectGrades.length - selfReviewed.length - aiReviewed.length);
-    
-    // Calculate stats for self-reviewed
+    // Calculate and display stats (elements may not exist if table was moved to analytics page)
     const selfStats = calculateStats(selfReviewed);
-    document.getElementById('selfQuestionsCount').textContent = selfStats.count;
-    document.getElementById('selfPossibleMarks').textContent = selfStats.possibleMarks;
-    document.getElementById('selfScoredMarks').textContent = selfStats.scoredMarks.toFixed(1);
-    
+    const selfQEl = document.getElementById('selfQuestionsCount');
+    const selfPEl = document.getElementById('selfPossibleMarks');
+    const selfSEl = document.getElementById('selfScoredMarks');
     const selfPerfBadge = document.getElementById('selfPerformance');
-    selfPerfBadge.textContent = `${selfStats.performance}%`;
-    selfPerfBadge.className = 'performance-badge';
-    if (selfStats.performance >= 60) selfPerfBadge.classList.add('high');
-    else if (selfStats.performance >= 40) selfPerfBadge.classList.add('medium');
-    else selfPerfBadge.classList.add('low');
+    if (selfQEl) selfQEl.textContent = selfStats.count;
+    if (selfPEl) selfPEl.textContent = selfStats.possibleMarks;
+    if (selfSEl) selfSEl.textContent = selfStats.scoredMarks.toFixed(1);
+    if (selfPerfBadge) {
+        selfPerfBadge.textContent = `${selfStats.performance}%`;
+        selfPerfBadge.className = 'performance-badge';
+        if (selfStats.performance >= 60) selfPerfBadge.classList.add('high');
+        else if (selfStats.performance >= 40) selfPerfBadge.classList.add('medium');
+        else selfPerfBadge.classList.add('low');
+    }
     
-    // Calculate stats for AI-reviewed
     const aiStats = calculateStats(aiReviewed);
-    document.getElementById('aiQuestionsCount').textContent = aiStats.count;
-    document.getElementById('aiPossibleMarks').textContent = aiStats.possibleMarks;
-    document.getElementById('aiScoredMarks').textContent = aiStats.scoredMarks.toFixed(1);
-    
+    const aiQEl = document.getElementById('aiQuestionsCount');
+    const aiPEl = document.getElementById('aiPossibleMarks');
+    const aiSEl = document.getElementById('aiScoredMarks');
     const aiPerfBadge = document.getElementById('aiPerformance');
-    aiPerfBadge.textContent = `${aiStats.performance}%`;
-    aiPerfBadge.className = 'performance-badge';
-    if (aiStats.performance >= 60) aiPerfBadge.classList.add('high');
-    else if (aiStats.performance >= 40) aiPerfBadge.classList.add('medium');
-    else aiPerfBadge.classList.add('low');
+    if (aiQEl) aiQEl.textContent = aiStats.count;
+    if (aiPEl) aiPEl.textContent = aiStats.possibleMarks;
+    if (aiSEl) aiSEl.textContent = aiStats.scoredMarks.toFixed(1);
+    if (aiPerfBadge) {
+        aiPerfBadge.textContent = `${aiStats.performance}%`;
+        aiPerfBadge.className = 'performance-badge';
+        if (aiStats.performance >= 60) aiPerfBadge.classList.add('high');
+        else if (aiStats.performance >= 40) aiPerfBadge.classList.add('medium');
+        else aiPerfBadge.classList.add('low');
+    }
 }
 
 function calculateStats(gradings) {

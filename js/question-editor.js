@@ -3,6 +3,9 @@ import { attachSignOutHandler } from './signout-modal.js';
 import { firebaseAuth } from './firebase-auth.js';
 import { indexedDBStorage } from './indexeddb-storage.js';
 
+// Auth guard: hide body immediately, redirect to sign-in if not authenticated
+firebaseAuth.requireAuth('signin.html');
+
 // Modal state
 let currentQuestion = null;
 
@@ -163,6 +166,8 @@ let countdownInterval = null;
 let remainingSeconds = null;
 let examMode = true; // when true, lock editor on expiry
 let timerStarted = false; // ensure countdown starts on first typing
+// Timer toggle: persisted across questions via localStorage (default on)
+let timerEnabled = localStorage.getItem('editor_timer_enabled') !== 'false';
 
 // Ensure the visible title element is empty; we rely on the rendered markdown for the title.
 if (questionTitle) questionTitle.textContent = '';
@@ -383,7 +388,7 @@ if (!sel) {
 
 // Autosave (debounced) and start timer on first typing
 editor.addEventListener('input', () => {
-    if (!timerStarted && remainingSeconds) {
+    if (!timerStarted && remainingSeconds && timerEnabled) {
         // start the countdown on first real typing
         timerStarted = true;
         startCountdown();
@@ -500,7 +505,38 @@ if (aiInstructionsModal) {
 }
 
 // Timer controls
-// No manual start/stop buttons. Timer starts automatically on first typing.
+// Clicking the timer toggles it on/off; state saved to localStorage.
+
+function applyTimerEnabledState() {
+    if (timerEnabled) {
+        timerEl.classList.remove('timer-disabled');
+        timerEl.title = 'Timer on — click to disable';
+    } else {
+        timerEl.classList.add('timer-disabled');
+        timerEl.title = 'Timer off — click to enable';
+    }
+}
+
+// Apply persisted state on page load
+applyTimerEnabledState();
+
+timerEl.addEventListener('click', () => {
+    timerEnabled = !timerEnabled;
+    localStorage.setItem('editor_timer_enabled', String(timerEnabled));
+    applyTimerEnabledState();
+    if (!timerEnabled) {
+        // Pause the running countdown
+        if (countdownInterval) {
+            clearInterval(countdownInterval);
+            countdownInterval = null;
+        }
+    } else {
+        // Re-enable: resume countdown if the user has already started typing
+        if (timerStarted && remainingSeconds > 0) {
+            startCountdown();
+        }
+    }
+});
 
 function startCountdown() {
     if (countdownInterval) return;
@@ -516,6 +552,35 @@ function startCountdown() {
             }
         }
     }, 1000);
+}
+
+// Split view toggle
+const splitToggle = document.getElementById('splitViewToggle');
+const splitLabel = document.getElementById('splitViewLabel');
+const editorContainer = document.querySelector('.editor-container');
+
+function applySplitView(active) {
+    if (active) {
+        editorContainer.classList.add('split-view');
+        splitToggle.classList.add('active');
+        splitLabel.textContent = 'Stacked View';
+    } else {
+        editorContainer.classList.remove('split-view');
+        splitToggle.classList.remove('active');
+        splitLabel.textContent = 'Split View';
+    }
+}
+
+if (splitToggle) {
+    // Restore preference
+    const savedSplit = localStorage.getItem('editor_split_view') === 'true';
+    applySplitView(savedSplit);
+
+    splitToggle.addEventListener('click', () => {
+        const isActive = editorContainer.classList.contains('split-view');
+        applySplitView(!isActive);
+        localStorage.setItem('editor_split_view', String(!isActive));
+    });
 }
 
 // persist on unload

@@ -49,7 +49,7 @@ Actuarial-Exam-Book-main/
 │   ├── year-papers.html                # Year-specific papers
 │   ├── exam-instructions.html          # Exam setup, upload, and timer
 │   ├── exam-review.html                # Review exam submissions
-│   ├── progress-tracker.html           # Track exam progress
+│   ├── past-exams.html                 # Past exam papers and progress
 │   ├── question-grading.html           # Grade individual questions
 │   ├── help-support.html               # Help & Support with contact form
 │   └── test-download.html              # Download test page
@@ -78,14 +78,14 @@ Actuarial-Exam-Book-main/
 1. **Landing (index.html)** → Sign In (pages/signin.html)
 2. **Sign In** → Dashboard (pages/dashboard.html) or Sign Up (pages/signup.html)
 3. **Dashboard** → 
-    - Progress Tracker (pages/progress-tracker.html)
+    - Past Exams (pages/past-exams.html)
     - Practice by Chapter (pages/practice.html)
     - Help & Support (pages/help-support.html)
-4. **Progress Tracker** → Papers (pages/papers.html)
+4. **Past Exams** → Papers (pages/papers.html)
 5. **Papers** → Exam Instructions (pages/exam-instructions.html)
 6. **Subject Papers** → Exam Instructions (pages/exam-instructions.html)
 7. **Exam Instructions** → Upload file + Timer → Exam Review
-8. **Progress Tracker** → Exam Review (pages/exam-review.html)
+8. **Past Exams** → Exam Review (pages/exam-review.html)
 9. **Exam Review** → Question Grading (pages/question-grading.html)
 
 ### JavaScript Module Structure:

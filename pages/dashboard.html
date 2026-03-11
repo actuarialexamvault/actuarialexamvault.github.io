@@ -12,12 +12,16 @@
             // Check both 'theme' (from landing/auth pages) and 'userTheme' (from Firebase)
             const savedTheme = localStorage.getItem('theme') || localStorage.getItem('userTheme') || 'light';
             document.documentElement.setAttribute('data-theme', savedTheme);
-            
+            // Block CSS transitions during initial load to prevent flash
+            const _nt = document.createElement('style');
+            _nt.textContent = '*, *::before, *::after { transition: none !important; }';
+            document.head.appendChild(_nt);
             // Set initial logo based on theme
             window.addEventListener('DOMContentLoaded', function() {
                 const logoImages = document.querySelectorAll('.logo-icon');
                 const logoSrc = savedTheme === 'dark' ? '../favicon.svg' : '../favicon-light.svg';
                 logoImages.forEach(img => img.src = logoSrc);
+                requestAnimationFrame(function() { _nt.remove(); });
             });
         })();
     </script>
@@ -102,26 +106,25 @@
                 </div>
                 <h2>Past Papers</h2>
                 <p>Practice exam papers in a simulated exam environment and monitor your progress</p>
-                <a href="progress-tracker.html" class="card-link">View Progress →</a>
+                <a href="past-exams.html" class="card-link">View Progress →</a>
             </div>
 
             <div class="dashboard-card">
                 <div class="card-icon">
                     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
-                        <path d="M12 16V12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <circle cx="12" cy="8" r="0.5" fill="currentColor" stroke="currentColor" stroke-width="1"/>
+                        <path d="M18 20V10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M12 20V4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M6 20V14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </div>
-                <h2>Help & Support</h2>
-                <p>Get help with the platform or exams</p>
-                <a href="help-support.html" class="card-link">Get Help →</a>
+                <h2>Performance &amp; Analytics</h2>
+                <p>View your exam readiness, study habits, and areas needing attention.</p>
+                <a href="analytics.html" class="card-link">View Analytics →</a>
             </div>
         </div>
 
-        <!-- Performance Analytics Section -->
-        <div class="analytics-section" id="analyticsSection" style="display: none;">
-            <h2 class="analytics-title">Performance & Analytics</h2>
+        <!-- Performance Analytics Section removed - now on analytics.html -->
+        <div id="analyticsSection" style="display: none;">
             <div class="analytics-grid">
                 <!-- Readiness & Countdown Wrapper -->
                 <div class="readiness-wrapper">
@@ -305,14 +308,10 @@
                         <span class="goal-text" id="goalText">Loading goal...</span>
                     </div>
 
-                    <a href="account.html#study-plan" class="view-all-link">Change Study Goal →</a>
-
-                    </div>
                 </div>
             </div>
         </div>
 
-       
     </main>
 
     <footer class="footer">

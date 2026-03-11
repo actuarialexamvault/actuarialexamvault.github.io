@@ -7,16 +7,23 @@
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
     <link rel="stylesheet" href="../css/papers-styles.css">
     <script>
-        // Set logo based on theme
-        window.addEventListener('DOMContentLoaded', function() {
+        (function() {
             const theme = localStorage.getItem('theme') || localStorage.getItem('userTheme') || 'light';
             if (theme === 'dark') {
                 document.documentElement.setAttribute('data-theme', 'dark');
             }
-            const logoImages = document.querySelectorAll('.logo-icon');
-            const logoSrc = theme === 'dark' ? '../favicon.svg' : '../favicon-light.svg';
-            logoImages.forEach(img => img.src = logoSrc);
-        });
+            // Block CSS transitions during initial load to prevent flash
+            const _nt = document.createElement('style');
+            _nt.textContent = '*, *::before, *::after { transition: none !important; }';
+            document.head.appendChild(_nt);
+            // Set initial logo based on theme
+            window.addEventListener('DOMContentLoaded', function() {
+                const logoImages = document.querySelectorAll('.logo-icon');
+                const logoSrc = theme === 'dark' ? '../favicon.svg' : '../favicon-light.svg';
+                logoImages.forEach(img => img.src = logoSrc);
+                requestAnimationFrame(function() { _nt.remove(); });
+            });
+        })();
     </script>
 </head>
 <body>
@@ -27,7 +34,7 @@
                 <span class="logo-text"><span class="logo-exam">Exam</span><span class="logo-vault">Vault</span></span>
             </a>
             <div class="nav-links">
-                <a href="progress-tracker.html" class="nav-link">SUBJECTS</a>
+                <a href="past-exams.html" class="nav-link">SUBJECTS</a>
                 <a href="dashboard.html" class="nav-link">ACCOUNT</a>
                 <button class="btn-signout-nav" id="signOutBtn">SIGN OUT</button>
             </div>
@@ -55,7 +62,6 @@
         </div>
     </main>
 
-    <script src="../js/auth.js"></script>
-    <script src="../js/year-papers-script.js"></script>
+    <script type="module" src="../js/year-papers-script.js"></script>
 </body>
 </html>

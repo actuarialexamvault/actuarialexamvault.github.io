@@ -10,11 +10,16 @@
         (function() {
             const theme = localStorage.getItem('theme') || localStorage.getItem('userTheme') || 'light';
             document.documentElement.setAttribute('data-theme', theme);
+            // Block CSS transitions during initial load to prevent flash
+            const _nt = document.createElement('style');
+            _nt.textContent = '*, *::before, *::after { transition: none !important; }';
+            document.head.appendChild(_nt);
             // Set initial logo based on theme
             window.addEventListener('DOMContentLoaded', function() {
                 const logoImages = document.querySelectorAll('.logo-icon');
                 const logoSrc = theme === 'dark' ? '../favicon.svg' : '../favicon-light.svg';
                 logoImages.forEach(img => img.src = logoSrc);
+                requestAnimationFrame(function() { _nt.remove(); });
             });
         })();
     </script>
@@ -28,7 +33,7 @@
                 <span class="logo-text"><span class="logo-exam">Exam</span><span class="logo-vault">Vault</span></span>
             </a>
             <div class="nav-links">
-                <a href="progress-tracker.html" class="nav-link">SUBJECTS</a>
+                <a href="past-exams.html" class="nav-link">SUBJECTS</a>
                 <a href="dashboard.html" class="nav-link">ACCOUNT</a>
                 <button class="btn-signout-nav" id="signOutBtn">SIGN OUT</button>
             </div>
@@ -127,7 +132,7 @@
                     <path d="M19 12H5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     <path d="M12 19L5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
-                Back to Progress Tracker
+                Back to Past Exams
             </button>
         </div>
     </main>
@@ -198,6 +203,39 @@ Your summary feedback to the student should include the annotated answer marked 
             <div class="modal-buttons">
                 <button class="modal-btn modal-btn-danger" id="confirmDeleteBtn">Delete Question</button>
                 <button class="modal-btn modal-btn-secondary" id="cancelDeleteBtn">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Inline Question Grading Modal -->
+    <div id="gradingModal" class="modal-overlay" style="display: none;">
+        <div class="modal-content grading-modal-content">
+            <h2 id="gradingModalTitle">Grade Question</h2>
+            <p id="gradingModalSubtitle" class="grading-modal-subtitle"></p>
+
+            <div class="grading-form">
+                <div class="grading-input-group">
+                    <label for="modalTotalMarksInput">TOTAL MARKS AVAILABLE</label>
+                    <input type="number" id="modalTotalMarksInput" class="grading-marks-input" min="1" step="0.5" placeholder="0" value="0">
+                    <small>Enter the maximum marks available for this question</small>
+                </div>
+                <div class="grading-input-group">
+                    <label for="modalMarksInput">MARKS AWARDED</label>
+                    <input type="number" id="modalMarksInput" class="grading-marks-input" min="0" step="0.5" placeholder="0" value="0">
+                    <small>Enter marks awarded out of <span id="modalTotalMarksHint">0</span></small>
+                </div>
+                <div class="grading-input-group">
+                    <label>CALCULATED GRADE</label>
+                    <div class="grading-calculated-display">
+                        <span id="modalCalculatedGrade" class="grading-grade-badge">-</span>
+                        <span id="modalCalculatedPercentage" class="grading-pct-display">-</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-buttons">
+                <button class="modal-btn modal-btn-primary" id="completeGradingBtn">Complete Review</button>
+                <button class="modal-btn modal-btn-secondary" id="cancelGradingBtn">Cancel</button>
             </div>
         </div>
     </div>

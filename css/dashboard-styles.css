@@ -1211,6 +1211,105 @@ body {
     color: var(--text-primary);
 }
 
+/* Attempt History Table (analytics page) */
+.attempt-history-card {
+    grid-column: 1 / -1;
+}
+
+.attempt-history-note {
+    margin-top: 0.75rem;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-align: right;
+}
+
+.stats-table-container {
+    overflow-x: auto;
+    width: 100%;
+    -webkit-overflow-scrolling: touch;
+}
+
+.stats-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+}
+
+.stats-table thead {
+    background: var(--bg-secondary);
+}
+
+.stats-table th {
+    padding: 1rem;
+    text-align: left;
+    font-weight: 700;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.stats-table tbody tr {
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color 0.2s ease;
+}
+
+.stats-table tbody tr:hover {
+    background-color: var(--bg-secondary);
+}
+
+.stats-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.stats-table td {
+    padding: 1.25rem 1rem;
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.stats-table td:first-child {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.review-type-indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.review-type-indicator.self {
+    background-color: #00d4aa;
+}
+
+.review-type-indicator.ai {
+    background-color: #00a3ff;
+}
+
+.stats-table td:nth-child(2),
+.stats-table td:nth-child(3),
+.stats-table td:nth-child(4) {
+    text-align: center;
+    font-size: 1rem;
+}
+
+.performance-badge {
+    display: inline-block;
+    padding: 0.4rem 0.9rem;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    background: linear-gradient(135deg, rgba(0,212,170,0.15) 0%, rgba(0,163,255,0.15) 100%);
+    color: var(--text-primary);
+    min-width: 60px;
+    text-align: center;
+    border: 1px solid rgba(0,212,170,0.3);
+}
+
 .activity-histogram {
     margin: 1rem 0;
     padding: 1rem;

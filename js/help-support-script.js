@@ -20,23 +20,16 @@ attachSignOutHandler('#signOutBtn');
 let currentUser = null;
 
 // Check authentication
-onAuthStateChanged(auth, (user) => {
-    if (user) {
-        currentUser = user;
-        // Pre-fill email if user is signed in
-        const emailInput = document.getElementById('senderEmail');
-        if (emailInput && user.email) {
-            emailInput.value = user.email;
-        }
-    } else {
-        setTimeout(() => {
-            if (!auth.currentUser) {
-                alert('Please sign in to access this page.');
-                window.location.href = 'signin.html';
-            }
-        }, 500);
+(async () => {
+    const user = await firebaseAuth.requireAuth('signin.html');
+    if (!user) return;
+    currentUser = user;
+    // Pre-fill email if user is signed in
+    const emailInput = document.getElementById('senderEmail');
+    if (emailInput && user.email) {
+        emailInput.value = user.email;
     }
-});
+})();
 
 // DOM Elements
 const signOutBtn = document.getElementById('signOutBtn');

@@ -5,11 +5,20 @@ let pdfLinksMap = null;
 // Load canonical JSON at runtime (fetch). Export `ready` so callers can await it.
 export const ready = (async () => {
     try {
-        const res = await fetch(new URL('../resources/pdfs/exam_links.json', import.meta.url));
+        const res = await fetch('/resources/pdfs/exam_links.json');
+        if (!res.ok) throw new Error(`HTTP ${res.status}: ${res.statusText}`);
         pdfLinksMap = await res.json();
     } catch (err) {
         console.error('Failed to load exam_links.json', err);
-        pdfLinksMap = {};
+        // Fallback: try import.meta.url relative path
+        try {
+            const res2 = await fetch(new URL('../resources/pdfs/exam_links.json', import.meta.url));
+            if (!res2.ok) throw new Error(`HTTP ${res2.status}`);
+            pdfLinksMap = await res2.json();
+        } catch (err2) {
+            console.error('Fallback fetch also failed:', err2);
+            pdfLinksMap = {};
+        }
     }
 })();
 

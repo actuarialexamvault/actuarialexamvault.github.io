@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Performance & Analytics - ExamVault</title>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="stylesheet" href="../css/dashboard-styles.css">
+    <!-- Load theme immediately to prevent flash -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme') || localStorage.getItem('userTheme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            const _nt = document.createElement('style');
+            _nt.textContent = '*, *::before, *::after { transition: none !important; }';
+            document.head.appendChild(_nt);
+            window.addEventListener('DOMContentLoaded', function() {
+                const logoImages = document.querySelectorAll('.logo-icon');
+                const logoSrc = savedTheme === 'dark' ? '../favicon.svg' : '../favicon-light.svg';
+                logoImages.forEach(img => img.src = logoSrc);
+                requestAnimationFrame(function() { _nt.remove(); });
+            });
+        })();
+    </script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="dashboard.html" class="logo">
+                <img src="../favicon-light.svg" alt="ExamVault Logo" class="logo-icon">
+                <span class="logo-text"><span class="logo-exam">Exam</span><span class="logo-vault">Vault</span></span>
+            </a>
+            <div class="nav-right">
+                <div class="user-info">
+                    <span class="user-name" id="userName"></span>
+                </div>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <svg class="theme-icon sun-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2"/>
+                        <path d="M12 1V3M12 21V23M4.22 4.22L5.64 5.64M18.36 18.36L19.78 19.78M1 12H3M21 12H23M4.22 19.78L5.64 18.36M18.36 5.64L19.78 4.22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                    <svg class="theme-icon moon-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                <div class="nav-links">
+                    <a href="dashboard.html" class="nav-link">HOME</a>
+                    <a href="account.html" class="nav-link">ACCOUNT</a>
+                    <button class="btn-signout-nav" id="signOutBtn">SIGN OUT</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="dashboard-container">
+        <div class="dashboard-header">
+            <h1 class="dashboard-title">Performance &amp; Analytics</h1>
+            <p class="dashboard-subtitle">Track your exam readiness, study habits, and areas needing attention.</p>
+        </div>
+
+        <!-- No Primary Exam Notice -->
+        <div id="noPrimaryExamNotice" style="display: none;">
+            <div class="session-info">
+                <div class="continue-card" style="cursor: default;">
+                    <svg class="continue-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                        <path d="M12 8V12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <circle cx="12" cy="16" r="1" fill="currentColor"/>
+                    </svg>
+                    <div class="continue-details">
+                        <h3>No Focus Exam Set</h3>
+                        <p class="continue-note">Set a Focus Exam in your Account Settings to see personalised analytics.</p>
+                    </div>
+                    <a href="account.html" class="btn-primary" style="white-space: nowrap; text-decoration: none; padding: 0.5rem 1rem; border-radius: 6px; font-size: 0.85rem;">Go to Account →</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Performance Analytics Section -->
+        <div class="analytics-section" id="analyticsSection" style="display: none;">
+            <div class="analytics-grid">
+                <!-- Readiness & Countdown Wrapper -->
+                <div class="readiness-wrapper">
+                    <!-- Exam Readiness Score -->
+                    <div class="analytics-card readiness-card">
+                        <div class="analytics-header">
+                            <div class="analytics-icon">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M12 6V12L16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </div>
+                            <h3>Exam Readiness Score</h3>
+                        </div>
+                        <div class="readiness-score" id="readinessScore" title="Formula: 50% Average Score + 45% Chapter Coverage + 5% Improvement Trend">
+                            <div class="score-value" id="scoreValue">--</div>
+                            <div class="score-status" id="scoreStatus">Calculating...</div>
+                        </div>
+                        <div class="readiness-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="readinessProgress" style="width: 0%;"></div>
+                            </div>
+                        </div>
+                        <div class="readiness-details">
+                            <div class="detail-item">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                                <span id="chaptersCompleted">-- chapters practiced</span>
+                            </div>
+                            <div class="detail-item">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M7 10L12 15L17 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M7 5L12 10L17 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                <span id="improvementTrend">-- improvement</span>
+                            </div>
+                            <div class="detail-item">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                <span id="projectedScore">Projected: --</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Study Plan Countdown -->
+                    <div class="analytics-card countdown-card">
+                        <div class="analytics-header">
+                            <div class="analytics-icon">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2"/>
+                                    <line x1="16" y1="2" x2="16" y2="6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                    <line x1="8" y1="2" x2="8" y2="6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                    <line x1="3" y1="10" x2="21" y2="10" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </div>
+                            <h3>Study Plan</h3>
+                        </div>
+                        <div class="countdown-display">
+                            <div class="countdown-main" id="daysLeftDisplay">
+                                <div class="countdown-number">--</div>
+                                <div class="countdown-label">Days Until Exam</div>
+                            </div>
+                            <div class="countdown-hours-stat">
+                                <span class="countdown-hours-label">Total Hours Available</span>
+                                <span class="countdown-hours-value" id="totalAvailableHours">--</span>
+                            </div>
+                        </div>
+                        <div class="study-stats">
+                            <div class="stat-item">
+                                <span class="stat-label"> Practice Hours</span>
+                                <span class="stat-value" id="practiceHours">--</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Reading Hours</span>
+                                <span class="stat-value" id="readingHours">--</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Hours Spent</span>
+                                <span class="stat-value" id="studyProgress">--</span>
+                            </div>
+                        </div>
+                        <a href="account.html" class="view-all-link" id="setupPlanLink">Set Up Study Plan →</a>
+                    </div>
+                </div>
+
+                <!-- Weak Areas Wrapper (Topics + Exams) -->
+                <div class="weak-areas-wrapper">
+                    <!-- Chapter Topics Dashboard -->
+                    <div class="analytics-card weak-topics-card">
+                        <div class="analytics-header">
+                            <div class="analytics-icon">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 9V13M12 17H12.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </div>
+                            <h3>Topics Needing Attention</h3>
+                        </div>
+                        <div class="weak-topics-list" id="weakTopicsList">
+                            <div class="loading-state">Loading topics...</div>
+                        </div>
+                        <a href="practice-by-chapter.html" class="view-all-link">View All Topics →</a>
+                    </div>
+
+                    <!-- Exam Papers Dashboard -->
+                    <div class="analytics-card weak-exams-card">
+                        <div class="analytics-header">
+                            <div class="analytics-icon">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M14 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V8L14 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M14 2V8H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <h3>Exams Needing Attention</h3>
+                        </div>
+                        <div class="weak-topics-list" id="weakExamsList">
+                            <div class="loading-state">Loading exams...</div>
+                        </div>
+                        <a href="#" class="view-all-link" id="viewAllPapersLink">View All Papers →</a>
+                    </div>
+                </div>
+
+                <!-- Time Management & Consistency Tracker -->
+                <div class="analytics-card habits-card">
+                    <div class="analytics-header">
+                        <div class="analytics-icon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M22 11.08V12C22 17.52 17.52 22 12 22C6.48 22 2 17.52 2 12C2 6.48 6.48 2 12 2C14.11 2 16.06 2.66 17.66 3.77" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M22 4L12 14.01L9 11.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <h3>Study Habits</h3>
+                    </div>
+                    <div class="habits-stats">
+                        <div class="streak-display" id="streakDisplay">
+                            <div class="streak-icon">🔥</div>
+                            <div class="streak-value" id="streakValue">0</div>
+                            <div class="streak-label">day streak</div>
+                        </div>
+
+                        <div class="last-practice" id="lastPractice">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                                <path d="M12 6V12L16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                            <span>Last practiced: <strong id="lastPracticeTime">Never</strong></span>
+                        </div>
+                    </div>
+                    <div class="habits-details" id="habitsDetails">
+                        <h4 id="thisWeekHeader">This Week</h4>
+                        <div class="habit-stat">
+                            <span id="stat1Label">Questions completed</span>
+                            <strong id="stat1Value">0</strong>
+                        </div>
+                        <div class="habit-stat">
+                            <span id="stat2Label">Practice sessions</span>
+                            <strong id="stat2Value">0</strong>
+                        </div>
+                        <div class="habit-stat">
+                            <span id="stat3Label">Avg per session</span>
+                            <strong id="stat3Value">0</strong>
+                        </div>
+                        <div class="habit-stat">
+                            <span id="stat4Label">Best score</span>
+                            <strong id="stat4Value">--</strong>
+                        </div>
+                    </div>
+
+                    <div class="habit-goal">
+                        <span class="goal-icon">🎯</span>
+                        <span class="goal-text" id="goalText">Loading goal...</span>
+                    </div>
+
+                    <a href="account.html#study-plan" class="view-all-link">Change Study Goal →</a>
+                </div>
+                <!-- Overall Attempt History & Performance -->
+                <div class="analytics-card attempt-history-card">
+                    <div class="analytics-header">
+                        <div class="analytics-icon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9 11l3 3L22 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <h3>Overall Attempt History &amp; Performance</h3>
+                    </div>
+                    <div class="stats-table-container">
+                        <table class="stats-table">
+                            <thead>
+                                <tr>
+                                    <th>REVIEW TYPE</th>
+                                    <th>QUESTIONS</th>
+                                    <th>POSSIBLE MARKS</th>
+                                    <th>SCORED MARKS</th>
+                                    <th>PERFORMANCE</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <span class="review-type-indicator self"></span>
+                                        <span>Self-reviewed</span>
+                                    </td>
+                                    <td id="selfQuestionsCount">--</td>
+                                    <td id="selfPossibleMarks">--</td>
+                                    <td id="selfScoredMarks">--</td>
+                                    <td><span class="performance-badge" id="selfPerformance">--%</span></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="review-type-indicator ai"></span>
+                                        <span>AI-reviewed</span>
+                                    </td>
+                                    <td id="aiQuestionsCount">--</td>
+                                    <td id="aiPossibleMarks">--</td>
+                                    <td id="aiScoredMarks">--</td>
+                                    <td><span class="performance-badge" id="aiPerformance">--%</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="attempt-history-note">Across all subjects and question types</p>
+                </div>            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; Open Source under MIT License</p>
+    </footer>
+
+    <!-- Sign out confirmation modal -->
+    <div id="signoutConfirmModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <svg class="modal-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                    <path d="M12 8V12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <circle cx="12" cy="16" r="1" fill="currentColor"/>
+                </svg>
+                <h2>Confirm</h2>
+            </div>
+            <div class="modal-body">
+                <p id="signoutConfirmMessage">Are you sure you want to sign out?</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-primary" id="signoutConfirmYes">Yes</button>
+                <button class="btn-secondary" id="signoutConfirmNo">No</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script type="module" src="../js/analytics-script.js"></script>
+</body>
+</html>

@@ -14,11 +14,16 @@
             // Match dashboard behavior: set the saved theme explicitly (light or dark)
             const savedTheme = localStorage.getItem('theme') || localStorage.getItem('userTheme') || 'light';
             document.documentElement.setAttribute('data-theme', savedTheme);
+            // Block CSS transitions during initial load to prevent flash
+            const _nt = document.createElement('style');
+            _nt.textContent = '*, *::before, *::after { transition: none !important; }';
+            document.head.appendChild(_nt);
             // Set initial logo based on theme
             window.addEventListener('DOMContentLoaded', function() {
                 const logoImages = document.querySelectorAll('.logo-icon');
                 const logoSrc = savedTheme === 'dark' ? '../favicon.svg' : '../favicon-light.svg';
                 logoImages.forEach(img => img.src = logoSrc);
+                requestAnimationFrame(function() { _nt.remove(); });
             });
         })();
     </script>

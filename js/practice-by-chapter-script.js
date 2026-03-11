@@ -17,17 +17,17 @@ attachSignOutHandler('#signOutBtn');
 
 // Wait for auth to be ready before loading data
 async function initializePage() {
+    const user = await firebaseAuth.requireAuth('signin.html');
+    if (!user) return;
+
     if (!subject) {
         chaptersContainer.innerHTML = '<p style="color:#666; padding:1rem;">No subject selected.</p>';
         return;
     }
-    
+
     try {
-        // Wait for auth state to be ready
-        await firebaseAuth.waitForAuthReady();
-        
         const manifest = await loadManifest(subject);
-        const grades = await getUserQuestionGrades();
+        const grades = await getUserQuestionGrades(subject);
         const chapters = aggregateChapters(manifest, grades);
         renderChapters(chapters);
     } catch (err) {
@@ -39,23 +39,22 @@ async function initializePage() {
 // Initialize the page
 initializePage();
 
-async function getUserQuestionGrades() {
+async function getUserQuestionGrades(subject) {
     try {
         const user = firebaseAuth.getCurrentUser();
-        if (!user) {
-            console.warn('No user found when fetching grades');
-            return [];
+        if (!user) return [];
+
+        // Try Firestore first, filtered to this subject only
+        try {
+            const fbGrades = await firestoreData.getQuestionGrades(user.uid, subject);
+            if (fbGrades && fbGrades.length > 0) return fbGrades;
+        } catch {
+            // Firestore unreachable — fall through to IndexedDB
         }
 
-        // Try Firestore first
-        const fbGrades = await firestoreData.getQuestionGrades(user.uid);
-        if (fbGrades && Array.isArray(fbGrades) && fbGrades.length > 0) return fbGrades;
-
-        // Fallback to IndexedDB
-        const idbGrades = await indexedDBStorage.getQuestionGrades(user.uid);
-        if (idbGrades && Array.isArray(idbGrades)) return idbGrades;
-
-        return [];
+        // Fallback to local cache, filtered to this subject
+        const idbGrades = await indexedDBStorage.getQuestionGrades(user.uid, subject);
+        return idbGrades || [];
     } catch (err) {
         console.error('Error fetching user question grades:', err);
         return [];
@@ -86,19 +85,14 @@ function aggregateChapters(manifest, grades = []) {
     // compute attempted counts by matching manifest entries to grades
     // build a lookup of graded questions for quick match
     const gradedSet = new Set();
-    console.log('Total grades loaded:', grades.length);
     for (const g of grades) {
         try {
             const key = `${(g.subject||'').toString().toUpperCase()}|${(g.year||'').toString()}|${(g.session||'').toString().toLowerCase().slice(0,3)}|${(g.paper||'').toString()}|${(g.question||'').toString().toLowerCase().replace(/^q/,'')}`;
             gradedSet.add(key);
-            if (grades.indexOf(g) < 5) { // Log first 5 for debugging
-                console.log('Grade key:', key, 'from', g);
-            }
         } catch (e) {
             // ignore malformed grade entries
         }
     }
-    console.log('Graded questions set size:', gradedSet.size);
 
     // helper to normalize session tokens
     function normSess(s) { return (s||'').toString().toLowerCase().slice(0,3); }
@@ -117,9 +111,6 @@ function aggregateChapters(manifest, grades = []) {
         const qnum = m[5];
         const key = `${subj.toString().toUpperCase()}|${year}|${normSess(sess)}|${paper}|${qnum}`;
         const attempted = gradedSet.has(key);
-        if (matchCount < 5 && manifest.indexOf(item) < 20) { // Log first few
-            console.log('Manifest key:', key, 'attempted:', attempted);
-        }
         if (attempted) {
             matchCount++;
             if (Array.isArray(item.chapters)) {
@@ -130,7 +121,6 @@ function aggregateChapters(manifest, grades = []) {
             }
         }
     }
-    console.log('Total matched questions:', matchCount);
     // convert to list sorted by count desc
     return Array.from(map.values()).sort((a,b) => b.count - a.count);
 }

@@ -7,16 +7,23 @@
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
     <link rel="stylesheet" href="../css/help-support-styles.css">
     <script>
-        // Set logo based on theme
-        window.addEventListener('DOMContentLoaded', function() {
+        (function() {
             const theme = localStorage.getItem('theme') || localStorage.getItem('userTheme') || 'light';
             if (theme === 'dark') {
                 document.documentElement.setAttribute('data-theme', 'dark');
             }
-            const logoImages = document.querySelectorAll('.logo-icon');
-            const logoSrc = theme === 'dark' ? '../favicon.svg' : '../favicon-light.svg';
-            logoImages.forEach(img => img.src = logoSrc);
-        });
+            // Block CSS transitions during initial load to prevent flash
+            const _nt = document.createElement('style');
+            _nt.textContent = '*, *::before, *::after { transition: none !important; }';
+            document.head.appendChild(_nt);
+            // Set initial logo based on theme
+            window.addEventListener('DOMContentLoaded', function() {
+                const logoImages = document.querySelectorAll('.logo-icon');
+                const logoSrc = theme === 'dark' ? '../favicon.svg' : '../favicon-light.svg';
+                logoImages.forEach(img => img.src = logoSrc);
+                requestAnimationFrame(function() { _nt.remove(); });
+            });
+        })();
     </script>
 </head>
 <body>
@@ -28,8 +35,8 @@
                 <span class="logo-text"><span class="logo-exam">Exam</span><span class="logo-vault">Vault</span></span>
             </a>
             <div class="nav-links">
-                <a href="progress-tracker.html" class="nav-link">SUBJECTS</a>
-                <a href="progress-tracker.html" class="nav-link">PROGRESS</a>
+                <a href="past-exams.html" class="nav-link">SUBJECTS</a>
+                <a href="past-exams.html" class="nav-link">PROGRESS</a>
                 <a href="help-support.html" class="nav-link">HELP</a>
                 <a href="dashboard.html" class="nav-link">ACCOUNT</a>
             </div>
@@ -184,7 +191,7 @@
 
                     <div class="qna-item">
                         <h4 class="question">Can I track progress across multiple subjects?</h4>
-                        <p class="answer">Absolutely! The Progress Tracker page lets you view statistics for each subject separately, including attempted papers, grades, and performance trends.</p>
+                        <p class="answer">Absolutely! The Past Exams page lets you view statistics for each subject separately, including attempted papers, grades, and performance trends.</p>
                     </div>
 
                     <div class="qna-item">
@@ -240,7 +247,7 @@
 
     <!-- Footer -->
     <footer class="footer">
-    <p>&copy; Open Source under MIT License | ExamVault 2025</p>
+    <p>&copy; Open Source under MIT License</p>
     </footer>
 
     <script type="module" src="../js/help-support-script.js"></script>

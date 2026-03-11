@@ -2,6 +2,7 @@
 import { firebaseAuth } from './firebase-auth.js';
 import { firestoreData } from './firebase-data.js';
 import { indexedDBStorage } from './indexeddb-storage.js';
+import { saveGradeWithFallback, initOfflineSync, cacheGradesLocally } from './offline-sync.js';
 import { initActivityMonitor } from './activity-monitor.js';
 import { themeManager } from './theme-manager.js';
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
@@ -64,23 +65,13 @@ function hideModal() {
 }
 
 // Check authentication
-onAuthStateChanged(auth, async (user) => {
-    if (user) {
-        currentUser = user;
-        isAuthChecked = true;
-        // Initialize page after authentication
-        await initializePage();
-    } else {
-        if (isAuthChecked || !user) {
-            setTimeout(() => {
-                if (!auth.currentUser) {
-                    alert('Please sign in to access question grading.');
-                    window.location.href = 'signin.html';
-                }
-            }, 500);
-        }
-    }
-});
+(async () => {
+    const user = await firebaseAuth.requireAuth('signin.html');
+    if (!user) return;
+    currentUser = user;
+    initOfflineSync(() => currentUser?.uid);
+    await initializePage();
+})();
 
 // Get question details from URL parameters
 const urlParams = new URLSearchParams(window.location.search);
@@ -334,27 +325,10 @@ async function completeReview() {
     );
 }
 
-// Save grading data to Firestore and IndexedDB
+// Save grading data to Firestore and IndexedDB (with offline fallback queue)
 async function saveGradingData(gradingData) {
-    try {
-        // Save to Firestore
-        await firestoreData.saveQuestionGrade(currentUser.uid, gradingData);
-        
-        // Also save to IndexedDB for offline access
-        await indexedDBStorage.saveQuestionGrade(currentUser.uid, gradingData);
-        
-        console.log('Question grading saved successfully');
-    } catch (error) {
-        console.error('Error saving question grading:', error);
-        // Fallback to IndexedDB only if Firestore fails
-        try {
-            await indexedDBStorage.saveQuestionGrade(currentUser.uid, gradingData);
-            console.log('Grading saved to IndexedDB (offline mode)');
-        } catch (idbError) {
-            console.error('Error saving to IndexedDB:', idbError);
-            throw new Error('Failed to save grading data');
-        }
-    }
+    await saveGradeWithFallback(currentUser.uid, gradingData);
+    console.log('Question grading saved successfully');
 }
 
 // Load existing grade if available
@@ -362,11 +336,19 @@ async function loadExistingGrade() {
     let existingGrade = null;
     
     try {
-        // Try to load from Firestore first
-        let gradings = await firestoreData.getQuestionGrades(currentUser.uid);
-        
-        // Fallback to IndexedDB if Firestore fails
-        if (!gradings || gradings.length === 0) {
+        // Try to load from Firestore; seed local cache for offline use
+        let gradings;
+        try {
+            gradings = await firestoreData.getQuestionGrades(currentUser.uid);
+            if (gradings && gradings.length > 0) {
+                // Seed IndexedDB so offline fallback has up-to-date data
+                cacheGradesLocally(currentUser.uid, gradings).catch(() => {});
+            } else {
+                // Firestore returned nothing — use local cache
+                gradings = await indexedDBStorage.getQuestionGrades(currentUser.uid);
+            }
+        } catch {
+            // Firestore unreachable (offline) — fall back to local cache
             gradings = await indexedDBStorage.getQuestionGrades(currentUser.uid);
         }
         

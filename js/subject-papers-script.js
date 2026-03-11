@@ -18,28 +18,12 @@ const signOutBtn = document.getElementById('signOutBtn');
 const availableHeader = document.getElementById('availableHeader');
 const availableList = document.getElementById('availableList');
 
-let isAuthChecked = false;
-
 // Check if user is logged in
-onAuthStateChanged(auth, async (user) => {
-    if (user) {
-        // User is signed in
-        isAuthChecked = true;
-        // Load available papers once authenticated
-        loadAvailablePapers();
-    } else {
-        // User is not signed in
-        if (isAuthChecked || !user) {
-            // Only show alert if auth has been checked or definitely no user
-            setTimeout(() => {
-                if (!auth.currentUser) {
-                    alert('Please sign in to access papers.');
-                    window.location.href = 'signin.html';
-                }
-            }, 500);
-        }
-    }
-});
+(async () => {
+    const user = await firebaseAuth.requireAuth('signin.html');
+    if (!user) return;
+    loadAvailablePapers();
+})();
 
 // Get subject from URL or sessionStorage
 const urlParams = new URLSearchParams(window.location.search);
@@ -47,7 +31,7 @@ const subject = urlParams.get('subject') || sessionStorage.getItem('selectedSubj
 const subjectTitle = sessionStorage.getItem('selectedSubjectTitle');
 
 if (!subject) {
-    window.location.href = 'progress-tracker.html';
+    window.location.href = 'past-exams.html';
 }
 
 // Generate available papers based on subject and years (2010-2025)

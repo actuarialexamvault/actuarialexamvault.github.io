@@ -174,11 +174,83 @@ body {
     font-style: italic;
 }
 
+/* Layout Toolbar */
+.layout-toolbar {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1rem;
+}
+
+.btn-layout-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.4rem 0.85rem;
+    background: var(--bg-card);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    letter-spacing: 0.3px;
+}
+
+.btn-layout-toggle:hover {
+    border-color: #00a3ff;
+    color: #00a3ff;
+}
+
+.btn-layout-toggle.active {
+    background: linear-gradient(135deg, #00d4aa 0%, #00a3ff 100%);
+    color: white;
+    border-color: transparent;
+    box-shadow: 0 2px 8px rgba(0, 163, 255, 0.3);
+}
+
 /* Content Wrapper */
 .content-wrapper {
     display: flex;
     flex-direction: column;
     gap: 2rem;
+}
+
+/* Split View Layout */
+.editor-container.split-view {
+    max-width: 1600px;
+}
+
+.editor-container.split-view .content-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+        "question answer"
+        "finalize finalize";
+    align-items: start;
+    gap: 1.5rem;
+}
+
+.editor-container.split-view .question-section {
+    grid-area: question;
+    overflow-y: auto;
+    max-height: calc(100vh - 180px);
+}
+
+.editor-container.split-view .answer-section {
+    grid-area: answer;
+}
+
+.editor-container.split-view .finalize-section {
+    grid-area: finalize;
+}
+
+.editor-container.split-view .editor-area {
+    min-height: calc(100vh - 400px);
+}
+
+@media (max-width: 900px) {
+    .btn-layout-toggle { display: none; }
 }
 
 /* Section Styles */
@@ -296,6 +368,18 @@ section h2 {
     font-weight: 700;
     min-width: 80px;
     text-align: center;
+    cursor: pointer;
+    user-select: none;
+    transition: opacity 0.2s ease, background 0.3s ease;
+}
+
+.timer:hover {
+    opacity: 0.82;
+}
+
+.timer.timer-disabled {
+    background: linear-gradient(135deg, #9ca3af 0%, #6b7280 100%);
+    opacity: 0.65;
 }
 
 /* Editor Textarea */

@@ -367,10 +367,10 @@ if (!sel) {
             const t = parsed.frontmatter && parsed.frontmatter.time_allocated_minutes ? parseFloat(parsed.frontmatter.time_allocated_minutes): null;
             if (t) {
                 remainingSeconds = Math.round(t*60);
-                timerEl.textContent = formatTime(remainingSeconds);
             } else {
-                timerEl.textContent = '--:--';
+                remainingSeconds = null;
             }
+            updateTimerDisplay();
             // load draft
             draftKey = `draft_${basename}`;
             const saved = localStorage.getItem(draftKey);
@@ -507,6 +507,14 @@ if (aiInstructionsModal) {
 // Timer controls
 // Clicking the timer toggles it on/off; state saved to localStorage.
 
+function updateTimerDisplay() {
+    if (timerEnabled) {
+        timerEl.textContent = remainingSeconds !== null ? formatTime(remainingSeconds) : '--:--';
+    } else {
+        timerEl.textContent = 'OFF';
+    }
+}
+
 function applyTimerEnabledState() {
     if (timerEnabled) {
         timerEl.classList.remove('timer-disabled');
@@ -515,6 +523,7 @@ function applyTimerEnabledState() {
         timerEl.classList.add('timer-disabled');
         timerEl.title = 'Timer off — click to enable';
     }
+    updateTimerDisplay();
 }
 
 // Apply persisted state on page load
@@ -542,7 +551,7 @@ function startCountdown() {
     if (countdownInterval) return;
     countdownInterval = setInterval(() => {
         remainingSeconds = Math.max(0, remainingSeconds - 1);
-        timerEl.textContent = formatTime(remainingSeconds);
+        updateTimerDisplay();
         if (remainingSeconds <= 0) {
             clearInterval(countdownInterval);
             countdownInterval = null;

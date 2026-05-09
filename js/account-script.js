@@ -211,7 +211,6 @@ if (confirmClearBtn) {
             // Clear from Firestore
             try {
                 await firestoreData.clearAllGrades(user.uid);
-                console.log('Cleared grades from Firestore');
             } catch (error) {
                 console.error('Error clearing Firestore grades:', error);
             }
@@ -219,7 +218,6 @@ if (confirmClearBtn) {
             // Clear from IndexedDB
             try {
                 await indexedDBStorage.clearAllGrades(user.uid);
-                console.log('Cleared grades from IndexedDB');
             } catch (error) {
                 console.error('Error clearing IndexedDB grades:', error);
             }
@@ -233,7 +231,6 @@ if (confirmClearBtn) {
                 }
             }
             keysToRemove.forEach(key => localStorage.removeItem(key));
-            console.log('Cleared', keysToRemove.length, 'drafts from localStorage');
 
             // Success
             confirmModal.style.display = 'none';

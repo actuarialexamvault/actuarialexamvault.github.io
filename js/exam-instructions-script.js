@@ -115,7 +115,6 @@ let examStarted = false;
 
 // Initialize page
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOM Content Loaded - Initializing exam instructions page');
     
     // Set subject name
     const subjectNameEl = document.getElementById('subjectName');
@@ -145,21 +144,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const fileInput = document.getElementById('templateFileInput');
     const signOutBtn = document.getElementById('signOutBtn');
     
-    console.log('Initializing buttons...');
-    console.log('Start button:', startBtn);
-    console.log('Leave button:', leaveBtn);
-    console.log('Upload button:', uploadBtn);
-    console.log('Sign out button:', signOutBtn);
     
     if (startBtn) {
-        console.log('Adding click listener to Start button');
         startBtn.addEventListener('click', startExam);
     } else {
         console.error('Start button NOT FOUND!');
     }
     
     if (leaveBtn) {
-        console.log('Adding click listener to Leave button');
         leaveBtn.addEventListener('click', leaveExam);
     } else {
         console.error('Leave button NOT FOUND!');
@@ -172,8 +164,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 async function startExam() {
-    console.log('startExam function called');
-    console.log('examStarted:', examStarted);
     
     if (examStarted) {
         showModal(
@@ -185,9 +175,7 @@ async function startExam() {
     }
     
     // Get PDF link (wait for pdf-links data to be ready)
-    console.log('Getting PDF link for:', subject, session_type, year, paper);
     const pdfUrl = await (async () => { await pdfLinksReady; return getPDFLink(subject, session_type, year, paper); })();
-    console.log('PDF URL:', pdfUrl);
     
     if (!pdfUrl) {
         showModal(
@@ -418,8 +406,6 @@ function finishExam() {
 }
 
 function leaveExam() {
-    console.log('leaveExam function called');
-    console.log('examStarted:', examStarted);
     
     const title = examStarted ? 'Leave Exam' : 'Go Back';
     const message = examStarted 
@@ -445,7 +431,6 @@ function leaveExam() {
 }
 
 function downloadTemplate() {
-    console.log('Download template button clicked');
     
     // Direct download approach - works better with local files
     const templatePath = '../templates/Exam practice template.docx';
@@ -458,9 +443,6 @@ function downloadTemplate() {
         customFileName = 'Exam_Practice_Template.docx';
     }
     
-    console.log('Template path:', templatePath);
-    console.log('Custom filename:', customFileName);
-    console.log('Subject:', subject, 'Year:', year, 'Session:', session_type, 'Paper:', paper);
     
     // Create a direct download link
     const a = document.createElement('a');
@@ -472,9 +454,7 @@ function downloadTemplate() {
     
     // Trigger download
     try {
-        console.log('Attempting to trigger download...');
         a.click();
-        console.log('Click triggered successfully');
         
         // Show success message after a brief delay
         setTimeout(() => {
@@ -553,7 +533,6 @@ async function handleTemplateUpload(event) {
         timestamp: new Date().toISOString() // Add for past exams compatibility
     };
     
-    console.log('Saving submission:', submission);
     
     // Store file in IndexedDB
     const uploadResult = await indexedDBStorage.storeFile(currentUser.uid, submission.uploadTimestamp, file);

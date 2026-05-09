@@ -22,7 +22,6 @@ class FirebaseAuthService {
         // Listen for auth state changes
         onAuthStateChanged(auth, (user) => {
             this.currentUser = user;
-            console.log('Auth state changed:', user ? user.email : 'No user');
             if (!this.authReady) {
                 this.authReady = true;
                 this.authReadyResolver();
@@ -39,7 +38,6 @@ class FirebaseAuthService {
     async signup(email, password) {
         try {
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-            console.log('User signed up:', userCredential.user.email);
             return {
                 success: true,
                 user: userCredential.user
@@ -57,7 +55,6 @@ class FirebaseAuthService {
     async signin(email, password) {
         try {
             const userCredential = await signInWithEmailAndPassword(auth, email, password);
-            console.log('User signed in:', userCredential.user.email);
             return {
                 success: true,
                 user: userCredential.user
@@ -75,7 +72,6 @@ class FirebaseAuthService {
     async signInWithGoogle() {
         try {
             const result = await signInWithPopup(auth, this.googleProvider);
-            console.log('User signed in with Google:', result.user.email);
             return {
                 success: true,
                 user: result.user,
@@ -123,7 +119,6 @@ class FirebaseAuthService {
     async signout() {
         try {
             await signOut(auth);
-            console.log('User signed out');
             return { success: true };
         } catch (error) {
             console.error('Signout error:', error);
@@ -158,7 +153,6 @@ class FirebaseAuthService {
     async sendPasswordResetEmail(email) {
         try {
             await sendPasswordResetEmail(auth, email);
-            console.log('Password reset email sent to:', email);
             return {
                 success: true
             };

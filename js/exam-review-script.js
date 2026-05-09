@@ -568,7 +568,6 @@ function setupEventListeners() {
                         // Delete from IndexedDB
                         await indexedDBStorage.deleteQuestionGrade(currentUser.uid, subject, year, sessionType, paper, questionCount);
                         
-                        console.log(`Deleted grade for question ${questionCount}`);
                     } catch (error) {
                         console.error('Error deleting question grade:', error);
                         alert('Error deleting the saved grade. Please try again.');

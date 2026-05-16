@@ -1,0 +1,4202 @@
+[
+  {
+    "year": "2010",
+    "session": "NOVEMBER",
+    "folder": "1. Life insurance contracts",
+    "mean_max_similarity": 0.698580265045166,
+    "n_questions": 6
+  },
+  {
+    "year": "2010",
+    "session": "NOVEMBER",
+    "folder": "10. Reserving",
+    "mean_max_similarity": 0.713431179523468,
+    "n_questions": 6
+  },
+  {
+    "year": "2010",
+    "session": "NOVEMBER",
+    "folder": "11. Capital requirements",
+    "mean_max_similarity": 0.6719369888305664,
+    "n_questions": 6
+  },
+  {
+    "year": "2010",
+    "session": "NOVEMBER",
+    "folder": "12. Surrender values",
+    "mean_max_similarity": 0.722593367099762,
+    "n_questions": 6
+  },
+  {
+    "year": "2010",
+    "session": "NOVEMBER",
+    "folder": "13. Alterations",
+    "mean_max_similarity": 0.6852445006370544,
+    "n_questions": 6
+  },
+  {
+    "year": "2010",
+    "session": "NOVEMBER",
+    "folder": "14. Guarantees and options",
+    "mean_max_similarity": 0.7138974666595459,
+    "n_questions": 6
+  },
+  {
+    "year": "2010",
+    "session": "NOVEMBER",
+    "folder": "15. Pricing health & care contracts",
+    "mean_max_similarity": 0.6854117512702942,
+    "n_questions": 6
+  },
+  {
+    "year": "2010",
+    "session": "NOVEMBER",
+    "folder": "16. Reinsurance",
+    "mean_max_similarity": 0.7200531959533691,
+    "n_questions": 6
+  },
+  {
+    "year": "2010",
+    "session": "NOVEMBER",
+    "folder": "17. Underwriting & data checks",
+    "mean_max_similarity": 0.6745864748954773,
+    "n_questions": 6
+  },
+  {
+    "year": "2010",
+    "session": "NOVEMBER",
+    "folder": "18. Investments",
+    "mean_max_similarity": 0.6724973320960999,
+    "n_questions": 6
+  },
+  {
+    "year": "2010",
+    "session": "NOVEMBER",
+    "folder": "19. Further risk management",
+    "mean_max_similarity": 0.69027179479599,
+    "n_questions": 6
+  },
+  {
+    "year": "2010",
+    "session": "NOVEMBER",
+    "folder": "2. Health and care products",
+    "mean_max_similarity": 0.6676825881004333,
+    "n_questions": 6
+  },
+  {
+    "year": "2010",
+    "session": "NOVEMBER",
+    "folder": "20. Monitoring experience",
+    "mean_max_similarity": 0.7173947691917419,
+    "n_questions": 6
+  },
+  {
+    "year": "2010",
+    "session": "NOVEMBER",
+    "folder": "3. Asset shares and profit distribution",
+    "mean_max_similarity": 0.7078641057014465,
+    "n_questions": 6
+  },
+  {
+    "year": "2010",
+    "session": "NOVEMBER",
+    "folder": "4. External environment",
+    "mean_max_similarity": 0.7309477925300598,
+    "n_questions": 6
+  },
+  {
+    "year": "2010",
+    "session": "NOVEMBER",
+    "folder": "5. Risks",
+    "mean_max_similarity": 0.6967417597770691,
+    "n_questions": 6
+  },
+  {
+    "year": "2010",
+    "session": "NOVEMBER",
+    "folder": "6. Unit pricing and actuarial funding",
+    "mean_max_similarity": 0.7113375067710876,
+    "n_questions": 6
+  },
+  {
+    "year": "2010",
+    "session": "NOVEMBER",
+    "folder": "7. Modelling",
+    "mean_max_similarity": 0.7261261940002441,
+    "n_questions": 6
+  },
+  {
+    "year": "2010",
+    "session": "NOVEMBER",
+    "folder": "8. Product design",
+    "mean_max_similarity": 0.6751764416694641,
+    "n_questions": 6
+  },
+  {
+    "year": "2010",
+    "session": "NOVEMBER",
+    "folder": "9. Assumptions",
+    "mean_max_similarity": 0.7165880799293518,
+    "n_questions": 6
+  },
+  {
+    "year": "2011",
+    "session": "NOVEMBER",
+    "folder": "1. Life insurance contracts",
+    "mean_max_similarity": 0.7290319800376892,
+    "n_questions": 7
+  },
+  {
+    "year": "2011",
+    "session": "NOVEMBER",
+    "folder": "10. Reserving",
+    "mean_max_similarity": 0.7091742157936096,
+    "n_questions": 7
+  },
+  {
+    "year": "2011",
+    "session": "NOVEMBER",
+    "folder": "11. Capital requirements",
+    "mean_max_similarity": 0.6682197451591492,
+    "n_questions": 7
+  },
+  {
+    "year": "2011",
+    "session": "NOVEMBER",
+    "folder": "12. Surrender values",
+    "mean_max_similarity": 0.7161170840263367,
+    "n_questions": 7
+  },
+  {
+    "year": "2011",
+    "session": "NOVEMBER",
+    "folder": "13. Alterations",
+    "mean_max_similarity": 0.6904802918434143,
+    "n_questions": 7
+  },
+  {
+    "year": "2011",
+    "session": "NOVEMBER",
+    "folder": "14. Guarantees and options",
+    "mean_max_similarity": 0.7120779156684875,
+    "n_questions": 7
+  },
+  {
+    "year": "2011",
+    "session": "NOVEMBER",
+    "folder": "15. Pricing health & care contracts",
+    "mean_max_similarity": 0.6820389032363892,
+    "n_questions": 7
+  },
+  {
+    "year": "2011",
+    "session": "NOVEMBER",
+    "folder": "16. Reinsurance",
+    "mean_max_similarity": 0.7274231314659119,
+    "n_questions": 7
+  },
+  {
+    "year": "2011",
+    "session": "NOVEMBER",
+    "folder": "17. Underwriting & data checks",
+    "mean_max_similarity": 0.6655145287513733,
+    "n_questions": 7
+  },
+  {
+    "year": "2011",
+    "session": "NOVEMBER",
+    "folder": "18. Investments",
+    "mean_max_similarity": 0.6850947737693787,
+    "n_questions": 7
+  },
+  {
+    "year": "2011",
+    "session": "NOVEMBER",
+    "folder": "19. Further risk management",
+    "mean_max_similarity": 0.696235179901123,
+    "n_questions": 7
+  },
+  {
+    "year": "2011",
+    "session": "NOVEMBER",
+    "folder": "2. Health and care products",
+    "mean_max_similarity": 0.6843522191047668,
+    "n_questions": 7
+  },
+  {
+    "year": "2011",
+    "session": "NOVEMBER",
+    "folder": "20. Monitoring experience",
+    "mean_max_similarity": 0.6877312064170837,
+    "n_questions": 7
+  },
+  {
+    "year": "2011",
+    "session": "NOVEMBER",
+    "folder": "3. Asset shares and profit distribution",
+    "mean_max_similarity": 0.7275423407554626,
+    "n_questions": 7
+  },
+  {
+    "year": "2011",
+    "session": "NOVEMBER",
+    "folder": "4. External environment",
+    "mean_max_similarity": 0.7435688376426697,
+    "n_questions": 7
+  },
+  {
+    "year": "2011",
+    "session": "NOVEMBER",
+    "folder": "5. Risks",
+    "mean_max_similarity": 0.7110576629638672,
+    "n_questions": 7
+  },
+  {
+    "year": "2011",
+    "session": "NOVEMBER",
+    "folder": "6. Unit pricing and actuarial funding",
+    "mean_max_similarity": 0.7195391058921814,
+    "n_questions": 7
+  },
+  {
+    "year": "2011",
+    "session": "NOVEMBER",
+    "folder": "7. Modelling",
+    "mean_max_similarity": 0.7500035166740417,
+    "n_questions": 7
+  },
+  {
+    "year": "2011",
+    "session": "NOVEMBER",
+    "folder": "8. Product design",
+    "mean_max_similarity": 0.7020350098609924,
+    "n_questions": 7
+  },
+  {
+    "year": "2011",
+    "session": "NOVEMBER",
+    "folder": "9. Assumptions",
+    "mean_max_similarity": 0.7127860188484192,
+    "n_questions": 7
+  },
+  {
+    "year": "2012",
+    "session": "JUNE",
+    "folder": "1. Life insurance contracts",
+    "mean_max_similarity": 0.7237264513969421,
+    "n_questions": 8
+  },
+  {
+    "year": "2012",
+    "session": "JUNE",
+    "folder": "10. Reserving",
+    "mean_max_similarity": 0.7118898034095764,
+    "n_questions": 8
+  },
+  {
+    "year": "2012",
+    "session": "JUNE",
+    "folder": "11. Capital requirements",
+    "mean_max_similarity": 0.6760509014129639,
+    "n_questions": 8
+  },
+  {
+    "year": "2012",
+    "session": "JUNE",
+    "folder": "12. Surrender values",
+    "mean_max_similarity": 0.7091881036758423,
+    "n_questions": 8
+  },
+  {
+    "year": "2012",
+    "session": "JUNE",
+    "folder": "13. Alterations",
+    "mean_max_similarity": 0.6956468820571899,
+    "n_questions": 8
+  },
+  {
+    "year": "2012",
+    "session": "JUNE",
+    "folder": "14. Guarantees and options",
+    "mean_max_similarity": 0.7239030003547668,
+    "n_questions": 8
+  },
+  {
+    "year": "2012",
+    "session": "JUNE",
+    "folder": "15. Pricing health & care contracts",
+    "mean_max_similarity": 0.7028104066848755,
+    "n_questions": 8
+  },
+  {
+    "year": "2012",
+    "session": "JUNE",
+    "folder": "16. Reinsurance",
+    "mean_max_similarity": 0.7233463525772095,
+    "n_questions": 8
+  },
+  {
+    "year": "2012",
+    "session": "JUNE",
+    "folder": "17. Underwriting & data checks",
+    "mean_max_similarity": 0.6937538385391235,
+    "n_questions": 8
+  },
+  {
+    "year": "2012",
+    "session": "JUNE",
+    "folder": "18. Investments",
+    "mean_max_similarity": 0.6905180811882019,
+    "n_questions": 8
+  },
+  {
+    "year": "2012",
+    "session": "JUNE",
+    "folder": "19. Further risk management",
+    "mean_max_similarity": 0.7101811766624451,
+    "n_questions": 8
+  },
+  {
+    "year": "2012",
+    "session": "JUNE",
+    "folder": "2. Health and care products",
+    "mean_max_similarity": 0.6903824806213379,
+    "n_questions": 8
+  },
+  {
+    "year": "2012",
+    "session": "JUNE",
+    "folder": "20. Monitoring experience",
+    "mean_max_similarity": 0.7099356055259705,
+    "n_questions": 8
+  },
+  {
+    "year": "2012",
+    "session": "JUNE",
+    "folder": "3. Asset shares and profit distribution",
+    "mean_max_similarity": 0.7214995622634888,
+    "n_questions": 8
+  },
+  {
+    "year": "2012",
+    "session": "JUNE",
+    "folder": "4. External environment",
+    "mean_max_similarity": 0.748192310333252,
+    "n_questions": 8
+  },
+  {
+    "year": "2012",
+    "session": "JUNE",
+    "folder": "5. Risks",
+    "mean_max_similarity": 0.7225221991539001,
+    "n_questions": 8
+  },
+  {
+    "year": "2012",
+    "session": "JUNE",
+    "folder": "6. Unit pricing and actuarial funding",
+    "mean_max_similarity": 0.7255662083625793,
+    "n_questions": 8
+  },
+  {
+    "year": "2012",
+    "session": "JUNE",
+    "folder": "7. Modelling",
+    "mean_max_similarity": 0.7492960095405579,
+    "n_questions": 8
+  },
+  {
+    "year": "2012",
+    "session": "JUNE",
+    "folder": "8. Product design",
+    "mean_max_similarity": 0.7069292664527893,
+    "n_questions": 8
+  },
+  {
+    "year": "2012",
+    "session": "JUNE",
+    "folder": "9. Assumptions",
+    "mean_max_similarity": 0.7114317417144775,
+    "n_questions": 8
+  },
+  {
+    "year": "2012",
+    "session": "NOVEMBER",
+    "folder": "1. Life insurance contracts",
+    "mean_max_similarity": 0.7245174050331116,
+    "n_questions": 7
+  },
+  {
+    "year": "2012",
+    "session": "NOVEMBER",
+    "folder": "10. Reserving",
+    "mean_max_similarity": 0.7240702509880066,
+    "n_questions": 7
+  },
+  {
+    "year": "2012",
+    "session": "NOVEMBER",
+    "folder": "11. Capital requirements",
+    "mean_max_similarity": 0.6813727617263794,
+    "n_questions": 7
+  },
+  {
+    "year": "2012",
+    "session": "NOVEMBER",
+    "folder": "12. Surrender values",
+    "mean_max_similarity": 0.7169495820999146,
+    "n_questions": 7
+  },
+  {
+    "year": "2012",
+    "session": "NOVEMBER",
+    "folder": "13. Alterations",
+    "mean_max_similarity": 0.6939050555229187,
+    "n_questions": 7
+  },
+  {
+    "year": "2012",
+    "session": "NOVEMBER",
+    "folder": "14. Guarantees and options",
+    "mean_max_similarity": 0.7226482629776001,
+    "n_questions": 7
+  },
+  {
+    "year": "2012",
+    "session": "NOVEMBER",
+    "folder": "15. Pricing health & care contracts",
+    "mean_max_similarity": 0.6958723068237305,
+    "n_questions": 7
+  },
+  {
+    "year": "2012",
+    "session": "NOVEMBER",
+    "folder": "16. Reinsurance",
+    "mean_max_similarity": 0.7323907613754272,
+    "n_questions": 7
+  },
+  {
+    "year": "2012",
+    "session": "NOVEMBER",
+    "folder": "17. Underwriting & data checks",
+    "mean_max_similarity": 0.6799599528312683,
+    "n_questions": 7
+  },
+  {
+    "year": "2012",
+    "session": "NOVEMBER",
+    "folder": "18. Investments",
+    "mean_max_similarity": 0.6819831728935242,
+    "n_questions": 7
+  },
+  {
+    "year": "2012",
+    "session": "NOVEMBER",
+    "folder": "19. Further risk management",
+    "mean_max_similarity": 0.696505069732666,
+    "n_questions": 7
+  },
+  {
+    "year": "2012",
+    "session": "NOVEMBER",
+    "folder": "2. Health and care products",
+    "mean_max_similarity": 0.6951327323913574,
+    "n_questions": 7
+  },
+  {
+    "year": "2012",
+    "session": "NOVEMBER",
+    "folder": "20. Monitoring experience",
+    "mean_max_similarity": 0.6952452063560486,
+    "n_questions": 7
+  },
+  {
+    "year": "2012",
+    "session": "NOVEMBER",
+    "folder": "3. Asset shares and profit distribution",
+    "mean_max_similarity": 0.7187638878822327,
+    "n_questions": 7
+  },
+  {
+    "year": "2012",
+    "session": "NOVEMBER",
+    "folder": "4. External environment",
+    "mean_max_similarity": 0.7437258958816528,
+    "n_questions": 7
+  },
+  {
+    "year": "2012",
+    "session": "NOVEMBER",
+    "folder": "5. Risks",
+    "mean_max_similarity": 0.7147539854049683,
+    "n_questions": 7
+  },
+  {
+    "year": "2012",
+    "session": "NOVEMBER",
+    "folder": "6. Unit pricing and actuarial funding",
+    "mean_max_similarity": 0.7270220518112183,
+    "n_questions": 7
+  },
+  {
+    "year": "2012",
+    "session": "NOVEMBER",
+    "folder": "7. Modelling",
+    "mean_max_similarity": 0.7404336333274841,
+    "n_questions": 7
+  },
+  {
+    "year": "2012",
+    "session": "NOVEMBER",
+    "folder": "8. Product design",
+    "mean_max_similarity": 0.6960785984992981,
+    "n_questions": 7
+  },
+  {
+    "year": "2012",
+    "session": "NOVEMBER",
+    "folder": "9. Assumptions",
+    "mean_max_similarity": 0.7107825875282288,
+    "n_questions": 7
+  },
+  {
+    "year": "2013",
+    "session": "JUNE",
+    "folder": "1. Life insurance contracts",
+    "mean_max_similarity": 0.7128185629844666,
+    "n_questions": 8
+  },
+  {
+    "year": "2013",
+    "session": "JUNE",
+    "folder": "10. Reserving",
+    "mean_max_similarity": 0.7162755131721497,
+    "n_questions": 8
+  },
+  {
+    "year": "2013",
+    "session": "JUNE",
+    "folder": "11. Capital requirements",
+    "mean_max_similarity": 0.6753427982330322,
+    "n_questions": 8
+  },
+  {
+    "year": "2013",
+    "session": "JUNE",
+    "folder": "12. Surrender values",
+    "mean_max_similarity": 0.7209488153457642,
+    "n_questions": 8
+  },
+  {
+    "year": "2013",
+    "session": "JUNE",
+    "folder": "13. Alterations",
+    "mean_max_similarity": 0.6967816948890686,
+    "n_questions": 8
+  },
+  {
+    "year": "2013",
+    "session": "JUNE",
+    "folder": "14. Guarantees and options",
+    "mean_max_similarity": 0.711789071559906,
+    "n_questions": 8
+  },
+  {
+    "year": "2013",
+    "session": "JUNE",
+    "folder": "15. Pricing health & care contracts",
+    "mean_max_similarity": 0.6918601989746094,
+    "n_questions": 8
+  },
+  {
+    "year": "2013",
+    "session": "JUNE",
+    "folder": "16. Reinsurance",
+    "mean_max_similarity": 0.710081160068512,
+    "n_questions": 8
+  },
+  {
+    "year": "2013",
+    "session": "JUNE",
+    "folder": "17. Underwriting & data checks",
+    "mean_max_similarity": 0.6813483238220215,
+    "n_questions": 8
+  },
+  {
+    "year": "2013",
+    "session": "JUNE",
+    "folder": "18. Investments",
+    "mean_max_similarity": 0.6790892481803894,
+    "n_questions": 8
+  },
+  {
+    "year": "2013",
+    "session": "JUNE",
+    "folder": "19. Further risk management",
+    "mean_max_similarity": 0.6747804880142212,
+    "n_questions": 8
+  },
+  {
+    "year": "2013",
+    "session": "JUNE",
+    "folder": "2. Health and care products",
+    "mean_max_similarity": 0.6837409734725952,
+    "n_questions": 8
+  },
+  {
+    "year": "2013",
+    "session": "JUNE",
+    "folder": "20. Monitoring experience",
+    "mean_max_similarity": 0.7062783241271973,
+    "n_questions": 8
+  },
+  {
+    "year": "2013",
+    "session": "JUNE",
+    "folder": "3. Asset shares and profit distribution",
+    "mean_max_similarity": 0.7123678922653198,
+    "n_questions": 8
+  },
+  {
+    "year": "2013",
+    "session": "JUNE",
+    "folder": "4. External environment",
+    "mean_max_similarity": 0.7273985147476196,
+    "n_questions": 8
+  },
+  {
+    "year": "2013",
+    "session": "JUNE",
+    "folder": "5. Risks",
+    "mean_max_similarity": 0.6883343458175659,
+    "n_questions": 8
+  },
+  {
+    "year": "2013",
+    "session": "JUNE",
+    "folder": "6. Unit pricing and actuarial funding",
+    "mean_max_similarity": 0.7225884199142456,
+    "n_questions": 8
+  },
+  {
+    "year": "2013",
+    "session": "JUNE",
+    "folder": "7. Modelling",
+    "mean_max_similarity": 0.7328276634216309,
+    "n_questions": 8
+  },
+  {
+    "year": "2013",
+    "session": "JUNE",
+    "folder": "8. Product design",
+    "mean_max_similarity": 0.6891478300094604,
+    "n_questions": 8
+  },
+  {
+    "year": "2013",
+    "session": "JUNE",
+    "folder": "9. Assumptions",
+    "mean_max_similarity": 0.7276836633682251,
+    "n_questions": 8
+  },
+  {
+    "year": "2013",
+    "session": "NOVEMBER",
+    "folder": "1. Life insurance contracts",
+    "mean_max_similarity": 0.7086247205734253,
+    "n_questions": 8
+  },
+  {
+    "year": "2013",
+    "session": "NOVEMBER",
+    "folder": "10. Reserving",
+    "mean_max_similarity": 0.7182686924934387,
+    "n_questions": 8
+  },
+  {
+    "year": "2013",
+    "session": "NOVEMBER",
+    "folder": "11. Capital requirements",
+    "mean_max_similarity": 0.6713003516197205,
+    "n_questions": 8
+  },
+  {
+    "year": "2013",
+    "session": "NOVEMBER",
+    "folder": "12. Surrender values",
+    "mean_max_similarity": 0.6976434588432312,
+    "n_questions": 8
+  },
+  {
+    "year": "2013",
+    "session": "NOVEMBER",
+    "folder": "13. Alterations",
+    "mean_max_similarity": 0.6890856027603149,
+    "n_questions": 8
+  },
+  {
+    "year": "2013",
+    "session": "NOVEMBER",
+    "folder": "14. Guarantees and options",
+    "mean_max_similarity": 0.7133551239967346,
+    "n_questions": 8
+  },
+  {
+    "year": "2013",
+    "session": "NOVEMBER",
+    "folder": "15. Pricing health & care contracts",
+    "mean_max_similarity": 0.6876853704452515,
+    "n_questions": 8
+  },
+  {
+    "year": "2013",
+    "session": "NOVEMBER",
+    "folder": "16. Reinsurance",
+    "mean_max_similarity": 0.723554253578186,
+    "n_questions": 8
+  },
+  {
+    "year": "2013",
+    "session": "NOVEMBER",
+    "folder": "17. Underwriting & data checks",
+    "mean_max_similarity": 0.6787451505661011,
+    "n_questions": 8
+  },
+  {
+    "year": "2013",
+    "session": "NOVEMBER",
+    "folder": "18. Investments",
+    "mean_max_similarity": 0.681631326675415,
+    "n_questions": 8
+  },
+  {
+    "year": "2013",
+    "session": "NOVEMBER",
+    "folder": "19. Further risk management",
+    "mean_max_similarity": 0.6879966259002686,
+    "n_questions": 8
+  },
+  {
+    "year": "2013",
+    "session": "NOVEMBER",
+    "folder": "2. Health and care products",
+    "mean_max_similarity": 0.680932879447937,
+    "n_questions": 8
+  },
+  {
+    "year": "2013",
+    "session": "NOVEMBER",
+    "folder": "20. Monitoring experience",
+    "mean_max_similarity": 0.6988455057144165,
+    "n_questions": 8
+  },
+  {
+    "year": "2013",
+    "session": "NOVEMBER",
+    "folder": "3. Asset shares and profit distribution",
+    "mean_max_similarity": 0.7130714058876038,
+    "n_questions": 8
+  },
+  {
+    "year": "2013",
+    "session": "NOVEMBER",
+    "folder": "4. External environment",
+    "mean_max_similarity": 0.7340809106826782,
+    "n_questions": 8
+  },
+  {
+    "year": "2013",
+    "session": "NOVEMBER",
+    "folder": "5. Risks",
+    "mean_max_similarity": 0.6965831518173218,
+    "n_questions": 8
+  },
+  {
+    "year": "2013",
+    "session": "NOVEMBER",
+    "folder": "6. Unit pricing and actuarial funding",
+    "mean_max_similarity": 0.729965329170227,
+    "n_questions": 8
+  },
+  {
+    "year": "2013",
+    "session": "NOVEMBER",
+    "folder": "7. Modelling",
+    "mean_max_similarity": 0.7316060066223145,
+    "n_questions": 8
+  },
+  {
+    "year": "2013",
+    "session": "NOVEMBER",
+    "folder": "8. Product design",
+    "mean_max_similarity": 0.6915218830108643,
+    "n_questions": 8
+  },
+  {
+    "year": "2013",
+    "session": "NOVEMBER",
+    "folder": "9. Assumptions",
+    "mean_max_similarity": 0.710915744304657,
+    "n_questions": 8
+  },
+  {
+    "year": "2014",
+    "session": "JUNE",
+    "folder": "1. Life insurance contracts",
+    "mean_max_similarity": 0.7038926482200623,
+    "n_questions": 7
+  },
+  {
+    "year": "2014",
+    "session": "JUNE",
+    "folder": "10. Reserving",
+    "mean_max_similarity": 0.7089466452598572,
+    "n_questions": 7
+  },
+  {
+    "year": "2014",
+    "session": "JUNE",
+    "folder": "11. Capital requirements",
+    "mean_max_similarity": 0.6712279915809631,
+    "n_questions": 7
+  },
+  {
+    "year": "2014",
+    "session": "JUNE",
+    "folder": "12. Surrender values",
+    "mean_max_similarity": 0.6895070672035217,
+    "n_questions": 7
+  },
+  {
+    "year": "2014",
+    "session": "JUNE",
+    "folder": "13. Alterations",
+    "mean_max_similarity": 0.6848940253257751,
+    "n_questions": 7
+  },
+  {
+    "year": "2014",
+    "session": "JUNE",
+    "folder": "14. Guarantees and options",
+    "mean_max_similarity": 0.7053247690200806,
+    "n_questions": 7
+  },
+  {
+    "year": "2014",
+    "session": "JUNE",
+    "folder": "15. Pricing health & care contracts",
+    "mean_max_similarity": 0.6893526315689087,
+    "n_questions": 7
+  },
+  {
+    "year": "2014",
+    "session": "JUNE",
+    "folder": "16. Reinsurance",
+    "mean_max_similarity": 0.7105281949043274,
+    "n_questions": 7
+  },
+  {
+    "year": "2014",
+    "session": "JUNE",
+    "folder": "17. Underwriting & data checks",
+    "mean_max_similarity": 0.6861084699630737,
+    "n_questions": 7
+  },
+  {
+    "year": "2014",
+    "session": "JUNE",
+    "folder": "18. Investments",
+    "mean_max_similarity": 0.6634043455123901,
+    "n_questions": 7
+  },
+  {
+    "year": "2014",
+    "session": "JUNE",
+    "folder": "19. Further risk management",
+    "mean_max_similarity": 0.6827014088630676,
+    "n_questions": 7
+  },
+  {
+    "year": "2014",
+    "session": "JUNE",
+    "folder": "2. Health and care products",
+    "mean_max_similarity": 0.6918069124221802,
+    "n_questions": 7
+  },
+  {
+    "year": "2014",
+    "session": "JUNE",
+    "folder": "20. Monitoring experience",
+    "mean_max_similarity": 0.6942353844642639,
+    "n_questions": 7
+  },
+  {
+    "year": "2014",
+    "session": "JUNE",
+    "folder": "3. Asset shares and profit distribution",
+    "mean_max_similarity": 0.70826655626297,
+    "n_questions": 7
+  },
+  {
+    "year": "2014",
+    "session": "JUNE",
+    "folder": "4. External environment",
+    "mean_max_similarity": 0.744261622428894,
+    "n_questions": 7
+  },
+  {
+    "year": "2014",
+    "session": "JUNE",
+    "folder": "5. Risks",
+    "mean_max_similarity": 0.6873909831047058,
+    "n_questions": 7
+  },
+  {
+    "year": "2014",
+    "session": "JUNE",
+    "folder": "6. Unit pricing and actuarial funding",
+    "mean_max_similarity": 0.7061784863471985,
+    "n_questions": 7
+  },
+  {
+    "year": "2014",
+    "session": "JUNE",
+    "folder": "7. Modelling",
+    "mean_max_similarity": 0.7352154850959778,
+    "n_questions": 7
+  },
+  {
+    "year": "2014",
+    "session": "JUNE",
+    "folder": "8. Product design",
+    "mean_max_similarity": 0.6983988881111145,
+    "n_questions": 7
+  },
+  {
+    "year": "2014",
+    "session": "JUNE",
+    "folder": "9. Assumptions",
+    "mean_max_similarity": 0.6971384286880493,
+    "n_questions": 7
+  },
+  {
+    "year": "2014",
+    "session": "NOVEMBER",
+    "folder": "1. Life insurance contracts",
+    "mean_max_similarity": 0.7206183671951294,
+    "n_questions": 14
+  },
+  {
+    "year": "2014",
+    "session": "NOVEMBER",
+    "folder": "10. Reserving",
+    "mean_max_similarity": 0.6989082098007202,
+    "n_questions": 14
+  },
+  {
+    "year": "2014",
+    "session": "NOVEMBER",
+    "folder": "11. Capital requirements",
+    "mean_max_similarity": 0.6585844159126282,
+    "n_questions": 14
+  },
+  {
+    "year": "2014",
+    "session": "NOVEMBER",
+    "folder": "12. Surrender values",
+    "mean_max_similarity": 0.6989683508872986,
+    "n_questions": 14
+  },
+  {
+    "year": "2014",
+    "session": "NOVEMBER",
+    "folder": "13. Alterations",
+    "mean_max_similarity": 0.6995603442192078,
+    "n_questions": 14
+  },
+  {
+    "year": "2014",
+    "session": "NOVEMBER",
+    "folder": "14. Guarantees and options",
+    "mean_max_similarity": 0.7162214517593384,
+    "n_questions": 14
+  },
+  {
+    "year": "2014",
+    "session": "NOVEMBER",
+    "folder": "15. Pricing health & care contracts",
+    "mean_max_similarity": 0.7080429196357727,
+    "n_questions": 14
+  },
+  {
+    "year": "2014",
+    "session": "NOVEMBER",
+    "folder": "16. Reinsurance",
+    "mean_max_similarity": 0.701777458190918,
+    "n_questions": 14
+  },
+  {
+    "year": "2014",
+    "session": "NOVEMBER",
+    "folder": "17. Underwriting & data checks",
+    "mean_max_similarity": 0.7016506195068359,
+    "n_questions": 14
+  },
+  {
+    "year": "2014",
+    "session": "NOVEMBER",
+    "folder": "18. Investments",
+    "mean_max_similarity": 0.6773911714553833,
+    "n_questions": 14
+  },
+  {
+    "year": "2014",
+    "session": "NOVEMBER",
+    "folder": "19. Further risk management",
+    "mean_max_similarity": 0.6966953873634338,
+    "n_questions": 14
+  },
+  {
+    "year": "2014",
+    "session": "NOVEMBER",
+    "folder": "2. Health and care products",
+    "mean_max_similarity": 0.7022222876548767,
+    "n_questions": 14
+  },
+  {
+    "year": "2014",
+    "session": "NOVEMBER",
+    "folder": "20. Monitoring experience",
+    "mean_max_similarity": 0.6821950674057007,
+    "n_questions": 14
+  },
+  {
+    "year": "2014",
+    "session": "NOVEMBER",
+    "folder": "3. Asset shares and profit distribution",
+    "mean_max_similarity": 0.7025620341300964,
+    "n_questions": 14
+  },
+  {
+    "year": "2014",
+    "session": "NOVEMBER",
+    "folder": "4. External environment",
+    "mean_max_similarity": 0.7491685748100281,
+    "n_questions": 14
+  },
+  {
+    "year": "2014",
+    "session": "NOVEMBER",
+    "folder": "5. Risks",
+    "mean_max_similarity": 0.7012213468551636,
+    "n_questions": 14
+  },
+  {
+    "year": "2014",
+    "session": "NOVEMBER",
+    "folder": "6. Unit pricing and actuarial funding",
+    "mean_max_similarity": 0.713179886341095,
+    "n_questions": 14
+  },
+  {
+    "year": "2014",
+    "session": "NOVEMBER",
+    "folder": "7. Modelling",
+    "mean_max_similarity": 0.7383826375007629,
+    "n_questions": 14
+  },
+  {
+    "year": "2014",
+    "session": "NOVEMBER",
+    "folder": "8. Product design",
+    "mean_max_similarity": 0.6967428922653198,
+    "n_questions": 14
+  },
+  {
+    "year": "2014",
+    "session": "NOVEMBER",
+    "folder": "9. Assumptions",
+    "mean_max_similarity": 0.7007061243057251,
+    "n_questions": 14
+  },
+  {
+    "year": "2015",
+    "session": "JUNE",
+    "folder": "1. Life insurance contracts",
+    "mean_max_similarity": 0.713403582572937,
+    "n_questions": 8
+  },
+  {
+    "year": "2015",
+    "session": "JUNE",
+    "folder": "10. Reserving",
+    "mean_max_similarity": 0.7146800756454468,
+    "n_questions": 8
+  },
+  {
+    "year": "2015",
+    "session": "JUNE",
+    "folder": "11. Capital requirements",
+    "mean_max_similarity": 0.6741639375686646,
+    "n_questions": 8
+  },
+  {
+    "year": "2015",
+    "session": "JUNE",
+    "folder": "12. Surrender values",
+    "mean_max_similarity": 0.7207221984863281,
+    "n_questions": 8
+  },
+  {
+    "year": "2015",
+    "session": "JUNE",
+    "folder": "13. Alterations",
+    "mean_max_similarity": 0.6867849826812744,
+    "n_questions": 8
+  },
+  {
+    "year": "2015",
+    "session": "JUNE",
+    "folder": "14. Guarantees and options",
+    "mean_max_similarity": 0.7128739356994629,
+    "n_questions": 8
+  },
+  {
+    "year": "2015",
+    "session": "JUNE",
+    "folder": "15. Pricing health & care contracts",
+    "mean_max_similarity": 0.7004244327545166,
+    "n_questions": 8
+  },
+  {
+    "year": "2015",
+    "session": "JUNE",
+    "folder": "16. Reinsurance",
+    "mean_max_similarity": 0.7184938788414001,
+    "n_questions": 8
+  },
+  {
+    "year": "2015",
+    "session": "JUNE",
+    "folder": "17. Underwriting & data checks",
+    "mean_max_similarity": 0.6766414642333984,
+    "n_questions": 8
+  },
+  {
+    "year": "2015",
+    "session": "JUNE",
+    "folder": "18. Investments",
+    "mean_max_similarity": 0.6867507696151733,
+    "n_questions": 8
+  },
+  {
+    "year": "2015",
+    "session": "JUNE",
+    "folder": "19. Further risk management",
+    "mean_max_similarity": 0.6962740421295166,
+    "n_questions": 8
+  },
+  {
+    "year": "2015",
+    "session": "JUNE",
+    "folder": "2. Health and care products",
+    "mean_max_similarity": 0.6901360750198364,
+    "n_questions": 8
+  },
+  {
+    "year": "2015",
+    "session": "JUNE",
+    "folder": "20. Monitoring experience",
+    "mean_max_similarity": 0.6846379041671753,
+    "n_questions": 8
+  },
+  {
+    "year": "2015",
+    "session": "JUNE",
+    "folder": "3. Asset shares and profit distribution",
+    "mean_max_similarity": 0.7227917909622192,
+    "n_questions": 8
+  },
+  {
+    "year": "2015",
+    "session": "JUNE",
+    "folder": "4. External environment",
+    "mean_max_similarity": 0.7408442497253418,
+    "n_questions": 8
+  },
+  {
+    "year": "2015",
+    "session": "JUNE",
+    "folder": "5. Risks",
+    "mean_max_similarity": 0.6980130672454834,
+    "n_questions": 8
+  },
+  {
+    "year": "2015",
+    "session": "JUNE",
+    "folder": "6. Unit pricing and actuarial funding",
+    "mean_max_similarity": 0.7193587422370911,
+    "n_questions": 8
+  },
+  {
+    "year": "2015",
+    "session": "JUNE",
+    "folder": "7. Modelling",
+    "mean_max_similarity": 0.7466988563537598,
+    "n_questions": 8
+  },
+  {
+    "year": "2015",
+    "session": "JUNE",
+    "folder": "8. Product design",
+    "mean_max_similarity": 0.6921477317810059,
+    "n_questions": 8
+  },
+  {
+    "year": "2015",
+    "session": "JUNE",
+    "folder": "9. Assumptions",
+    "mean_max_similarity": 0.7047632932662964,
+    "n_questions": 8
+  },
+  {
+    "year": "2015",
+    "session": "NOVEMBER",
+    "folder": "1. Life insurance contracts",
+    "mean_max_similarity": 0.7159640192985535,
+    "n_questions": 14
+  },
+  {
+    "year": "2015",
+    "session": "NOVEMBER",
+    "folder": "10. Reserving",
+    "mean_max_similarity": 0.7171987891197205,
+    "n_questions": 14
+  },
+  {
+    "year": "2015",
+    "session": "NOVEMBER",
+    "folder": "11. Capital requirements",
+    "mean_max_similarity": 0.6623969078063965,
+    "n_questions": 14
+  },
+  {
+    "year": "2015",
+    "session": "NOVEMBER",
+    "folder": "12. Surrender values",
+    "mean_max_similarity": 0.7201972603797913,
+    "n_questions": 14
+  },
+  {
+    "year": "2015",
+    "session": "NOVEMBER",
+    "folder": "13. Alterations",
+    "mean_max_similarity": 0.6881412863731384,
+    "n_questions": 14
+  },
+  {
+    "year": "2015",
+    "session": "NOVEMBER",
+    "folder": "14. Guarantees and options",
+    "mean_max_similarity": 0.7089662551879883,
+    "n_questions": 14
+  },
+  {
+    "year": "2015",
+    "session": "NOVEMBER",
+    "folder": "15. Pricing health & care contracts",
+    "mean_max_similarity": 0.6960243582725525,
+    "n_questions": 14
+  },
+  {
+    "year": "2015",
+    "session": "NOVEMBER",
+    "folder": "16. Reinsurance",
+    "mean_max_similarity": 0.7187638878822327,
+    "n_questions": 14
+  },
+  {
+    "year": "2015",
+    "session": "NOVEMBER",
+    "folder": "17. Underwriting & data checks",
+    "mean_max_similarity": 0.6714709401130676,
+    "n_questions": 14
+  },
+  {
+    "year": "2015",
+    "session": "NOVEMBER",
+    "folder": "18. Investments",
+    "mean_max_similarity": 0.6855241656303406,
+    "n_questions": 14
+  },
+  {
+    "year": "2015",
+    "session": "NOVEMBER",
+    "folder": "19. Further risk management",
+    "mean_max_similarity": 0.692255973815918,
+    "n_questions": 14
+  },
+  {
+    "year": "2015",
+    "session": "NOVEMBER",
+    "folder": "2. Health and care products",
+    "mean_max_similarity": 0.6934240460395813,
+    "n_questions": 14
+  },
+  {
+    "year": "2015",
+    "session": "NOVEMBER",
+    "folder": "20. Monitoring experience",
+    "mean_max_similarity": 0.69245445728302,
+    "n_questions": 14
+  },
+  {
+    "year": "2015",
+    "session": "NOVEMBER",
+    "folder": "3. Asset shares and profit distribution",
+    "mean_max_similarity": 0.7120169401168823,
+    "n_questions": 14
+  },
+  {
+    "year": "2015",
+    "session": "NOVEMBER",
+    "folder": "4. External environment",
+    "mean_max_similarity": 0.739173948764801,
+    "n_questions": 14
+  },
+  {
+    "year": "2015",
+    "session": "NOVEMBER",
+    "folder": "5. Risks",
+    "mean_max_similarity": 0.6935299038887024,
+    "n_questions": 14
+  },
+  {
+    "year": "2015",
+    "session": "NOVEMBER",
+    "folder": "6. Unit pricing and actuarial funding",
+    "mean_max_similarity": 0.7150025367736816,
+    "n_questions": 14
+  },
+  {
+    "year": "2015",
+    "session": "NOVEMBER",
+    "folder": "7. Modelling",
+    "mean_max_similarity": 0.7400447726249695,
+    "n_questions": 14
+  },
+  {
+    "year": "2015",
+    "session": "NOVEMBER",
+    "folder": "8. Product design",
+    "mean_max_similarity": 0.6966407895088196,
+    "n_questions": 14
+  },
+  {
+    "year": "2015",
+    "session": "NOVEMBER",
+    "folder": "9. Assumptions",
+    "mean_max_similarity": 0.722188413143158,
+    "n_questions": 14
+  },
+  {
+    "year": "2016",
+    "session": "JUNE",
+    "folder": "1. Life insurance contracts",
+    "mean_max_similarity": 0.7090543508529663,
+    "n_questions": 8
+  },
+  {
+    "year": "2016",
+    "session": "JUNE",
+    "folder": "10. Reserving",
+    "mean_max_similarity": 0.6967553496360779,
+    "n_questions": 8
+  },
+  {
+    "year": "2016",
+    "session": "JUNE",
+    "folder": "11. Capital requirements",
+    "mean_max_similarity": 0.6611907482147217,
+    "n_questions": 8
+  },
+  {
+    "year": "2016",
+    "session": "JUNE",
+    "folder": "12. Surrender values",
+    "mean_max_similarity": 0.6886046528816223,
+    "n_questions": 8
+  },
+  {
+    "year": "2016",
+    "session": "JUNE",
+    "folder": "13. Alterations",
+    "mean_max_similarity": 0.6822242140769958,
+    "n_questions": 8
+  },
+  {
+    "year": "2016",
+    "session": "JUNE",
+    "folder": "14. Guarantees and options",
+    "mean_max_similarity": 0.6970455050468445,
+    "n_questions": 8
+  },
+  {
+    "year": "2016",
+    "session": "JUNE",
+    "folder": "15. Pricing health & care contracts",
+    "mean_max_similarity": 0.7150888442993164,
+    "n_questions": 8
+  },
+  {
+    "year": "2016",
+    "session": "JUNE",
+    "folder": "16. Reinsurance",
+    "mean_max_similarity": 0.7025368809700012,
+    "n_questions": 8
+  },
+  {
+    "year": "2016",
+    "session": "JUNE",
+    "folder": "17. Underwriting & data checks",
+    "mean_max_similarity": 0.6887502670288086,
+    "n_questions": 8
+  },
+  {
+    "year": "2016",
+    "session": "JUNE",
+    "folder": "18. Investments",
+    "mean_max_similarity": 0.6646263599395752,
+    "n_questions": 8
+  },
+  {
+    "year": "2016",
+    "session": "JUNE",
+    "folder": "19. Further risk management",
+    "mean_max_similarity": 0.6873108148574829,
+    "n_questions": 8
+  },
+  {
+    "year": "2016",
+    "session": "JUNE",
+    "folder": "2. Health and care products",
+    "mean_max_similarity": 0.7061063647270203,
+    "n_questions": 8
+  },
+  {
+    "year": "2016",
+    "session": "JUNE",
+    "folder": "20. Monitoring experience",
+    "mean_max_similarity": 0.6901845932006836,
+    "n_questions": 8
+  },
+  {
+    "year": "2016",
+    "session": "JUNE",
+    "folder": "3. Asset shares and profit distribution",
+    "mean_max_similarity": 0.7037659287452698,
+    "n_questions": 8
+  },
+  {
+    "year": "2016",
+    "session": "JUNE",
+    "folder": "4. External environment",
+    "mean_max_similarity": 0.7442985773086548,
+    "n_questions": 8
+  },
+  {
+    "year": "2016",
+    "session": "JUNE",
+    "folder": "5. Risks",
+    "mean_max_similarity": 0.6924293041229248,
+    "n_questions": 8
+  },
+  {
+    "year": "2016",
+    "session": "JUNE",
+    "folder": "6. Unit pricing and actuarial funding",
+    "mean_max_similarity": 0.7074754238128662,
+    "n_questions": 8
+  },
+  {
+    "year": "2016",
+    "session": "JUNE",
+    "folder": "7. Modelling",
+    "mean_max_similarity": 0.7327820062637329,
+    "n_questions": 8
+  },
+  {
+    "year": "2016",
+    "session": "JUNE",
+    "folder": "8. Product design",
+    "mean_max_similarity": 0.69179767370224,
+    "n_questions": 8
+  },
+  {
+    "year": "2016",
+    "session": "JUNE",
+    "folder": "9. Assumptions",
+    "mean_max_similarity": 0.6946596503257751,
+    "n_questions": 8
+  },
+  {
+    "year": "2016",
+    "session": "NOVEMBER",
+    "folder": "1. Life insurance contracts",
+    "mean_max_similarity": 0.7167997360229492,
+    "n_questions": 8
+  },
+  {
+    "year": "2016",
+    "session": "NOVEMBER",
+    "folder": "10. Reserving",
+    "mean_max_similarity": 0.710533082485199,
+    "n_questions": 8
+  },
+  {
+    "year": "2016",
+    "session": "NOVEMBER",
+    "folder": "11. Capital requirements",
+    "mean_max_similarity": 0.6660215854644775,
+    "n_questions": 8
+  },
+  {
+    "year": "2016",
+    "session": "NOVEMBER",
+    "folder": "12. Surrender values",
+    "mean_max_similarity": 0.7005693912506104,
+    "n_questions": 8
+  },
+  {
+    "year": "2016",
+    "session": "NOVEMBER",
+    "folder": "13. Alterations",
+    "mean_max_similarity": 0.6752833127975464,
+    "n_questions": 8
+  },
+  {
+    "year": "2016",
+    "session": "NOVEMBER",
+    "folder": "14. Guarantees and options",
+    "mean_max_similarity": 0.7075353860855103,
+    "n_questions": 8
+  },
+  {
+    "year": "2016",
+    "session": "NOVEMBER",
+    "folder": "15. Pricing health & care contracts",
+    "mean_max_similarity": 0.6886760592460632,
+    "n_questions": 8
+  },
+  {
+    "year": "2016",
+    "session": "NOVEMBER",
+    "folder": "16. Reinsurance",
+    "mean_max_similarity": 0.7176821827888489,
+    "n_questions": 8
+  },
+  {
+    "year": "2016",
+    "session": "NOVEMBER",
+    "folder": "17. Underwriting & data checks",
+    "mean_max_similarity": 0.6680673360824585,
+    "n_questions": 8
+  },
+  {
+    "year": "2016",
+    "session": "NOVEMBER",
+    "folder": "18. Investments",
+    "mean_max_similarity": 0.677297830581665,
+    "n_questions": 8
+  },
+  {
+    "year": "2016",
+    "session": "NOVEMBER",
+    "folder": "19. Further risk management",
+    "mean_max_similarity": 0.6933484077453613,
+    "n_questions": 8
+  },
+  {
+    "year": "2016",
+    "session": "NOVEMBER",
+    "folder": "2. Health and care products",
+    "mean_max_similarity": 0.6999742984771729,
+    "n_questions": 8
+  },
+  {
+    "year": "2016",
+    "session": "NOVEMBER",
+    "folder": "20. Monitoring experience",
+    "mean_max_similarity": 0.6951817870140076,
+    "n_questions": 8
+  },
+  {
+    "year": "2016",
+    "session": "NOVEMBER",
+    "folder": "3. Asset shares and profit distribution",
+    "mean_max_similarity": 0.7264646291732788,
+    "n_questions": 8
+  },
+  {
+    "year": "2016",
+    "session": "NOVEMBER",
+    "folder": "4. External environment",
+    "mean_max_similarity": 0.7531794309616089,
+    "n_questions": 8
+  },
+  {
+    "year": "2016",
+    "session": "NOVEMBER",
+    "folder": "5. Risks",
+    "mean_max_similarity": 0.7201303839683533,
+    "n_questions": 8
+  },
+  {
+    "year": "2016",
+    "session": "NOVEMBER",
+    "folder": "6. Unit pricing and actuarial funding",
+    "mean_max_similarity": 0.7065726518630981,
+    "n_questions": 8
+  },
+  {
+    "year": "2016",
+    "session": "NOVEMBER",
+    "folder": "7. Modelling",
+    "mean_max_similarity": 0.7297439575195312,
+    "n_questions": 8
+  },
+  {
+    "year": "2016",
+    "session": "NOVEMBER",
+    "folder": "8. Product design",
+    "mean_max_similarity": 0.7050831913948059,
+    "n_questions": 8
+  },
+  {
+    "year": "2016",
+    "session": "NOVEMBER",
+    "folder": "9. Assumptions",
+    "mean_max_similarity": 0.7157216668128967,
+    "n_questions": 8
+  },
+  {
+    "year": "2017",
+    "session": "JUNE",
+    "folder": "1. Life insurance contracts",
+    "mean_max_similarity": 0.7245000004768372,
+    "n_questions": 8
+  },
+  {
+    "year": "2017",
+    "session": "JUNE",
+    "folder": "10. Reserving",
+    "mean_max_similarity": 0.7048647403717041,
+    "n_questions": 8
+  },
+  {
+    "year": "2017",
+    "session": "JUNE",
+    "folder": "11. Capital requirements",
+    "mean_max_similarity": 0.6679213047027588,
+    "n_questions": 8
+  },
+  {
+    "year": "2017",
+    "session": "JUNE",
+    "folder": "12. Surrender values",
+    "mean_max_similarity": 0.701920747756958,
+    "n_questions": 8
+  },
+  {
+    "year": "2017",
+    "session": "JUNE",
+    "folder": "13. Alterations",
+    "mean_max_similarity": 0.6932645440101624,
+    "n_questions": 8
+  },
+  {
+    "year": "2017",
+    "session": "JUNE",
+    "folder": "14. Guarantees and options",
+    "mean_max_similarity": 0.7239252328872681,
+    "n_questions": 8
+  },
+  {
+    "year": "2017",
+    "session": "JUNE",
+    "folder": "15. Pricing health & care contracts",
+    "mean_max_similarity": 0.700571596622467,
+    "n_questions": 8
+  },
+  {
+    "year": "2017",
+    "session": "JUNE",
+    "folder": "16. Reinsurance",
+    "mean_max_similarity": 0.7121006846427917,
+    "n_questions": 8
+  },
+  {
+    "year": "2017",
+    "session": "JUNE",
+    "folder": "17. Underwriting & data checks",
+    "mean_max_similarity": 0.6816464066505432,
+    "n_questions": 8
+  },
+  {
+    "year": "2017",
+    "session": "JUNE",
+    "folder": "18. Investments",
+    "mean_max_similarity": 0.6812028288841248,
+    "n_questions": 8
+  },
+  {
+    "year": "2017",
+    "session": "JUNE",
+    "folder": "19. Further risk management",
+    "mean_max_similarity": 0.6897497177124023,
+    "n_questions": 8
+  },
+  {
+    "year": "2017",
+    "session": "JUNE",
+    "folder": "2. Health and care products",
+    "mean_max_similarity": 0.692258358001709,
+    "n_questions": 8
+  },
+  {
+    "year": "2017",
+    "session": "JUNE",
+    "folder": "20. Monitoring experience",
+    "mean_max_similarity": 0.6798713207244873,
+    "n_questions": 8
+  },
+  {
+    "year": "2017",
+    "session": "JUNE",
+    "folder": "3. Asset shares and profit distribution",
+    "mean_max_similarity": 0.7097668051719666,
+    "n_questions": 8
+  },
+  {
+    "year": "2017",
+    "session": "JUNE",
+    "folder": "4. External environment",
+    "mean_max_similarity": 0.7400872707366943,
+    "n_questions": 8
+  },
+  {
+    "year": "2017",
+    "session": "JUNE",
+    "folder": "5. Risks",
+    "mean_max_similarity": 0.705658495426178,
+    "n_questions": 8
+  },
+  {
+    "year": "2017",
+    "session": "JUNE",
+    "folder": "6. Unit pricing and actuarial funding",
+    "mean_max_similarity": 0.7115668058395386,
+    "n_questions": 8
+  },
+  {
+    "year": "2017",
+    "session": "JUNE",
+    "folder": "7. Modelling",
+    "mean_max_similarity": 0.7401638627052307,
+    "n_questions": 8
+  },
+  {
+    "year": "2017",
+    "session": "JUNE",
+    "folder": "8. Product design",
+    "mean_max_similarity": 0.6939443349838257,
+    "n_questions": 8
+  },
+  {
+    "year": "2017",
+    "session": "JUNE",
+    "folder": "9. Assumptions",
+    "mean_max_similarity": 0.7057614326477051,
+    "n_questions": 8
+  },
+  {
+    "year": "2017",
+    "session": "NOVEMBER",
+    "folder": "1. Life insurance contracts",
+    "mean_max_similarity": 0.7074698209762573,
+    "n_questions": 7
+  },
+  {
+    "year": "2017",
+    "session": "NOVEMBER",
+    "folder": "10. Reserving",
+    "mean_max_similarity": 0.7079288363456726,
+    "n_questions": 7
+  },
+  {
+    "year": "2017",
+    "session": "NOVEMBER",
+    "folder": "11. Capital requirements",
+    "mean_max_similarity": 0.6656064391136169,
+    "n_questions": 7
+  },
+  {
+    "year": "2017",
+    "session": "NOVEMBER",
+    "folder": "12. Surrender values",
+    "mean_max_similarity": 0.700514018535614,
+    "n_questions": 7
+  },
+  {
+    "year": "2017",
+    "session": "NOVEMBER",
+    "folder": "13. Alterations",
+    "mean_max_similarity": 0.6837579011917114,
+    "n_questions": 7
+  },
+  {
+    "year": "2017",
+    "session": "NOVEMBER",
+    "folder": "14. Guarantees and options",
+    "mean_max_similarity": 0.7095248103141785,
+    "n_questions": 7
+  },
+  {
+    "year": "2017",
+    "session": "NOVEMBER",
+    "folder": "15. Pricing health & care contracts",
+    "mean_max_similarity": 0.7006109356880188,
+    "n_questions": 7
+  },
+  {
+    "year": "2017",
+    "session": "NOVEMBER",
+    "folder": "16. Reinsurance",
+    "mean_max_similarity": 0.7086959481239319,
+    "n_questions": 7
+  },
+  {
+    "year": "2017",
+    "session": "NOVEMBER",
+    "folder": "17. Underwriting & data checks",
+    "mean_max_similarity": 0.690770149230957,
+    "n_questions": 7
+  },
+  {
+    "year": "2017",
+    "session": "NOVEMBER",
+    "folder": "18. Investments",
+    "mean_max_similarity": 0.6869534850120544,
+    "n_questions": 7
+  },
+  {
+    "year": "2017",
+    "session": "NOVEMBER",
+    "folder": "19. Further risk management",
+    "mean_max_similarity": 0.6868610978126526,
+    "n_questions": 7
+  },
+  {
+    "year": "2017",
+    "session": "NOVEMBER",
+    "folder": "2. Health and care products",
+    "mean_max_similarity": 0.700754702091217,
+    "n_questions": 7
+  },
+  {
+    "year": "2017",
+    "session": "NOVEMBER",
+    "folder": "20. Monitoring experience",
+    "mean_max_similarity": 0.686672031879425,
+    "n_questions": 7
+  },
+  {
+    "year": "2017",
+    "session": "NOVEMBER",
+    "folder": "3. Asset shares and profit distribution",
+    "mean_max_similarity": 0.7139037251472473,
+    "n_questions": 7
+  },
+  {
+    "year": "2017",
+    "session": "NOVEMBER",
+    "folder": "4. External environment",
+    "mean_max_similarity": 0.7422834634780884,
+    "n_questions": 7
+  },
+  {
+    "year": "2017",
+    "session": "NOVEMBER",
+    "folder": "5. Risks",
+    "mean_max_similarity": 0.7013954520225525,
+    "n_questions": 7
+  },
+  {
+    "year": "2017",
+    "session": "NOVEMBER",
+    "folder": "6. Unit pricing and actuarial funding",
+    "mean_max_similarity": 0.7097111344337463,
+    "n_questions": 7
+  },
+  {
+    "year": "2017",
+    "session": "NOVEMBER",
+    "folder": "7. Modelling",
+    "mean_max_similarity": 0.7235312461853027,
+    "n_questions": 7
+  },
+  {
+    "year": "2017",
+    "session": "NOVEMBER",
+    "folder": "8. Product design",
+    "mean_max_similarity": 0.6918152570724487,
+    "n_questions": 7
+  },
+  {
+    "year": "2017",
+    "session": "NOVEMBER",
+    "folder": "9. Assumptions",
+    "mean_max_similarity": 0.7167922258377075,
+    "n_questions": 7
+  },
+  {
+    "year": "2018",
+    "session": "JUNE",
+    "folder": "1. Life insurance contracts",
+    "mean_max_similarity": 0.7286177277565002,
+    "n_questions": 7
+  },
+  {
+    "year": "2018",
+    "session": "JUNE",
+    "folder": "10. Reserving",
+    "mean_max_similarity": 0.7194982171058655,
+    "n_questions": 7
+  },
+  {
+    "year": "2018",
+    "session": "JUNE",
+    "folder": "11. Capital requirements",
+    "mean_max_similarity": 0.6746122241020203,
+    "n_questions": 7
+  },
+  {
+    "year": "2018",
+    "session": "JUNE",
+    "folder": "12. Surrender values",
+    "mean_max_similarity": 0.7049617171287537,
+    "n_questions": 7
+  },
+  {
+    "year": "2018",
+    "session": "JUNE",
+    "folder": "13. Alterations",
+    "mean_max_similarity": 0.6984376311302185,
+    "n_questions": 7
+  },
+  {
+    "year": "2018",
+    "session": "JUNE",
+    "folder": "14. Guarantees and options",
+    "mean_max_similarity": 0.7248719334602356,
+    "n_questions": 7
+  },
+  {
+    "year": "2018",
+    "session": "JUNE",
+    "folder": "15. Pricing health & care contracts",
+    "mean_max_similarity": 0.7032141089439392,
+    "n_questions": 7
+  },
+  {
+    "year": "2018",
+    "session": "JUNE",
+    "folder": "16. Reinsurance",
+    "mean_max_similarity": 0.7440894246101379,
+    "n_questions": 7
+  },
+  {
+    "year": "2018",
+    "session": "JUNE",
+    "folder": "17. Underwriting & data checks",
+    "mean_max_similarity": 0.6814194321632385,
+    "n_questions": 7
+  },
+  {
+    "year": "2018",
+    "session": "JUNE",
+    "folder": "18. Investments",
+    "mean_max_similarity": 0.6862107515335083,
+    "n_questions": 7
+  },
+  {
+    "year": "2018",
+    "session": "JUNE",
+    "folder": "19. Further risk management",
+    "mean_max_similarity": 0.6985909342765808,
+    "n_questions": 7
+  },
+  {
+    "year": "2018",
+    "session": "JUNE",
+    "folder": "2. Health and care products",
+    "mean_max_similarity": 0.6912083625793457,
+    "n_questions": 7
+  },
+  {
+    "year": "2018",
+    "session": "JUNE",
+    "folder": "20. Monitoring experience",
+    "mean_max_similarity": 0.6887156367301941,
+    "n_questions": 7
+  },
+  {
+    "year": "2018",
+    "session": "JUNE",
+    "folder": "3. Asset shares and profit distribution",
+    "mean_max_similarity": 0.7095826864242554,
+    "n_questions": 7
+  },
+  {
+    "year": "2018",
+    "session": "JUNE",
+    "folder": "4. External environment",
+    "mean_max_similarity": 0.7455649375915527,
+    "n_questions": 7
+  },
+  {
+    "year": "2018",
+    "session": "JUNE",
+    "folder": "5. Risks",
+    "mean_max_similarity": 0.7007827758789062,
+    "n_questions": 7
+  },
+  {
+    "year": "2018",
+    "session": "JUNE",
+    "folder": "6. Unit pricing and actuarial funding",
+    "mean_max_similarity": 0.7291377186775208,
+    "n_questions": 7
+  },
+  {
+    "year": "2018",
+    "session": "JUNE",
+    "folder": "7. Modelling",
+    "mean_max_similarity": 0.7498748898506165,
+    "n_questions": 7
+  },
+  {
+    "year": "2018",
+    "session": "JUNE",
+    "folder": "8. Product design",
+    "mean_max_similarity": 0.6932286024093628,
+    "n_questions": 7
+  },
+  {
+    "year": "2018",
+    "session": "JUNE",
+    "folder": "9. Assumptions",
+    "mean_max_similarity": 0.7111658453941345,
+    "n_questions": 7
+  },
+  {
+    "year": "2018",
+    "session": "NOVEMBER",
+    "folder": "1. Life insurance contracts",
+    "mean_max_similarity": 0.7140649557113647,
+    "n_questions": 8
+  },
+  {
+    "year": "2018",
+    "session": "NOVEMBER",
+    "folder": "10. Reserving",
+    "mean_max_similarity": 0.7134343385696411,
+    "n_questions": 8
+  },
+  {
+    "year": "2018",
+    "session": "NOVEMBER",
+    "folder": "11. Capital requirements",
+    "mean_max_similarity": 0.6769028902053833,
+    "n_questions": 8
+  },
+  {
+    "year": "2018",
+    "session": "NOVEMBER",
+    "folder": "12. Surrender values",
+    "mean_max_similarity": 0.6998629570007324,
+    "n_questions": 8
+  },
+  {
+    "year": "2018",
+    "session": "NOVEMBER",
+    "folder": "13. Alterations",
+    "mean_max_similarity": 0.6826680898666382,
+    "n_questions": 8
+  },
+  {
+    "year": "2018",
+    "session": "NOVEMBER",
+    "folder": "14. Guarantees and options",
+    "mean_max_similarity": 0.720335066318512,
+    "n_questions": 8
+  },
+  {
+    "year": "2018",
+    "session": "NOVEMBER",
+    "folder": "15. Pricing health & care contracts",
+    "mean_max_similarity": 0.704811692237854,
+    "n_questions": 8
+  },
+  {
+    "year": "2018",
+    "session": "NOVEMBER",
+    "folder": "16. Reinsurance",
+    "mean_max_similarity": 0.7146385908126831,
+    "n_questions": 8
+  },
+  {
+    "year": "2018",
+    "session": "NOVEMBER",
+    "folder": "17. Underwriting & data checks",
+    "mean_max_similarity": 0.6852845549583435,
+    "n_questions": 8
+  },
+  {
+    "year": "2018",
+    "session": "NOVEMBER",
+    "folder": "18. Investments",
+    "mean_max_similarity": 0.6877018809318542,
+    "n_questions": 8
+  },
+  {
+    "year": "2018",
+    "session": "NOVEMBER",
+    "folder": "19. Further risk management",
+    "mean_max_similarity": 0.6820132732391357,
+    "n_questions": 8
+  },
+  {
+    "year": "2018",
+    "session": "NOVEMBER",
+    "folder": "2. Health and care products",
+    "mean_max_similarity": 0.6970192193984985,
+    "n_questions": 8
+  },
+  {
+    "year": "2018",
+    "session": "NOVEMBER",
+    "folder": "20. Monitoring experience",
+    "mean_max_similarity": 0.6917836666107178,
+    "n_questions": 8
+  },
+  {
+    "year": "2018",
+    "session": "NOVEMBER",
+    "folder": "3. Asset shares and profit distribution",
+    "mean_max_similarity": 0.7215746641159058,
+    "n_questions": 8
+  },
+  {
+    "year": "2018",
+    "session": "NOVEMBER",
+    "folder": "4. External environment",
+    "mean_max_similarity": 0.731857419013977,
+    "n_questions": 8
+  },
+  {
+    "year": "2018",
+    "session": "NOVEMBER",
+    "folder": "5. Risks",
+    "mean_max_similarity": 0.704835057258606,
+    "n_questions": 8
+  },
+  {
+    "year": "2018",
+    "session": "NOVEMBER",
+    "folder": "6. Unit pricing and actuarial funding",
+    "mean_max_similarity": 0.718919038772583,
+    "n_questions": 8
+  },
+  {
+    "year": "2018",
+    "session": "NOVEMBER",
+    "folder": "7. Modelling",
+    "mean_max_similarity": 0.7335350513458252,
+    "n_questions": 8
+  },
+  {
+    "year": "2018",
+    "session": "NOVEMBER",
+    "folder": "8. Product design",
+    "mean_max_similarity": 0.6913723945617676,
+    "n_questions": 8
+  },
+  {
+    "year": "2018",
+    "session": "NOVEMBER",
+    "folder": "9. Assumptions",
+    "mean_max_similarity": 0.7271860241889954,
+    "n_questions": 8
+  },
+  {
+    "year": "2019",
+    "session": "JUNE",
+    "folder": "1. Life insurance contracts",
+    "mean_max_similarity": 0.7310324311256409,
+    "n_questions": 8
+  },
+  {
+    "year": "2019",
+    "session": "JUNE",
+    "folder": "10. Reserving",
+    "mean_max_similarity": 0.7083655595779419,
+    "n_questions": 8
+  },
+  {
+    "year": "2019",
+    "session": "JUNE",
+    "folder": "11. Capital requirements",
+    "mean_max_similarity": 0.6715772151947021,
+    "n_questions": 8
+  },
+  {
+    "year": "2019",
+    "session": "JUNE",
+    "folder": "12. Surrender values",
+    "mean_max_similarity": 0.7122586369514465,
+    "n_questions": 8
+  },
+  {
+    "year": "2019",
+    "session": "JUNE",
+    "folder": "13. Alterations",
+    "mean_max_similarity": 0.6928892135620117,
+    "n_questions": 8
+  },
+  {
+    "year": "2019",
+    "session": "JUNE",
+    "folder": "14. Guarantees and options",
+    "mean_max_similarity": 0.7229401469230652,
+    "n_questions": 8
+  },
+  {
+    "year": "2019",
+    "session": "JUNE",
+    "folder": "15. Pricing health & care contracts",
+    "mean_max_similarity": 0.6987043619155884,
+    "n_questions": 8
+  },
+  {
+    "year": "2019",
+    "session": "JUNE",
+    "folder": "16. Reinsurance",
+    "mean_max_similarity": 0.7181305885314941,
+    "n_questions": 8
+  },
+  {
+    "year": "2019",
+    "session": "JUNE",
+    "folder": "17. Underwriting & data checks",
+    "mean_max_similarity": 0.6720708608627319,
+    "n_questions": 8
+  },
+  {
+    "year": "2019",
+    "session": "JUNE",
+    "folder": "18. Investments",
+    "mean_max_similarity": 0.6917154788970947,
+    "n_questions": 8
+  },
+  {
+    "year": "2019",
+    "session": "JUNE",
+    "folder": "19. Further risk management",
+    "mean_max_similarity": 0.6901940107345581,
+    "n_questions": 8
+  },
+  {
+    "year": "2019",
+    "session": "JUNE",
+    "folder": "2. Health and care products",
+    "mean_max_similarity": 0.6954964399337769,
+    "n_questions": 8
+  },
+  {
+    "year": "2019",
+    "session": "JUNE",
+    "folder": "20. Monitoring experience",
+    "mean_max_similarity": 0.6967755556106567,
+    "n_questions": 8
+  },
+  {
+    "year": "2019",
+    "session": "JUNE",
+    "folder": "3. Asset shares and profit distribution",
+    "mean_max_similarity": 0.7209032773971558,
+    "n_questions": 8
+  },
+  {
+    "year": "2019",
+    "session": "JUNE",
+    "folder": "4. External environment",
+    "mean_max_similarity": 0.7403401136398315,
+    "n_questions": 8
+  },
+  {
+    "year": "2019",
+    "session": "JUNE",
+    "folder": "5. Risks",
+    "mean_max_similarity": 0.6962645053863525,
+    "n_questions": 8
+  },
+  {
+    "year": "2019",
+    "session": "JUNE",
+    "folder": "6. Unit pricing and actuarial funding",
+    "mean_max_similarity": 0.7372243404388428,
+    "n_questions": 8
+  },
+  {
+    "year": "2019",
+    "session": "JUNE",
+    "folder": "7. Modelling",
+    "mean_max_similarity": 0.7410690784454346,
+    "n_questions": 8
+  },
+  {
+    "year": "2019",
+    "session": "JUNE",
+    "folder": "8. Product design",
+    "mean_max_similarity": 0.6984952688217163,
+    "n_questions": 8
+  },
+  {
+    "year": "2019",
+    "session": "JUNE",
+    "folder": "9. Assumptions",
+    "mean_max_similarity": 0.7189178466796875,
+    "n_questions": 8
+  },
+  {
+    "year": "2019",
+    "session": "NOVEMBER",
+    "folder": "1. Life insurance contracts",
+    "mean_max_similarity": 0.7210485339164734,
+    "n_questions": 8
+  },
+  {
+    "year": "2019",
+    "session": "NOVEMBER",
+    "folder": "10. Reserving",
+    "mean_max_similarity": 0.709370493888855,
+    "n_questions": 8
+  },
+  {
+    "year": "2019",
+    "session": "NOVEMBER",
+    "folder": "11. Capital requirements",
+    "mean_max_similarity": 0.6726145148277283,
+    "n_questions": 8
+  },
+  {
+    "year": "2019",
+    "session": "NOVEMBER",
+    "folder": "12. Surrender values",
+    "mean_max_similarity": 0.7014127969741821,
+    "n_questions": 8
+  },
+  {
+    "year": "2019",
+    "session": "NOVEMBER",
+    "folder": "13. Alterations",
+    "mean_max_similarity": 0.6784084439277649,
+    "n_questions": 8
+  },
+  {
+    "year": "2019",
+    "session": "NOVEMBER",
+    "folder": "14. Guarantees and options",
+    "mean_max_similarity": 0.7092505097389221,
+    "n_questions": 8
+  },
+  {
+    "year": "2019",
+    "session": "NOVEMBER",
+    "folder": "15. Pricing health & care contracts",
+    "mean_max_similarity": 0.6817415356636047,
+    "n_questions": 8
+  },
+  {
+    "year": "2019",
+    "session": "NOVEMBER",
+    "folder": "16. Reinsurance",
+    "mean_max_similarity": 0.7075724005699158,
+    "n_questions": 8
+  },
+  {
+    "year": "2019",
+    "session": "NOVEMBER",
+    "folder": "17. Underwriting & data checks",
+    "mean_max_similarity": 0.6724151372909546,
+    "n_questions": 8
+  },
+  {
+    "year": "2019",
+    "session": "NOVEMBER",
+    "folder": "18. Investments",
+    "mean_max_similarity": 0.679996907711029,
+    "n_questions": 8
+  },
+  {
+    "year": "2019",
+    "session": "NOVEMBER",
+    "folder": "19. Further risk management",
+    "mean_max_similarity": 0.6897934675216675,
+    "n_questions": 8
+  },
+  {
+    "year": "2019",
+    "session": "NOVEMBER",
+    "folder": "2. Health and care products",
+    "mean_max_similarity": 0.6904732584953308,
+    "n_questions": 8
+  },
+  {
+    "year": "2019",
+    "session": "NOVEMBER",
+    "folder": "20. Monitoring experience",
+    "mean_max_similarity": 0.693234920501709,
+    "n_questions": 8
+  },
+  {
+    "year": "2019",
+    "session": "NOVEMBER",
+    "folder": "3. Asset shares and profit distribution",
+    "mean_max_similarity": 0.7168703079223633,
+    "n_questions": 8
+  },
+  {
+    "year": "2019",
+    "session": "NOVEMBER",
+    "folder": "4. External environment",
+    "mean_max_similarity": 0.7448672652244568,
+    "n_questions": 8
+  },
+  {
+    "year": "2019",
+    "session": "NOVEMBER",
+    "folder": "5. Risks",
+    "mean_max_similarity": 0.7021657228469849,
+    "n_questions": 8
+  },
+  {
+    "year": "2019",
+    "session": "NOVEMBER",
+    "folder": "6. Unit pricing and actuarial funding",
+    "mean_max_similarity": 0.7093565464019775,
+    "n_questions": 8
+  },
+  {
+    "year": "2019",
+    "session": "NOVEMBER",
+    "folder": "7. Modelling",
+    "mean_max_similarity": 0.7294445633888245,
+    "n_questions": 8
+  },
+  {
+    "year": "2019",
+    "session": "NOVEMBER",
+    "folder": "8. Product design",
+    "mean_max_similarity": 0.6972601413726807,
+    "n_questions": 8
+  },
+  {
+    "year": "2019",
+    "session": "NOVEMBER",
+    "folder": "9. Assumptions",
+    "mean_max_similarity": 0.7068161964416504,
+    "n_questions": 8
+  },
+  {
+    "year": "2020",
+    "session": "JUNE",
+    "folder": "1. Life insurance contracts",
+    "mean_max_similarity": 0.7128496766090393,
+    "n_questions": 8
+  },
+  {
+    "year": "2020",
+    "session": "JUNE",
+    "folder": "10. Reserving",
+    "mean_max_similarity": 0.6948076486587524,
+    "n_questions": 8
+  },
+  {
+    "year": "2020",
+    "session": "JUNE",
+    "folder": "11. Capital requirements",
+    "mean_max_similarity": 0.6557934284210205,
+    "n_questions": 8
+  },
+  {
+    "year": "2020",
+    "session": "JUNE",
+    "folder": "12. Surrender values",
+    "mean_max_similarity": 0.6946361064910889,
+    "n_questions": 8
+  },
+  {
+    "year": "2020",
+    "session": "JUNE",
+    "folder": "13. Alterations",
+    "mean_max_similarity": 0.6837371587753296,
+    "n_questions": 8
+  },
+  {
+    "year": "2020",
+    "session": "JUNE",
+    "folder": "14. Guarantees and options",
+    "mean_max_similarity": 0.6977822780609131,
+    "n_questions": 8
+  },
+  {
+    "year": "2020",
+    "session": "JUNE",
+    "folder": "15. Pricing health & care contracts",
+    "mean_max_similarity": 0.7007699012756348,
+    "n_questions": 8
+  },
+  {
+    "year": "2020",
+    "session": "JUNE",
+    "folder": "16. Reinsurance",
+    "mean_max_similarity": 0.6989208459854126,
+    "n_questions": 8
+  },
+  {
+    "year": "2020",
+    "session": "JUNE",
+    "folder": "17. Underwriting & data checks",
+    "mean_max_similarity": 0.6760406494140625,
+    "n_questions": 8
+  },
+  {
+    "year": "2020",
+    "session": "JUNE",
+    "folder": "18. Investments",
+    "mean_max_similarity": 0.676754355430603,
+    "n_questions": 8
+  },
+  {
+    "year": "2020",
+    "session": "JUNE",
+    "folder": "19. Further risk management",
+    "mean_max_similarity": 0.6762051582336426,
+    "n_questions": 8
+  },
+  {
+    "year": "2020",
+    "session": "JUNE",
+    "folder": "2. Health and care products",
+    "mean_max_similarity": 0.6831756830215454,
+    "n_questions": 8
+  },
+  {
+    "year": "2020",
+    "session": "JUNE",
+    "folder": "20. Monitoring experience",
+    "mean_max_similarity": 0.6838665008544922,
+    "n_questions": 8
+  },
+  {
+    "year": "2020",
+    "session": "JUNE",
+    "folder": "3. Asset shares and profit distribution",
+    "mean_max_similarity": 0.7126997113227844,
+    "n_questions": 8
+  },
+  {
+    "year": "2020",
+    "session": "JUNE",
+    "folder": "4. External environment",
+    "mean_max_similarity": 0.7232890129089355,
+    "n_questions": 8
+  },
+  {
+    "year": "2020",
+    "session": "JUNE",
+    "folder": "5. Risks",
+    "mean_max_similarity": 0.6799776554107666,
+    "n_questions": 8
+  },
+  {
+    "year": "2020",
+    "session": "JUNE",
+    "folder": "6. Unit pricing and actuarial funding",
+    "mean_max_similarity": 0.7143552303314209,
+    "n_questions": 8
+  },
+  {
+    "year": "2020",
+    "session": "JUNE",
+    "folder": "7. Modelling",
+    "mean_max_similarity": 0.7242142558097839,
+    "n_questions": 8
+  },
+  {
+    "year": "2020",
+    "session": "JUNE",
+    "folder": "8. Product design",
+    "mean_max_similarity": 0.689696192741394,
+    "n_questions": 8
+  },
+  {
+    "year": "2020",
+    "session": "JUNE",
+    "folder": "9. Assumptions",
+    "mean_max_similarity": 0.698738694190979,
+    "n_questions": 8
+  },
+  {
+    "year": "2020",
+    "session": "NOVEMBER",
+    "folder": "1. Life insurance contracts",
+    "mean_max_similarity": 0.723636269569397,
+    "n_questions": 16
+  },
+  {
+    "year": "2020",
+    "session": "NOVEMBER",
+    "folder": "10. Reserving",
+    "mean_max_similarity": 0.706580638885498,
+    "n_questions": 16
+  },
+  {
+    "year": "2020",
+    "session": "NOVEMBER",
+    "folder": "11. Capital requirements",
+    "mean_max_similarity": 0.6691442131996155,
+    "n_questions": 16
+  },
+  {
+    "year": "2020",
+    "session": "NOVEMBER",
+    "folder": "12. Surrender values",
+    "mean_max_similarity": 0.6948972940444946,
+    "n_questions": 16
+  },
+  {
+    "year": "2020",
+    "session": "NOVEMBER",
+    "folder": "13. Alterations",
+    "mean_max_similarity": 0.690497636795044,
+    "n_questions": 16
+  },
+  {
+    "year": "2020",
+    "session": "NOVEMBER",
+    "folder": "14. Guarantees and options",
+    "mean_max_similarity": 0.7054181694984436,
+    "n_questions": 16
+  },
+  {
+    "year": "2020",
+    "session": "NOVEMBER",
+    "folder": "15. Pricing health & care contracts",
+    "mean_max_similarity": 0.6983048319816589,
+    "n_questions": 16
+  },
+  {
+    "year": "2020",
+    "session": "NOVEMBER",
+    "folder": "16. Reinsurance",
+    "mean_max_similarity": 0.7052528858184814,
+    "n_questions": 16
+  },
+  {
+    "year": "2020",
+    "session": "NOVEMBER",
+    "folder": "17. Underwriting & data checks",
+    "mean_max_similarity": 0.6736165285110474,
+    "n_questions": 16
+  },
+  {
+    "year": "2020",
+    "session": "NOVEMBER",
+    "folder": "18. Investments",
+    "mean_max_similarity": 0.694250762462616,
+    "n_questions": 16
+  },
+  {
+    "year": "2020",
+    "session": "NOVEMBER",
+    "folder": "19. Further risk management",
+    "mean_max_similarity": 0.6767714619636536,
+    "n_questions": 16
+  },
+  {
+    "year": "2020",
+    "session": "NOVEMBER",
+    "folder": "2. Health and care products",
+    "mean_max_similarity": 0.6956613063812256,
+    "n_questions": 16
+  },
+  {
+    "year": "2020",
+    "session": "NOVEMBER",
+    "folder": "20. Monitoring experience",
+    "mean_max_similarity": 0.6828770637512207,
+    "n_questions": 16
+  },
+  {
+    "year": "2020",
+    "session": "NOVEMBER",
+    "folder": "3. Asset shares and profit distribution",
+    "mean_max_similarity": 0.7092416286468506,
+    "n_questions": 16
+  },
+  {
+    "year": "2020",
+    "session": "NOVEMBER",
+    "folder": "4. External environment",
+    "mean_max_similarity": 0.7411569952964783,
+    "n_questions": 16
+  },
+  {
+    "year": "2020",
+    "session": "NOVEMBER",
+    "folder": "5. Risks",
+    "mean_max_similarity": 0.6963880658149719,
+    "n_questions": 16
+  },
+  {
+    "year": "2020",
+    "session": "NOVEMBER",
+    "folder": "6. Unit pricing and actuarial funding",
+    "mean_max_similarity": 0.7029131650924683,
+    "n_questions": 16
+  },
+  {
+    "year": "2020",
+    "session": "NOVEMBER",
+    "folder": "7. Modelling",
+    "mean_max_similarity": 0.7272552251815796,
+    "n_questions": 16
+  },
+  {
+    "year": "2020",
+    "session": "NOVEMBER",
+    "folder": "8. Product design",
+    "mean_max_similarity": 0.6923378705978394,
+    "n_questions": 16
+  },
+  {
+    "year": "2020",
+    "session": "NOVEMBER",
+    "folder": "9. Assumptions",
+    "mean_max_similarity": 0.7072269916534424,
+    "n_questions": 16
+  },
+  {
+    "year": "2021",
+    "session": "JUNE",
+    "folder": "1. Life insurance contracts",
+    "mean_max_similarity": 0.7184289693832397,
+    "n_questions": 8
+  },
+  {
+    "year": "2021",
+    "session": "JUNE",
+    "folder": "10. Reserving",
+    "mean_max_similarity": 0.7145490646362305,
+    "n_questions": 8
+  },
+  {
+    "year": "2021",
+    "session": "JUNE",
+    "folder": "11. Capital requirements",
+    "mean_max_similarity": 0.6644583344459534,
+    "n_questions": 8
+  },
+  {
+    "year": "2021",
+    "session": "JUNE",
+    "folder": "12. Surrender values",
+    "mean_max_similarity": 0.721147894859314,
+    "n_questions": 8
+  },
+  {
+    "year": "2021",
+    "session": "JUNE",
+    "folder": "13. Alterations",
+    "mean_max_similarity": 0.6963245868682861,
+    "n_questions": 8
+  },
+  {
+    "year": "2021",
+    "session": "JUNE",
+    "folder": "14. Guarantees and options",
+    "mean_max_similarity": 0.7235214710235596,
+    "n_questions": 8
+  },
+  {
+    "year": "2021",
+    "session": "JUNE",
+    "folder": "15. Pricing health & care contracts",
+    "mean_max_similarity": 0.6977973580360413,
+    "n_questions": 8
+  },
+  {
+    "year": "2021",
+    "session": "JUNE",
+    "folder": "16. Reinsurance",
+    "mean_max_similarity": 0.7133490443229675,
+    "n_questions": 8
+  },
+  {
+    "year": "2021",
+    "session": "JUNE",
+    "folder": "17. Underwriting & data checks",
+    "mean_max_similarity": 0.6772719621658325,
+    "n_questions": 8
+  },
+  {
+    "year": "2021",
+    "session": "JUNE",
+    "folder": "18. Investments",
+    "mean_max_similarity": 0.6842385530471802,
+    "n_questions": 8
+  },
+  {
+    "year": "2021",
+    "session": "JUNE",
+    "folder": "19. Further risk management",
+    "mean_max_similarity": 0.6830129623413086,
+    "n_questions": 8
+  },
+  {
+    "year": "2021",
+    "session": "JUNE",
+    "folder": "2. Health and care products",
+    "mean_max_similarity": 0.6875908374786377,
+    "n_questions": 8
+  },
+  {
+    "year": "2021",
+    "session": "JUNE",
+    "folder": "20. Monitoring experience",
+    "mean_max_similarity": 0.6872016191482544,
+    "n_questions": 8
+  },
+  {
+    "year": "2021",
+    "session": "JUNE",
+    "folder": "3. Asset shares and profit distribution",
+    "mean_max_similarity": 0.7249037027359009,
+    "n_questions": 8
+  },
+  {
+    "year": "2021",
+    "session": "JUNE",
+    "folder": "4. External environment",
+    "mean_max_similarity": 0.7276407480239868,
+    "n_questions": 8
+  },
+  {
+    "year": "2021",
+    "session": "JUNE",
+    "folder": "5. Risks",
+    "mean_max_similarity": 0.6973522901535034,
+    "n_questions": 8
+  },
+  {
+    "year": "2021",
+    "session": "JUNE",
+    "folder": "6. Unit pricing and actuarial funding",
+    "mean_max_similarity": 0.7340219020843506,
+    "n_questions": 8
+  },
+  {
+    "year": "2021",
+    "session": "JUNE",
+    "folder": "7. Modelling",
+    "mean_max_similarity": 0.737537145614624,
+    "n_questions": 8
+  },
+  {
+    "year": "2021",
+    "session": "JUNE",
+    "folder": "8. Product design",
+    "mean_max_similarity": 0.7031575441360474,
+    "n_questions": 8
+  },
+  {
+    "year": "2021",
+    "session": "JUNE",
+    "folder": "9. Assumptions",
+    "mean_max_similarity": 0.7087410688400269,
+    "n_questions": 8
+  },
+  {
+    "year": "2021",
+    "session": "NOVEMBER",
+    "folder": "1. Life insurance contracts",
+    "mean_max_similarity": 0.712213933467865,
+    "n_questions": 12
+  },
+  {
+    "year": "2021",
+    "session": "NOVEMBER",
+    "folder": "10. Reserving",
+    "mean_max_similarity": 0.7023922801017761,
+    "n_questions": 12
+  },
+  {
+    "year": "2021",
+    "session": "NOVEMBER",
+    "folder": "11. Capital requirements",
+    "mean_max_similarity": 0.6690651774406433,
+    "n_questions": 12
+  },
+  {
+    "year": "2021",
+    "session": "NOVEMBER",
+    "folder": "12. Surrender values",
+    "mean_max_similarity": 0.6917052865028381,
+    "n_questions": 12
+  },
+  {
+    "year": "2021",
+    "session": "NOVEMBER",
+    "folder": "13. Alterations",
+    "mean_max_similarity": 0.6823647022247314,
+    "n_questions": 12
+  },
+  {
+    "year": "2021",
+    "session": "NOVEMBER",
+    "folder": "14. Guarantees and options",
+    "mean_max_similarity": 0.7118697166442871,
+    "n_questions": 12
+  },
+  {
+    "year": "2021",
+    "session": "NOVEMBER",
+    "folder": "15. Pricing health & care contracts",
+    "mean_max_similarity": 0.6977085471153259,
+    "n_questions": 12
+  },
+  {
+    "year": "2021",
+    "session": "NOVEMBER",
+    "folder": "16. Reinsurance",
+    "mean_max_similarity": 0.7047353386878967,
+    "n_questions": 12
+  },
+  {
+    "year": "2021",
+    "session": "NOVEMBER",
+    "folder": "17. Underwriting & data checks",
+    "mean_max_similarity": 0.6823696494102478,
+    "n_questions": 12
+  },
+  {
+    "year": "2021",
+    "session": "NOVEMBER",
+    "folder": "18. Investments",
+    "mean_max_similarity": 0.672159731388092,
+    "n_questions": 12
+  },
+  {
+    "year": "2021",
+    "session": "NOVEMBER",
+    "folder": "19. Further risk management",
+    "mean_max_similarity": 0.6731110215187073,
+    "n_questions": 12
+  },
+  {
+    "year": "2021",
+    "session": "NOVEMBER",
+    "folder": "2. Health and care products",
+    "mean_max_similarity": 0.6876232624053955,
+    "n_questions": 12
+  },
+  {
+    "year": "2021",
+    "session": "NOVEMBER",
+    "folder": "20. Monitoring experience",
+    "mean_max_similarity": 0.6793974041938782,
+    "n_questions": 12
+  },
+  {
+    "year": "2021",
+    "session": "NOVEMBER",
+    "folder": "3. Asset shares and profit distribution",
+    "mean_max_similarity": 0.7024382948875427,
+    "n_questions": 12
+  },
+  {
+    "year": "2021",
+    "session": "NOVEMBER",
+    "folder": "4. External environment",
+    "mean_max_similarity": 0.7284100651741028,
+    "n_questions": 12
+  },
+  {
+    "year": "2021",
+    "session": "NOVEMBER",
+    "folder": "5. Risks",
+    "mean_max_similarity": 0.6905412673950195,
+    "n_questions": 12
+  },
+  {
+    "year": "2021",
+    "session": "NOVEMBER",
+    "folder": "6. Unit pricing and actuarial funding",
+    "mean_max_similarity": 0.7165243029594421,
+    "n_questions": 12
+  },
+  {
+    "year": "2021",
+    "session": "NOVEMBER",
+    "folder": "7. Modelling",
+    "mean_max_similarity": 0.7198073267936707,
+    "n_questions": 12
+  },
+  {
+    "year": "2021",
+    "session": "NOVEMBER",
+    "folder": "8. Product design",
+    "mean_max_similarity": 0.6821046471595764,
+    "n_questions": 12
+  },
+  {
+    "year": "2021",
+    "session": "NOVEMBER",
+    "folder": "9. Assumptions",
+    "mean_max_similarity": 0.7027406096458435,
+    "n_questions": 12
+  },
+  {
+    "year": "2022",
+    "session": "JUNE",
+    "folder": "1. Life insurance contracts",
+    "mean_max_similarity": 0.7188572883605957,
+    "n_questions": 8
+  },
+  {
+    "year": "2022",
+    "session": "JUNE",
+    "folder": "10. Reserving",
+    "mean_max_similarity": 0.7109003067016602,
+    "n_questions": 8
+  },
+  {
+    "year": "2022",
+    "session": "JUNE",
+    "folder": "11. Capital requirements",
+    "mean_max_similarity": 0.6749089956283569,
+    "n_questions": 8
+  },
+  {
+    "year": "2022",
+    "session": "JUNE",
+    "folder": "12. Surrender values",
+    "mean_max_similarity": 0.7092510461807251,
+    "n_questions": 8
+  },
+  {
+    "year": "2022",
+    "session": "JUNE",
+    "folder": "13. Alterations",
+    "mean_max_similarity": 0.6891111135482788,
+    "n_questions": 8
+  },
+  {
+    "year": "2022",
+    "session": "JUNE",
+    "folder": "14. Guarantees and options",
+    "mean_max_similarity": 0.7164182662963867,
+    "n_questions": 8
+  },
+  {
+    "year": "2022",
+    "session": "JUNE",
+    "folder": "15. Pricing health & care contracts",
+    "mean_max_similarity": 0.6974742412567139,
+    "n_questions": 8
+  },
+  {
+    "year": "2022",
+    "session": "JUNE",
+    "folder": "16. Reinsurance",
+    "mean_max_similarity": 0.7135588526725769,
+    "n_questions": 8
+  },
+  {
+    "year": "2022",
+    "session": "JUNE",
+    "folder": "17. Underwriting & data checks",
+    "mean_max_similarity": 0.680472731590271,
+    "n_questions": 8
+  },
+  {
+    "year": "2022",
+    "session": "JUNE",
+    "folder": "18. Investments",
+    "mean_max_similarity": 0.6742067337036133,
+    "n_questions": 8
+  },
+  {
+    "year": "2022",
+    "session": "JUNE",
+    "folder": "19. Further risk management",
+    "mean_max_similarity": 0.6874491572380066,
+    "n_questions": 8
+  },
+  {
+    "year": "2022",
+    "session": "JUNE",
+    "folder": "2. Health and care products",
+    "mean_max_similarity": 0.6783120632171631,
+    "n_questions": 8
+  },
+  {
+    "year": "2022",
+    "session": "JUNE",
+    "folder": "20. Monitoring experience",
+    "mean_max_similarity": 0.6845917701721191,
+    "n_questions": 8
+  },
+  {
+    "year": "2022",
+    "session": "JUNE",
+    "folder": "3. Asset shares and profit distribution",
+    "mean_max_similarity": 0.704780101776123,
+    "n_questions": 8
+  },
+  {
+    "year": "2022",
+    "session": "JUNE",
+    "folder": "4. External environment",
+    "mean_max_similarity": 0.7440731525421143,
+    "n_questions": 8
+  },
+  {
+    "year": "2022",
+    "session": "JUNE",
+    "folder": "5. Risks",
+    "mean_max_similarity": 0.6893024444580078,
+    "n_questions": 8
+  },
+  {
+    "year": "2022",
+    "session": "JUNE",
+    "folder": "6. Unit pricing and actuarial funding",
+    "mean_max_similarity": 0.7084790468215942,
+    "n_questions": 8
+  },
+  {
+    "year": "2022",
+    "session": "JUNE",
+    "folder": "7. Modelling",
+    "mean_max_similarity": 0.7448450326919556,
+    "n_questions": 8
+  },
+  {
+    "year": "2022",
+    "session": "JUNE",
+    "folder": "8. Product design",
+    "mean_max_similarity": 0.6863960027694702,
+    "n_questions": 8
+  },
+  {
+    "year": "2022",
+    "session": "JUNE",
+    "folder": "9. Assumptions",
+    "mean_max_similarity": 0.7017682790756226,
+    "n_questions": 8
+  },
+  {
+    "year": "2022",
+    "session": "NOVEMBER",
+    "folder": "1. Life insurance contracts",
+    "mean_max_similarity": 0.718838095664978,
+    "n_questions": 16
+  },
+  {
+    "year": "2022",
+    "session": "NOVEMBER",
+    "folder": "10. Reserving",
+    "mean_max_similarity": 0.7258244752883911,
+    "n_questions": 16
+  },
+  {
+    "year": "2022",
+    "session": "NOVEMBER",
+    "folder": "11. Capital requirements",
+    "mean_max_similarity": 0.6816543340682983,
+    "n_questions": 16
+  },
+  {
+    "year": "2022",
+    "session": "NOVEMBER",
+    "folder": "12. Surrender values",
+    "mean_max_similarity": 0.6990441083908081,
+    "n_questions": 16
+  },
+  {
+    "year": "2022",
+    "session": "NOVEMBER",
+    "folder": "13. Alterations",
+    "mean_max_similarity": 0.687508225440979,
+    "n_questions": 16
+  },
+  {
+    "year": "2022",
+    "session": "NOVEMBER",
+    "folder": "14. Guarantees and options",
+    "mean_max_similarity": 0.710628867149353,
+    "n_questions": 16
+  },
+  {
+    "year": "2022",
+    "session": "NOVEMBER",
+    "folder": "15. Pricing health & care contracts",
+    "mean_max_similarity": 0.6876657009124756,
+    "n_questions": 16
+  },
+  {
+    "year": "2022",
+    "session": "NOVEMBER",
+    "folder": "16. Reinsurance",
+    "mean_max_similarity": 0.7310504913330078,
+    "n_questions": 16
+  },
+  {
+    "year": "2022",
+    "session": "NOVEMBER",
+    "folder": "17. Underwriting & data checks",
+    "mean_max_similarity": 0.6738511323928833,
+    "n_questions": 16
+  },
+  {
+    "year": "2022",
+    "session": "NOVEMBER",
+    "folder": "18. Investments",
+    "mean_max_similarity": 0.6857138276100159,
+    "n_questions": 16
+  },
+  {
+    "year": "2022",
+    "session": "NOVEMBER",
+    "folder": "19. Further risk management",
+    "mean_max_similarity": 0.685664176940918,
+    "n_questions": 16
+  },
+  {
+    "year": "2022",
+    "session": "NOVEMBER",
+    "folder": "2. Health and care products",
+    "mean_max_similarity": 0.6852972507476807,
+    "n_questions": 16
+  },
+  {
+    "year": "2022",
+    "session": "NOVEMBER",
+    "folder": "20. Monitoring experience",
+    "mean_max_similarity": 0.6981365084648132,
+    "n_questions": 16
+  },
+  {
+    "year": "2022",
+    "session": "NOVEMBER",
+    "folder": "3. Asset shares and profit distribution",
+    "mean_max_similarity": 0.7149957418441772,
+    "n_questions": 16
+  },
+  {
+    "year": "2022",
+    "session": "NOVEMBER",
+    "folder": "4. External environment",
+    "mean_max_similarity": 0.7511616945266724,
+    "n_questions": 16
+  },
+  {
+    "year": "2022",
+    "session": "NOVEMBER",
+    "folder": "5. Risks",
+    "mean_max_similarity": 0.7089971303939819,
+    "n_questions": 16
+  },
+  {
+    "year": "2022",
+    "session": "NOVEMBER",
+    "folder": "6. Unit pricing and actuarial funding",
+    "mean_max_similarity": 0.7355788946151733,
+    "n_questions": 16
+  },
+  {
+    "year": "2022",
+    "session": "NOVEMBER",
+    "folder": "7. Modelling",
+    "mean_max_similarity": 0.7486079335212708,
+    "n_questions": 16
+  },
+  {
+    "year": "2022",
+    "session": "NOVEMBER",
+    "folder": "8. Product design",
+    "mean_max_similarity": 0.6990342140197754,
+    "n_questions": 16
+  },
+  {
+    "year": "2022",
+    "session": "NOVEMBER",
+    "folder": "9. Assumptions",
+    "mean_max_similarity": 0.7107895612716675,
+    "n_questions": 16
+  },
+  {
+    "year": "2023",
+    "session": "JUNE",
+    "folder": "1. Life insurance contracts",
+    "mean_max_similarity": 0.7120468616485596,
+    "n_questions": 8
+  },
+  {
+    "year": "2023",
+    "session": "JUNE",
+    "folder": "10. Reserving",
+    "mean_max_similarity": 0.7009047269821167,
+    "n_questions": 8
+  },
+  {
+    "year": "2023",
+    "session": "JUNE",
+    "folder": "11. Capital requirements",
+    "mean_max_similarity": 0.6598098278045654,
+    "n_questions": 8
+  },
+  {
+    "year": "2023",
+    "session": "JUNE",
+    "folder": "12. Surrender values",
+    "mean_max_similarity": 0.6957219839096069,
+    "n_questions": 8
+  },
+  {
+    "year": "2023",
+    "session": "JUNE",
+    "folder": "13. Alterations",
+    "mean_max_similarity": 0.680138111114502,
+    "n_questions": 8
+  },
+  {
+    "year": "2023",
+    "session": "JUNE",
+    "folder": "14. Guarantees and options",
+    "mean_max_similarity": 0.7067174911499023,
+    "n_questions": 8
+  },
+  {
+    "year": "2023",
+    "session": "JUNE",
+    "folder": "15. Pricing health & care contracts",
+    "mean_max_similarity": 0.6957305669784546,
+    "n_questions": 8
+  },
+  {
+    "year": "2023",
+    "session": "JUNE",
+    "folder": "16. Reinsurance",
+    "mean_max_similarity": 0.7042703628540039,
+    "n_questions": 8
+  },
+  {
+    "year": "2023",
+    "session": "JUNE",
+    "folder": "17. Underwriting & data checks",
+    "mean_max_similarity": 0.6869490742683411,
+    "n_questions": 8
+  },
+  {
+    "year": "2023",
+    "session": "JUNE",
+    "folder": "18. Investments",
+    "mean_max_similarity": 0.6728482246398926,
+    "n_questions": 8
+  },
+  {
+    "year": "2023",
+    "session": "JUNE",
+    "folder": "19. Further risk management",
+    "mean_max_similarity": 0.6778407096862793,
+    "n_questions": 8
+  },
+  {
+    "year": "2023",
+    "session": "JUNE",
+    "folder": "2. Health and care products",
+    "mean_max_similarity": 0.6955024003982544,
+    "n_questions": 8
+  },
+  {
+    "year": "2023",
+    "session": "JUNE",
+    "folder": "20. Monitoring experience",
+    "mean_max_similarity": 0.6815535426139832,
+    "n_questions": 8
+  },
+  {
+    "year": "2023",
+    "session": "JUNE",
+    "folder": "3. Asset shares and profit distribution",
+    "mean_max_similarity": 0.7107416391372681,
+    "n_questions": 8
+  },
+  {
+    "year": "2023",
+    "session": "JUNE",
+    "folder": "4. External environment",
+    "mean_max_similarity": 0.7393794059753418,
+    "n_questions": 8
+  },
+  {
+    "year": "2023",
+    "session": "JUNE",
+    "folder": "5. Risks",
+    "mean_max_similarity": 0.696764349937439,
+    "n_questions": 8
+  },
+  {
+    "year": "2023",
+    "session": "JUNE",
+    "folder": "6. Unit pricing and actuarial funding",
+    "mean_max_similarity": 0.7175791263580322,
+    "n_questions": 8
+  },
+  {
+    "year": "2023",
+    "session": "JUNE",
+    "folder": "7. Modelling",
+    "mean_max_similarity": 0.728203296661377,
+    "n_questions": 8
+  },
+  {
+    "year": "2023",
+    "session": "JUNE",
+    "folder": "8. Product design",
+    "mean_max_similarity": 0.6882296800613403,
+    "n_questions": 8
+  },
+  {
+    "year": "2023",
+    "session": "JUNE",
+    "folder": "9. Assumptions",
+    "mean_max_similarity": 0.7119661569595337,
+    "n_questions": 8
+  },
+  {
+    "year": "2023",
+    "session": "NOVEMBER",
+    "folder": "1. Life insurance contracts",
+    "mean_max_similarity": 0.6973623037338257,
+    "n_questions": 16
+  },
+  {
+    "year": "2023",
+    "session": "NOVEMBER",
+    "folder": "10. Reserving",
+    "mean_max_similarity": 0.6907087564468384,
+    "n_questions": 16
+  },
+  {
+    "year": "2023",
+    "session": "NOVEMBER",
+    "folder": "11. Capital requirements",
+    "mean_max_similarity": 0.6548875570297241,
+    "n_questions": 16
+  },
+  {
+    "year": "2023",
+    "session": "NOVEMBER",
+    "folder": "12. Surrender values",
+    "mean_max_similarity": 0.6901467442512512,
+    "n_questions": 16
+  },
+  {
+    "year": "2023",
+    "session": "NOVEMBER",
+    "folder": "13. Alterations",
+    "mean_max_similarity": 0.6793094873428345,
+    "n_questions": 16
+  },
+  {
+    "year": "2023",
+    "session": "NOVEMBER",
+    "folder": "14. Guarantees and options",
+    "mean_max_similarity": 0.6926664710044861,
+    "n_questions": 16
+  },
+  {
+    "year": "2023",
+    "session": "NOVEMBER",
+    "folder": "15. Pricing health & care contracts",
+    "mean_max_similarity": 0.6711496114730835,
+    "n_questions": 16
+  },
+  {
+    "year": "2023",
+    "session": "NOVEMBER",
+    "folder": "16. Reinsurance",
+    "mean_max_similarity": 0.6873133778572083,
+    "n_questions": 16
+  },
+  {
+    "year": "2023",
+    "session": "NOVEMBER",
+    "folder": "17. Underwriting & data checks",
+    "mean_max_similarity": 0.6732397675514221,
+    "n_questions": 16
+  },
+  {
+    "year": "2023",
+    "session": "NOVEMBER",
+    "folder": "18. Investments",
+    "mean_max_similarity": 0.6656835079193115,
+    "n_questions": 16
+  },
+  {
+    "year": "2023",
+    "session": "NOVEMBER",
+    "folder": "19. Further risk management",
+    "mean_max_similarity": 0.6849112510681152,
+    "n_questions": 16
+  },
+  {
+    "year": "2023",
+    "session": "NOVEMBER",
+    "folder": "2. Health and care products",
+    "mean_max_similarity": 0.6703803539276123,
+    "n_questions": 16
+  },
+  {
+    "year": "2023",
+    "session": "NOVEMBER",
+    "folder": "20. Monitoring experience",
+    "mean_max_similarity": 0.6754785776138306,
+    "n_questions": 16
+  },
+  {
+    "year": "2023",
+    "session": "NOVEMBER",
+    "folder": "3. Asset shares and profit distribution",
+    "mean_max_similarity": 0.7004411220550537,
+    "n_questions": 16
+  },
+  {
+    "year": "2023",
+    "session": "NOVEMBER",
+    "folder": "4. External environment",
+    "mean_max_similarity": 0.7360658645629883,
+    "n_questions": 16
+  },
+  {
+    "year": "2023",
+    "session": "NOVEMBER",
+    "folder": "5. Risks",
+    "mean_max_similarity": 0.6878470778465271,
+    "n_questions": 16
+  },
+  {
+    "year": "2023",
+    "session": "NOVEMBER",
+    "folder": "6. Unit pricing and actuarial funding",
+    "mean_max_similarity": 0.691541850566864,
+    "n_questions": 16
+  },
+  {
+    "year": "2023",
+    "session": "NOVEMBER",
+    "folder": "7. Modelling",
+    "mean_max_similarity": 0.71463543176651,
+    "n_questions": 16
+  },
+  {
+    "year": "2023",
+    "session": "NOVEMBER",
+    "folder": "8. Product design",
+    "mean_max_similarity": 0.6847537159919739,
+    "n_questions": 16
+  },
+  {
+    "year": "2023",
+    "session": "NOVEMBER",
+    "folder": "9. Assumptions",
+    "mean_max_similarity": 0.6866132020950317,
+    "n_questions": 16
+  },
+  {
+    "year": "2024",
+    "session": "JUNE",
+    "folder": "1. Life insurance contracts",
+    "mean_max_similarity": 0.7028302550315857,
+    "n_questions": 8
+  },
+  {
+    "year": "2024",
+    "session": "JUNE",
+    "folder": "10. Reserving",
+    "mean_max_similarity": 0.7081015706062317,
+    "n_questions": 8
+  },
+  {
+    "year": "2024",
+    "session": "JUNE",
+    "folder": "11. Capital requirements",
+    "mean_max_similarity": 0.6662953495979309,
+    "n_questions": 8
+  },
+  {
+    "year": "2024",
+    "session": "JUNE",
+    "folder": "12. Surrender values",
+    "mean_max_similarity": 0.7014105916023254,
+    "n_questions": 8
+  },
+  {
+    "year": "2024",
+    "session": "JUNE",
+    "folder": "13. Alterations",
+    "mean_max_similarity": 0.6811922192573547,
+    "n_questions": 8
+  },
+  {
+    "year": "2024",
+    "session": "JUNE",
+    "folder": "14. Guarantees and options",
+    "mean_max_similarity": 0.7062020301818848,
+    "n_questions": 8
+  },
+  {
+    "year": "2024",
+    "session": "JUNE",
+    "folder": "15. Pricing health & care contracts",
+    "mean_max_similarity": 0.6826007962226868,
+    "n_questions": 8
+  },
+  {
+    "year": "2024",
+    "session": "JUNE",
+    "folder": "16. Reinsurance",
+    "mean_max_similarity": 0.7091601490974426,
+    "n_questions": 8
+  },
+  {
+    "year": "2024",
+    "session": "JUNE",
+    "folder": "17. Underwriting & data checks",
+    "mean_max_similarity": 0.6689481735229492,
+    "n_questions": 8
+  },
+  {
+    "year": "2024",
+    "session": "JUNE",
+    "folder": "18. Investments",
+    "mean_max_similarity": 0.6876132488250732,
+    "n_questions": 8
+  },
+  {
+    "year": "2024",
+    "session": "JUNE",
+    "folder": "19. Further risk management",
+    "mean_max_similarity": 0.6724528074264526,
+    "n_questions": 8
+  },
+  {
+    "year": "2024",
+    "session": "JUNE",
+    "folder": "2. Health and care products",
+    "mean_max_similarity": 0.6813843250274658,
+    "n_questions": 8
+  },
+  {
+    "year": "2024",
+    "session": "JUNE",
+    "folder": "20. Monitoring experience",
+    "mean_max_similarity": 0.6885207891464233,
+    "n_questions": 8
+  },
+  {
+    "year": "2024",
+    "session": "JUNE",
+    "folder": "3. Asset shares and profit distribution",
+    "mean_max_similarity": 0.7143237590789795,
+    "n_questions": 8
+  },
+  {
+    "year": "2024",
+    "session": "JUNE",
+    "folder": "4. External environment",
+    "mean_max_similarity": 0.733925461769104,
+    "n_questions": 8
+  },
+  {
+    "year": "2024",
+    "session": "JUNE",
+    "folder": "5. Risks",
+    "mean_max_similarity": 0.6888123750686646,
+    "n_questions": 8
+  },
+  {
+    "year": "2024",
+    "session": "JUNE",
+    "folder": "6. Unit pricing and actuarial funding",
+    "mean_max_similarity": 0.717911422252655,
+    "n_questions": 8
+  },
+  {
+    "year": "2024",
+    "session": "JUNE",
+    "folder": "7. Modelling",
+    "mean_max_similarity": 0.7284533977508545,
+    "n_questions": 8
+  },
+  {
+    "year": "2024",
+    "session": "JUNE",
+    "folder": "8. Product design",
+    "mean_max_similarity": 0.6912347078323364,
+    "n_questions": 8
+  },
+  {
+    "year": "2024",
+    "session": "JUNE",
+    "folder": "9. Assumptions",
+    "mean_max_similarity": 0.7162865996360779,
+    "n_questions": 8
+  },
+  {
+    "year": "2024",
+    "session": "NOVEMBER",
+    "folder": "1. Life insurance contracts",
+    "mean_max_similarity": 0.7077569365501404,
+    "n_questions": 16
+  },
+  {
+    "year": "2024",
+    "session": "NOVEMBER",
+    "folder": "10. Reserving",
+    "mean_max_similarity": 0.716202974319458,
+    "n_questions": 16
+  },
+  {
+    "year": "2024",
+    "session": "NOVEMBER",
+    "folder": "11. Capital requirements",
+    "mean_max_similarity": 0.6774482131004333,
+    "n_questions": 16
+  },
+  {
+    "year": "2024",
+    "session": "NOVEMBER",
+    "folder": "12. Surrender values",
+    "mean_max_similarity": 0.7146403789520264,
+    "n_questions": 16
+  },
+  {
+    "year": "2024",
+    "session": "NOVEMBER",
+    "folder": "13. Alterations",
+    "mean_max_similarity": 0.699357271194458,
+    "n_questions": 16
+  },
+  {
+    "year": "2024",
+    "session": "NOVEMBER",
+    "folder": "14. Guarantees and options",
+    "mean_max_similarity": 0.7108426690101624,
+    "n_questions": 16
+  },
+  {
+    "year": "2024",
+    "session": "NOVEMBER",
+    "folder": "15. Pricing health & care contracts",
+    "mean_max_similarity": 0.6895557641983032,
+    "n_questions": 16
+  },
+  {
+    "year": "2024",
+    "session": "NOVEMBER",
+    "folder": "16. Reinsurance",
+    "mean_max_similarity": 0.7105383276939392,
+    "n_questions": 16
+  },
+  {
+    "year": "2024",
+    "session": "NOVEMBER",
+    "folder": "17. Underwriting & data checks",
+    "mean_max_similarity": 0.6687230467796326,
+    "n_questions": 16
+  },
+  {
+    "year": "2024",
+    "session": "NOVEMBER",
+    "folder": "18. Investments",
+    "mean_max_similarity": 0.6913725733757019,
+    "n_questions": 16
+  },
+  {
+    "year": "2024",
+    "session": "NOVEMBER",
+    "folder": "19. Further risk management",
+    "mean_max_similarity": 0.6823759078979492,
+    "n_questions": 16
+  },
+  {
+    "year": "2024",
+    "session": "NOVEMBER",
+    "folder": "2. Health and care products",
+    "mean_max_similarity": 0.6763269305229187,
+    "n_questions": 16
+  },
+  {
+    "year": "2024",
+    "session": "NOVEMBER",
+    "folder": "20. Monitoring experience",
+    "mean_max_similarity": 0.7041308879852295,
+    "n_questions": 16
+  },
+  {
+    "year": "2024",
+    "session": "NOVEMBER",
+    "folder": "3. Asset shares and profit distribution",
+    "mean_max_similarity": 0.7216123342514038,
+    "n_questions": 16
+  },
+  {
+    "year": "2024",
+    "session": "NOVEMBER",
+    "folder": "4. External environment",
+    "mean_max_similarity": 0.7359158396720886,
+    "n_questions": 16
+  },
+  {
+    "year": "2024",
+    "session": "NOVEMBER",
+    "folder": "5. Risks",
+    "mean_max_similarity": 0.6909677982330322,
+    "n_questions": 16
+  },
+  {
+    "year": "2024",
+    "session": "NOVEMBER",
+    "folder": "6. Unit pricing and actuarial funding",
+    "mean_max_similarity": 0.7272955775260925,
+    "n_questions": 16
+  },
+  {
+    "year": "2024",
+    "session": "NOVEMBER",
+    "folder": "7. Modelling",
+    "mean_max_similarity": 0.7390395402908325,
+    "n_questions": 16
+  },
+  {
+    "year": "2024",
+    "session": "NOVEMBER",
+    "folder": "8. Product design",
+    "mean_max_similarity": 0.6886560916900635,
+    "n_questions": 16
+  },
+  {
+    "year": "2024",
+    "session": "NOVEMBER",
+    "folder": "9. Assumptions",
+    "mean_max_similarity": 0.708706259727478,
+    "n_questions": 16
+  },
+  {
+    "year": "2025",
+    "session": "JUNE",
+    "folder": "1. Life insurance contracts",
+    "mean_max_similarity": 0.741789698600769,
+    "n_questions": 8
+  },
+  {
+    "year": "2025",
+    "session": "JUNE",
+    "folder": "10. Reserving",
+    "mean_max_similarity": 0.7085028886795044,
+    "n_questions": 8
+  },
+  {
+    "year": "2025",
+    "session": "JUNE",
+    "folder": "11. Capital requirements",
+    "mean_max_similarity": 0.6768536567687988,
+    "n_questions": 8
+  },
+  {
+    "year": "2025",
+    "session": "JUNE",
+    "folder": "12. Surrender values",
+    "mean_max_similarity": 0.7130820751190186,
+    "n_questions": 8
+  },
+  {
+    "year": "2025",
+    "session": "JUNE",
+    "folder": "13. Alterations",
+    "mean_max_similarity": 0.7010927796363831,
+    "n_questions": 8
+  },
+  {
+    "year": "2025",
+    "session": "JUNE",
+    "folder": "14. Guarantees and options",
+    "mean_max_similarity": 0.7339187860488892,
+    "n_questions": 8
+  },
+  {
+    "year": "2025",
+    "session": "JUNE",
+    "folder": "15. Pricing health & care contracts",
+    "mean_max_similarity": 0.7181676626205444,
+    "n_questions": 8
+  },
+  {
+    "year": "2025",
+    "session": "JUNE",
+    "folder": "16. Reinsurance",
+    "mean_max_similarity": 0.7215226888656616,
+    "n_questions": 8
+  },
+  {
+    "year": "2025",
+    "session": "JUNE",
+    "folder": "17. Underwriting & data checks",
+    "mean_max_similarity": 0.702332615852356,
+    "n_questions": 8
+  },
+  {
+    "year": "2025",
+    "session": "JUNE",
+    "folder": "18. Investments",
+    "mean_max_similarity": 0.679920494556427,
+    "n_questions": 8
+  },
+  {
+    "year": "2025",
+    "session": "JUNE",
+    "folder": "19. Further risk management",
+    "mean_max_similarity": 0.6888213157653809,
+    "n_questions": 8
+  },
+  {
+    "year": "2025",
+    "session": "JUNE",
+    "folder": "2. Health and care products",
+    "mean_max_similarity": 0.7005343437194824,
+    "n_questions": 8
+  },
+  {
+    "year": "2025",
+    "session": "JUNE",
+    "folder": "20. Monitoring experience",
+    "mean_max_similarity": 0.6860154867172241,
+    "n_questions": 8
+  },
+  {
+    "year": "2025",
+    "session": "JUNE",
+    "folder": "3. Asset shares and profit distribution",
+    "mean_max_similarity": 0.7195520997047424,
+    "n_questions": 8
+  },
+  {
+    "year": "2025",
+    "session": "JUNE",
+    "folder": "4. External environment",
+    "mean_max_similarity": 0.7360861301422119,
+    "n_questions": 8
+  },
+  {
+    "year": "2025",
+    "session": "JUNE",
+    "folder": "5. Risks",
+    "mean_max_similarity": 0.7108911275863647,
+    "n_questions": 8
+  },
+  {
+    "year": "2025",
+    "session": "JUNE",
+    "folder": "6. Unit pricing and actuarial funding",
+    "mean_max_similarity": 0.7160558700561523,
+    "n_questions": 8
+  },
+  {
+    "year": "2025",
+    "session": "JUNE",
+    "folder": "7. Modelling",
+    "mean_max_similarity": 0.7495282888412476,
+    "n_questions": 8
+  },
+  {
+    "year": "2025",
+    "session": "JUNE",
+    "folder": "8. Product design",
+    "mean_max_similarity": 0.702210545539856,
+    "n_questions": 8
+  },
+  {
+    "year": "2025",
+    "session": "JUNE",
+    "folder": "9. Assumptions",
+    "mean_max_similarity": 0.705795168876648,
+    "n_questions": 8
+  },
+  {
+    "year": "2025",
+    "session": "NOVEMBER",
+    "folder": "1. Life insurance contracts",
+    "mean_max_similarity": 0.7212377190589905,
+    "n_questions": 8
+  },
+  {
+    "year": "2025",
+    "session": "NOVEMBER",
+    "folder": "10. Reserving",
+    "mean_max_similarity": 0.7066363096237183,
+    "n_questions": 8
+  },
+  {
+    "year": "2025",
+    "session": "NOVEMBER",
+    "folder": "11. Capital requirements",
+    "mean_max_similarity": 0.6650559306144714,
+    "n_questions": 8
+  },
+  {
+    "year": "2025",
+    "session": "NOVEMBER",
+    "folder": "12. Surrender values",
+    "mean_max_similarity": 0.7105610370635986,
+    "n_questions": 8
+  },
+  {
+    "year": "2025",
+    "session": "NOVEMBER",
+    "folder": "13. Alterations",
+    "mean_max_similarity": 0.6925650835037231,
+    "n_questions": 8
+  },
+  {
+    "year": "2025",
+    "session": "NOVEMBER",
+    "folder": "14. Guarantees and options",
+    "mean_max_similarity": 0.7093243598937988,
+    "n_questions": 8
+  },
+  {
+    "year": "2025",
+    "session": "NOVEMBER",
+    "folder": "15. Pricing health & care contracts",
+    "mean_max_similarity": 0.6938880681991577,
+    "n_questions": 8
+  },
+  {
+    "year": "2025",
+    "session": "NOVEMBER",
+    "folder": "16. Reinsurance",
+    "mean_max_similarity": 0.7156575918197632,
+    "n_questions": 8
+  },
+  {
+    "year": "2025",
+    "session": "NOVEMBER",
+    "folder": "17. Underwriting & data checks",
+    "mean_max_similarity": 0.6835625171661377,
+    "n_questions": 8
+  },
+  {
+    "year": "2025",
+    "session": "NOVEMBER",
+    "folder": "18. Investments",
+    "mean_max_similarity": 0.6889696717262268,
+    "n_questions": 8
+  },
+  {
+    "year": "2025",
+    "session": "NOVEMBER",
+    "folder": "19. Further risk management",
+    "mean_max_similarity": 0.6934524178504944,
+    "n_questions": 8
+  },
+  {
+    "year": "2025",
+    "session": "NOVEMBER",
+    "folder": "2. Health and care products",
+    "mean_max_similarity": 0.6893789768218994,
+    "n_questions": 8
+  },
+  {
+    "year": "2025",
+    "session": "NOVEMBER",
+    "folder": "20. Monitoring experience",
+    "mean_max_similarity": 0.6847261190414429,
+    "n_questions": 8
+  },
+  {
+    "year": "2025",
+    "session": "NOVEMBER",
+    "folder": "3. Asset shares and profit distribution",
+    "mean_max_similarity": 0.7255258560180664,
+    "n_questions": 8
+  },
+  {
+    "year": "2025",
+    "session": "NOVEMBER",
+    "folder": "4. External environment",
+    "mean_max_similarity": 0.7417470216751099,
+    "n_questions": 8
+  },
+  {
+    "year": "2025",
+    "session": "NOVEMBER",
+    "folder": "5. Risks",
+    "mean_max_similarity": 0.6939759254455566,
+    "n_questions": 8
+  },
+  {
+    "year": "2025",
+    "session": "NOVEMBER",
+    "folder": "6. Unit pricing and actuarial funding",
+    "mean_max_similarity": 0.7247720956802368,
+    "n_questions": 8
+  },
+  {
+    "year": "2025",
+    "session": "NOVEMBER",
+    "folder": "7. Modelling",
+    "mean_max_similarity": 0.7407619953155518,
+    "n_questions": 8
+  },
+  {
+    "year": "2025",
+    "session": "NOVEMBER",
+    "folder": "8. Product design",
+    "mean_max_similarity": 0.6965043544769287,
+    "n_questions": 8
+  },
+  {
+    "year": "2025",
+    "session": "NOVEMBER",
+    "folder": "9. Assumptions",
+    "mean_max_similarity": 0.6998583078384399,
+    "n_questions": 8
+  }
+]

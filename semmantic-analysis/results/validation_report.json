@@ -1,0 +1,9 @@
+{
+  "n_tagged_questions": 149,
+  "n_matchable": 149,
+  "top1_correct": 88,
+  "top3_correct": 126,
+  "top1_accuracy": 0.5906040268456376,
+  "top3_accuracy": 0.8456375838926175,
+  "note": "A top-1 accuracy above ~50% on actuarial text with a general-purpose model is considered reasonable. Top-3 > 70% means the embeddings are working well."
+}

@@ -1,0 +1,601 @@
+folder,year,session,mean_max_similarity,n_questions
+1. Life insurance contracts,2010,NOVEMBER,0.6986,6
+1. Life insurance contracts,2011,NOVEMBER,0.7290,7
+1. Life insurance contracts,2012,JUNE,0.7237,8
+1. Life insurance contracts,2012,NOVEMBER,0.7245,7
+1. Life insurance contracts,2013,JUNE,0.7128,8
+1. Life insurance contracts,2013,NOVEMBER,0.7086,8
+1. Life insurance contracts,2014,JUNE,0.7039,7
+1. Life insurance contracts,2014,NOVEMBER,0.7206,14
+1. Life insurance contracts,2015,JUNE,0.7134,8
+1. Life insurance contracts,2015,NOVEMBER,0.7160,14
+1. Life insurance contracts,2016,JUNE,0.7091,8
+1. Life insurance contracts,2016,NOVEMBER,0.7168,8
+1. Life insurance contracts,2017,JUNE,0.7245,8
+1. Life insurance contracts,2017,NOVEMBER,0.7075,7
+1. Life insurance contracts,2018,JUNE,0.7286,7
+1. Life insurance contracts,2018,NOVEMBER,0.7141,8
+1. Life insurance contracts,2019,JUNE,0.7310,8
+1. Life insurance contracts,2019,NOVEMBER,0.7210,8
+1. Life insurance contracts,2020,JUNE,0.7128,8
+1. Life insurance contracts,2020,NOVEMBER,0.7236,16
+1. Life insurance contracts,2021,JUNE,0.7184,8
+1. Life insurance contracts,2021,NOVEMBER,0.7122,12
+1. Life insurance contracts,2022,JUNE,0.7189,8
+1. Life insurance contracts,2022,NOVEMBER,0.7188,16
+1. Life insurance contracts,2023,JUNE,0.7120,8
+1. Life insurance contracts,2023,NOVEMBER,0.6974,16
+1. Life insurance contracts,2024,JUNE,0.7028,8
+1. Life insurance contracts,2024,NOVEMBER,0.7078,16
+1. Life insurance contracts,2025,JUNE,0.7418,8
+1. Life insurance contracts,2025,NOVEMBER,0.7212,8
+10. Reserving,2010,NOVEMBER,0.7134,6
+10. Reserving,2011,NOVEMBER,0.7092,7
+10. Reserving,2012,JUNE,0.7119,8
+10. Reserving,2012,NOVEMBER,0.7241,7
+10. Reserving,2013,JUNE,0.7163,8
+10. Reserving,2013,NOVEMBER,0.7183,8
+10. Reserving,2014,JUNE,0.7089,7
+10. Reserving,2014,NOVEMBER,0.6989,14
+10. Reserving,2015,JUNE,0.7147,8
+10. Reserving,2015,NOVEMBER,0.7172,14
+10. Reserving,2016,JUNE,0.6968,8
+10. Reserving,2016,NOVEMBER,0.7105,8
+10. Reserving,2017,JUNE,0.7049,8
+10. Reserving,2017,NOVEMBER,0.7079,7
+10. Reserving,2018,JUNE,0.7195,7
+10. Reserving,2018,NOVEMBER,0.7134,8
+10. Reserving,2019,JUNE,0.7084,8
+10. Reserving,2019,NOVEMBER,0.7094,8
+10. Reserving,2020,JUNE,0.6948,8
+10. Reserving,2020,NOVEMBER,0.7066,16
+10. Reserving,2021,JUNE,0.7145,8
+10. Reserving,2021,NOVEMBER,0.7024,12
+10. Reserving,2022,JUNE,0.7109,8
+10. Reserving,2022,NOVEMBER,0.7258,16
+10. Reserving,2023,JUNE,0.7009,8
+10. Reserving,2023,NOVEMBER,0.6907,16
+10. Reserving,2024,JUNE,0.7081,8
+10. Reserving,2024,NOVEMBER,0.7162,16
+10. Reserving,2025,JUNE,0.7085,8
+10. Reserving,2025,NOVEMBER,0.7066,8
+11. Capital requirements,2010,NOVEMBER,0.6719,6
+11. Capital requirements,2011,NOVEMBER,0.6682,7
+11. Capital requirements,2012,JUNE,0.6761,8
+11. Capital requirements,2012,NOVEMBER,0.6814,7
+11. Capital requirements,2013,JUNE,0.6753,8
+11. Capital requirements,2013,NOVEMBER,0.6713,8
+11. Capital requirements,2014,JUNE,0.6712,7
+11. Capital requirements,2014,NOVEMBER,0.6586,14
+11. Capital requirements,2015,JUNE,0.6742,8
+11. Capital requirements,2015,NOVEMBER,0.6624,14
+11. Capital requirements,2016,JUNE,0.6612,8
+11. Capital requirements,2016,NOVEMBER,0.6660,8
+11. Capital requirements,2017,JUNE,0.6679,8
+11. Capital requirements,2017,NOVEMBER,0.6656,7
+11. Capital requirements,2018,JUNE,0.6746,7
+11. Capital requirements,2018,NOVEMBER,0.6769,8
+11. Capital requirements,2019,JUNE,0.6716,8
+11. Capital requirements,2019,NOVEMBER,0.6726,8
+11. Capital requirements,2020,JUNE,0.6558,8
+11. Capital requirements,2020,NOVEMBER,0.6691,16
+11. Capital requirements,2021,JUNE,0.6645,8
+11. Capital requirements,2021,NOVEMBER,0.6691,12
+11. Capital requirements,2022,JUNE,0.6749,8
+11. Capital requirements,2022,NOVEMBER,0.6817,16
+11. Capital requirements,2023,JUNE,0.6598,8
+11. Capital requirements,2023,NOVEMBER,0.6549,16
+11. Capital requirements,2024,JUNE,0.6663,8
+11. Capital requirements,2024,NOVEMBER,0.6774,16
+11. Capital requirements,2025,JUNE,0.6769,8
+11. Capital requirements,2025,NOVEMBER,0.6651,8
+12. Surrender values,2010,NOVEMBER,0.7226,6
+12. Surrender values,2011,NOVEMBER,0.7161,7
+12. Surrender values,2012,JUNE,0.7092,8
+12. Surrender values,2012,NOVEMBER,0.7169,7
+12. Surrender values,2013,JUNE,0.7209,8
+12. Surrender values,2013,NOVEMBER,0.6976,8
+12. Surrender values,2014,JUNE,0.6895,7
+12. Surrender values,2014,NOVEMBER,0.6990,14
+12. Surrender values,2015,JUNE,0.7207,8
+12. Surrender values,2015,NOVEMBER,0.7202,14
+12. Surrender values,2016,JUNE,0.6886,8
+12. Surrender values,2016,NOVEMBER,0.7006,8
+12. Surrender values,2017,JUNE,0.7019,8
+12. Surrender values,2017,NOVEMBER,0.7005,7
+12. Surrender values,2018,JUNE,0.7050,7
+12. Surrender values,2018,NOVEMBER,0.6999,8
+12. Surrender values,2019,JUNE,0.7123,8
+12. Surrender values,2019,NOVEMBER,0.7014,8
+12. Surrender values,2020,JUNE,0.6946,8
+12. Surrender values,2020,NOVEMBER,0.6949,16
+12. Surrender values,2021,JUNE,0.7211,8
+12. Surrender values,2021,NOVEMBER,0.6917,12
+12. Surrender values,2022,JUNE,0.7093,8
+12. Surrender values,2022,NOVEMBER,0.6990,16
+12. Surrender values,2023,JUNE,0.6957,8
+12. Surrender values,2023,NOVEMBER,0.6901,16
+12. Surrender values,2024,JUNE,0.7014,8
+12. Surrender values,2024,NOVEMBER,0.7146,16
+12. Surrender values,2025,JUNE,0.7131,8
+12. Surrender values,2025,NOVEMBER,0.7106,8
+13. Alterations,2010,NOVEMBER,0.6852,6
+13. Alterations,2011,NOVEMBER,0.6905,7
+13. Alterations,2012,JUNE,0.6956,8
+13. Alterations,2012,NOVEMBER,0.6939,7
+13. Alterations,2013,JUNE,0.6968,8
+13. Alterations,2013,NOVEMBER,0.6891,8
+13. Alterations,2014,JUNE,0.6849,7
+13. Alterations,2014,NOVEMBER,0.6996,14
+13. Alterations,2015,JUNE,0.6868,8
+13. Alterations,2015,NOVEMBER,0.6881,14
+13. Alterations,2016,JUNE,0.6822,8
+13. Alterations,2016,NOVEMBER,0.6753,8
+13. Alterations,2017,JUNE,0.6933,8
+13. Alterations,2017,NOVEMBER,0.6838,7
+13. Alterations,2018,JUNE,0.6984,7
+13. Alterations,2018,NOVEMBER,0.6827,8
+13. Alterations,2019,JUNE,0.6929,8
+13. Alterations,2019,NOVEMBER,0.6784,8
+13. Alterations,2020,JUNE,0.6837,8
+13. Alterations,2020,NOVEMBER,0.6905,16
+13. Alterations,2021,JUNE,0.6963,8
+13. Alterations,2021,NOVEMBER,0.6824,12
+13. Alterations,2022,JUNE,0.6891,8
+13. Alterations,2022,NOVEMBER,0.6875,16
+13. Alterations,2023,JUNE,0.6801,8
+13. Alterations,2023,NOVEMBER,0.6793,16
+13. Alterations,2024,JUNE,0.6812,8
+13. Alterations,2024,NOVEMBER,0.6994,16
+13. Alterations,2025,JUNE,0.7011,8
+13. Alterations,2025,NOVEMBER,0.6926,8
+14. Guarantees and options,2010,NOVEMBER,0.7139,6
+14. Guarantees and options,2011,NOVEMBER,0.7121,7
+14. Guarantees and options,2012,JUNE,0.7239,8
+14. Guarantees and options,2012,NOVEMBER,0.7226,7
+14. Guarantees and options,2013,JUNE,0.7118,8
+14. Guarantees and options,2013,NOVEMBER,0.7134,8
+14. Guarantees and options,2014,JUNE,0.7053,7
+14. Guarantees and options,2014,NOVEMBER,0.7162,14
+14. Guarantees and options,2015,JUNE,0.7129,8
+14. Guarantees and options,2015,NOVEMBER,0.7090,14
+14. Guarantees and options,2016,JUNE,0.6970,8
+14. Guarantees and options,2016,NOVEMBER,0.7075,8
+14. Guarantees and options,2017,JUNE,0.7239,8
+14. Guarantees and options,2017,NOVEMBER,0.7095,7
+14. Guarantees and options,2018,JUNE,0.7249,7
+14. Guarantees and options,2018,NOVEMBER,0.7203,8
+14. Guarantees and options,2019,JUNE,0.7229,8
+14. Guarantees and options,2019,NOVEMBER,0.7093,8
+14. Guarantees and options,2020,JUNE,0.6978,8
+14. Guarantees and options,2020,NOVEMBER,0.7054,16
+14. Guarantees and options,2021,JUNE,0.7235,8
+14. Guarantees and options,2021,NOVEMBER,0.7119,12
+14. Guarantees and options,2022,JUNE,0.7164,8
+14. Guarantees and options,2022,NOVEMBER,0.7106,16
+14. Guarantees and options,2023,JUNE,0.7067,8
+14. Guarantees and options,2023,NOVEMBER,0.6927,16
+14. Guarantees and options,2024,JUNE,0.7062,8
+14. Guarantees and options,2024,NOVEMBER,0.7108,16
+14. Guarantees and options,2025,JUNE,0.7339,8
+14. Guarantees and options,2025,NOVEMBER,0.7093,8
+15. Pricing health & care contracts,2010,NOVEMBER,0.6854,6
+15. Pricing health & care contracts,2011,NOVEMBER,0.6820,7
+15. Pricing health & care contracts,2012,JUNE,0.7028,8
+15. Pricing health & care contracts,2012,NOVEMBER,0.6959,7
+15. Pricing health & care contracts,2013,JUNE,0.6919,8
+15. Pricing health & care contracts,2013,NOVEMBER,0.6877,8
+15. Pricing health & care contracts,2014,JUNE,0.6894,7
+15. Pricing health & care contracts,2014,NOVEMBER,0.7080,14
+15. Pricing health & care contracts,2015,JUNE,0.7004,8
+15. Pricing health & care contracts,2015,NOVEMBER,0.6960,14
+15. Pricing health & care contracts,2016,JUNE,0.7151,8
+15. Pricing health & care contracts,2016,NOVEMBER,0.6887,8
+15. Pricing health & care contracts,2017,JUNE,0.7006,8
+15. Pricing health & care contracts,2017,NOVEMBER,0.7006,7
+15. Pricing health & care contracts,2018,JUNE,0.7032,7
+15. Pricing health & care contracts,2018,NOVEMBER,0.7048,8
+15. Pricing health & care contracts,2019,JUNE,0.6987,8
+15. Pricing health & care contracts,2019,NOVEMBER,0.6817,8
+15. Pricing health & care contracts,2020,JUNE,0.7008,8
+15. Pricing health & care contracts,2020,NOVEMBER,0.6983,16
+15. Pricing health & care contracts,2021,JUNE,0.6978,8
+15. Pricing health & care contracts,2021,NOVEMBER,0.6977,12
+15. Pricing health & care contracts,2022,JUNE,0.6975,8
+15. Pricing health & care contracts,2022,NOVEMBER,0.6877,16
+15. Pricing health & care contracts,2023,JUNE,0.6957,8
+15. Pricing health & care contracts,2023,NOVEMBER,0.6711,16
+15. Pricing health & care contracts,2024,JUNE,0.6826,8
+15. Pricing health & care contracts,2024,NOVEMBER,0.6896,16
+15. Pricing health & care contracts,2025,JUNE,0.7182,8
+15. Pricing health & care contracts,2025,NOVEMBER,0.6939,8
+16. Reinsurance,2010,NOVEMBER,0.7201,6
+16. Reinsurance,2011,NOVEMBER,0.7274,7
+16. Reinsurance,2012,JUNE,0.7233,8
+16. Reinsurance,2012,NOVEMBER,0.7324,7
+16. Reinsurance,2013,JUNE,0.7101,8
+16. Reinsurance,2013,NOVEMBER,0.7236,8
+16. Reinsurance,2014,JUNE,0.7105,7
+16. Reinsurance,2014,NOVEMBER,0.7018,14
+16. Reinsurance,2015,JUNE,0.7185,8
+16. Reinsurance,2015,NOVEMBER,0.7188,14
+16. Reinsurance,2016,JUNE,0.7025,8
+16. Reinsurance,2016,NOVEMBER,0.7177,8
+16. Reinsurance,2017,JUNE,0.7121,8
+16. Reinsurance,2017,NOVEMBER,0.7087,7
+16. Reinsurance,2018,JUNE,0.7441,7
+16. Reinsurance,2018,NOVEMBER,0.7146,8
+16. Reinsurance,2019,JUNE,0.7181,8
+16. Reinsurance,2019,NOVEMBER,0.7076,8
+16. Reinsurance,2020,JUNE,0.6989,8
+16. Reinsurance,2020,NOVEMBER,0.7053,16
+16. Reinsurance,2021,JUNE,0.7133,8
+16. Reinsurance,2021,NOVEMBER,0.7047,12
+16. Reinsurance,2022,JUNE,0.7136,8
+16. Reinsurance,2022,NOVEMBER,0.7311,16
+16. Reinsurance,2023,JUNE,0.7043,8
+16. Reinsurance,2023,NOVEMBER,0.6873,16
+16. Reinsurance,2024,JUNE,0.7092,8
+16. Reinsurance,2024,NOVEMBER,0.7105,16
+16. Reinsurance,2025,JUNE,0.7215,8
+16. Reinsurance,2025,NOVEMBER,0.7157,8
+17. Underwriting & data checks,2010,NOVEMBER,0.6746,6
+17. Underwriting & data checks,2011,NOVEMBER,0.6655,7
+17. Underwriting & data checks,2012,JUNE,0.6938,8
+17. Underwriting & data checks,2012,NOVEMBER,0.6800,7
+17. Underwriting & data checks,2013,JUNE,0.6813,8
+17. Underwriting & data checks,2013,NOVEMBER,0.6787,8
+17. Underwriting & data checks,2014,JUNE,0.6861,7
+17. Underwriting & data checks,2014,NOVEMBER,0.7017,14
+17. Underwriting & data checks,2015,JUNE,0.6766,8
+17. Underwriting & data checks,2015,NOVEMBER,0.6715,14
+17. Underwriting & data checks,2016,JUNE,0.6888,8
+17. Underwriting & data checks,2016,NOVEMBER,0.6681,8
+17. Underwriting & data checks,2017,JUNE,0.6816,8
+17. Underwriting & data checks,2017,NOVEMBER,0.6908,7
+17. Underwriting & data checks,2018,JUNE,0.6814,7
+17. Underwriting & data checks,2018,NOVEMBER,0.6853,8
+17. Underwriting & data checks,2019,JUNE,0.6721,8
+17. Underwriting & data checks,2019,NOVEMBER,0.6724,8
+17. Underwriting & data checks,2020,JUNE,0.6760,8
+17. Underwriting & data checks,2020,NOVEMBER,0.6736,16
+17. Underwriting & data checks,2021,JUNE,0.6773,8
+17. Underwriting & data checks,2021,NOVEMBER,0.6824,12
+17. Underwriting & data checks,2022,JUNE,0.6805,8
+17. Underwriting & data checks,2022,NOVEMBER,0.6739,16
+17. Underwriting & data checks,2023,JUNE,0.6869,8
+17. Underwriting & data checks,2023,NOVEMBER,0.6732,16
+17. Underwriting & data checks,2024,JUNE,0.6689,8
+17. Underwriting & data checks,2024,NOVEMBER,0.6687,16
+17. Underwriting & data checks,2025,JUNE,0.7023,8
+17. Underwriting & data checks,2025,NOVEMBER,0.6836,8
+18. Investments,2010,NOVEMBER,0.6725,6
+18. Investments,2011,NOVEMBER,0.6851,7
+18. Investments,2012,JUNE,0.6905,8
+18. Investments,2012,NOVEMBER,0.6820,7
+18. Investments,2013,JUNE,0.6791,8
+18. Investments,2013,NOVEMBER,0.6816,8
+18. Investments,2014,JUNE,0.6634,7
+18. Investments,2014,NOVEMBER,0.6774,14
+18. Investments,2015,JUNE,0.6868,8
+18. Investments,2015,NOVEMBER,0.6855,14
+18. Investments,2016,JUNE,0.6646,8
+18. Investments,2016,NOVEMBER,0.6773,8
+18. Investments,2017,JUNE,0.6812,8
+18. Investments,2017,NOVEMBER,0.6870,7
+18. Investments,2018,JUNE,0.6862,7
+18. Investments,2018,NOVEMBER,0.6877,8
+18. Investments,2019,JUNE,0.6917,8
+18. Investments,2019,NOVEMBER,0.6800,8
+18. Investments,2020,JUNE,0.6768,8
+18. Investments,2020,NOVEMBER,0.6943,16
+18. Investments,2021,JUNE,0.6842,8
+18. Investments,2021,NOVEMBER,0.6722,12
+18. Investments,2022,JUNE,0.6742,8
+18. Investments,2022,NOVEMBER,0.6857,16
+18. Investments,2023,JUNE,0.6728,8
+18. Investments,2023,NOVEMBER,0.6657,16
+18. Investments,2024,JUNE,0.6876,8
+18. Investments,2024,NOVEMBER,0.6914,16
+18. Investments,2025,JUNE,0.6799,8
+18. Investments,2025,NOVEMBER,0.6890,8
+19. Further risk management,2010,NOVEMBER,0.6903,6
+19. Further risk management,2011,NOVEMBER,0.6962,7
+19. Further risk management,2012,JUNE,0.7102,8
+19. Further risk management,2012,NOVEMBER,0.6965,7
+19. Further risk management,2013,JUNE,0.6748,8
+19. Further risk management,2013,NOVEMBER,0.6880,8
+19. Further risk management,2014,JUNE,0.6827,7
+19. Further risk management,2014,NOVEMBER,0.6967,14
+19. Further risk management,2015,JUNE,0.6963,8
+19. Further risk management,2015,NOVEMBER,0.6923,14
+19. Further risk management,2016,JUNE,0.6873,8
+19. Further risk management,2016,NOVEMBER,0.6933,8
+19. Further risk management,2017,JUNE,0.6897,8
+19. Further risk management,2017,NOVEMBER,0.6869,7
+19. Further risk management,2018,JUNE,0.6986,7
+19. Further risk management,2018,NOVEMBER,0.6820,8
+19. Further risk management,2019,JUNE,0.6902,8
+19. Further risk management,2019,NOVEMBER,0.6898,8
+19. Further risk management,2020,JUNE,0.6762,8
+19. Further risk management,2020,NOVEMBER,0.6768,16
+19. Further risk management,2021,JUNE,0.6830,8
+19. Further risk management,2021,NOVEMBER,0.6731,12
+19. Further risk management,2022,JUNE,0.6874,8
+19. Further risk management,2022,NOVEMBER,0.6857,16
+19. Further risk management,2023,JUNE,0.6778,8
+19. Further risk management,2023,NOVEMBER,0.6849,16
+19. Further risk management,2024,JUNE,0.6725,8
+19. Further risk management,2024,NOVEMBER,0.6824,16
+19. Further risk management,2025,JUNE,0.6888,8
+19. Further risk management,2025,NOVEMBER,0.6935,8
+2. Health and care products,2010,NOVEMBER,0.6677,6
+2. Health and care products,2011,NOVEMBER,0.6844,7
+2. Health and care products,2012,JUNE,0.6904,8
+2. Health and care products,2012,NOVEMBER,0.6951,7
+2. Health and care products,2013,JUNE,0.6837,8
+2. Health and care products,2013,NOVEMBER,0.6809,8
+2. Health and care products,2014,JUNE,0.6918,7
+2. Health and care products,2014,NOVEMBER,0.7022,14
+2. Health and care products,2015,JUNE,0.6901,8
+2. Health and care products,2015,NOVEMBER,0.6934,14
+2. Health and care products,2016,JUNE,0.7061,8
+2. Health and care products,2016,NOVEMBER,0.7000,8
+2. Health and care products,2017,JUNE,0.6923,8
+2. Health and care products,2017,NOVEMBER,0.7008,7
+2. Health and care products,2018,JUNE,0.6912,7
+2. Health and care products,2018,NOVEMBER,0.6970,8
+2. Health and care products,2019,JUNE,0.6955,8
+2. Health and care products,2019,NOVEMBER,0.6905,8
+2. Health and care products,2020,JUNE,0.6832,8
+2. Health and care products,2020,NOVEMBER,0.6957,16
+2. Health and care products,2021,JUNE,0.6876,8
+2. Health and care products,2021,NOVEMBER,0.6876,12
+2. Health and care products,2022,JUNE,0.6783,8
+2. Health and care products,2022,NOVEMBER,0.6853,16
+2. Health and care products,2023,JUNE,0.6955,8
+2. Health and care products,2023,NOVEMBER,0.6704,16
+2. Health and care products,2024,JUNE,0.6814,8
+2. Health and care products,2024,NOVEMBER,0.6763,16
+2. Health and care products,2025,JUNE,0.7005,8
+2. Health and care products,2025,NOVEMBER,0.6894,8
+20. Monitoring experience,2010,NOVEMBER,0.7174,6
+20. Monitoring experience,2011,NOVEMBER,0.6877,7
+20. Monitoring experience,2012,JUNE,0.7099,8
+20. Monitoring experience,2012,NOVEMBER,0.6952,7
+20. Monitoring experience,2013,JUNE,0.7063,8
+20. Monitoring experience,2013,NOVEMBER,0.6988,8
+20. Monitoring experience,2014,JUNE,0.6942,7
+20. Monitoring experience,2014,NOVEMBER,0.6822,14
+20. Monitoring experience,2015,JUNE,0.6846,8
+20. Monitoring experience,2015,NOVEMBER,0.6925,14
+20. Monitoring experience,2016,JUNE,0.6902,8
+20. Monitoring experience,2016,NOVEMBER,0.6952,8
+20. Monitoring experience,2017,JUNE,0.6799,8
+20. Monitoring experience,2017,NOVEMBER,0.6867,7
+20. Monitoring experience,2018,JUNE,0.6887,7
+20. Monitoring experience,2018,NOVEMBER,0.6918,8
+20. Monitoring experience,2019,JUNE,0.6968,8
+20. Monitoring experience,2019,NOVEMBER,0.6932,8
+20. Monitoring experience,2020,JUNE,0.6839,8
+20. Monitoring experience,2020,NOVEMBER,0.6829,16
+20. Monitoring experience,2021,JUNE,0.6872,8
+20. Monitoring experience,2021,NOVEMBER,0.6794,12
+20. Monitoring experience,2022,JUNE,0.6846,8
+20. Monitoring experience,2022,NOVEMBER,0.6981,16
+20. Monitoring experience,2023,JUNE,0.6816,8
+20. Monitoring experience,2023,NOVEMBER,0.6755,16
+20. Monitoring experience,2024,JUNE,0.6885,8
+20. Monitoring experience,2024,NOVEMBER,0.7041,16
+20. Monitoring experience,2025,JUNE,0.6860,8
+20. Monitoring experience,2025,NOVEMBER,0.6847,8
+3. Asset shares and profit distribution,2010,NOVEMBER,0.7079,6
+3. Asset shares and profit distribution,2011,NOVEMBER,0.7275,7
+3. Asset shares and profit distribution,2012,JUNE,0.7215,8
+3. Asset shares and profit distribution,2012,NOVEMBER,0.7188,7
+3. Asset shares and profit distribution,2013,JUNE,0.7124,8
+3. Asset shares and profit distribution,2013,NOVEMBER,0.7131,8
+3. Asset shares and profit distribution,2014,JUNE,0.7083,7
+3. Asset shares and profit distribution,2014,NOVEMBER,0.7026,14
+3. Asset shares and profit distribution,2015,JUNE,0.7228,8
+3. Asset shares and profit distribution,2015,NOVEMBER,0.7120,14
+3. Asset shares and profit distribution,2016,JUNE,0.7038,8
+3. Asset shares and profit distribution,2016,NOVEMBER,0.7265,8
+3. Asset shares and profit distribution,2017,JUNE,0.7098,8
+3. Asset shares and profit distribution,2017,NOVEMBER,0.7139,7
+3. Asset shares and profit distribution,2018,JUNE,0.7096,7
+3. Asset shares and profit distribution,2018,NOVEMBER,0.7216,8
+3. Asset shares and profit distribution,2019,JUNE,0.7209,8
+3. Asset shares and profit distribution,2019,NOVEMBER,0.7169,8
+3. Asset shares and profit distribution,2020,JUNE,0.7127,8
+3. Asset shares and profit distribution,2020,NOVEMBER,0.7092,16
+3. Asset shares and profit distribution,2021,JUNE,0.7249,8
+3. Asset shares and profit distribution,2021,NOVEMBER,0.7024,12
+3. Asset shares and profit distribution,2022,JUNE,0.7048,8
+3. Asset shares and profit distribution,2022,NOVEMBER,0.7150,16
+3. Asset shares and profit distribution,2023,JUNE,0.7107,8
+3. Asset shares and profit distribution,2023,NOVEMBER,0.7004,16
+3. Asset shares and profit distribution,2024,JUNE,0.7143,8
+3. Asset shares and profit distribution,2024,NOVEMBER,0.7216,16
+3. Asset shares and profit distribution,2025,JUNE,0.7196,8
+3. Asset shares and profit distribution,2025,NOVEMBER,0.7255,8
+4. External environment,2010,NOVEMBER,0.7309,6
+4. External environment,2011,NOVEMBER,0.7436,7
+4. External environment,2012,JUNE,0.7482,8
+4. External environment,2012,NOVEMBER,0.7437,7
+4. External environment,2013,JUNE,0.7274,8
+4. External environment,2013,NOVEMBER,0.7341,8
+4. External environment,2014,JUNE,0.7443,7
+4. External environment,2014,NOVEMBER,0.7492,14
+4. External environment,2015,JUNE,0.7408,8
+4. External environment,2015,NOVEMBER,0.7392,14
+4. External environment,2016,JUNE,0.7443,8
+4. External environment,2016,NOVEMBER,0.7532,8
+4. External environment,2017,JUNE,0.7401,8
+4. External environment,2017,NOVEMBER,0.7423,7
+4. External environment,2018,JUNE,0.7456,7
+4. External environment,2018,NOVEMBER,0.7319,8
+4. External environment,2019,JUNE,0.7403,8
+4. External environment,2019,NOVEMBER,0.7449,8
+4. External environment,2020,JUNE,0.7233,8
+4. External environment,2020,NOVEMBER,0.7412,16
+4. External environment,2021,JUNE,0.7276,8
+4. External environment,2021,NOVEMBER,0.7284,12
+4. External environment,2022,JUNE,0.7441,8
+4. External environment,2022,NOVEMBER,0.7512,16
+4. External environment,2023,JUNE,0.7394,8
+4. External environment,2023,NOVEMBER,0.7361,16
+4. External environment,2024,JUNE,0.7339,8
+4. External environment,2024,NOVEMBER,0.7359,16
+4. External environment,2025,JUNE,0.7361,8
+4. External environment,2025,NOVEMBER,0.7417,8
+5. Risks,2010,NOVEMBER,0.6967,6
+5. Risks,2011,NOVEMBER,0.7111,7
+5. Risks,2012,JUNE,0.7225,8
+5. Risks,2012,NOVEMBER,0.7148,7
+5. Risks,2013,JUNE,0.6883,8
+5. Risks,2013,NOVEMBER,0.6966,8
+5. Risks,2014,JUNE,0.6874,7
+5. Risks,2014,NOVEMBER,0.7012,14
+5. Risks,2015,JUNE,0.6980,8
+5. Risks,2015,NOVEMBER,0.6935,14
+5. Risks,2016,JUNE,0.6924,8
+5. Risks,2016,NOVEMBER,0.7201,8
+5. Risks,2017,JUNE,0.7057,8
+5. Risks,2017,NOVEMBER,0.7014,7
+5. Risks,2018,JUNE,0.7008,7
+5. Risks,2018,NOVEMBER,0.7048,8
+5. Risks,2019,JUNE,0.6963,8
+5. Risks,2019,NOVEMBER,0.7022,8
+5. Risks,2020,JUNE,0.6800,8
+5. Risks,2020,NOVEMBER,0.6964,16
+5. Risks,2021,JUNE,0.6974,8
+5. Risks,2021,NOVEMBER,0.6905,12
+5. Risks,2022,JUNE,0.6893,8
+5. Risks,2022,NOVEMBER,0.7090,16
+5. Risks,2023,JUNE,0.6968,8
+5. Risks,2023,NOVEMBER,0.6878,16
+5. Risks,2024,JUNE,0.6888,8
+5. Risks,2024,NOVEMBER,0.6910,16
+5. Risks,2025,JUNE,0.7109,8
+5. Risks,2025,NOVEMBER,0.6940,8
+6. Unit pricing and actuarial funding,2010,NOVEMBER,0.7113,6
+6. Unit pricing and actuarial funding,2011,NOVEMBER,0.7195,7
+6. Unit pricing and actuarial funding,2012,JUNE,0.7256,8
+6. Unit pricing and actuarial funding,2012,NOVEMBER,0.7270,7
+6. Unit pricing and actuarial funding,2013,JUNE,0.7226,8
+6. Unit pricing and actuarial funding,2013,NOVEMBER,0.7300,8
+6. Unit pricing and actuarial funding,2014,JUNE,0.7062,7
+6. Unit pricing and actuarial funding,2014,NOVEMBER,0.7132,14
+6. Unit pricing and actuarial funding,2015,JUNE,0.7194,8
+6. Unit pricing and actuarial funding,2015,NOVEMBER,0.7150,14
+6. Unit pricing and actuarial funding,2016,JUNE,0.7075,8
+6. Unit pricing and actuarial funding,2016,NOVEMBER,0.7066,8
+6. Unit pricing and actuarial funding,2017,JUNE,0.7116,8
+6. Unit pricing and actuarial funding,2017,NOVEMBER,0.7097,7
+6. Unit pricing and actuarial funding,2018,JUNE,0.7291,7
+6. Unit pricing and actuarial funding,2018,NOVEMBER,0.7189,8
+6. Unit pricing and actuarial funding,2019,JUNE,0.7372,8
+6. Unit pricing and actuarial funding,2019,NOVEMBER,0.7094,8
+6. Unit pricing and actuarial funding,2020,JUNE,0.7144,8
+6. Unit pricing and actuarial funding,2020,NOVEMBER,0.7029,16
+6. Unit pricing and actuarial funding,2021,JUNE,0.7340,8
+6. Unit pricing and actuarial funding,2021,NOVEMBER,0.7165,12
+6. Unit pricing and actuarial funding,2022,JUNE,0.7085,8
+6. Unit pricing and actuarial funding,2022,NOVEMBER,0.7356,16
+6. Unit pricing and actuarial funding,2023,JUNE,0.7176,8
+6. Unit pricing and actuarial funding,2023,NOVEMBER,0.6915,16
+6. Unit pricing and actuarial funding,2024,JUNE,0.7179,8
+6. Unit pricing and actuarial funding,2024,NOVEMBER,0.7273,16
+6. Unit pricing and actuarial funding,2025,JUNE,0.7161,8
+6. Unit pricing and actuarial funding,2025,NOVEMBER,0.7248,8
+7. Modelling,2010,NOVEMBER,0.7261,6
+7. Modelling,2011,NOVEMBER,0.7500,7
+7. Modelling,2012,JUNE,0.7493,8
+7. Modelling,2012,NOVEMBER,0.7404,7
+7. Modelling,2013,JUNE,0.7328,8
+7. Modelling,2013,NOVEMBER,0.7316,8
+7. Modelling,2014,JUNE,0.7352,7
+7. Modelling,2014,NOVEMBER,0.7384,14
+7. Modelling,2015,JUNE,0.7467,8
+7. Modelling,2015,NOVEMBER,0.7400,14
+7. Modelling,2016,JUNE,0.7328,8
+7. Modelling,2016,NOVEMBER,0.7297,8
+7. Modelling,2017,JUNE,0.7402,8
+7. Modelling,2017,NOVEMBER,0.7235,7
+7. Modelling,2018,JUNE,0.7499,7
+7. Modelling,2018,NOVEMBER,0.7335,8
+7. Modelling,2019,JUNE,0.7411,8
+7. Modelling,2019,NOVEMBER,0.7294,8
+7. Modelling,2020,JUNE,0.7242,8
+7. Modelling,2020,NOVEMBER,0.7273,16
+7. Modelling,2021,JUNE,0.7375,8
+7. Modelling,2021,NOVEMBER,0.7198,12
+7. Modelling,2022,JUNE,0.7448,8
+7. Modelling,2022,NOVEMBER,0.7486,16
+7. Modelling,2023,JUNE,0.7282,8
+7. Modelling,2023,NOVEMBER,0.7146,16
+7. Modelling,2024,JUNE,0.7285,8
+7. Modelling,2024,NOVEMBER,0.7390,16
+7. Modelling,2025,JUNE,0.7495,8
+7. Modelling,2025,NOVEMBER,0.7408,8
+8. Product design,2010,NOVEMBER,0.6752,6
+8. Product design,2011,NOVEMBER,0.7020,7
+8. Product design,2012,JUNE,0.7069,8
+8. Product design,2012,NOVEMBER,0.6961,7
+8. Product design,2013,JUNE,0.6891,8
+8. Product design,2013,NOVEMBER,0.6915,8
+8. Product design,2014,JUNE,0.6984,7
+8. Product design,2014,NOVEMBER,0.6967,14
+8. Product design,2015,JUNE,0.6921,8
+8. Product design,2015,NOVEMBER,0.6966,14
+8. Product design,2016,JUNE,0.6918,8
+8. Product design,2016,NOVEMBER,0.7051,8
+8. Product design,2017,JUNE,0.6939,8
+8. Product design,2017,NOVEMBER,0.6918,7
+8. Product design,2018,JUNE,0.6932,7
+8. Product design,2018,NOVEMBER,0.6914,8
+8. Product design,2019,JUNE,0.6985,8
+8. Product design,2019,NOVEMBER,0.6973,8
+8. Product design,2020,JUNE,0.6897,8
+8. Product design,2020,NOVEMBER,0.6923,16
+8. Product design,2021,JUNE,0.7032,8
+8. Product design,2021,NOVEMBER,0.6821,12
+8. Product design,2022,JUNE,0.6864,8
+8. Product design,2022,NOVEMBER,0.6990,16
+8. Product design,2023,JUNE,0.6882,8
+8. Product design,2023,NOVEMBER,0.6848,16
+8. Product design,2024,JUNE,0.6912,8
+8. Product design,2024,NOVEMBER,0.6887,16
+8. Product design,2025,JUNE,0.7022,8
+8. Product design,2025,NOVEMBER,0.6965,8
+9. Assumptions,2010,NOVEMBER,0.7166,6
+9. Assumptions,2011,NOVEMBER,0.7128,7
+9. Assumptions,2012,JUNE,0.7114,8
+9. Assumptions,2012,NOVEMBER,0.7108,7
+9. Assumptions,2013,JUNE,0.7277,8
+9. Assumptions,2013,NOVEMBER,0.7109,8
+9. Assumptions,2014,JUNE,0.6971,7
+9. Assumptions,2014,NOVEMBER,0.7007,14
+9. Assumptions,2015,JUNE,0.7048,8
+9. Assumptions,2015,NOVEMBER,0.7222,14
+9. Assumptions,2016,JUNE,0.6947,8
+9. Assumptions,2016,NOVEMBER,0.7157,8
+9. Assumptions,2017,JUNE,0.7058,8
+9. Assumptions,2017,NOVEMBER,0.7168,7
+9. Assumptions,2018,JUNE,0.7112,7
+9. Assumptions,2018,NOVEMBER,0.7272,8
+9. Assumptions,2019,JUNE,0.7189,8
+9. Assumptions,2019,NOVEMBER,0.7068,8
+9. Assumptions,2020,JUNE,0.6987,8
+9. Assumptions,2020,NOVEMBER,0.7072,16
+9. Assumptions,2021,JUNE,0.7087,8
+9. Assumptions,2021,NOVEMBER,0.7027,12
+9. Assumptions,2022,JUNE,0.7018,8
+9. Assumptions,2022,NOVEMBER,0.7108,16
+9. Assumptions,2023,JUNE,0.7120,8
+9. Assumptions,2023,NOVEMBER,0.6866,16
+9. Assumptions,2024,JUNE,0.7163,8
+9. Assumptions,2024,NOVEMBER,0.7087,16
+9. Assumptions,2025,JUNE,0.7058,8
+9. Assumptions,2025,NOVEMBER,0.6999,8

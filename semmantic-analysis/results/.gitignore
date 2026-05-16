@@ -1,0 +1,4 @@
+# Regenerable large binary files - excluded from git
+embeddings_notes.npy
+embeddings_questions.npy
+similarity_matrix.npy

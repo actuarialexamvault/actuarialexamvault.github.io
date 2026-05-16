@@ -1,0 +1,557 @@
+note_folder,note_heading,note_callout,note_file,weighted_coverage,mean_similarity,max_similarity,n_strong_matches
+4. External environment,10. The external environment,Condensed exam-style answer,4. External environment/10. The external environment.md,3484.96,0.7389,0.8108,281
+7. Modelling,13.5 Model uses,Pricing,7. Modelling/13.5 Model uses.md,3482.15,0.7344,0.8148,281
+6. Unit pricing and actuarial funding,12.2 Actuarial funding,The mechanism - Actuarial funding factor,6. Unit pricing and actuarial funding/12.2 Actuarial funding.md,3365.32,0.7090,0.8287,280
+16. Reinsurance,3.2 Retention limits,Stochastic simulation – reinsurance with fluctuations reserve,16. Reinsurance/3.2 Retention limits.md,3362.78,0.7082,0.8505,280
+6. Unit pricing and actuarial funding,12.2 Actuarial funding,example,6. Unit pricing and actuarial funding/12.2 Actuarial funding.md,3354.55,0.7067,0.8140,280
+1. Life insurance contracts,3.1.3 Immediate annuity - Risks to the insurer,Investment risk,1. Life insurance contracts/3.1.3 Immediate annuity - Risks to the insurer.md,3344.86,0.7062,0.7860,280
+10. Reserving,9. Cost of capital approach,The Three-Step Calculation Process,10. Reserving/9. Cost of capital approach.md,3329.02,0.7041,0.7638,280
+3. Asset shares and profit distribution,9.1.3 Revalorisation (conflict 2026-04-07-05-57-05),Distributed Profit (Pt​),3. Asset shares and profit distribution/9.1.3 Revalorisation (conflict 2026-04-07-05-57-05).md,3304.05,0.6990,0.7673,280
+4. External environment,10.5 Legal Environment,Regulatory requirements,4. External environment/10.5 Legal Environment.md,3299.43,0.6953,0.7966,280
+12. Surrender values,2. Methods of calculation,Explain the prospective method,12. Surrender values/2. Methods of calculation.md,3298.54,0.6982,0.8003,280
+3. Asset shares and profit distribution,9.1.4 Contribution method,abstract,3. Asset shares and profit distribution/9.1.4 Contribution method.md,3293.49,0.6960,0.8012,280
+6. Unit pricing and actuarial funding,12.2 Actuarial funding,Absence of investment risk,6. Unit pricing and actuarial funding/12.2 Actuarial funding.md,3283.91,0.6945,0.8276,279
+15. Pricing health & care contracts,1. Income protection,How is the model adjusted for deferred periods?,15. Pricing health & care contracts/1. Income protection.md,3274.66,0.6910,0.7863,280
+3. Asset shares and profit distribution,9.1.3 Revalorisation (conflict 2026-04-07-05-57-05),Revalorisation Method,3. Asset shares and profit distribution/9.1.3 Revalorisation (conflict 2026-04-07-05-57-05).md,3269.88,0.6915,0.7823,279
+3. Asset shares and profit distribution,9.1.3 Revalorisation,Revalorisation Method,3. Asset shares and profit distribution/9.1.3 Revalorisation.md,3268.12,0.6912,0.7784,279
+14. Guarantees and options,3. Mortality options,What are the implications of offering a mortality option?,14. Guarantees and options/3. Mortality options.md,3259.38,0.6883,0.8639,278
+13. Alterations,3. Methods of calculation,example,13. Alterations/3. Methods of calculation.md,3248.82,0.6858,0.7739,280
+14. Guarantees and options,2. Valuing an investment guarantee,How are investment guarantees valued using stochastic simulation?,14. Guarantees and options/2. Valuing an investment guarantee.md,3246.66,0.6867,0.7885,276
+4. External environment,10.6 The tax regime,Taxation as a source of risk,4. External environment/10.6 The tax regime.md,3240.30,0.6858,0.7487,280
+4. External environment,10.1 Consumer propensity,To buy or not to buy?,4. External environment/10.1 Consumer propensity.md,3239.28,0.6835,0.7362,278
+3. Asset shares and profit distribution,9.1.5 Summary comparison of Surplus Distribution Systems,Business Objectives,3. Asset shares and profit distribution/9.1.5 Summary comparison of Surplus Distribution Systems.md,3237.73,0.6854,0.7810,281
+12. Surrender values,4. Surrender basis,How to determine the basis for a prospective surrender value?,12. Surrender values/4. Surrender basis.md,3234.69,0.6851,0.8210,278
+16. Reinsurance,3. Considerations before reinsuring,What are the considerations before reinsuring?,16. Reinsurance/3. Considerations before reinsuring.md,3234.48,0.6853,0.7932,278
+3. Asset shares and profit distribution,8.3 Asset share calculation,The recursive formula,3. Asset shares and profit distribution/8.3 Asset share calculation.md,3228.01,0.6814,0.7594,276
+9. Assumptions,15.5 Investment return assumptions,Using the 5-step framework for setting the investment assumption,9. Assumptions/Pricing assumptions/15.5 Investment return assumptions.md,3227.93,0.6850,0.7667,279
+3. Asset shares and profit distribution,9.1.3 Revalorisation,Distributed Profit (Pt​),3. Asset shares and profit distribution/9.1.3 Revalorisation.md,3227.60,0.6826,0.7474,280
+9. Assumptions,15.14 Embedded value,What is the difference between a Best estimate vs Embedded value valuation?,9. Assumptions/Valuation assumptions/15.14 Embedded value.md,3222.22,0.6817,0.8265,276
+10. Reserving,2. Gross premium valuation,What are the features of the gross premium method?,10. Reserving/2. Gross premium valuation.md,3218.62,0.6813,0.7917,277
+12. Surrender values,3. Retention of profit on surrender,How does the choice of surrender basis influence how much future profit is extracted/capitalized?,12. Surrender values/3. Retention of profit on surrender.md,3215.52,0.6823,0.8238,277
+1. Life insurance contracts,4.1.3 Unit-linked contracts - Risks to the insurer,External risks,1. Life insurance contracts/4.1.3 Unit-linked contracts - Risks to the insurer.md,3214.25,0.6800,0.7762,279
+1. Life insurance contracts,4.1.3 Unit-linked contracts - Risks to the insurer,Investment risk,1. Life insurance contracts/4.1.3 Unit-linked contracts - Risks to the insurer.md,3206.39,0.6774,0.7832,278
+3. Asset shares and profit distribution,8.4 Asset share development,Growth phase: Compounding and balance of factors,3. Asset shares and profit distribution/8.4 Asset share development.md,3201.61,0.6778,0.7270,279
+10. Reserving,2. Gross premium valuation,What is the GPV formula method?,10. Reserving/2. Gross premium valuation.md,3201.43,0.6769,0.7851,275
+4. External environment,10. The external environment,1. Volume and mix of new business,4. External environment/10. The external environment.md,3200.93,0.6807,0.7656,281
+10. Reserving,0. Syllabus objectives,Objectives,10. Reserving/0. Syllabus objectives.md,3200.17,0.6724,0.7748,276
+4. External environment,10.2.1 Distribution channels - Risk to the insurer,Impact on risk to the insurer,4. External environment/10.2.1 Distribution channels - Risk to the insurer.md,3199.01,0.6764,0.7812,277
+4. External environment,10.2.1 Distribution channels - Risk to the insurer,Impact on pricing,4. External environment/10.2.1 Distribution channels - Risk to the insurer.md,3198.18,0.6766,0.7853,276
+14. Guarantees and options,4. Valuing Mortality options,What are the extra assumptions the insurer would need to make?,14. Guarantees and options/4. Valuing Mortality options.md,3197.50,0.6761,0.7929,276
+12. Surrender values,1. Principles for surrender values,List the principles for determining surrender values,12. Surrender values/1. Principles for surrender values.md,3197.27,0.6763,0.8340,276
+12. Surrender values,2. Methods of calculation,Explain the retrospective method,12. Surrender values/2. Methods of calculation.md,3196.86,0.6770,0.7496,278
+4. External environment,10.2.1 Distribution channels - Risk to the insurer,Note on competitiveness,4. External environment/10.2.1 Distribution channels - Risk to the insurer.md,3193.79,0.6744,0.7605,279
+3. Asset shares and profit distribution,9.1.4 Contribution method,"The ""Three-Factor"" Dividend",3. Asset shares and profit distribution/9.1.4 Contribution method.md,3193.05,0.6746,0.8004,278
+17. Underwriting & data checks,Underwriting,What are the potential outcomes for substandard lives?,17. Underwriting & data checks/Underwriting.md,3193.00,0.6736,0.7625,277
+7. Modelling,13.5 Model uses,Assessing solvency,7. Modelling/13.5 Model uses.md,3190.65,0.6745,0.7898,281
+5. Risks,11.2 Mortality and morbidity risk,Directions of mortality risk,5. Risks/11.2 Mortality and morbidity risk.md,3190.59,0.6733,0.7644,274
+19. Further risk management,2. Policy retention,How can an insurer monitor and improve persistency rates?,19. Further risk management/2. Policy retention.md,3186.32,0.6733,0.7861,278
+18. Investments,2. Principles of investment,Issues with matching equity-index linked liabilities,18. Investments/2. Principles of investment.md,3186.14,0.6739,0.7652,280
+8. Product design,14.4 Competitiveness,The profit-volume relationship,8. Product design/14.4 Competitiveness.md,3186.04,0.6733,0.7509,279
+1. Life insurance contracts,4.1.2 Unit-linked contracts - Customer needs,Customer needs,1. Life insurance contracts/4.1.2 Unit-linked contracts - Customer needs.md,3180.45,0.6720,0.7451,277
+15. Pricing health & care contracts,3. Long-term care insurance,How to derive risk premium rates for LTCI using a multi-state model?,15. Pricing health & care contracts/3. Long-term care insurance.md,3180.26,0.6708,0.7523,278
+20. Monitoring experience,2. Data required,What specific factors are used for grouping in monitoring experience?,20. Monitoring experience/2. Data required.md,3177.33,0.6722,0.7545,281
+1. Life insurance contracts,1.6 Endowment Assurances - Risks to the insurer,Investment Risk,1. Life insurance contracts/1.6 Endowment Assurances - Risks to the insurer.md,3177.32,0.6702,0.7453,276
+1. Life insurance contracts,2.1.3 Whole life assurances - Risks to the insurer,Investment risk,1. Life insurance contracts/2.1.3 Whole life assurances - Risks to the insurer.md,3177.08,0.6692,0.7403,273
+18. Investments,2. Principles of investment,"How does the nature, term and currency of liabilities affect asset selection?",18. Investments/2. Principles of investment.md,3175.52,0.6724,0.7719,279
+1. Life insurance contracts,1.7 Endowment Assurances - Capital Requirements,../../Definitions/Capital requirements,1. Life insurance contracts/1.7 Endowment Assurances - Capital Requirements.md,3175.04,0.6708,0.7262,277
+16. Reinsurance,1.2 Coinsurance - risk premium,What are the key characteristics of RPR?,16. Reinsurance/1.2 Coinsurance - risk premium.md,3173.47,0.6691,0.7648,275
+4. External environment,10. The external environment,Marker's tip,4. External environment/10. The external environment.md,3172.45,0.6715,0.7357,281
+3. Asset shares and profit distribution,9.1.5 Summary comparison of Surplus Distribution Systems,Policyholders' Reasonable Expectations (PRE),3. Asset shares and profit distribution/9.1.5 Summary comparison of Surplus Distribution Systems.md,3172.09,0.6744,0.7830,280
+4. External environment,10. The external environment,2. Target market and customer demand,4. External environment/10. The external environment.md,3171.70,0.6711,0.7413,275
+3. Asset shares and profit distribution,9.1 With-profits surplus distribution,Bonus distribution considerations,3. Asset shares and profit distribution/9.1 With-profits surplus distribution.md,3170.82,0.6727,0.7996,280
+5. Risks,11.9 Competition risk,Bonus and Distribution Pressures**,5. Risks/11.9 Competition risk.md,3168.28,0.6708,0.7693,280
+12. Surrender values,4. Surrender basis,How to determine the basis for a retrospective surrender value?,12. Surrender values/4. Surrender basis.md,3166.52,0.6720,0.8001,274
+4. External environment,10.2.2 Distribution channels - Actuarial control cycle,Using the control cycle to manage distribution channels,4. External environment/10.2.2 Distribution channels - Actuarial control cycle.md,3163.86,0.6669,0.7498,278
+3. Asset shares and profit distribution,9.1.2 Addition to benefits - accumulating with profits,Regular annual bonuses,3. Asset shares and profit distribution/9.1.2 Addition to benefits - accumulating with profits.md,3158.90,0.6679,0.8006,276
+1. Life insurance contracts,2.3.3 Renewable and convertible term assurance - Risks,Risks to the insurer,1. Life insurance contracts/2.3.3 Renewable and convertible term assurance - Risks.md,3156.78,0.6668,0.7838,276
+6. Unit pricing and actuarial funding,12.2 Actuarial funding,summary,6. Unit pricing and actuarial funding/12.2 Actuarial funding.md,3154.97,0.6676,0.7676,277
+19. Further risk management,4. Management of options and guarantees,How should insurers manage the risk of options and guarantees?,19. Further risk management/4. Management of options and guarantees.md,3154.79,0.6683,0.7642,275
+8. Product design,14.1 Customer needs,Meeting customer needs,8. Product design/14.1 Customer needs.md,3153.56,0.6631,0.7461,268
+14. Guarantees and options,2. Valuing an investment guarantee,How would we modify the stochastic method for different situations?,14. Guarantees and options/2. Valuing an investment guarantee.md,3152.57,0.6665,0.7574,269
+3. Asset shares and profit distribution,9.1.5 Summary comparison of Surplus Distribution Systems,Margins for Future Adverse Experience,3. Asset shares and profit distribution/9.1.5 Summary comparison of Surplus Distribution Systems.md,3151.97,0.6684,0.7650,279
+2. Health and care products,5.1.4 Income Protection (IP) contracts - Product Variations,Guaranteed and reviewable premium rates,2. Health and care products/5.1.4 Income Protection (IP) contracts - Product Variations.md,3151.88,0.6663,0.7620,276
+9. Assumptions,15.5 Investment return assumptions,Key factors influencing the investment assumption,9. Assumptions/Pricing assumptions/15.5 Investment return assumptions.md,3151.51,0.6696,0.7510,277
+8. Product design,14.6 Risk characteristics,Accepting risk,8. Product design/14.6 Risk characteristics.md,3150.68,0.6675,0.7420,271
+9. Assumptions,15.9 Allowing for risk,Risk discount rate,9. Assumptions/Pricing assumptions/15.9 Allowing for risk.md,3147.95,0.6661,0.7260,278
+6. Unit pricing and actuarial funding,12.2 Actuarial funding,Conditions for use,6. Unit pricing and actuarial funding/12.2 Actuarial funding.md,3146.63,0.6656,0.7866,275
+4. External environment,10.3 Expenses and commission,The influence of inflation,4. External environment/10.3 Expenses and commission.md,3143.66,0.6648,0.7302,277
+15. Pricing health & care contracts,1. Income protection,What are the two annuity rates that are used and in what situations are they suitable,15. Pricing health & care contracts/1. Income protection.md,3143.46,0.6627,0.7528,277
+4. External environment,10. The external environment,6. Legal and regulatory environment,4. External environment/10. The external environment.md,3142.48,0.6670,0.7500,277
+9. Assumptions,15.3 Mortality assumptions,Base mortality,9. Assumptions/Pricing assumptions/15.3 Mortality assumptions.md,3141.80,0.6636,0.7994,275
+19. Further risk management,3. New business mix and volumes,What is the primary concern in the management of new business?,19. Further risk management/3. New business mix and volumes.md,3141.12,0.6653,0.7541,280
+8. Product design,14.5 Financing requirements,How different product types and designs influence financing requirements,8. Product design/14.5 Financing requirements.md,3139.43,0.6628,0.7379,277
+2. Health and care products,6.1.5 Critical illness cover - Capital requirements,Capital requirements for Critical Illness (CI) cover,2. Health and care products/6.1.5 Critical illness cover - Capital requirements.md,3138.85,0.6649,0.7514,278
+1. Life insurance contracts,1.4 Endowment Assurances - Structures,ASSA/F102 Life Insurance Principles/Summary/1. Life insurance contracts/1.1 Endowment assurances - Structures,1. Life insurance contracts/1.4 Endowment Assurances - Structures.md,3138.66,0.6600,0.7427,270
+4. External environment,10.6 The tax regime,Product design constraints and opportunities,4. External environment/10.6 The tax regime.md,3137.27,0.6622,0.7642,280
+3. Asset shares and profit distribution,8.3 Asset share calculation,Death strain at risk,3. Asset shares and profit distribution/8.3 Asset share calculation.md,3137.20,0.6630,0.7382,275
+20. Monitoring experience,6. Using the results,"Actuarial & Risk Management (The ""Math"")",20. Monitoring experience/6. Using the results.md,3136.08,0.6637,0.7574,276
+14. Guarantees and options,1. Investment guarantees,What are the implications of offering an investment guarantee?,14. Guarantees and options/1. Investment guarantees.md,3136.00,0.6633,0.7588,271
+3. Asset shares and profit distribution,9.1.1 Addition to benefits - conventional with profits,Regular reversionary bonuses,3. Asset shares and profit distribution/9.1.1 Addition to benefits - conventional with profits.md,3133.62,0.6641,0.8055,276
+6. Unit pricing and actuarial funding,12.2 Actuarial funding,Purpose and rationale,6. Unit pricing and actuarial funding/12.2 Actuarial funding.md,3133.06,0.6631,0.7881,278
+7. Modelling,13.2 Model components,Model components,7. Modelling/13.2 Model components.md,3131.37,0.6624,0.7700,279
+2. Health and care products,6.1.1 Critical illness cover - Product structures and benefits,Guarantees and reviewability of premiums and benefits,2. Health and care products/6.1.1 Critical illness cover - Product structures and benefits.md,3123.99,0.6615,0.7772,273
+5. Risks,11.2 Mortality and morbidity risk,Components of mortality/morbidity risk,5. Risks/11.2 Mortality and morbidity risk.md,3123.96,0.6591,0.7528,272
+1. Life insurance contracts,2.2.3 Term assurance - Risks to the insurer,Expense risk,1. Life insurance contracts/2.2.3 Term assurance - Risks to the insurer.md,3123.96,0.6621,0.7346,275
+2. Health and care products,6.1.4 Critical illness cover - Risks to the insurer,Morbidity risk,2. Health and care products/6.1.4 Critical illness cover - Risks to the insurer.md,3122.09,0.6608,0.7823,272
+5. Risks,11.16 Risk and decision-making,Risk and decision-making,5. Risks/11.16 Risk and decision-making.md,3119.32,0.6607,0.7374,276
+1. Life insurance contracts,2.1.3 Whole life assurances - Risks to the insurer,Mortality Risk,1. Life insurance contracts/2.1.3 Whole life assurances - Risks to the insurer.md,3118.74,0.6578,0.7394,268
+16. Reinsurance,1.1 Coinsurance - original terms,In what ways might a reinsurer be more attractive to the insurer?,16. Reinsurance/1.1 Coinsurance - original terms.md,3118.07,0.6596,0.7589,274
+1. Life insurance contracts,1.6 Endowment Assurances - Risks to the insurer,Withdrawal (Persistency) Risk,1. Life insurance contracts/1.6 Endowment Assurances - Risks to the insurer.md,3117.77,0.6591,0.7365,276
+1. Life insurance contracts,2.1.3 Whole life assurances - Risks to the insurer,Withdrawal (Persistency) risk,1. Life insurance contracts/2.1.3 Whole life assurances - Risks to the insurer.md,3117.11,0.6587,0.7160,272
+9. Assumptions,15.9 Allowing for risk,Methods of allowing for margins,9. Assumptions/Pricing assumptions/15.9 Allowing for risk.md,3117.03,0.6596,0.7282,277
+4. External environment,10. The external environment,12. Capital and solvency requirements,4. External environment/10. The external environment.md,3116.48,0.6603,0.7499,277
+1. Life insurance contracts,2.2.4 Term assurance - Capital requirements,Capital requirements for term assurances,1. Life insurance contracts/2.2.4 Term assurance - Capital requirements.md,3115.47,0.6600,0.7147,276
+11. Capital requirements,4. Run-off method,Why would an insurer choose to use the run-off method?,11. Capital requirements/4. Run-off method.md,3114.94,0.6596,0.7262,276
+16. Reinsurance,3.1 Cost of reinsurance,How does the cost of the reinsurance affect decisions about reinsurance arrangements?,16. Reinsurance/3.1 Cost of reinsurance.md,3114.84,0.6602,0.7703,273
+10. Reserving,9. Cost of capital approach,Applications in Actuarial Work,10. Reserving/9. Cost of capital approach.md,3114.80,0.6586,0.7509,273
+1. Life insurance contracts,2.3.4 Renewable and convertible term assurance - Capital requirements,Capital & reserving requirements for renewable and convertible term assurances,1. Life insurance contracts/2.3.4 Renewable and convertible term assurance - Capital requirements.md,3114.20,0.6586,0.7305,274
+7. Modelling,13.5 Model uses,Profitability of existing business,7. Modelling/13.5 Model uses.md,3113.48,0.6610,0.7574,274
+11. Capital requirements,0. Syllabus objectives,Objectives,11. Capital requirements/0. Syllabus objectives.md,3109.90,0.6539,0.7566,268
+12. Surrender values,3. Retention of profit on surrender,How does a company determine the profit retained if a policy surrenders?,12. Surrender values/3. Retention of profit on surrender.md,3108.67,0.6588,0.7743,269
+3. Asset shares and profit distribution,9.1.2 Addition to benefits - accumulating with profits,Unitised with-profits,3. Asset shares and profit distribution/9.1.2 Addition to benefits - accumulating with profits.md,3108.02,0.6575,0.7980,274
+2. Health and care products,7.1.2 Long-Term Care Insurance - Product variations,Product bases,2. Health and care products/7.1.2 Long-Term Care Insurance - Product variations.md,3106.64,0.6556,0.7552,275
+3. Asset shares and profit distribution,9.1.5 Summary comparison of Surplus Distribution Systems,Provision of Capital,3. Asset shares and profit distribution/9.1.5 Summary comparison of Surplus Distribution Systems.md,3106.10,0.6597,0.8086,273
+16. Reinsurance,3.1 Cost of reinsurance,Why don't insurer's just use mortality fluctuation reserve instead of costly reinsurance?,16. Reinsurance/3.1 Cost of reinsurance.md,3105.92,0.6548,0.7295,271
+5. Risks,11.5 Withdrawal risk,Components of withdrawal risk,5. Risks/11.5 Withdrawal risk.md,3104.78,0.6577,0.7444,271
+1. Life insurance contracts,2.2.3 Term assurance - Risks to the insurer,Mortality risk,1. Life insurance contracts/2.2.3 Term assurance - Risks to the insurer.md,3104.34,0.6561,0.7412,274
+1. Life insurance contracts,3.1.2 Immediate annuity - Customer needs,Customer needs,1. Life insurance contracts/3.1.2 Immediate annuity - Customer needs.md,3104.08,0.6543,0.7319,274
+16. Reinsurance,2.2 Claim fluctuations,How does reinsurance reduce claim pay-out fluctuations?,16. Reinsurance/2.2 Claim fluctuations.md,3102.87,0.6549,0.7591,276
+9. Assumptions,15.15 Consistency of assumptions,Consitency between bases,9. Assumptions/Valuation assumptions/15.15 Consistency of assumptions.md,3102.30,0.6590,0.7667,258
+2. Health and care products,5.1 Income Protection (IP) contracts,Pricing assumptions,2. Health and care products/5.1 Income Protection (IP) contracts.md,3101.56,0.6567,0.7670,275
+3. Asset shares and profit distribution,9.1.2 Addition to benefits - accumulating with profits,Smoothing and discretion,3. Asset shares and profit distribution/9.1.2 Addition to benefits - accumulating with profits.md,3101.35,0.6555,0.7559,275
+1. Life insurance contracts,1.6 Endowment Assurances - Risks to the insurer,Mortality Risk & Longevity Risk,1. Life insurance contracts/1.6 Endowment Assurances - Risks to the insurer.md,3100.41,0.6533,0.7326,268
+5. Risks,11.2 Mortality and morbidity risk,Influences on model and parameter uncertainty,5. Risks/11.2 Mortality and morbidity risk.md,3100.19,0.6558,0.7328,270
+4. External environment,10. The external environment,4. Competition,4. External environment/10. The external environment.md,3098.25,0.6562,0.7286,267
+9. Assumptions,15.8 Withdrawal (Persistency) Assumptions,Methodology for setting withdrawal assumptions,9. Assumptions/Pricing assumptions/15.8 Withdrawal (Persistency) Assumptions.md,3097.14,0.6587,0.7714,277
+5. Risks,11.8 Guarantees and options risks,Parameter and model risk,5. Risks/11.8 Guarantees and options risks.md,3096.84,0.6546,0.7452,270
+3. Asset shares and profit distribution,9.1.3 Revalorisation (conflict 2026-04-07-05-57-05),note,3. Asset shares and profit distribution/9.1.3 Revalorisation (conflict 2026-04-07-05-57-05).md,3095.36,0.6550,0.7672,273
+1. Life insurance contracts,3.1.3 Immediate annuity - Risks to the insurer,Expense risk,1. Life insurance contracts/3.1.3 Immediate annuity - Risks to the insurer.md,3094.95,0.6550,0.7215,273
+15. Pricing health & care contracts,2. Critical illness,How to derive risk premium rates for critical illness contracts?,15. Pricing health & care contracts/2. Critical illness.md,3094.41,0.6521,0.7423,272
+9. Assumptions,15.3 Mortality assumptions,Mortality trends,9. Assumptions/Pricing assumptions/15.3 Mortality assumptions.md,3089.67,0.6532,0.7388,274
+20. Monitoring experience,6. Using the results,"Capital & Investment (The ""Money"")",20. Monitoring experience/6. Using the results.md,3087.59,0.6549,0.7312,266
+9. Assumptions,15.11 Deciding on a valuation basis,Liabilities,9. Assumptions/Valuation assumptions/15.11 Deciding on a valuation basis.md,3086.08,0.6537,0.7413,271
+5. Risks,11.6 Mix of new business risk,Mix by size,5. Risks/11.6 Mix of new business risk.md,3085.94,0.6547,0.7261,275
+7. Modelling,13.7 Allowing for risk,Risk discount rate,7. Modelling/13.7 Allowing for risk.md,3085.35,0.6523,0.7465,271
+8. Product design,14.7 Guarantees and sensitivity of profit,Product designs that reduce the sensitivity of profit to adverse experience,8. Product design/14.7 Guarantees and sensitivity of profit.md,3083.83,0.6517,0.7469,274
+9. Assumptions,15.1 Assumptions as a source of risk,Setting assumptions,9. Assumptions/Pricing assumptions/15.1 Assumptions as a source of risk.md,3083.77,0.6544,0.7385,275
+2. Health and care products,5.1.6 Income Protection (IP) contracts - Risks to the insurer,Withdrawal (Persistency) risk,2. Health and care products/5.1.6 Income Protection (IP) contracts - Risks to the insurer.md,3083.55,0.6526,0.7343,275
+4. External environment,10. The external environment,11. Reinsurance availability,4. External environment/10. The external environment.md,3083.50,0.6536,0.7820,274
+10. Reserving,5. Net premium valuation,What are the limitations of using the net premium method?,10. Reserving/5. Net premium valuation.md,3083.21,0.6525,0.7420,276
+5. Risks,11. Risk,Sources of risk for a life insurance company,5. Risks/11. Risk.md,3082.51,0.6512,0.7235,268
+16. Reinsurance,1.5 Financial reinsurance (Fin Re),What are the key considerations for Fin Re?,16. Reinsurance/1.5 Financial reinsurance (Fin Re).md,3082.35,0.6540,0.7145,277
+6. Unit pricing and actuarial funding,12.2.1 Actuarial funding - effect on cashflows and reserve,Death strain,6. Unit pricing and actuarial funding/12.2.1 Actuarial funding - effect on cashflows and reserve.md,3082.11,0.6509,0.7546,268
+15. Pricing health & care contracts,1. Income protection,Define the multi-state model for income protection,15. Pricing health & care contracts/1. Income protection.md,3080.86,0.6489,0.7499,273
+3. Asset shares and profit distribution,9.1.4 Contribution method,Calculating the Mortality Profit Component,3. Asset shares and profit distribution/9.1.4 Contribution method.md,3079.69,0.6502,0.7854,264
+20. Monitoring experience,1. Reasons for monitoring,What corrective actions might be taken as a result of identifying adverse trends in experience?,20. Monitoring experience/1. Reasons for monitoring.md,3076.32,0.6525,0.7806,279
+8. Product design,14.10 Consistency with other products,Interaction of product design factors,8. Product design/14.10 Consistency with other products.md,3075.69,0.6520,0.7369,270
+19. Further risk management,1. Expense control,What are some of the possible ways that an insurer might try to keep its expenses within its policy loadings?,19. Further risk management/1. Expense control.md,3075.64,0.6501,0.7323,270
+12. Surrender values,3. Retention of profit on surrender,Why do companies retain profit on surrenders?,12. Surrender values/3. Retention of profit on surrender.md,3075.27,0.6526,0.7313,275
+18. Investments,3. Free assets,How do free assets affect the investment strategy of an insurance company?,18. Investments/3. Free assets.md,3074.68,0.6509,0.7578,271
+1. Life insurance contracts,4.2.1 Index-linked contracts - Customer needs,Customer needs,1. Life insurance contracts/4.2.1 Index-linked contracts - Customer needs.md,3073.52,0.6473,0.7267,271
+1. Life insurance contracts,2.1.1 Whole life assurance - Customer needs,Cases where whole life assurance functions as a savings vehicle,1. Life insurance contracts/2.1.1 Whole life assurance - Customer needs.md,3073.42,0.6474,0.7165,266
+5. Risks,11.5 Withdrawal risk,Withdrawals as a driver of expense risk,5. Risks/11.5 Withdrawal risk.md,3073.15,0.6530,0.7348,270
+5. Risks,11.9 Competition risk,Compounding Effect of Business Volume**,5. Risks/11.9 Competition risk.md,3070.39,0.6506,0.7376,274
+3. Asset shares and profit distribution,8.2 Asset share components,Monies In (Income):,3. Asset shares and profit distribution/8.2 Asset share components.md,3069.97,0.6494,0.7112,270
+2. Health and care products,5.1.6 Income Protection (IP) contracts - Risks to the insurer,Morbidity,2. Health and care products/5.1.6 Income Protection (IP) contracts - Risks to the insurer.md,3069.23,0.6494,0.7410,265
+4. External environment,10. The external environment,3. Distribution channel and distributor behaviour,4. External environment/10. The external environment.md,3069.01,0.6496,0.7626,273
+5. Risks,11.8 Guarantees and options risks,Mortality and morbidity guarantees,5. Risks/11.8 Guarantees and options risks.md,3066.40,0.6472,0.7314,268
+2. Health and care products,6.1.4 Critical illness cover - Risks to the insurer,Difficulties with tiered benefits,2. Health and care products/6.1.4 Critical illness cover - Risks to the insurer.md,3064.59,0.6477,0.7833,264
+5. Risks,11.9 Competition risk,Marketing and Reputational Risks**,5. Risks/11.9 Competition risk.md,3063.47,0.6488,0.7183,272
+15. Pricing health & care contracts,1. Income protection,What are central claim inception rates?,15. Pricing health & care contracts/1. Income protection.md,3063.05,0.6470,0.7717,269
+5. Risks,11.14 Actions of distributors,Risks from distributors,5. Risks/11.14 Actions of distributors.md,3063.03,0.6480,0.7266,269
+4. External environment,10. The external environment,10. Policyholder behaviour,4. External environment/10. The external environment.md,3062.69,0.6513,0.7099,279
+8. Product design,14.2 Profitability,Constraints on profitability,8. Product design/14.2 Profitability.md,3061.81,0.6491,0.7696,267
+1. Life insurance contracts,4.1.3 Unit-linked contracts - Risks to the insurer,Withdrawal (Persistency) risk,1. Life insurance contracts/4.1.3 Unit-linked contracts - Risks to the insurer.md,3061.57,0.6467,0.7450,267
+4. External environment,10.4 Economic Environment,The state of the economy,4. External environment/10.4 Economic Environment.md,3060.44,0.6471,0.7468,265
+3. Asset shares and profit distribution,9.1.5 Summary comparison of Surplus Distribution Systems,"The ""Smoothing"" Trade-off",3. Asset shares and profit distribution/9.1.5 Summary comparison of Surplus Distribution Systems.md,3059.86,0.6481,0.7352,274
+14. Guarantees and options,4. Valuing Mortality options,How are mortality options valued?,14. Guarantees and options/4. Valuing Mortality options.md,3058.04,0.6449,0.7657,257
+15. Pricing health & care contracts,3. Long-term care insurance,How is the inception / disability annuity model used in LTCI?,15. Pricing health & care contracts/3. Long-term care insurance.md,3057.18,0.6451,0.7671,264
+1. Life insurance contracts,4.1.3 Unit-linked contracts - Risks to the insurer,Mortality risk,1. Life insurance contracts/4.1.3 Unit-linked contracts - Risks to the insurer.md,3056.14,0.6428,0.7321,259
+20. Monitoring experience,3. Analysis of experience,What is the process for conducting a mortality investigation?,20. Monitoring experience/3. Analysis of experience.md,3056.12,0.6452,0.7528,258
+20. Monitoring experience,6. Using the results,"Product & Pricing (The ""What"")",20. Monitoring experience/6. Using the results.md,3055.95,0.6485,0.7610,271
+9. Assumptions,15.6 Expense and commission assumptions,Loading expenses to premiums,9. Assumptions/Pricing assumptions/15.6 Expense and commission assumptions.md,3055.93,0.6468,0.7244,270
+2. Health and care products,6.1.1 Critical illness cover - Product structures and benefits,Tiered benefits,2. Health and care products/6.1.1 Critical illness cover - Product structures and benefits.md,3055.75,0.6458,0.8186,256
+3. Asset shares and profit distribution,9.1.4 Contribution method,The Contribution Method (USA Style),3. Asset shares and profit distribution/9.1.4 Contribution method.md,3055.32,0.6469,0.7849,271
+1. Life insurance contracts,2.2.3 Term assurance - Risks to the insurer,Withdrawal (Persistency) risk,1. Life insurance contracts/2.2.3 Term assurance - Risks to the insurer.md,3054.05,0.6469,0.7182,270
+9. Assumptions,15.12 Reserving basis vs pricing basis,Using pricing assumptions to calculate reserves,9. Assumptions/Valuation assumptions/15.12 Reserving basis vs pricing basis.md,3051.16,0.6474,0.7627,264
+7. Modelling,13.7 Allowing for risk,Market consistent approach,7. Modelling/13.7 Allowing for risk.md,3050.83,0.6468,0.7528,257
+3. Asset shares and profit distribution,9.1 With-profits surplus distribution,Delaying profit distribution,3. Asset shares and profit distribution/9.1 With-profits surplus distribution.md,3050.79,0.6457,0.7259,270
+5. Risks,11.10 Strategic risk,Conflicting interests between shareholders and policyholders,5. Risks/11.10 Strategic risk.md,3050.60,0.6464,0.6978,279
+1. Life insurance contracts,4.3 Risks of the products to the insured,Risk to the policyholder,1. Life insurance contracts/4.3 Risks of the products to the insured.md,3050.55,0.6461,0.7276,266
+3. Asset shares and profit distribution,9.1.3 Revalorisation,note,3. Asset shares and profit distribution/9.1.3 Revalorisation.md,3048.59,0.6455,0.7613,268
+1. Life insurance contracts,2.1.4 Whole life assurances - Capital requirements,../../Definitions/Capital requirements,1. Life insurance contracts/2.1.4 Whole life assurances - Capital requirements.md,3048.45,0.6431,0.6996,261
+6. Unit pricing and actuarial funding,12.1 Unit pricing,Appropriation and expropriation prices,6. Unit pricing and actuarial funding/12.1 Unit pricing.md,3047.16,0.6454,0.8114,264
+1. Life insurance contracts,3. Annuity contracts,Structural basis,1. Life insurance contracts/3. Annuity contracts.md,3046.47,0.6428,0.7248,269
+5. Risks,11.1 Data risks,Policy data risks,5. Risks/11.1 Data risks.md,3045.07,0.6435,0.7306,264
+10. Reserving,3. Non-unit reserves,What is a non-unit reserve?,10. Reserving/3. Non-unit reserves.md,3044.59,0.6429,0.7860,262
+18. Investments,3. Free assets,Why is mismatching investment-linked liabilities uncommon?,18. Investments/3. Free assets.md,3044.43,0.6440,0.7293,269
+2. Health and care products,7.1.4 Long-Term Care Insurance - Capital requirements,Capital requirements for Long-Term Care Insurance (LTCI),2. Health and care products/7.1.4 Long-Term Care Insurance - Capital requirements.md,3044.28,0.6437,0.7211,271
+9. Assumptions,15.12 Reserving basis vs pricing basis,Prudency - pricing vs reserving,9. Assumptions/Valuation assumptions/15.12 Reserving basis vs pricing basis.md,3043.78,0.6460,0.7820,261
+12. Surrender values,2. Methods of calculation,Explain the unit-linked method,12. Surrender values/2. Methods of calculation.md,3042.73,0.6420,0.7703,237
+5. Risks,11.1 Data risks,Other data used in assumption setting,5. Risks/11.1 Data risks.md,3042.54,0.6439,0.7374,267
+3. Asset shares and profit distribution,8.2 Asset share components,Monies Out (Deductions):,3. Asset shares and profit distribution/8.2 Asset share components.md,3041.82,0.6452,0.7265,264
+4. External environment,10. The external environment,5. Economic environment,4. External environment/10. The external environment.md,3040.96,0.6442,0.7429,265
+5. Risks,"11.13 Aggregation and concentration of risk, credit failure",Concentration of risk,"5. Risks/11.13 Aggregation and concentration of risk, credit failure.md",3040.71,0.6412,0.7063,264
+13. Alterations,1. Paid-up contracts,What are the key principles when determining the paid-up sum assured?,13. Alterations/1. Paid-up contracts.md,3040.62,0.6442,0.7569,261
+16. Reinsurance,2.1 Parameter risk,How does reinsurance reduce parameter risk?,16. Reinsurance/2.1 Parameter risk.md,3040.24,0.6430,0.7494,261
+8. Product design,14.3 Marketability,Marketability,8. Product design/14.3 Marketability.md,3037.52,0.6438,0.7573,261
+6. Unit pricing and actuarial funding,12.1 Unit pricing,Unit pricing,6. Unit pricing and actuarial funding/12.1 Unit pricing.md,3034.80,0.6432,0.8120,239
+10. Reserving,9. Cost of capital approach,Simplified Approaches,10. Reserving/9. Cost of capital approach.md,3033.59,0.6414,0.7125,269
+1. Life insurance contracts,3.2.1 Deferred annuity - Customer needs,Investment and Profit participation,1. Life insurance contracts/3.2.1 Deferred annuity - Customer needs.md,3033.41,0.6406,0.7650,266
+16. Reinsurance,2.5 Cost reduction,How does reinsurance reduce costs for the cedant?,16. Reinsurance/2.5 Cost reduction.md,3033.39,0.6420,0.7305,267
+5. Risks,11.3 Investment risk,Mismatching risk,5. Risks/11.3 Investment risk.md,3033.07,0.6439,0.7356,265
+1. Life insurance contracts,1.6 Endowment Assurances - Risks to the insurer,Expense Risk,1. Life insurance contracts/1.6 Endowment Assurances - Risks to the insurer.md,3033.06,0.6411,0.7181,268
+5. Risks,11.6 Mix of new business risk,Mix by Nature,5. Risks/11.6 Mix of new business risk.md,3031.70,0.6418,0.7058,274
+6. Unit pricing and actuarial funding,12 Unit pricing and actuarial funding,Actuarial funding,6. Unit pricing and actuarial funding/12 Unit pricing and actuarial funding.md,3031.13,0.6402,0.7466,263
+15. Pricing health & care contracts,1. Income protection,What are the advantages vs disadvantages of the multi-state model?,15. Pricing health & care contracts/1. Income protection.md,3030.69,0.6404,0.7396,272
+15. Pricing health & care contracts,1. Income protection,How is the integral approximated in practice?,15. Pricing health & care contracts/1. Income protection.md,3030.50,0.6412,0.7558,257
+16. Reinsurance,1.1 Coinsurance - original terms,List the main factors that the reinsurer would consider when deciding on how much reinsurance commission to offer.,16. Reinsurance/1.1 Coinsurance - original terms.md,3029.71,0.6392,0.7444,264
+16. Reinsurance,1.4 Excess of loss,What are the key characteristics of XL Re?,16. Reinsurance/1.4 Excess of loss.md,3029.08,0.6425,0.7145,268
+1. Life insurance contracts,4.1 Unit-linked contracts,Charges,1. Life insurance contracts/4.1 Unit-linked contracts.md,3027.75,0.6402,0.7774,260
+3. Asset shares and profit distribution,8.4 Asset share development,Product-specific trajectories,3. Asset shares and profit distribution/8.4 Asset share development.md,3027.13,0.6406,0.7140,252
+4. External environment,10. The external environment,8. Expenses and operational capability,4. External environment/10. The external environment.md,3026.07,0.6422,0.7290,269
+9. Assumptions,15.2 Basic methodology for setting assumptions,The five-step framework,9. Assumptions/Pricing assumptions/15.2 Basic methodology for setting assumptions.md,3023.13,0.6405,0.7573,255
+9. Assumptions,15.9 Allowing for risk,Stochastic approach,9. Assumptions/Pricing assumptions/15.9 Allowing for risk.md,3021.90,0.6387,0.7386,256
+1. Life insurance contracts,2.1.1 Whole life assurance - Customer needs,Customer needs,1. Life insurance contracts/2.1.1 Whole life assurance - Customer needs.md,3021.21,0.6370,0.7163,257
+1. Life insurance contracts,3.1.3 Immediate annuity - Risks to the insurer,Longevity risk,1. Life insurance contracts/3.1.3 Immediate annuity - Risks to the insurer.md,3021.10,0.6368,0.7722,250
+20. Monitoring experience,3. Analysis of experience,What is the process for conducting an investment return experience investigation?,20. Monitoring experience/3. Analysis of experience.md,3021.03,0.6422,0.7570,250
+5. Risks,11.9 Competition risk,Impact on Pricing and Profitability**,5. Risks/11.9 Competition risk.md,3019.48,0.6396,0.7375,254
+9. Assumptions,15.4 Morbidity assumptions,Critical illness,9. Assumptions/Pricing assumptions/15.4 Morbidity assumptions.md,3019.04,0.6405,0.7507,265
+4. External environment,10.6 The tax regime,Impact on consumer propensity and marketability,4. External environment/10.6 The tax regime.md,3018.62,0.6385,0.6988,268
+8. Product design,14.7 Guarantees and sensitivity of profit,Factors affecting the onerousness of guarantees,8. Product design/14.7 Guarantees and sensitivity of profit.md,3016.47,0.6400,0.7068,268
+20. Monitoring experience,3. Analysis of experience,What is the process for conduction an expense investigation?,20. Monitoring experience/3. Analysis of experience.md,3014.35,0.6398,0.7347,266
+8. Product design,14.7 Guarantees and sensitivity of profit,Risks to the insurer,8. Product design/14.7 Guarantees and sensitivity of profit.md,3012.17,0.6377,0.7153,262
+1. Life insurance contracts,4.1 Unit-linked contracts,Benefits:,1. Life insurance contracts/4.1 Unit-linked contracts.md,3012.08,0.6381,0.7271,256
+20. Monitoring experience,3. Analysis of experience,What is the process for conducting a withdrawal (persistency) investigation?,20. Monitoring experience/3. Analysis of experience.md,3012.03,0.6380,0.8096,260
+6. Unit pricing and actuarial funding,12.2.1 Actuarial funding - effect on cashflows and reserve,Effect on cashflows,6. Unit pricing and actuarial funding/12.2.1 Actuarial funding - effect on cashflows and reserve.md,3011.09,0.6379,0.7266,255
+2. Health and care products,5.1.2 Income Protection (IP) contracts - Features,Benefit timing,2. Health and care products/5.1.2 Income Protection (IP) contracts - Features.md,3009.19,0.6378,0.7384,258
+6. Unit pricing and actuarial funding,12 Unit pricing and actuarial funding,Principal risks in unit pricing,6. Unit pricing and actuarial funding/12 Unit pricing and actuarial funding.md,3008.47,0.6371,0.7726,242
+18. Investments,1. Asset characteristics,List asset characteristics,18. Investments/1. Asset characteristics.md,3008.35,0.6368,0.7277,261
+10. Reserving,5. Net premium valuation,What is the Net premium valuation method?,10. Reserving/5. Net premium valuation.md,3007.87,0.6368,0.7446,237
+5. Risks,11.11 Counterparty risk,Risks from counterparties,5. Risks/11.11 Counterparty risk.md,3007.86,0.6373,0.7020,261
+2. Health and care products,5.1.6 Income Protection (IP) contracts - Risks to the insurer,Data Accuracy,2. Health and care products/5.1.6 Income Protection (IP) contracts - Risks to the insurer.md,3007.48,0.6371,0.7218,261
+1. Life insurance contracts,2.1.3 Whole life assurances - Risks to the insurer,Expense & inflation risk,1. Life insurance contracts/2.1.3 Whole life assurances - Risks to the insurer.md,3007.11,0.6341,0.7083,242
+5. Risks,11.6 Mix of new business risk,Mix by Source (distribution channel),5. Risks/11.6 Mix of new business risk.md,3006.60,0.6371,0.7216,262
+1. Life insurance contracts,4.1.3 Unit-linked contracts - Risks to the insurer,Expense risk,1. Life insurance contracts/4.1.3 Unit-linked contracts - Risks to the insurer.md,3006.43,0.6363,0.7410,258
+7. Modelling,13. Models,Chapter 13 — Models overview,7. Modelling/13. Models.md,3005.42,0.6324,0.7479,260
+2. Health and care products,6.1.2 Critical illness cover - Customer needs,Customer needs,2. Health and care products/6.1.2 Critical illness cover - Customer needs.md,3004.79,0.6348,0.7561,251
+13. Alterations,2. Principles of alterations,What are are the key principles for setting terms for general alterations?,13. Alterations/2. Principles of alterations.md,3004.29,0.6385,0.7580,272
+16. Reinsurance,1.2 Coinsurance - risk premium,What are the different allocation methods for the reinsured amount?,16. Reinsurance/1.2 Coinsurance - risk premium.md,3003.29,0.6336,0.7306,259
+6. Unit pricing and actuarial funding,12.1 Unit pricing,Management box,6. Unit pricing and actuarial funding/12.1 Unit pricing.md,3003.22,0.6332,0.7145,267
+4. External environment,10.6 The tax regime,Taxation,4. External environment/10.6 The tax regime.md,3002.95,0.6320,0.6988,256
+4. External environment,10. The external environment,7. Tax and fiscal environment,4. External environment/10. The external environment.md,3002.41,0.6371,0.7129,273
+1. Life insurance contracts,1.6 Endowment Assurances - Risks to the insurer,Group Risks,1. Life insurance contracts/1.6 Endowment Assurances - Risks to the insurer.md,3000.88,0.6325,0.6837,254
+18. Investments,4. Developing an investment strategy,What is the first step when developing an investment strategy?,18. Investments/4. Developing an investment strategy.md,3000.84,0.6354,0.7386,257
+1. Life insurance contracts,2.3.1 Renewable and convertible term assurance - Customer needs,Customer needs met by Convertible or renewable term assurances,1. Life insurance contracts/2.3.1 Renewable and convertible term assurance - Customer needs.md,3000.47,0.6332,0.7112,252
+4. External environment,10.7 Professional guidance,Professional guidance as an opportunity,4. External environment/10.7 Professional guidance.md,3000.22,0.6321,0.7082,253
+2. Health and care products,5.1.7 Income Protection (IP) contracts - Capital requirements,Capital requirements for Income Protection (IP) contracts,2. Health and care products/5.1.7 Income Protection (IP) contracts - Capital requirements.md,3000.01,0.6346,0.7204,269
+10. Reserving,5. Net premium valuation,What are the benefits of using the net premium method?,10. Reserving/5. Net premium valuation.md,2998.01,0.6367,0.7444,264
+12. Surrender values,3. Retention of profit on surrender,What is a suitable path for a surrender value:,12. Surrender values/3. Retention of profit on surrender.md,2997.51,0.6353,0.7593,250
+6. Unit pricing and actuarial funding,12.1 Unit pricing,Fund pricing bases,6. Unit pricing and actuarial funding/12.1 Unit pricing.md,2994.67,0.6347,0.7182,248
+1. Life insurance contracts,2. Life Assurances,Contracts that pay out benefits on death of the life insured,1. Life insurance contracts/2. Life Assurances.md,2993.20,0.6293,0.7045,236
+9. Assumptions,15.4 Morbidity assumptions,Income protection (IP),9. Assumptions/Pricing assumptions/15.4 Morbidity assumptions.md,2991.16,0.6351,0.7872,249
+1. Life insurance contracts,2.2.1 Term assurance - Customer needs,Customer needs met by term assurances,1. Life insurance contracts/2.2.1 Term assurance - Customer needs.md,2989.53,0.6301,0.7009,244
+1. Life insurance contracts,3.1 Immediate annuity contract,Available structures on annuity contracts,1. Life insurance contracts/3.1 Immediate annuity contract.md,2988.83,0.6298,0.7158,250
+13. Alterations,2. Principles of alterations,How does a company ensure prevent financial loss on an alteration?,13. Alterations/2. Principles of alterations.md,2988.37,0.6359,0.7548,267
+14. Guarantees and options,2. Valuing an investment guarantee,How are option pricing techniques used to value guarantees?,14. Guarantees and options/2. Valuing an investment guarantee.md,2985.12,0.6292,0.7427,233
+17. Underwriting & data checks,Underwriting,What are some alternatives to medical underwriting?,17. Underwriting & data checks/Underwriting.md,2984.66,0.6293,0.7326,228
+13. Alterations,3. Methods of calculation,Proportionate paid-up values,13. Alterations/3. Methods of calculation.md,2984.34,0.6297,0.7307,213
+14. Guarantees and options,2. Valuing an investment guarantee,What methods are available for valuing an investment guarantee?,14. Guarantees and options/2. Valuing an investment guarantee.md,2984.17,0.6298,0.7199,232
+14. Guarantees and options,0. Syllabus objectives,Objective,14. Guarantees and options/0. Syllabus objectives.md,2983.89,0.6279,0.7183,232
+19. Further risk management,3. New business mix and volumes,How does a company manage new business valuation strain?,19. Further risk management/3. New business mix and volumes.md,2980.95,0.6324,0.7169,255
+9. Assumptions,15.5 Investment return assumptions,Different valuation approaches,9. Assumptions/Pricing assumptions/15.5 Investment return assumptions.md,2980.86,0.6325,0.7244,229
+5. Risks,11.9 Competition risk,Onerous Guarantees and Options,5. Risks/11.9 Competition risk.md,2980.73,0.6306,0.7196,244
+4. External environment,10.2.1 Distribution channels - Risk to the insurer,Impact on demographic profile,4. External environment/10.2.1 Distribution channels - Risk to the insurer.md,2977.31,0.6294,0.7149,247
+18. Investments,4. Developing an investment strategy,What risks or potential weakness are involved in stochastic asset-liability modelling?,18. Investments/4. Developing an investment strategy.md,2976.55,0.6290,0.7265,239
+11. Capital requirements,1. SCR,What are Solvency Capital Requirements (SCR)?,11. Capital requirements/1. SCR.md,2974.88,0.6259,0.7176,232
+17. Underwriting & data checks,Underwriting,What are the benefits and drawbacks of underwriting?,17. Underwriting & data checks/Underwriting.md,2974.39,0.6296,0.7454,233
+16. Reinsurance,2.3 New business strain,How does reinsurance reduce new business strain?,16. Reinsurance/2.3 New business strain.md,2974.00,0.6310,0.7683,257
+16. Reinsurance,1. Reinsurance contracts,What are the main types of insurance contracts?,16. Reinsurance/1. Reinsurance contracts.md,2971.46,0.6261,0.7502,232
+2. Health and care products,7.1.2 Long-Term Care Insurance - Product variations,Product structures,2. Health and care products/7.1.2 Long-Term Care Insurance - Product variations.md,2969.91,0.6260,0.7190,227
+9. Assumptions,15.13 Best estimate reserves,Calculating best estimate reserves,9. Assumptions/Valuation assumptions/15.13 Best estimate reserves.md,2969.61,0.6292,0.7413,222
+1. Life insurance contracts,4.2.2 Index-linked contracts - Risks to the insurer,Investment risk,1. Life insurance contracts/4.2.2 Index-linked contracts - Risks to the insurer.md,2968.78,0.6278,0.7253,248
+19. Further risk management,5. Systematic risk,What is the role of the actuary in managing a life insurer's risks?,19. Further risk management/5. Systematic risk.md,2968.45,0.6251,0.6866,235
+1. Life insurance contracts,3.2 Deferred annuity contracts,Structures,1. Life insurance contracts/3.2 Deferred annuity contracts.md,2968.12,0.6256,0.7300,220
+8. Product design,14.2 Profitability,Profitability,8. Product design/14.2 Profitability.md,2966.91,0.6290,0.7277,252
+11. Capital requirements,3. VaR,What are the risk factors that are typically shocked in a VaR approach?,11. Capital requirements/3. VaR.md,2966.52,0.6269,0.6867,238
+13. Alterations,2. Principles of alterations,How are boundary conditions used to assess proposals for alterations?,13. Alterations/2. Principles of alterations.md,2964.90,0.6303,0.7580,252
+10. Reserving,4. Negative non-unit reserves,What is the algorithm for calculating negative non-unit reserves?,10. Reserving/4. Negative non-unit reserves.md,2964.59,0.6267,0.8247,194
+11. Capital requirements,3. VaR,How is VaR calculated?,11. Capital requirements/3. VaR.md,2964.53,0.6289,0.7085,229
+4. External environment,10.1 Consumer propensity,Risks to the insurer,4. External environment/10.1 Consumer propensity.md,2963.99,0.6280,0.6935,247
+4. External environment,10.2.1 Distribution channels - Risk to the insurer,Impact on contract design,4. External environment/10.2.1 Distribution channels - Risk to the insurer.md,2962.91,0.6272,0.7467,234
+6. Unit pricing and actuarial funding,12.1 Unit pricing,Pricing for policyholder,6. Unit pricing and actuarial funding/12.1 Unit pricing.md,2962.60,0.6261,0.7353,224
+13. Alterations,3. Methods of calculation,What are the advantages and disadvantages of the equating of values method?,13. Alterations/3. Methods of calculation.md,2960.73,0.6287,0.7576,231
+9. Assumptions,15.14 Embedded value,How to allow for risk when calculating embedded values,9. Assumptions/Valuation assumptions/15.14 Embedded value.md,2960.47,0.6280,0.7377,232
+13. Alterations,5. Unit linked contracts,How do insurers treat alterations on unit linked contracts?,13. Alterations/5. Unit linked contracts.md,2960.22,0.6273,0.7286,237
+3. Asset shares and profit distribution,9.1.1 Addition to benefits - conventional with profits,Terminal bonuses,3. Asset shares and profit distribution/9.1.1 Addition to benefits - conventional with profits.md,2959.46,0.6266,0.7789,228
+2. Health and care products,5.1.6 Income Protection (IP) contracts - Risks to the insurer,Investment risk,2. Health and care products/5.1.6 Income Protection (IP) contracts - Risks to the insurer.md,2959.26,0.6258,0.7364,240
+7. Modelling,13.2 Model components,Accounting vs Actuarial context,7. Modelling/13.2 Model components.md,2954.54,0.6238,0.6961,247
+1. Life insurance contracts,3.1.1 Immediate annuity - Absence of Surrender values,Surrender values,1. Life insurance contracts/3.1.1 Immediate annuity - Absence of Surrender values.md,2953.72,0.6248,0.7351,228
+5. Risks,11.2 Mortality and morbidity risk,Claims experience for health and care products,5. Risks/11.2 Mortality and morbidity risk.md,2952.61,0.6239,0.6952,226
+18. Investments,1. Asset characteristics,What do actuaries have to consider regarding the security of an asset,18. Investments/1. Asset characteristics.md,2951.18,0.6258,0.6948,244
+1. Life insurance contracts,3.2.1 Deferred annuity - Customer needs,Protection against longevity risk,1. Life insurance contracts/3.2.1 Deferred annuity - Customer needs.md,2950.77,0.6214,0.7766,219
+1. Life insurance contracts,4.1.1 Unit-linked contracts - Unit vs non-unit fund,Unit fund,1. Life insurance contracts/4.1.1 Unit-linked contracts - Unit vs non-unit fund.md,2950.51,0.6228,0.7359,200
+5. Risks,11.4 Expense risk,Sources of expense risk,5. Risks/11.4 Expense risk.md,2947.92,0.6258,0.7418,251
+11. Capital requirements,5. Interplay between reserves and solvency capital,Discuss the interplay between supervisory reserves and solvency capital,11. Capital requirements/5. Interplay between reserves and solvency capital.md,2947.70,0.6239,0.7370,213
+13. Alterations,1. Paid-up contracts,What are the key assumption changes when a policy becomes paid-up?,13. Alterations/1. Paid-up contracts.md,2947.09,0.6244,0.7063,224
+7. Modelling,13.2 Model components,Profit calculation,7. Modelling/13.2 Model components.md,2946.62,0.6242,0.7168,206
+10. Reserving,10. Active vs passive valuation,Compare Active vs Passive valuation methods,10. Reserving/10. Active vs passive valuation.md,2946.53,0.6233,0.7558,223
+7. Modelling,13.1 Objectives and requirements,What are the known objectives for building a model?,7. Modelling/13.1 Objectives and requirements.md,2946.18,0.6219,0.7149,227
+4. External environment,10. The external environment,9. Claims environment,4. External environment/10. The external environment.md,2946.02,0.6252,0.6885,236
+1. Life insurance contracts,3.2 Deferred annuity contracts,Premiums,1. Life insurance contracts/3.2 Deferred annuity contracts.md,2945.01,0.6213,0.7188,228
+16. Reinsurance,2. Reasons for reinsuring,List the reasons for reinsuring,16. Reinsurance/2. Reasons for reinsuring.md,2944.40,0.6230,0.7208,244
+3. Asset shares and profit distribution,8.4 Asset share development,Initial phase: New Business Strain,3. Asset shares and profit distribution/8.4 Asset share development.md,2944.26,0.6244,0.6770,249
+10. Reserving,3. Non-unit reserves,How is the non-unit reserve calculated in a Prudential valuation?,10. Reserving/3. Non-unit reserves.md,2942.74,0.6232,0.7940,205
+19. Further risk management,1. Expense control,How do insurers control expenses?,19. Further risk management/1. Expense control.md,2942.68,0.6232,0.7051,239
+2. Health and care products,5.1.4 Income Protection (IP) contracts - Product Variations,Structural Basis,2. Health and care products/5.1.4 Income Protection (IP) contracts - Product Variations.md,2942.20,0.6224,0.7114,230
+5. Risks,"11.13 Aggregation and concentration of risk, credit failure",Credit failure,"5. Risks/11.13 Aggregation and concentration of risk, credit failure.md",2942.16,0.6203,0.6950,228
+17. Underwriting & data checks,Data checks,Data checks,17. Underwriting & data checks/Data checks.md,2941.68,0.6252,0.7671,219
+1. Life insurance contracts,1.2 Endowment Assurances - Customer needs,Customer needs met by endowment assurances,1. Life insurance contracts/1.2 Endowment Assurances - Customer needs.md,2941.46,0.6192,0.7005,210
+7. Modelling,13.4 Market-consistent approach,Traditional (passive) approach,7. Modelling/13.4 Market-consistent approach.md,2940.94,0.6228,0.7325,228
+9. Assumptions,15.10 Profit criteria,Profit criteria,9. Assumptions/Pricing assumptions/15.10 Profit criteria.md,2939.69,0.6220,0.6958,246
+8. Product design,14.8 Cross subsidies,Cross-subsidy by policy/premium size,8. Product design/14.8 Cross subsidies.md,2939.06,0.6216,0.7413,225
+7. Modelling,13.7 Allowing for risk,Sensitivity analysis,7. Modelling/13.7 Allowing for risk.md,2938.95,0.6212,0.7227,227
+16. Reinsurance,0. Syllabus objectives,Objective,16. Reinsurance/0. Syllabus objectives.md,2937.88,0.6195,0.7206,218
+6. Unit pricing and actuarial funding,12.2.1 Actuarial funding - effect on cashflows and reserve,Unit fund growth,6. Unit pricing and actuarial funding/12.2.1 Actuarial funding - effect on cashflows and reserve.md,2937.58,0.6215,0.7186,227
+9. Assumptions,15.3 Mortality assumptions,External sources of data,9. Assumptions/Pricing assumptions/15.3 Mortality assumptions.md,2936.72,0.6207,0.7177,208
+2. Health and care products,7.1.4 Long-Term Care Insurance - Capital requirements,Similarity to Endowments,2. Health and care products/7.1.4 Long-Term Care Insurance - Capital requirements.md,2934.44,0.6185,0.6929,218
+15. Pricing health & care contracts,1. Income protection,What are the advantages/disadvantages of the inception / disability annuity approach?,15. Pricing health & care contracts/1. Income protection.md,2934.11,0.6211,0.7631,229
+9. Assumptions,15.4 Morbidity assumptions,LTCI,9. Assumptions/Pricing assumptions/15.4 Morbidity assumptions.md,2933.67,0.6215,0.7383,238
+1. Life insurance contracts,3.2.4 Deferred annuity - Risks to the insurer,Risks to the insurer,1. Life insurance contracts/3.2.4 Deferred annuity - Risks to the insurer.md,2933.66,0.6185,0.7307,207
+1. Life insurance contracts,4.1 Unit-linked contracts,Profit margin,1. Life insurance contracts/4.1 Unit-linked contracts.md,2932.38,0.6207,0.7068,228
+2. Health and care products,5.1.2 Income Protection (IP) contracts - Features,Over-insurance,2. Health and care products/5.1.2 Income Protection (IP) contracts - Features.md,2932.30,0.6207,0.7372,214
+3. Asset shares and profit distribution,9.1.3 Revalorisation (conflict 2026-04-07-05-57-05),Comparison: Revalorisation vs. Conventional With-Profits,3. Asset shares and profit distribution/9.1.3 Revalorisation (conflict 2026-04-07-05-57-05).md,2931.81,0.6217,0.7242,233
+1. Life insurance contracts,3.2.1 Deferred annuity - Customer needs,Flexibility in contributions,1. Life insurance contracts/3.2.1 Deferred annuity - Customer needs.md,2931.24,0.6192,0.7090,216
+2. Health and care products,5.1.2 Income Protection (IP) contracts - Features,General principles for Policy Conditions,2. Health and care products/5.1.2 Income Protection (IP) contracts - Features.md,2928.19,0.6209,0.7237,229
+2. Health and care products,7.1 Long-Term Care Insurance,Benefits,2. Health and care products/7.1 Long-Term Care Insurance.md,2927.54,0.6196,0.7326,222
+1. Life insurance contracts,1.3 Endowment Assurances - Surrender values,Surrender Value,1. Life insurance contracts/1.3 Endowment Assurances - Surrender values.md,2926.43,0.6172,0.7483,183
+6. Unit pricing and actuarial funding,12 Unit pricing and actuarial funding,Unit pricing,6. Unit pricing and actuarial funding/12 Unit pricing and actuarial funding.md,2925.43,0.6177,0.7455,204
+2. Health and care products,7.1.3 Long-Term Care Insurance - Risks to the insurer,External and operational risks,2. Health and care products/7.1.3 Long-Term Care Insurance - Risks to the insurer.md,2924.74,0.6187,0.7198,219
+9. Assumptions,15.14 Embedded value,How to determine assumptions (EV Basis)?,9. Assumptions/Valuation assumptions/15.14 Embedded value.md,2924.69,0.6227,0.7775,193
+13. Alterations,4. Equating policy values,When to use select mortality in an alteration?,13. Alterations/4. Equating policy values.md,2923.57,0.6196,0.7013,213
+5. Risks,11.5 Withdrawal risk,Withdrawals as a driver of mortality risk,5. Risks/11.5 Withdrawal risk.md,2923.48,0.6170,0.7335,198
+16. Reinsurance,1.1 Coinsurance - original terms,What are the key features of OTR?,16. Reinsurance/1.1 Coinsurance - original terms.md,2920.65,0.6179,0.6954,201
+18. Investments,1. Asset characteristics,What do actuaries consider about the return of an asset?,18. Investments/1. Asset characteristics.md,2918.00,0.6195,0.6951,216
+8. Product design,14.4 Competitiveness,Constraints on competitiveness,8. Product design/14.4 Competitiveness.md,2917.50,0.6159,0.7146,222
+10. Reserving,4. Negative non-unit reserves,No future valuation strain,10. Reserving/4. Negative non-unit reserves.md,2917.38,0.6185,0.8209,204
+8. Product design,14.2 Profitability,Profit criteria,8. Product design/14.2 Profitability.md,2916.86,0.6185,0.6749,230
+2. Health and care products,7.1.3 Long-Term Care Insurance - Risks to the insurer,Morbidity risk,2. Health and care products/7.1.3 Long-Term Care Insurance - Risks to the insurer.md,2914.81,0.6173,0.6994,216
+9. Assumptions,15.9 Allowing for risk,Explicit margins,9. Assumptions/Pricing assumptions/15.9 Allowing for risk.md,2914.49,0.6191,0.7007,206
+2. Health and care products,5.1.1 Income Protection (IP) contracts - Customer needs,Customer needs,2. Health and care products/5.1.1 Income Protection (IP) contracts - Customer needs.md,2912.43,0.6148,0.7649,189
+2. Health and care products,5.1.2 Income Protection (IP) contracts - Features,Benefits,2. Health and care products/5.1.2 Income Protection (IP) contracts - Features.md,2912.15,0.6174,0.7457,197
+16. Reinsurance,1.3 Coinsurance - level risk premium,What are the different allocation methods for the reinsured amount?,16. Reinsurance/1.3 Coinsurance - level risk premium.md,2911.83,0.6140,0.7130,207
+20. Monitoring experience,3. Analysis of experience,What are the various demographic and financial investigations that an actuary might conduct?,20. Monitoring experience/3. Analysis of experience.md,2907.75,0.6141,0.7469,188
+10. Reserving,7. Principles of market consistent valuation,How does MCV value non-market risks?,10. Reserving/7. Principles of market consistent valuation.md,2907.31,0.6171,0.6962,198
+10. Reserving,7. Principles of market consistent valuation,How are liabilities valued under MCV?,10. Reserving/7. Principles of market consistent valuation.md,2907.12,0.6167,0.7335,191
+17. Underwriting & data checks,Underwriting,How is underwriting done on group business?,17. Underwriting & data checks/Underwriting.md,2906.54,0.6133,0.7015,195
+2. Health and care products,5.1 Income Protection (IP) contracts,Definition,2. Health and care products/5.1 Income Protection (IP) contracts.md,2906.14,0.6131,0.7568,168
+11. Capital requirements,4. Run-off method,What is the run-off method?,11. Capital requirements/4. Run-off method.md,2906.03,0.6162,0.6923,191
+20. Monitoring experience,2. Data required,"What is the role of ""Big data"" in monitoring?",20. Monitoring experience/2. Data required.md,2905.55,0.6144,0.7020,206
+20. Monitoring experience,1. Reasons for monitoring,What are the reasons we should monitor the actual experience of a life insurance company?,20. Monitoring experience/1. Reasons for monitoring.md,2903.28,0.6128,0.7322,209
+16. Reinsurance,1.3 Coinsurance - level risk premium,definition,16. Reinsurance/1.3 Coinsurance - level risk premium.md,2902.54,0.6123,0.7494,200
+19. Further risk management,1. Expense control,How does an insurance company manage mismatching issue that can arise from a the mismatch in incidence and amount of expenses and charges or loadings?,19. Further risk management/1. Expense control.md,2900.20,0.6144,0.7126,205
+13. Alterations,3. Methods of calculation,Equating policy values,13. Alterations/3. Methods of calculation.md,2897.12,0.6160,0.7701,192
+9. Assumptions,15.14 Embedded value,How is embedded value calculated?,9. Assumptions/Valuation assumptions/15.14 Embedded value.md,2896.12,0.6139,0.8307,166
+11. Capital requirements,3. VaR,Numerical Example,11. Capital requirements/3. VaR.md,2894.34,0.6133,0.6837,191
+2. Health and care products,5.1.3 Income Protection (IP) contracts - Claim definitions,Further Policy conditions,2. Health and care products/5.1.3 Income Protection (IP) contracts - Claim definitions.md,2893.56,0.6147,0.7341,188
+1. Life insurance contracts,4.1 Unit-linked contracts,Definition,1. Life insurance contracts/4.1 Unit-linked contracts.md,2893.48,0.6066,0.7156,158
+10. Reserving,8. Risk-neutral calibration,How is a stochastic model calibrated using risk-neutral calibration?,10. Reserving/8. Risk-neutral calibration.md,2892.86,0.6115,0.7012,178
+16. Reinsurance,1.5 Financial reinsurance (Fin Re),What are the main types of Fin Re?,16. Reinsurance/1.5 Financial reinsurance (Fin Re).md,2892.61,0.6118,0.7292,200
+1. Life insurance contracts,3. Annuity contracts,Contracts paying out on continued survival of the insured life.,1. Life insurance contracts/3. Annuity contracts.md,2891.77,0.6082,0.6918,176
+4. External environment,10. The external environment,13. Reputational and conduct risk,4. External environment/10. The external environment.md,2891.12,0.6129,0.6808,200
+2. Health and care products,6.1.4 Critical illness cover - Risks to the insurer,Investment risk,2. Health and care products/6.1.4 Critical illness cover - Risks to the insurer.md,2891.04,0.6105,0.6959,180
+5. Risks,11.3 Investment risk,Components of investment risk,5. Risks/11.3 Investment risk.md,2890.49,0.6118,0.6913,194
+5. Risks,11.5 Withdrawal risk,What is the impact of changes in lapse assumptions on the reserves?,5. Risks/11.5 Withdrawal risk.md,2890.45,0.6159,0.7068,203
+9. Assumptions,15.7 Expense inflation assumptions,Expense inflation,9. Assumptions/Pricing assumptions/15.7 Expense inflation assumptions.md,2889.07,0.6136,0.7007,201
+16. Reinsurance,1.4 Excess of loss,What are the main types of XL Re?,16. Reinsurance/1.4 Excess of loss.md,2888.87,0.6099,0.6909,202
+18. Investments,4. Developing an investment strategy,What is the second step when developing an investment strategy?,18. Investments/4. Developing an investment strategy.md,2886.60,0.6128,0.7067,188
+4. External environment,10.5 Legal Environment,Constraints on insurers discretion,4. External environment/10.5 Legal Environment.md,2886.52,0.6124,0.6736,202
+2. Health and care products,5.1.4 Income Protection (IP) contracts - Product Variations,No claims discounts,2. Health and care products/5.1.4 Income Protection (IP) contracts - Product Variations.md,2885.33,0.6108,0.7300,182
+5. Risks,11.7 Volume of business risk,Too low volumes,5. Risks/11.7 Volume of business risk.md,2883.89,0.6124,0.6853,209
+11. Capital requirements,3. VaR,When would modelling individual risk driver shocks be insufficient?,11. Capital requirements/3. VaR.md,2881.30,0.6094,0.6688,198
+9. Assumptions,15.12 Reserving basis vs pricing basis,Uncertainty - pricing vs reserving,9. Assumptions/Valuation assumptions/15.12 Reserving basis vs pricing basis.md,2879.67,0.6129,0.7019,191
+10. Reserving,2. Gross premium valuation,How are reserves calculated under the GPV method?,10. Reserving/2. Gross premium valuation.md,2877.79,0.6099,0.7424,173
+5. Risks,11.15 Operational risk,Fraud,5. Risks/11.15 Operational risk.md,2877.40,0.6083,0.6694,196
+4. External environment,10.7 Professional guidance,Actuarial associations and guidance as an external constraint,4. External environment/10.7 Professional guidance.md,2876.23,0.6058,0.6779,177
+1. Life insurance contracts,0. The personal financial lifecyle,Ages 16 – 25 (Young Adult): Future goals & debt settlement,1. Life insurance contracts/0. The personal financial lifecyle.md,2875.69,0.6058,0.7036,170
+11. Capital requirements,2. Calculating SCR,What are the different calculation methods for SCR?,11. Capital requirements/2. Calculating SCR.md,2875.13,0.6093,0.7138,177
+9. Assumptions,15.7 Expense inflation assumptions,The principle of consistency,9. Assumptions/Pricing assumptions/15.7 Expense inflation assumptions.md,2874.61,0.6099,0.7074,180
+16. Reinsurance,1.1 Coinsurance - original terms,What are the different allocation methods for the reinsured amount?,16. Reinsurance/1.1 Coinsurance - original terms.md,2874.39,0.6065,0.7053,165
+11. Capital requirements,3. VaR,How do insurers select a specific level of the risk drive as a plausible extreme event?,11. Capital requirements/3. VaR.md,2873.38,0.6073,0.6756,175
+20. Monitoring experience,4. Analysis of surplus,What are the sources of surplus?,20. Monitoring experience/4. Analysis of surplus.md,2873.09,0.6110,0.7403,179
+2. Health and care products,6.1.1 Critical illness cover - Product structures and benefits,Product structures,2. Health and care products/6.1.1 Critical illness cover - Product structures and benefits.md,2873.07,0.6053,0.7266,159
+4. External environment,10.2 Distribution channels,Own salesforce,4. External environment/10.2 Distribution channels.md,2873.00,0.6040,0.7017,159
+8. Product design,14.10 Consistency with other products,Consistency,8. Product design/14.10 Consistency with other products.md,2872.91,0.6111,0.6831,194
+5. Risks,11.7 Volume of business risk,Too high volumes,5. Risks/11.7 Volume of business risk.md,2872.89,0.6107,0.6985,193
+9. Assumptions,15.7 Expense inflation assumptions,Data sources,9. Assumptions/Pricing assumptions/15.7 Expense inflation assumptions.md,2871.46,0.6087,0.6948,175
+2. Health and care products,7.1.3 Long-Term Care Insurance - Risks to the insurer,Investment risk,2. Health and care products/7.1.3 Long-Term Care Insurance - Risks to the insurer.md,2870.32,0.6059,0.7092,170
+6. Unit pricing and actuarial funding,12 Unit pricing and actuarial funding,Bid and offer,6. Unit pricing and actuarial funding/12 Unit pricing and actuarial funding.md,2867.97,0.6052,0.7027,157
+11. Capital requirements,3. VaR,What is non-separability of risks,11. Capital requirements/3. VaR.md,2866.34,0.6064,0.6618,178
+7. Modelling,13.4 Market-consistent approach,The financial economic (market-consistent) approach,7. Modelling/13.4 Market-consistent approach.md,2865.85,0.6060,0.7381,157
+3. Asset shares and profit distribution,9.1.2 Addition to benefits - accumulating with profits,Terminal bonuses,3. Asset shares and profit distribution/9.1.2 Addition to benefits - accumulating with profits.md,2865.35,0.6067,0.7387,154
+1. Life insurance contracts,2.1.2 Whole life assurance - Surrender values,Surrender Value,1. Life insurance contracts/2.1.2 Whole life assurance - Surrender values.md,2864.72,0.6028,0.7416,136
+16. Reinsurance,1.1 Coinsurance - original terms,definition,16. Reinsurance/1.1 Coinsurance - original terms.md,2863.69,0.6042,0.7432,153
+1. Life insurance contracts,3.2.5 Deferred annuity - Capital requirements,Capital requirements,1. Life insurance contracts/3.2.5 Deferred annuity - Capital requirements.md,2863.51,0.6036,0.6774,149
+15. Pricing health & care contracts,1. Income protection,What are the possible IP states and how can they be subdivided?,15. Pricing health & care contracts/1. Income protection.md,2862.92,0.6054,0.6833,151
+8. Product design,14. Product design,Why might an actuary be looking at a possible new product design?,8. Product design/14. Product design.md,2862.86,0.6075,0.6956,167
+14. Guarantees and options,3. Mortality options,Which factors can affect the risk of mortality options?,14. Guarantees and options/3. Mortality options.md,2862.49,0.6032,0.7058,152
+10. Reserving,6. Market-consistent valuation,Why is the MCV considered an active valuation approach?,10. Reserving/6. Market-consistent valuation.md,2862.42,0.6064,0.7262,171
+8. Product design,14.7 Guarantees and sensitivity of profit,Sensitivity of profit,8. Product design/14.7 Guarantees and sensitivity of profit.md,2862.36,0.6066,0.7024,192
+9. Assumptions,15.6 Expense and commission assumptions,Allocating per-policy expenses,9. Assumptions/Pricing assumptions/15.6 Expense and commission assumptions.md,2861.37,0.6063,0.6931,172
+8. Product design,14.5 Financing requirements,Reducing capital strain through policy features,8. Product design/14.5 Financing requirements.md,2861.35,0.6070,0.6907,177
+1. Life insurance contracts,4.1 Unit-linked contracts,Premiums:,1. Life insurance contracts/4.1 Unit-linked contracts.md,2861.31,0.6028,0.7272,129
+11. Capital requirements,3. VaR,What is non-linearity of risks,11. Capital requirements/3. VaR.md,2860.97,0.6066,0.6772,177
+5. Risks,11.4 Expense risk,Components of expense inflation risk,5. Risks/11.4 Expense risk.md,2860.90,0.6070,0.6886,171
+10. Reserving,7. Principles of market consistent valuation,What is the illiquidity premium in MCV?,10. Reserving/7. Principles of market consistent valuation.md,2859.45,0.6053,0.6938,166
+1. Life insurance contracts,3.1 Immediate annuity contract,Immediate annuity,1. Life insurance contracts/3.1 Immediate annuity contract.md,2859.17,0.6031,0.6909,156
+19. Further risk management,1. Expense control,How should an insurance company control commissions?,19. Further risk management/1. Expense control.md,2858.22,0.6032,0.7144,168
+20. Monitoring experience,4. Analysis of surplus,Why would an insurance company want to perform an analysis of surplus?,20. Monitoring experience/4. Analysis of surplus.md,2856.58,0.6047,0.6964,171
+10. Reserving,1. Purpose and reserving methods,What are the two primary reserving methods?,10. Reserving/1. Purpose and reserving methods.md,2855.30,0.6042,0.7304,161
+3. Asset shares and profit distribution,9.1.3 Revalorisation,Comparison: Revalorisation vs. Conventional With-Profits,3. Asset shares and profit distribution/9.1.3 Revalorisation.md,2854.62,0.6053,0.6983,178
+1. Life insurance contracts,1. Life insurance contracts,Contract types,1. Life insurance contracts/1. Life insurance contracts.md,2854.60,0.5987,0.6607,141
+16. Reinsurance,1.2 Coinsurance - risk premium,definition,16. Reinsurance/1.2 Coinsurance - risk premium.md,2854.28,0.6017,0.7266,140
+2. Health and care products,7.1.3 Long-Term Care Insurance - Risks to the insurer,Expense risk,2. Health and care products/7.1.3 Long-Term Care Insurance - Risks to the insurer.md,2853.32,0.6031,0.6815,152
+6. Unit pricing and actuarial funding,12.2 Actuarial funding,definition,6. Unit pricing and actuarial funding/12.2 Actuarial funding.md,2852.22,0.6009,0.7205,150
+10. Reserving,4. Negative non-unit reserves,What is a negative non-unit reserve?,10. Reserving/4. Negative non-unit reserves.md,2851.48,0.6050,0.7908,165
+2. Health and care products,6.1.4 Critical illness cover - Risks to the insurer,Expense risk,2. Health and care products/6.1.4 Critical illness cover - Risks to the insurer.md,2851.28,0.6024,0.7161,148
+5. Risks,11.2 Mortality and morbidity risk,Selection risks,5. Risks/11.2 Mortality and morbidity risk.md,2851.12,0.6042,0.6919,157
+2. Health and care products,6.1.4 Critical illness cover - Risks to the insurer,Other risks,2. Health and care products/6.1.4 Critical illness cover - Risks to the insurer.md,2848.76,0.6020,0.7281,130
+7. Modelling,13.2 Model components,Distinction between real and notional cashflows,7. Modelling/13.2 Model components.md,2848.47,0.6035,0.7352,159
+1. Life insurance contracts,4.1 Unit-linked contracts,Initial expenses,1. Life insurance contracts/4.1 Unit-linked contracts.md,2847.32,0.6041,0.7147,151
+18. Investments,4. Developing an investment strategy,How do actuaries use a model office to determine an investment strategy?,18. Investments/4. Developing an investment strategy.md,2846.45,0.6011,0.6853,142
+2. Health and care products,6.1.3 Critical illness cover - Conditions covered,Criteria for Insurability,2. Health and care products/6.1.3 Critical illness cover - Conditions covered.md,2845.63,0.6024,0.7234,144
+10. Reserving,6. Market-consistent valuation,What is a market-consistent valuation?,10. Reserving/6. Market-consistent valuation.md,2839.43,0.6007,0.7307,140
+12. Surrender values,0. Syllabus objective,Objective,12. Surrender values/0. Syllabus objective.md,2837.82,0.5996,0.6862,133
+4. External environment,10.3 Expenses and commission,Fixed vs Marginal (Variable) Costs,4. External environment/10.3 Expenses and commission.md,2837.66,0.6035,0.6950,152
+8. Product design,14.4 Competitiveness,Factors influencing competitiveness,8. Product design/14.4 Competitiveness.md,2835.93,0.6001,0.6706,142
+3. Asset shares and profit distribution,9.1.2 Addition to benefits - accumulating with profits,Market Value Reduction (MRV),3. Asset shares and profit distribution/9.1.2 Addition to benefits - accumulating with profits.md,2835.92,0.6002,0.6682,141
+10. Reserving,4. Negative non-unit reserves,Aggregate floor limit,10. Reserving/4. Negative non-unit reserves.md,2835.21,0.5989,0.7836,135
+2. Health and care products,7.1.1 Long-Term Care Insurance - Customer needs,Customer needs,2. Health and care products/7.1.1 Long-Term Care Insurance - Customer needs.md,2834.08,0.5982,0.7211,135
+5. Risks,11.5 Withdrawal risk,Withdrawals as a driver of investment risk,5. Risks/11.5 Withdrawal risk.md,2833.78,0.6025,0.6708,163
+1. Life insurance contracts,1.5 Endowment Assurances - Group version,Group version,1. Life insurance contracts/1.5 Endowment Assurances - Group version.md,2833.13,0.5961,0.6833,124
+20. Monitoring experience,6. Using the results,"Operational & Distribution (The ""How"")",20. Monitoring experience/6. Using the results.md,2830.57,0.5994,0.6839,135
+4. External environment,10.2 Distribution channels,Main distribution channels,4. External environment/10.2 Distribution channels.md,2830.18,0.5933,0.7000,123
+1. Life insurance contracts,2.1 Whole life assurances,Definition,1. Life insurance contracts/2.1 Whole life assurances.md,2830.17,0.5941,0.7057,119
+2. Health and care products,5.1.5 Income Protection (IP) contracts - Group IP,Continuation option,2. Health and care products/5.1.5 Income Protection (IP) contracts - Group IP.md,2826.40,0.5966,0.6921,118
+18. Investments,1. Asset characteristics,What do actuaries have to consider about the marketability of the asset?,18. Investments/1. Asset characteristics.md,2825.09,0.5985,0.6745,128
+2. Health and care products,5.1 Income Protection (IP) contracts,Factors defining the benefit,2. Health and care products/5.1 Income Protection (IP) contracts.md,2820.67,0.5970,0.7319,100
+9. Assumptions,15.6 Expense and commission assumptions,Fixed vs Marginal costs,9. Assumptions/Pricing assumptions/15.6 Expense and commission assumptions.md,2819.87,0.5991,0.6740,129
+12. Surrender values,2. Methods of calculation,Explain the blended method,12. Surrender values/2. Methods of calculation.md,2817.32,0.5976,0.6739,126
+5. Risks,11.8 Guarantees and options risks,Investment guarantees,5. Risks/11.8 Guarantees and options risks.md,2816.39,0.5953,0.6901,126
+10. Reserving,4. Negative non-unit reserves,"Repayment of the ""loan""",10. Reserving/4. Negative non-unit reserves.md,2813.01,0.5953,0.7814,121
+3. Asset shares and profit distribution,9.1.1 Addition to benefits - conventional with profits,Special reversionary bonus,3. Asset shares and profit distribution/9.1.1 Addition to benefits - conventional with profits.md,2812.86,0.5978,0.7964,105
+1. Life insurance contracts,2.2 Term assurances,Term assurance,1. Life insurance contracts/2.2 Term assurances.md,2812.46,0.5923,0.6849,117
+5. Risks,"11.12 Legal, regulatory and fiscal risks","Key legal, regulatory and fiscal risks","5. Risks/11.12 Legal, regulatory and fiscal risks.md",2811.05,0.5975,0.6872,124
+13. Alterations,2. Principles of alterations,How does a company ensure fairness in profitability after an alteration?,13. Alterations/2. Principles of alterations.md,2810.78,0.6003,0.7410,112
+2. Health and care products,5.1.4 Income Protection (IP) contracts - Product Variations,Guaranteed Insurability Options (GIOs),2. Health and care products/5.1.4 Income Protection (IP) contracts - Product Variations.md,2809.57,0.5930,0.7007,103
+1. Life insurance contracts,3.2.1 Deferred annuity - Customer needs,Retirement Transition and Debt Repayment,1. Life insurance contracts/3.2.1 Deferred annuity - Customer needs.md,2809.21,0.5952,0.6892,126
+2. Health and care products,6.1.1 Critical illness cover - Product structures and benefits,Complimentary cover,2. Health and care products/6.1.1 Critical illness cover - Product structures and benefits.md,2808.83,0.5921,0.7168,115
+1. Life insurance contracts,3.2.3 Deferred Annuity - Group version,Group version,1. Life insurance contracts/3.2.3 Deferred Annuity - Group version.md,2807.88,0.5926,0.6889,103
+9. Assumptions,15.14 Embedded value,What is embedded value?,9. Assumptions/Valuation assumptions/15.14 Embedded value.md,2807.15,0.5943,0.7849,125
+1. Life insurance contracts,4.1.4 Unit-linked contracts - Capital requirements,Capital requirements,1. Life insurance contracts/4.1.4 Unit-linked contracts - Capital requirements.md,2805.69,0.5924,0.6888,92
+9. Assumptions,15.12 Reserving basis vs pricing basis,Sign-of the reserve,9. Assumptions/Valuation assumptions/15.12 Reserving basis vs pricing basis.md,2805.52,0.5956,0.7130,121
+17. Underwriting & data checks,Underwriting,What is underwriting?,17. Underwriting & data checks/Underwriting.md,2804.26,0.5915,0.6901,112
+10. Reserving,1. Purpose and reserving methods,What is the purpose of reserves?,10. Reserving/1. Purpose and reserving methods.md,2802.62,0.5911,0.6836,98
+19. Further risk management,3. New business mix and volumes,How does the business monitor and control new business?,19. Further risk management/3. New business mix and volumes.md,2802.42,0.5965,0.6966,118
+9. Assumptions,15.7 Expense inflation assumptions,Market-based approximation,9. Assumptions/Pricing assumptions/15.7 Expense inflation assumptions.md,2801.54,0.5943,0.6814,116
+1. Life insurance contracts,1. Life insurance contracts,Life insurance definition,1. Life insurance contracts/1. Life insurance contracts.md,2799.23,0.5873,0.6614,110
+4. External environment,10.2 Distribution channels,Tied Agents,4. External environment/10.2 Distribution channels.md,2795.95,0.5877,0.6773,84
+15. Pricing health & care contracts,2. Critical illness,Discuss the sources of data to derive critical illness rates?,15. Pricing health & care contracts/2. Critical illness.md,2795.24,0.5906,0.6953,87
+5. Risks,11.1 Data risks,Data issues for health and care contracts,5. Risks/11.1 Data risks.md,2790.19,0.5897,0.6683,101
+1. Life insurance contracts,2.3.2 Renewable and convertible term assurance - Absence of Surrender values,Absence of Surrender Values,1. Life insurance contracts/2.3.2 Renewable and convertible term assurance - Absence of Surrender values.md,2789.32,0.5910,0.7240,87
+4. External environment,10. The external environment,Overview of external environment factors,4. External environment/10. The external environment.md,2788.64,0.5912,0.6704,108
+10. Reserving,4. Negative non-unit reserves,When will negative non-unit reserves be held?,10. Reserving/4. Negative non-unit reserves.md,2788.49,0.5905,0.7653,101
+1. Life insurance contracts,3.1.4 Immediate annuity - Capital requirements,../../Definitions/Capital requirements,1. Life insurance contracts/3.1.4 Immediate annuity - Capital requirements.md,2786.71,0.5894,0.6533,83
+18. Investments,2. Principles of investment,When is perfect matching not desirable and when might it be desirable?,18. Investments/2. Principles of investment.md,2785.98,0.5913,0.6889,99
+8. Product design,14.5 Financing requirements,Capital management,8. Product design/14.5 Financing requirements.md,2785.16,0.5916,0.6606,106
+10. Reserving,7. Principles of market consistent valuation,How are assets valued under MCV?,10. Reserving/7. Principles of market consistent valuation.md,2784.04,0.5897,0.6941,117
+1. Life insurance contracts,4.1.1 Unit-linked contracts - Unit vs non-unit fund,Non-unit fund,1. Life insurance contracts/4.1.1 Unit-linked contracts - Unit vs non-unit fund.md,2783.28,0.5885,0.7132,87
+11. Capital requirements,1. SCR,What is the purpose of the SCR?,11. Capital requirements/1. SCR.md,2781.39,0.5879,0.6648,84
+16. Reinsurance,2.4 Technical assistance,In which areas might a reinsurer offer technical assistance to a cedant?,16. Reinsurance/2.4 Technical assistance.md,2780.91,0.5862,0.6807,84
+8. Product design,14.8 Cross subsidies,Trade-off between simplicity and equity,8. Product design/14.8 Cross subsidies.md,2779.00,0.5888,0.7269,76
+5. Risks,11.1 Data risks,summary,5. Risks/11.1 Data risks.md,2778.29,0.5898,0.6717,90
+10. Reserving,2. Gross premium valuation,GPV Definition,10. Reserving/2. Gross premium valuation.md,2776.45,0.5864,0.6654,84
+5. Risks,11.4 Expense risk,The link between inflation and investment returns,5. Risks/11.4 Expense risk.md,2775.74,0.5883,0.7065,101
+18. Investments,1. Asset characteristics,Comparison of Asset Types,18. Investments/1. Asset characteristics.md,2773.99,0.5873,0.6637,97
+2. Health and care products,5.1.5 Income Protection (IP) contracts - Group IP,Level of benefits,2. Health and care products/5.1.5 Income Protection (IP) contracts - Group IP.md,2770.97,0.5857,0.7133,67
+2. Health and care products,5.1.3 Income Protection (IP) contracts - Claim definitions,Administrative and Legal considerations,2. Health and care products/5.1.3 Income Protection (IP) contracts - Claim definitions.md,2770.01,0.5878,0.6977,81
+18. Investments,2. Principles of investment,What are the principles of investment?,18. Investments/2. Principles of investment.md,2770.00,0.5866,0.7257,93
+13. Alterations,4. Equating policy values,How to determine the total expected profit from an alteration?,13. Alterations/4. Equating policy values.md,2769.29,0.5903,0.7569,103
+3. Asset shares and profit distribution,8.2 Asset share components,What is asset share,3. Asset shares and profit distribution/8.2 Asset share components.md,2769.05,0.5862,0.6582,81
+16. Reinsurance,1.5 Financial reinsurance (Fin Re),definition,16. Reinsurance/1.5 Financial reinsurance (Fin Re).md,2768.37,0.5850,0.6729,58
+10. Reserving,9. Cost of capital approach,Cost of Capital Rate,10. Reserving/9. Cost of capital approach.md,2760.04,0.5837,0.6589,73
+7. Modelling,13.6 Sensitivity testing,Sensitivity testing,7. Modelling/13.6 Sensitivity testing.md,2758.12,0.5851,0.6783,80
+2. Health and care products,7.1.2 Long-Term Care Insurance - Product variations,Cash vs. Indemnity Benefits,2. Health and care products/7.1.2 Long-Term Care Insurance - Product variations.md,2754.80,0.5842,0.6803,60
+20. Monitoring experience,4. Analysis of surplus,How does the choice of valuation basis affect the analysis of surplus?,20. Monitoring experience/4. Analysis of surplus.md,2752.06,0.5866,0.7269,97
+11. Capital requirements,3. VaR,What is VaR?,11. Capital requirements/3. VaR.md,2749.55,0.5821,0.6479,65
+1. Life insurance contracts,3.2.1 Deferred annuity - Customer needs,Retirement income accumulation,1. Life insurance contracts/3.2.1 Deferred annuity - Customer needs.md,2745.60,0.5783,0.7113,59
+1. Life insurance contracts,4.1 Unit-linked contracts,Surrender value,1. Life insurance contracts/4.1 Unit-linked contracts.md,2743.92,0.5798,0.7218,68
+5. Risks,"11.12 Legal, regulatory and fiscal risks","Legal, regulatory and fiscal risks","5. Risks/11.12 Legal, regulatory and fiscal risks.md",2740.80,0.5820,0.6709,64
+20. Monitoring experience,2. Data required,What are the basic data requirements for monitoring to be meaningful?,20. Monitoring experience/2. Data required.md,2737.23,0.5788,0.6737,49
+11. Capital requirements,4. Run-off method,How is capital calculated using the run-off method?,11. Capital requirements/4. Run-off method.md,2737.03,0.5815,0.6605,86
+9. Assumptions,15.11 Deciding on a valuation basis,Internal management accounts,9. Assumptions/Valuation assumptions/15.11 Deciding on a valuation basis.md,2736.89,0.5814,0.7006,73
+1. Life insurance contracts,3.2.2 Deferred annuity - Surrender values,Surrender value,1. Life insurance contracts/3.2.2 Deferred annuity - Surrender values.md,2735.39,0.5791,0.6950,72
+1. Life insurance contracts,2.3 Convertible or renewable term assurances,Definition,1. Life insurance contracts/2.3 Convertible or renewable term assurances.md,2726.18,0.5746,0.6534,51
+2. Health and care products,6.1.1 Critical illness cover - Product structures and benefits,Group CI products,2. Health and care products/6.1.1 Critical illness cover - Product structures and benefits.md,2721.91,0.5736,0.7166,60
+9. Assumptions,15.7 Expense inflation assumptions,Deterministic vs Stochastic approaches,9. Assumptions/Pricing assumptions/15.7 Expense inflation assumptions.md,2718.70,0.5753,0.6654,54
+9. Assumptions,15.11 Deciding on a valuation basis,Supervisory reserves,9. Assumptions/Valuation assumptions/15.11 Deciding on a valuation basis.md,2718.22,0.5752,0.6913,66
+5. Risks,"11.13 Aggregation and concentration of risk, credit failure",Aggregation of risk,"5. Risks/11.13 Aggregation and concentration of risk, credit failure.md",2718.13,0.5740,0.6412,31
+1. Life insurance contracts,3.2 Deferred annuity contracts,Definition,1. Life insurance contracts/3.2 Deferred annuity contracts.md,2716.83,0.5727,0.7265,51
+5. Risks,11.8 Guarantees and options risks,Managing the risks associated with options & guarantees,5. Risks/11.8 Guarantees and options risks.md,2716.46,0.5747,0.6523,37
+16. Reinsurance,1.6 Facultative vs obligatory,What strategic advantage does each type of arrangement provide?,16. Reinsurance/1.6 Facultative vs obligatory.md,2714.66,0.5747,0.6320,28
+9. Assumptions,15.1 Assumptions as a source of risk,Parameter risk,9. Assumptions/Pricing assumptions/15.1 Assumptions as a source of risk.md,2714.49,0.5749,0.6430,34
+1. Life insurance contracts,1.1 Endowment assurances,Endowment Assurance definition,1. Life insurance contracts/1.1 Endowment assurances.md,2712.23,0.5709,0.6560,47
+9. Assumptions,15.11 Deciding on a valuation basis,Valuation basis,9. Assumptions/Valuation assumptions/15.11 Deciding on a valuation basis.md,2707.98,0.5775,0.7094,72
+10. Reserving,10. Active vs passive valuation,What is a passive valuation approach?,10. Reserving/10. Active vs passive valuation.md,2705.89,0.5728,0.7372,44
+7. Modelling,13.3 Stochastic versus deterministic,Stochastic vs deterministic,7. Modelling/13.3 Stochastic versus deterministic.md,2704.67,0.5726,0.6994,38
+2. Health and care products,6.1.1 Critical illness cover - Product structures and benefits,Benefits,2. Health and care products/6.1.1 Critical illness cover - Product structures and benefits.md,2702.61,0.5712,0.7423,46
+2. Health and care products,5.1.5 Income Protection (IP) contracts - Group IP,Group IP,2. Health and care products/5.1.5 Income Protection (IP) contracts - Group IP.md,2701.61,0.5707,0.6754,39
+2. Health and care products,5.1.3 Income Protection (IP) contracts - Claim definitions,Alternative Incapacity definitions,2. Health and care products/5.1.3 Income Protection (IP) contracts - Claim definitions.md,2698.60,0.5706,0.6787,32
+13. Alterations,0. Syllabus objectives,Objective,13. Alterations/0. Syllabus objectives.md,2697.12,0.5715,0.6784,37
+1. Life insurance contracts,4.1 Unit-linked contracts,Maturity,1. Life insurance contracts/4.1 Unit-linked contracts.md,2694.87,0.5686,0.6701,52
+9. Assumptions,15.11 Deciding on a valuation basis,Published accounts,9. Assumptions/Valuation assumptions/15.11 Deciding on a valuation basis.md,2690.05,0.5707,0.6754,49
+4. External environment,10.2 Distribution channels,Independent intermediaries,4. External environment/10.2 Distribution channels.md,2689.59,0.5673,0.6643,13
+8. Product design,14.11 Regulatory constraints,Regulatory requirements,8. Product design/14.11 Regulatory constraints.md,2686.52,0.5686,0.6804,35
+10. Reserving,3. Non-unit reserves,How is the non-unit reserve calculated in a Best estimate valuation?,10. Reserving/3. Non-unit reserves.md,2682.94,0.5691,0.7792,54
+4. External environment,10.5 Legal Environment,Legal constraints,4. External environment/10.5 Legal Environment.md,2676.82,0.5666,0.6338,30
+13. Alterations,4. Equating policy values,How is the basis for the equating policy values method determined?,13. Alterations/4. Equating policy values.md,2676.81,0.5705,0.7284,55
+3. Asset shares and profit distribution,9.1.1 Addition to benefits - conventional with profits,Addition to benefits,3. Asset shares and profit distribution/9.1.1 Addition to benefits - conventional with profits.md,2672.94,0.5678,0.6656,39
+1. Life insurance contracts,2.2.2 Term assurance - Absence of Surrender values,Absence of Surrender Values,1. Life insurance contracts/2.2.2 Term assurance - Absence of Surrender values.md,2672.50,0.5655,0.6838,39
+8. Product design,14.8 Cross subsidies,Mutuality vs. Cross-Subsidy,8. Product design/14.8 Cross subsidies.md,2666.27,0.5637,0.6738,7
+13. Alterations,4. Equating policy values,What is the main principle when calculating terms for general alterations?,13. Alterations/4. Equating policy values.md,2664.04,0.5663,0.7118,47
+4. External environment,10.3 Expenses and commission,Management expenses,4. External environment/10.3 Expenses and commission.md,2660.92,0.5665,0.6476,20
+2. Health and care products,7.1.2 Long-Term Care Insurance - Product variations,Product types,2. Health and care products/7.1.2 Long-Term Care Insurance - Product variations.md,2656.63,0.5623,0.6614,30
+12. Surrender values,2. Methods of calculation,What are the methods of calculating surrender values?,12. Surrender values/2. Methods of calculation.md,2654.49,0.5608,0.7178,49
+2. Health and care products,7.1 Long-Term Care Insurance,Definition,2. Health and care products/7.1 Long-Term Care Insurance.md,2634.03,0.5552,0.6848,18
+19. Further risk management,1. Expense control,What is expense control in risk management?,19. Further risk management/1. Expense control.md,2629.52,0.5567,0.6343,4
+20. Monitoring experience,4. Analysis of surplus,What is valuation surplus and surplus arising?,20. Monitoring experience/4. Analysis of surplus.md,2623.26,0.5573,0.6649,33
+10. Reserving,8. Risk-neutral calibration,What is risk-neutral calibration?,10. Reserving/8. Risk-neutral calibration.md,2617.25,0.5531,0.6271,21
+9. Assumptions,15.15 Consistency of assumptions,Joint behaviour of variables,9. Assumptions/Valuation assumptions/15.15 Consistency of assumptions.md,2613.73,0.5536,0.6313,12
+2. Health and care products,5.1.3 Income Protection (IP) contracts - Claim definitions,Incapacity,2. Health and care products/5.1.3 Income Protection (IP) contracts - Claim definitions.md,2595.07,0.5488,0.6951,23
+13. Alterations,3. Methods of calculation,Does the method meet the principles?,13. Alterations/3. Methods of calculation.md,2593.07,0.5486,0.6450,10
+8. Product design,14. Product design,What are the factors to consider when designing a product?,8. Product design/14. Product design.md,2591.10,0.5489,0.6679,20
+1. Life insurance contracts,4.2. Index-linked contracts,Definition,1. Life insurance contracts/4.2. Index-linked contracts.md,2583.24,0.5456,0.6150,2
+2. Health and care products,5.1.2 Income Protection (IP) contracts - Features,Rehabilitation/Proportionate benefits,2. Health and care products/5.1.2 Income Protection (IP) contracts - Features.md,2577.67,0.5460,0.6827,19
+16. Reinsurance,1.6 Facultative vs obligatory,What are the common combinations?,16. Reinsurance/1.6 Facultative vs obligatory.md,2577.59,0.5448,0.5979,0
+16. Reinsurance,1.6 Facultative vs obligatory,definition,16. Reinsurance/1.6 Facultative vs obligatory.md,2574.49,0.5450,0.6146,2
+5. Risks,11.15 Operational risk,Failure of management systems and controls,5. Risks/11.15 Operational risk.md,2568.06,0.5443,0.6332,3
+5. Risks,11.10 Strategic risk,Strategic risk,5. Risks/11.10 Strategic risk.md,2558.50,0.5417,0.6039,1
+4. External environment,10.3 Expenses and commission,Types of expenses,4. External environment/10.3 Expenses and commission.md,2553.02,0.5409,0.6006,1
+4. External environment,10.2 Distribution channels,Direct marketing,4. External environment/10.2 Distribution channels.md,2552.40,0.5383,0.6782,7
+4. External environment,10.3 Expenses and commission,Commissions,4. External environment/10.3 Expenses and commission.md,2547.94,0.5407,0.6583,4
+13. Alterations,1. Paid-up contracts,What is a paid-up contract?,13. Alterations/1. Paid-up contracts.md,2544.17,0.5376,0.6565,8
+16. Reinsurance,1.4 Excess of loss,definition,16. Reinsurance/1.4 Excess of loss.md,2541.32,0.5381,0.6116,2
+2. Health and care products,5.1.3 Income Protection (IP) contracts - Claim definitions,Occupational Definitions,2. Health and care products/5.1.3 Income Protection (IP) contracts - Claim definitions.md,2528.74,0.5351,0.6527,15
+2. Health and care products,5.1.2 Income Protection (IP) contracts - Features,Waiver of premium,2. Health and care products/5.1.2 Income Protection (IP) contracts - Features.md,2517.73,0.5308,0.6515,7
+13. Alterations,2. Principles of alterations,State the most relevant boundary condition in each of the following cases.,13. Alterations/2. Principles of alterations.md,2503.75,0.5315,0.6333,5
+20. Monitoring experience,5. Analysis of EV,What are the reasons for performing an analysis of EV?,20. Monitoring experience/5. Analysis of EV.md,2501.71,0.5284,0.5880,0
+16. Reinsurance,3.2 Retention limits,What are the factors to take into account when setting retention limits?,16. Reinsurance/3.2 Retention limits.md,2498.57,0.5281,0.6197,1
+2. Health and care products,6.1 Critical illness cover,Definition,2. Health and care products/6.1 Critical illness cover.md,2492.18,0.5257,0.6849,12
+8. Product design,14.8 Cross subsidies,Cross-subsidy definition,8. Product design/14.8 Cross subsidies.md,2490.80,0.5271,0.6557,1
+20. Monitoring experience,1. Reasons for monitoring,What other information can be provided to management through monitoring?,20. Monitoring experience/1. Reasons for monitoring.md,2489.85,0.5280,0.6754,4
+9. Assumptions,15.13 Best estimate reserves,definition,9. Assumptions/Valuation assumptions/15.13 Best estimate reserves.md,2466.82,0.5220,0.6180,2
+4. External environment,10.5 Legal Environment,Contract law constraints,4. External environment/10.5 Legal Environment.md,2455.02,0.5193,0.5797,0
+7. Modelling,13.1 Objectives and requirements,What are the requirements of a good model?,7. Modelling/13.1 Objectives and requirements.md,2392.75,0.5066,0.6144,2
+9. Assumptions,15.15 Consistency of assumptions,The need for consistency,9. Assumptions/Valuation assumptions/15.15 Consistency of assumptions.md,2353.38,0.4997,0.5792,0
+8. Product design,14.9 Administration systems,Administration systems,8. Product design/14.9 Administration systems.md,2276.94,0.4824,0.5428,0
+8. Product design,14. Product design,Acronym to help generate ideas:,8. Product design/14. Product design.md,2203.33,0.4661,0.5596,0
